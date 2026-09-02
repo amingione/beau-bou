@@ -28,6 +28,7 @@ Built 2026-09-02 in the Assembly desktop app. Michele's contact showed **Active*
 - `Be-YOU-tiful_Homepage_Preview_Mobile.pdf` / `.png` — phone render (390px, iPhone-class viewport)
 - `Be-YOU-tiful_Mobile_Screens.png` — four phone frames at a glance (hero, tiles, promise band, visit/footer)
 - `Be-YOU-tiful_Logo_Pack.zip` — zip of `docs/brand/`
+- `Be-YOU-tiful_Website_Proposal.pdf` — $1,000 flat proposal, $500/$500 payment split, Oct 15 launch target, 14-day validity (`proposal.html` is the source)
 
 Regenerate PDFs: `python3 -c "from playwright.sync_api import sync_playwright; ..."` — see session notes; any headless Chromium `page.pdf(format='Letter', print_background=True)` works.
 
