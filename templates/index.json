@@ -1,0 +1,256 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero-logo",
+      "settings": {
+        "logo_width": 480,
+        "heading": "Be-YOU-tiful Boutique",
+        "tagline": "Swimsuits to gowns · XS to 3X",
+        "accent": "Accept yourself as you were designed by God",
+        "button_label": "Shop What's New",
+        "button_link": "shopify://collections/new-arrivals",
+        "content_position": "center",
+        "min_height": 60,
+        "overlay_opacity": 25,
+        "show_frame": true,
+        "full_width": false,
+        "color_scheme": "scheme-1",
+        "padding_top": 24,
+        "padding_bottom": 24
+      }
+    },
+    "whats_new": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Shop What's New",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "new-arrivals",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "color_scheme": "scheme-1",
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "outline",
+        "enable_desktop_slider": true,
+        "swipe_on_mobile": true,
+        "image_ratio": "portrait",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "standard",
+        "columns_mobile": "2",
+        "padding_top": 48,
+        "padding_bottom": 24
+      }
+    },
+    "tiles_1": {
+      "type": "category-tiles",
+      "blocks": {
+        "swim": {
+          "type": "tile",
+          "settings": {
+            "collection": "swimsuits",
+            "caption": "Swimsuits"
+          }
+        },
+        "dresses": {
+          "type": "tile",
+          "settings": {
+            "collection": "dresses",
+            "caption": "Dresses"
+          }
+        },
+        "gowns": {
+          "type": "tile",
+          "settings": {
+            "collection": "gowns",
+            "caption": "Gowns"
+          }
+        }
+      },
+      "block_order": [
+        "swim",
+        "dresses",
+        "gowns"
+      ],
+      "settings": {
+        "title": "",
+        "columns_desktop": 3,
+        "columns_mobile": "1",
+        "image_ratio": "1 / 1.15",
+        "color_scheme": "scheme-1",
+        "padding_top": 24,
+        "padding_bottom": 12
+      }
+    },
+    "tiles_2": {
+      "type": "category-tiles",
+      "blocks": {
+        "tops": {
+          "type": "tile",
+          "settings": {
+            "collection": "tops",
+            "caption": "Tops"
+          }
+        },
+        "bottoms": {
+          "type": "tile",
+          "settings": {
+            "collection": "bottoms",
+            "caption": "Bottoms"
+          }
+        },
+        "accessories": {
+          "type": "tile",
+          "settings": {
+            "collection": "jewelry-accessories",
+            "caption": "Jewelry + Accessories"
+          }
+        }
+      },
+      "block_order": [
+        "tops",
+        "bottoms",
+        "accessories"
+      ],
+      "settings": {
+        "title": "",
+        "columns_desktop": 3,
+        "columns_mobile": "1",
+        "image_ratio": "1 / 1.15",
+        "color_scheme": "scheme-1",
+        "padding_top": 12,
+        "padding_bottom": 36
+      }
+    },
+    "brand": {
+      "type": "brand-strip",
+      "blocks": {
+        "v1": {
+          "type": "value",
+          "settings": {
+            "title": "XS – 3X",
+            "text": "Size-inclusive racks, always."
+          }
+        },
+        "v2": {
+          "type": "value",
+          "settings": {
+            "title": "Swim to Gowns",
+            "text": "Beach day to black tie under one roof."
+          }
+        },
+        "v3": {
+          "type": "value",
+          "settings": {
+            "title": "Affordable",
+            "text": "Boutique finds without boutique markups."
+          }
+        }
+      },
+      "block_order": [
+        "v1",
+        "v2",
+        "v3"
+      ],
+      "settings": {
+        "show_ribbon": true,
+        "ribbon_items": "Swimsuits to gowns | Sizes XS – 3X | Affordable prices | Downtown Punta Gorda | In-store pickup",
+        "ribbon_scroll": true,
+        "eyebrow": "Our promise",
+        "statement": "Every body. Every occasion. <em>Be-YOU-tiful.</em>",
+        "accent": "Accept yourself as you were designed by God",
+        "button_label": "Shop All",
+        "button_link": "shopify://collections/all",
+        "color_scheme": "scheme-3",
+        "padding_top": 0,
+        "padding_bottom": 56
+      }
+    },
+    "sale": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Sale",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "sale",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "color_scheme": "scheme-1",
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "outline",
+        "enable_desktop_slider": true,
+        "swipe_on_mobile": true,
+        "image_ratio": "portrait",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "standard",
+        "columns_mobile": "2",
+        "padding_top": 48,
+        "padding_bottom": 24
+      }
+    },
+    "visit": {
+      "type": "visit-our-store",
+      "blocks": {
+        "h1": {
+          "type": "hours",
+          "settings": {
+            "days": "Tuesday – Friday",
+            "hours": "10AM – 5PM"
+          }
+        },
+        "h2": {
+          "type": "hours",
+          "settings": {
+            "days": "Saturday",
+            "hours": "10AM – 4PM"
+          }
+        },
+        "h3": {
+          "type": "hours",
+          "settings": {
+            "days": "Sunday – Monday",
+            "hours": "Closed"
+          }
+        }
+      },
+      "block_order": [
+        "h1",
+        "h2",
+        "h3"
+      ],
+      "settings": {
+        "image_position": "left",
+        "heading": "Visit Our Store",
+        "address_line_1": "264-A W Marion Ave",
+        "address_line_2": "Punta Gorda, Florida 33950",
+        "phone": "(941) 369-1628",
+        "show_directions": true,
+        "directions_label": "Get Directions",
+        "note": "In-store pickup available",
+        "color_scheme": "scheme-1",
+        "padding_top": 36,
+        "padding_bottom": 48
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "whats_new",
+    "tiles_1",
+    "tiles_2",
+    "brand",
+    "sale",
+    "visit"
+  ]
+}

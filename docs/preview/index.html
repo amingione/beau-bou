@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Be-YOU-tiful Boutique Homepage</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Poppins:wght@400;500;600&display=swap">
+<style>
+  /* Single-theme by design: this mock mirrors the Shopify theme's fixed palette (scheme-1 Paper / scheme-3 Peacock). */
+  :root {
+    --paper: #ffffff;
+    --ink: #2b2b2b;
+    --ink-soft: rgba(43, 43, 43, 0.62);
+    --hair: #1a1a1a;
+    --gray-btn: #6a6a6a;
+    --linen: #f6f3ee;
+    --linen-deep: #e9e3d9;
+    --peacock: #0f5f66;
+    --peacock-deep: #0b4a50;
+    --blush: #f2e4e1;
+    --display: 'Playfair Display', Georgia, 'Times New Roman', serif;
+    --body: 'Poppins', 'Helvetica Neue', Arial, sans-serif;
+    --page: 1400px;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 15px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+  img, svg { display: block; max-width: 100%; }
+  .page { width: min(var(--page), 100% - 3rem); margin-inline: auto; }
+  .display {
+    font-family: var(--display);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    line-height: 1.15;
+    text-wrap: balance;
+  }
+  .accent { font-family: var(--display); font-style: italic; letter-spacing: 0; text-transform: none; }
+  .frame { border: 1px solid var(--hair); padding: 0.6rem; background: var(--paper); }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-height: 46px; padding: 0 1.8rem;
+    background: var(--gray-btn); color: #fff;
+    font: 500 14px/1 var(--body); letter-spacing: 0.06em; border-radius: 2px; border: 0; cursor: pointer;
+  }
+  .btn--ghost { background: transparent; color: var(--ink); border: 1px solid var(--hair); }
+  .btn:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid var(--peacock); outline-offset: 2px; }
+
+  /* Reviewer note ribbon */
+  .note {
+    background: var(--peacock); color: #fff; font-size: 12.5px; letter-spacing: 0.02em;
+    padding: 0.6rem 1rem; text-align: center;
+  }
+  .note strong { font-weight: 600; }
+
+  /* Placeholder "photo" */
+  .ph {
+    position: relative; overflow: hidden; width: 100%; height: 100%;
+    background:
+      repeating-linear-gradient(135deg, transparent 0 14px, rgba(43,43,43,0.035) 14px 15px),
+      linear-gradient(160deg, var(--linen) 0%, var(--linen-deep) 100%);
+    display: grid; place-items: center;
+  }
+  .ph::after {
+    content: attr(data-label);
+    font: 500 11px/1.4 var(--body); letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--ink-soft); text-align: center; padding: 0 1rem; max-width: 22ch;
+  }
+  .ph--peacock { background: linear-gradient(160deg, #143f45, var(--peacock)); }
+  .ph--peacock::after { color: rgba(255,255,255,0.7); }
+
+  /* Announcement */
+  .announce {
+    text-align: center; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em;
+    padding: 0.85rem 1rem; border-bottom: 1px solid rgba(43,43,43,0.12);
+  }
+
+  /* Header */
+  .header { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 2.5rem; padding: 1.5rem 0; }
+  .logo { width: 118px; height: 118px; border-radius: 50%; background: #0b0b0b; color: #fff; display: grid; place-items: center; text-align: center; position: relative; }
+  .logo .l1 { font: 400 15px/1.05 var(--display); letter-spacing: -0.01em; }
+  .logo .l2 { font: italic 400 10px/1 var(--display); opacity: 0.9; margin-top: 4px; }
+  .logo svg { position: absolute; right: 14px; bottom: 16px; width: 26px; height: 40px; }
+  .nav { display: flex; flex-wrap: wrap; gap: 0.9rem 1.9rem; font: 500 13.5px/1 var(--body); text-transform: uppercase; letter-spacing: 0.12em; }
+  .nav a { padding: 0.4rem 0; border-bottom: 1px solid transparent; }
+  .nav a:hover { border-bottom-color: var(--ink); }
+  .nav .sale { font-weight: 600; }
+  .nav .caret::after { content: ''; display: inline-block; width: 0; height: 0; margin-left: 6px; border: 4px solid transparent; border-top-color: var(--ink); vertical-align: 1px; }
+  .icons { display: flex; align-items: center; gap: 1.6rem; }
+  .search { display: flex; align-items: center; height: 44px; min-width: 180px; border: 1px solid rgba(43,43,43,0.6); border-radius: 2px; padding: 0 0.4rem 0 0.9rem; }
+  .search input { flex: 1; border: 0; background: transparent; font: 400 14px var(--body); color: var(--ink); min-width: 0; }
+  .search input::placeholder { color: rgba(43,43,43,0.5); }
+  .ico { width: 20px; height: 20px; stroke: var(--ink); fill: none; stroke-width: 1.6; }
+
+  /* Hero */
+  .hero { margin-top: 1.5rem; }
+  .hero .frame { position: relative; height: clamp(360px, 58vh, 640px); }
+  .hero .ph { position: absolute; inset: 0.6rem; width: auto; height: auto; }
+  .hero > .frame > .ph::after { content: none; }
+  .hero-content { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; padding: 2rem; }
+  .hero-content > div { display: grid; gap: 1.1rem; justify-items: center; }
+  .hero-logo { width: 300px; height: 300px; }
+  .hero-logo .l1 { font-size: 34px; }
+  .hero-logo .l2 { font-size: 22px; margin-top: 8px; }
+  .hero-logo svg { width: 66px; height: 100px; right: 34px; bottom: 40px; }
+  .hero .tag { font-size: 13px; }
+  .hero .acc { font-size: 22px; margin: 0; }
+  .hero-side { position: absolute; top: 0.6rem; bottom: 0.6rem; width: 28%; display: grid; }
+  .hero-side.left { left: 0.6rem; } .hero-side.right { right: 0.6rem; }
+
+  /* Product rows */
+  .row-head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin: 3.4rem 0 1.4rem; }
+  .row-head h2 { margin: 0; font: 400 clamp(22px, 2.6vw, 34px)/1.1 var(--display); letter-spacing: 0.02em; }
+  .row-head a { font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; border-bottom: 1px solid var(--ink); }
+  .products { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.5rem; position: relative; }
+  .card { display: grid; gap: 0.55rem; }
+  .card .media { aspect-ratio: 4 / 5; position: relative; border: 1px solid rgba(43,43,43,0.12); }
+  .card h3 { margin: 0.4rem 0 0; font: 600 15px/1.35 var(--body); }
+  .price { font-size: 15px; font-variant-numeric: tabular-nums; }
+  .price s { opacity: 0.55; margin-left: 0.5rem; }
+  .badge { position: absolute; right: 10px; bottom: 10px; background: #fff; color: #111; font: 700 10.5px/1 var(--body); letter-spacing: 0.14em; text-transform: uppercase; padding: 0.55rem 0.9rem; border-radius: 2px; box-shadow: 0 2px 8px rgba(0,0,0,0.18); }
+  .arrow { position: absolute; right: -22px; top: 38%; width: 44px; height: 44px; border-radius: 50%; background: #fff; border: 1px solid rgba(43,43,43,0.2); display: grid; place-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+
+  /* Tiles */
+  .tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
+  .tile .media { aspect-ratio: 1 / 1.15; }
+  .tile .cap { display: block; text-align: center; font-size: clamp(16px, 2vw, 26px); padding: 1.1rem 0.5rem 0.8rem; }
+
+  /* Brand strip */
+  .strip { margin-top: 3rem; background: var(--peacock); color: #fff; padding-bottom: 3.6rem; overflow: hidden; }
+  .ribbon { border-top: 1px solid rgba(255,255,255,0.35); border-bottom: 1px solid rgba(255,255,255,0.35); padding: 0.8rem 0; font-size: 12px; white-space: nowrap; overflow: hidden; }
+  .ribbon-track { display: inline-flex; gap: 1.4rem; align-items: center; padding-left: 1.4rem; }
+  .ribbon-track span.dot { opacity: 0.5; }
+  @media (prefers-reduced-motion: no-preference) {
+    .ribbon-track { animation: rib 38s linear infinite; }
+    .strip:hover .ribbon-track { animation-play-state: paused; }
+  }
+  @keyframes rib { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .strip-body { text-align: center; display: grid; justify-items: center; gap: 1.3rem; padding-top: 3rem; }
+  .eyebrow { font-size: 11px; text-transform: uppercase; letter-spacing: 0.28em; opacity: 0.8; }
+  .statement { margin: 0; font: 400 clamp(30px, 4.6vw, 54px)/1.1 var(--display); max-width: 20ch; text-wrap: balance; }
+  .statement em { font-style: italic; }
+  .strip .acc { font-size: 20px; opacity: 0.92; margin: 0; }
+  .values { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.4rem; width: 100%; max-width: 940px; margin-top: 0.8rem; list-style: none; padding: 0; }
+  .values li { border: 1px solid rgba(255,255,255,0.4); padding: 1.3rem 1rem; display: grid; gap: 0.5rem; }
+  .values .t { font-size: 14px; }
+  .values .d { font-size: 13.5px; opacity: 0.85; }
+  .strip .btn--ghost { color: #fff; border-color: #fff; margin-top: 0.4rem; }
+
+  /* Visit */
+  .visit { margin-top: 3.4rem; }
+  .visit .frame { display: grid; grid-template-columns: 5fr 7fr; gap: 2rem; align-items: center; }
+  .visit .media { aspect-ratio: 4 / 5; }
+  .visit .content { text-align: center; display: grid; justify-items: center; gap: 1.4rem; padding: 2rem 1.5rem; }
+  .visit h2 { margin: 0; font-size: clamp(24px, 3vw, 40px); }
+  .visit address { font-style: normal; font-size: clamp(13px, 1.5vw, 18px); display: grid; gap: 0.4rem; }
+  .hours { margin: 0; display: grid; gap: 0.4rem; font-size: 13px; }
+  .hours div { display: flex; justify-content: center; gap: 0.9rem; }
+  .hours dt, .hours dd { margin: 0; }
+  .hours dd::before { content: '—'; margin-right: 0.9rem; opacity: 0.5; }
+  .visit .links { display: flex; gap: 1.4rem; flex-wrap: wrap; justify-content: center; }
+  .visit .links a { font-size: 12px; padding: 0.7rem 1.2rem; border: 1px solid var(--hair); transition: background .2s, color .2s; }
+  .visit .links a:hover { background: var(--ink); color: #fff; }
+  .visit .acc { font-size: 19px; margin: 0; opacity: 0.85; }
+
+  /* Footer */
+  footer { margin-top: 4rem; border-top: 1px solid rgba(43,43,43,0.12); padding: 3rem 0 2rem; }
+  .fgrid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 2.5rem; }
+  .fgrid h4 { margin: 0 0 0.6rem; font: 600 15px var(--body); }
+  .fgrid p, .fgrid li { margin: 0; font-size: 14px; }
+  .fgrid ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.6rem; }
+  .news input { width: 100%; height: 52px; border: 1px solid rgba(43,43,43,0.6); border-radius: 2px; padding: 0 1rem; font: 400 15px var(--body); margin: 1rem 0 0.9rem; }
+  .social { display: flex; gap: 1.6rem; margin-top: 2rem; }
+  .fbottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-top: 3rem; font-size: 12.5px; }
+  .pay { display: flex; gap: 0.5rem; }
+  .pay span { border: 1px solid rgba(43,43,43,0.2); border-radius: 3px; padding: 0.25rem 0.55rem; font: 600 10px/1.4 var(--body); letter-spacing: 0.04em; }
+
+  @media (max-width: 989px) {
+    .header { grid-template-columns: auto 1fr; }
+    .icons { grid-column: 1 / -1; justify-content: flex-end; }
+    .products { grid-template-columns: repeat(2, 1fr); }
+    .tiles, .values { grid-template-columns: repeat(2, 1fr); }
+    .hero-side { display: none; }
+    .visit .frame { grid-template-columns: 1fr; gap: 0; }
+    .visit .media { aspect-ratio: 16 / 10; }
+    .fgrid { grid-template-columns: 1fr 1fr; }
+    .arrow { display: none; }
+  }
+  @media (max-width: 620px) {
+    .tiles, .values, .fgrid { grid-template-columns: 1fr; }
+    .hero-logo { width: 220px; height: 220px; }
+    .hero-logo .l1 { font-size: 24px; }
+    .search { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="note"><strong>Design preview for Michele.</strong> Layout, type, and color are final theme output; soft beige blocks are photo placeholders labeled with the shot each spot needs. Products and prices are examples only.</div>
+
+<div class="announce">Free in-store pickup in downtown Punta Gorda · Sizes XS – 3X</div>
+
+<header class="page header">
+  <a class="logo" href="#" aria-label="Be-YOU-tiful Boutique by Michele">
+    <div><div class="l1">Be-YOU-tiful<br>Boutique</div><div class="l2">by Michele</div></div>
+    <svg viewBox="0 0 26 40" aria-hidden="true"><path d="M13 2c3 0 5 2.4 5 5.5 0 2.4-1.4 4-2.6 5.2C14 14 13.4 16 13.4 19v19" fill="none" stroke="#fff" stroke-width="1.4"/><circle cx="12" cy="6.5" r="1" fill="#fff"/><path d="M13.4 22c-4 0-8 3-9.4 7 3-1.6 6-1.6 9.4 0M13.4 27c-3.4 0-7 2.6-8.4 6.4 2.8-1.4 5.4-1.4 8.4 0M13.4 32c-2.6 0-5.4 2-6.6 5 2.2-1 4.2-1 6.6 0" fill="none" stroke="#fff" stroke-width="1.2"/></svg>
+  </a>
+  <nav class="nav" aria-label="Main">
+    <a href="#">What's New</a><a href="#">Best Sellers</a><a href="#">Swimsuits</a><a href="#" class="caret">Dresses + Gowns</a><a href="#">Tops</a><a href="#">Bottoms</a>
+    <a href="#">Jewelry + Accessories</a><a href="#" class="caret">Shop All</a><a href="#" class="sale">Sale!</a><a href="#">Visit Us</a>
+  </nav>
+  <div class="icons">
+    <form class="search" role="search"><input type="search" placeholder="Search..." aria-label="Search"><svg class="ico" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg></form>
+    <svg class="ico" viewBox="0 0 24 24" aria-label="Account"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+    <svg class="ico" viewBox="0 0 24 24" aria-label="Cart"><path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
+  </div>
+</header>
+
+<main class="page">
+  <section class="hero" aria-label="Welcome">
+    <div class="frame">
+      <div class="ph"></div>
+      <div class="hero-side left"><div class="ph" data-label="Photo · rack of gowns, natural light"></div></div>
+      <div class="hero-side right"><div class="ph" data-label="Photo · swim + resort wall"></div></div>
+      <div class="hero-content">
+        <div>
+          <div class="logo hero-logo" aria-hidden="true">
+            <div><div class="l1">Be-YOU-tiful<br>Boutique</div><div class="l2">by Michele</div></div>
+            <svg viewBox="0 0 26 40"><path d="M13 2c3 0 5 2.4 5 5.5 0 2.4-1.4 4-2.6 5.2C14 14 13.4 16 13.4 19v19" fill="none" stroke="#fff" stroke-width="1.4"/><circle cx="12" cy="6.5" r="1" fill="#fff"/><path d="M13.4 22c-4 0-8 3-9.4 7 3-1.6 6-1.6 9.4 0M13.4 27c-3.4 0-7 2.6-8.4 6.4 2.8-1.4 5.4-1.4 8.4 0M13.4 32c-2.6 0-5.4 2-6.6 5 2.2-1 4.2-1 6.6 0" fill="none" stroke="#fff" stroke-width="1.2"/></svg>
+          </div>
+          <p class="display tag">Swimsuits to gowns · XS to 3X</p>
+          <p class="accent acc">Accept yourself as you were designed by God</p>
+          <a class="btn" href="#">Shop What's New</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="row-head"><h2>Shop What's New</h2><a href="#">View all</a></div>
+  <div class="products">
+    <article class="card"><div class="media"><div class="ph" data-label="Photo · product"></div></div><h3>Coral Tie-Front Swim Set</h3><div class="price">$38.00</div></article>
+    <article class="card"><div class="media"><div class="ph" data-label="Photo · product"></div></div><h3>Palm Breeze Maxi Dress</h3><div class="price">$46.00</div></article>
+    <article class="card"><div class="media"><div class="ph" data-label="Photo · product"></div></div><h3>Marion Ave Linen Blouse</h3><div class="price">$32.00</div></article>
+    <article class="card"><div class="media"><div class="ph" data-label="Photo · product"></div></div><h3>Harbor Nights Sequin Gown</h3><div class="price">$89.00</div></article>
+    <div class="arrow" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></div>
+  </div>
+
+  <div class="tiles">
+    <a class="tile frame" href="#"><div class="media"><div class="ph" data-label="Photo · swimsuit wall"></div></div><span class="display cap">Swimsuits</span></a>
+    <a class="tile frame" href="#"><div class="media"><div class="ph" data-label="Photo · dress rack"></div></div><span class="display cap">Dresses</span></a>
+    <a class="tile frame" href="#"><div class="media"><div class="ph" data-label="Photo · gown on form"></div></div><span class="display cap">Gowns</span></a>
+    <a class="tile frame" href="#"><div class="media"><div class="ph" data-label="Photo · folded tops"></div></div><span class="display cap">Tops</span></a>
+    <a class="tile frame" href="#"><div class="media"><div class="ph" data-label="Photo · denim + skirts"></div></div><span class="display cap">Bottoms</span></a>
+    <a class="tile frame" href="#"><div class="media"><div class="ph" data-label="Photo · jewelry display"></div></div><span class="display cap">Jewelry + Accessories</span></a>
+  </div>
+</main>
+
+<section class="strip" aria-label="Our promise">
+  <div class="ribbon display" aria-hidden="true"><div class="ribbon-track">
+    <span>Swimsuits to gowns</span><span class="dot">·</span><span>Sizes XS – 3X</span><span class="dot">·</span><span>Affordable prices</span><span class="dot">·</span><span>Downtown Punta Gorda</span><span class="dot">·</span><span>In-store pickup</span><span class="dot">·</span>
+    <span>Swimsuits to gowns</span><span class="dot">·</span><span>Sizes XS – 3X</span><span class="dot">·</span><span>Affordable prices</span><span class="dot">·</span><span>Downtown Punta Gorda</span><span class="dot">·</span><span>In-store pickup</span><span class="dot">·</span>
+  </div></div>
+  <div class="page strip-body">
+    <span class="eyebrow">Our promise</span>
+    <h2 class="statement">Every body. Every occasion. <em>Be-YOU-tiful.</em></h2>
+    <p class="accent acc">Accept yourself as you were designed by God</p>
+    <ul class="values">
+      <li><span class="display t">XS – 3X</span><span class="d">Size-inclusive racks, always.</span></li>
+      <li><span class="display t">Swim to Gowns</span><span class="d">Beach day to black tie under one roof.</span></li>
+      <li><span class="display t">Affordable</span><span class="d">Boutique finds without boutique markups.</span></li>
+    </ul>
+    <a class="btn btn--ghost" href="#">Shop All</a>
+  </div>
+</section>
+
+<main class="page">
+  <div class="row-head"><h2>Sale</h2><a href="#">View all</a></div>
+  <div class="products">
+    <article class="card"><div class="media"><div class="ph" data-label="Photo · product"></div><span class="badge">Sale</span></div><h3>Sunset Stripe One-Piece</h3><div class="price">$24.00 <s>$42.00</s></div></article>
+    <article class="card"><div class="media"><div class="ph" data-label="Photo · product"></div><span class="badge">Sale</span></div><h3>Charlotte Harbor Wrap Dress</h3><div class="price">$29.00 <s>$52.00</s></div></article>
+    <article class="card"><div class="media"><div class="ph" data-label="Photo · product"></div><span class="badge">Sale</span></div><h3>Gold Leaf Drop Earrings</h3><div class="price">$9.00 <s>$16.00</s></div></article>
+    <article class="card"><div class="media"><div class="ph" data-label="Photo · product"></div><span class="badge">Sale</span></div><h3>Emerald Satin Gown</h3><div class="price">$59.00 <s>$98.00</s></div></article>
+    <div class="arrow" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></div>
+  </div>
+
+  <section class="visit" aria-label="Visit our store">
+    <div class="frame">
+      <div class="media"><div class="ph" data-label="Photo · storefront on W Marion Ave"></div></div>
+      <div class="content">
+        <h2 class="display">Visit Our Store</h2>
+        <address class="display">
+          <span>264-A W Marion Ave</span>
+          <span>Punta Gorda, Florida 33950</span>
+        </address>
+        <dl class="hours display">
+          <div><dt>Tuesday – Friday</dt><dd>10AM – 5PM</dd></div>
+          <div><dt>Saturday</dt><dd>10AM – 4PM</dd></div>
+          <div><dt>Sunday – Monday</dt><dd>Closed</dd></div>
+        </dl>
+        <div class="links display"><a href="#">Get Directions</a><a href="#">(941) 369-1628</a></div>
+        <p class="accent acc">In-store pickup available</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="page">
+    <div class="fgrid">
+      <div class="news">
+        <h4>Join our mailing list</h4>
+        <p>Don't miss out on new arrivals and sales!</p>
+        <input type="email" placeholder="Email" aria-label="Email">
+        <button class="btn" type="button">Sign me up!</button>
+        <div class="social" aria-label="Social">
+          <svg class="ico" viewBox="0 0 24 24" aria-label="Facebook"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v9h4v-9h3l1-4h-4V8z"/></svg>
+          <svg class="ico" viewBox="0 0 24 24" aria-label="Instagram"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+        </div>
+      </div>
+      <div><h4>Help</h4><ul><li><a href="#">Contact Us</a></li><li><a href="#">About Us</a></li><li><a href="#">Shipping &amp; Returns</a></li><li><a href="#">Privacy Policy</a></li></ul></div>
+      <div><h4>Get in touch</h4><p>Any questions?<br>Let us know in store at<br>264-A W Marion Ave, Punta Gorda, FL 33950<br>Or call us at (941) 369-1628<br>beyoutifulboutiquebymichele@gmail.com</p></div>
+      <div><h4>Store hours</h4><p>Tuesday – Friday · 10AM – 5PM<br>Saturday · 10AM – 4PM<br>Sunday – Monday · Closed</p></div>
+    </div>
+    <div class="fbottom">
+      <span>© 2026 Be-YOU-tiful Boutique by Michele · Punta Gorda, FL</span>
+      <div class="pay" aria-label="Accepted payments"><span>VISA</span><span>MC</span><span>AMEX</span><span>DISCOVER</span><span>SHOP PAY</span><span>PAYPAL</span></div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

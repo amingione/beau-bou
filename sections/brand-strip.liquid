@@ -1,0 +1,107 @@
+{{ 'section-brand-strip.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="brand-strip color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding" id="Strip-{{ section.id }}">
+  {%- if section.settings.show_ribbon and section.settings.ribbon_items != blank -%}
+    {%- assign items = section.settings.ribbon_items | split: '|' -%}
+    <div class="brand-strip__ribbon bb-display" aria-hidden="true">
+      <div class="brand-strip__ribbon-track{% if section.settings.ribbon_scroll %} brand-strip__ribbon-track--scroll{% endif %}">
+        {%- for i in (1..2) -%}
+          {%- for item in items -%}
+            <span class="brand-strip__ribbon-item">{{ item | strip | escape }}</span>
+            <span class="brand-strip__ribbon-dot">·</span>
+          {%- endfor -%}
+        {%- endfor -%}
+      </div>
+    </div>
+    <p class="visually-hidden">{{ section.settings.ribbon_items | replace: '|', ', ' | escape }}</p>
+  {%- endif -%}
+
+  <div class="page-width brand-strip__body">
+    {%- if section.settings.eyebrow != blank -%}
+      <span class="bb-eyebrow">{{ section.settings.eyebrow | escape }}</span>
+    {%- endif -%}
+
+    {%- if section.settings.statement != blank -%}
+      <h2 class="brand-strip__statement">{{ section.settings.statement }}</h2>
+    {%- endif -%}
+
+    {%- if section.settings.accent != blank -%}
+      <p class="brand-strip__accent bb-accent">{{ section.settings.accent | escape }}</p>
+    {%- endif -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <ul class="brand-strip__values" role="list">
+        {%- for block in section.blocks -%}
+          <li class="brand-strip__value" {{ block.shopify_attributes }}>
+            <span class="brand-strip__value-title bb-display">{{ block.settings.title | escape }}</span>
+            {%- if block.settings.text != blank -%}
+              <span class="brand-strip__value-text">{{ block.settings.text | escape }}</span>
+            {%- endif -%}
+          </li>
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+
+    {%- if section.settings.button_label != blank -%}
+      <a href="{{ section.settings.button_link | default: '#' }}" class="button button--secondary brand-strip__button">{{ section.settings.button_label | escape }}</a>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Brand statement strip",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": { "groups": ["header", "footer"] },
+  "settings": [
+    { "type": "checkbox", "id": "show_ribbon", "default": true, "label": "Show ribbon" },
+    { "type": "text", "id": "ribbon_items", "default": "Swimsuits to gowns | Sizes XS – 3X | Affordable prices | Downtown Punta Gorda | In-store pickup", "label": "Ribbon items", "info": "Separate items with a | pipe." },
+    { "type": "checkbox", "id": "ribbon_scroll", "default": true, "label": "Animate ribbon (respects reduced-motion)" },
+    { "type": "text", "id": "eyebrow", "default": "Our promise", "label": "Eyebrow" },
+    { "type": "inline_richtext", "id": "statement", "default": "Every body. Every occasion. <em>Be-YOU-tiful.</em>", "label": "Statement" },
+    { "type": "text", "id": "accent", "default": "Accept yourself as you were designed by God", "label": "Accent line" },
+    { "type": "text", "id": "button_label", "default": "Shop All", "label": "Button label" },
+    { "type": "url", "id": "button_link", "label": "Button link" },
+    { "type": "color_scheme", "id": "color_scheme", "default": "scheme-3", "label": "Color scheme" },
+    { "type": "header", "content": "Section padding" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 0, "label": "Top" },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 56, "label": "Bottom" }
+  ],
+  "blocks": [
+    {
+      "type": "value",
+      "name": "Value",
+      "settings": [
+        { "type": "text", "id": "title", "default": "XS – 3X", "label": "Title" },
+        { "type": "text", "id": "text", "default": "Size-inclusive racks, always.", "label": "Text" }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "Brand statement strip",
+      "blocks": [
+        { "type": "value", "settings": { "title": "XS – 3X", "text": "Size-inclusive racks, always." } },
+        { "type": "value", "settings": { "title": "Swim to Gowns", "text": "Beach day to black tie under one roof." } },
+        { "type": "value", "settings": { "title": "Affordable", "text": "Boutique finds without boutique markups." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

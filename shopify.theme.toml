@@ -1,0 +1,10 @@
+# Shopify CLI environments — `shopify theme dev -e dev`, `shopify theme push -e client`
+# Fill in the store handles; never commit theme passwords (use `shopify auth login`).
+
+[environments.dev]
+store = "kw59hc-k1"            # Amber's build store — preview only
+ignore = ["docs/*", "scripts/*", "README.md"]
+
+[environments.client]
+store = "REPLACE-WITH-MICHELE-STORE-HANDLE"
+ignore = ["docs/*", "scripts/*", "README.md"]

@@ -1,0 +1,292 @@
+/* =========================================================
+   Beau Bou — theme overrides layered on Dawn's base.css
+   Look: Smith + Co. (shopsmithco.com) — white ground, Poppins body,
+   wide-tracked serif display labels, hairline black frames, flat gray buttons.
+   Brand: Be-YOU-tiful Boutique by Michele — black/white logo, peacock motif.
+   Tokens come from layout/theme.liquid (--font-accent-*, --nav-letter-spacing,
+   --display-letter-spacing) so Michele can tune them in the theme editor.
+   ========================================================= */
+
+:root {
+  --bb-ink: #2b2b2b;
+  --bb-hairline: 1px solid #1a1a1a;
+  --bb-frame-inset: 0.6rem;
+  --bb-gray-button: #6a6a6a;
+}
+
+/* ---------- Type system ---------- */
+body {
+  letter-spacing: 0.01em;
+}
+
+/* Wide-tracked serif "display" style used across the boutique sections */
+.bb-display,
+.bb-display a {
+  font-family: var(--font-heading-family);
+  font-weight: var(--font-heading-weight);
+  text-transform: uppercase;
+  letter-spacing: var(--display-letter-spacing);
+  line-height: 1.15;
+  text-decoration: none;
+  color: rgb(var(--color-foreground));
+}
+
+.bb-accent {
+  font-family: var(--font-accent-family);
+  font-style: var(--font-accent-style);
+  font-weight: var(--font-accent-weight);
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.bb-eyebrow {
+  display: inline-block;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  opacity: 0.75;
+  margin-bottom: 1.2rem;
+}
+
+/* Section titles (Dawn .title) — quieter than Dawn's default */
+.title,
+.title-wrapper-with-link .title {
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+/* ---------- Announcement bar ---------- */
+.announcement-bar__message {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 1.1rem 0;
+}
+
+/* ---------- Header ---------- */
+.header__inline-menu .list-menu__item,
+.header__menu-item {
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  letter-spacing: var(--nav-letter-spacing);
+  font-weight: 500;
+  color: rgb(var(--color-foreground));
+}
+
+.header__inline-menu .list-menu__item > span,
+.header__menu-item > span {
+  text-decoration: none;
+}
+
+.header__inline-menu .header__menu-item:hover span {
+  text-decoration: none;
+  text-underline-offset: 0;
+}
+
+/* Two-row nav: let the inline menu wrap like the reference */
+.header--inline-search .header__inline-menu .list-menu--inline {
+  flex-wrap: wrap;
+  row-gap: 0.6rem;
+}
+
+/* Inline search field */
+.header__inline-search {
+  display: none;
+}
+
+@media screen and (min-width: 990px) {
+  .header__inline-search {
+    display: block;
+    margin-right: 1rem;
+  }
+
+  .header--inline-search .header__search {
+    display: none;
+  }
+}
+
+.inline-search {
+  display: flex;
+  align-items: center;
+  height: 4.4rem;
+  min-width: 18rem;
+  border: 1px solid rgba(var(--color-foreground), 0.6);
+  border-radius: var(--inputs-radius);
+  padding: 0 0.4rem 0 1.2rem;
+  background: rgb(var(--color-background));
+}
+
+.inline-search__input {
+  flex: 1;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  font-family: var(--font-body-family);
+  font-size: 1.4rem;
+  color: rgb(var(--color-foreground));
+  min-width: 0;
+}
+
+.inline-search__input::placeholder {
+  color: rgba(var(--color-foreground), 0.5);
+}
+
+.inline-search__input:focus-visible {
+  outline: none;
+}
+
+.inline-search__button {
+  border: 0;
+  background: transparent;
+  width: 3.6rem;
+  height: 3.6rem;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  color: rgb(var(--color-foreground));
+}
+
+.inline-search__button .svg-wrapper {
+  width: 1.8rem;
+  height: 1.8rem;
+}
+
+/* ---------- Buttons ---------- */
+.button,
+.shopify-challenge__button,
+.customer button {
+  font-size: 1.4rem;
+  letter-spacing: 0.06em;
+  min-height: 4.6rem;
+  box-shadow: none;
+}
+
+.button--primary,
+.button:not(.button--secondary):not(.button--tertiary) {
+  --color-button: 106, 106, 106; /* flat gray like "Sign me up!" */
+  --color-button-text: 255, 255, 255;
+}
+
+.button:hover {
+  filter: brightness(0.92);
+}
+
+/* ---------- Hairline frame utility (the boxed tiles) ---------- */
+.bb-frame {
+  position: relative;
+  border: var(--bb-hairline);
+  padding: var(--bb-frame-inset);
+  background: rgb(var(--color-background));
+}
+
+/* ---------- Product cards ---------- */
+.card--standard .card__inner {
+  border: 1px solid rgba(var(--color-foreground), 0.12);
+}
+
+.card__heading {
+  font-family: var(--font-body-family);
+  font-weight: 600;
+  font-size: 1.5rem;
+  letter-spacing: 0;
+  line-height: 1.35;
+}
+
+.card__heading a::after {
+  outline: 0;
+}
+
+.card-information .price {
+  font-size: 1.5rem;
+}
+
+.price--on-sale .price-item--regular {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+/* Sale badge — white box, black uppercase text, soft shadow (reference style) */
+.badge {
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 0.7rem 1.2rem;
+  border: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+}
+
+.badge.color-scheme-1 {
+  background: #fff;
+  color: #111;
+}
+
+/* ---------- Collection page: sidebar filters ---------- */
+.facets-vertical .facets__heading--vertical,
+.facets-vertical .facets__summary {
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.facets-vertical .facets__disclosure-vertical .facets__summary span {
+  font-size: 1.5rem;
+}
+
+.facets-vertical .facets__disclosure-vertical {
+  border-bottom: 1px solid rgba(var(--color-foreground), 0.35);
+}
+
+.collection-hero__title {
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+/* ---------- Footer ---------- */
+.footer-block__heading {
+  font-family: var(--font-body-family);
+  font-weight: 600;
+  font-size: 1.6rem;
+  letter-spacing: 0;
+}
+
+.footer-block--newsletter .newsletter-form__field-wrapper .field__input {
+  min-height: 5.4rem;
+}
+
+.footer__list-social .list-social__item .icon {
+  width: 2.6rem;
+  height: 2.6rem;
+}
+
+.footer__content-bottom .footer__column--info {
+  text-align: center;
+}
+
+.list-payment__item {
+  padding: 0.3rem;
+}
+
+/* ---------- Inputs ---------- */
+.field__input,
+.select__select,
+.customer .field input,
+.customer select {
+  font-size: 1.5rem;
+}
+
+/* ---------- Reduce Dawn's heavy focus rings inside frames ---------- */
+.bb-frame a:focus-visible {
+  outline: 2px solid rgb(var(--color-foreground));
+  outline-offset: 2px;
+}
+
+/* ---------- Motion (respects OS setting) ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  .bb-frame img {
+    transition: transform 0.6s ease;
+  }
+
+  .bb-frame:hover img {
+    transform: scale(1.02);
+  }
+}

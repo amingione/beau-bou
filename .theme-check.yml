@@ -1,0 +1,6 @@
+# Dawn upstream carries a handful of warnings we don't own; keep the gate at "error".
+extends: theme-check:recommended
+ignore:
+  - node_modules/**
+  - docs/**
+  - scripts/**

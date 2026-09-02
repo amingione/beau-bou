@@ -1,0 +1,132 @@
+{{ 'section-visit-our-store.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+{%- liquid
+  assign address_query = section.settings.address_line_1 | append: ', ' | append: section.settings.address_line_2 | url_encode
+  assign directions_url = section.settings.directions_link
+  if directions_url == blank
+    assign directions_url = 'https://www.google.com/maps/search/?api=1&query=' | append: address_query
+  endif
+  assign phone_digits = section.settings.phone | remove: ' ' | remove: '(' | remove: ')' | remove: '-' | remove: '.'
+-%}
+
+<div class="visit-store color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding page-width" id="Visit-{{ section.id }}">
+  <div class="visit-store__frame bb-frame visit-store__frame--image-{{ section.settings.image_position }}">
+    <div class="visit-store__media">
+      {%- if section.settings.image != blank -%}
+        {{
+          section.settings.image
+          | image_url: width: 1600
+          | image_tag:
+            loading: 'lazy',
+            widths: '480, 720, 960, 1200, 1600',
+            sizes: '(min-width: 990px) 45vw, 100vw',
+            class: 'visit-store__image'
+        }}
+      {%- else -%}
+        {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+      {%- endif -%}
+    </div>
+
+    <div class="visit-store__content">
+      {%- if section.settings.heading != blank -%}
+        <h2 class="visit-store__heading bb-display">{{ section.settings.heading | escape }}</h2>
+      {%- endif -%}
+
+      <address class="visit-store__address bb-display">
+        {%- if section.settings.address_line_1 != blank -%}
+          <span>{{ section.settings.address_line_1 | escape }}</span>
+        {%- endif -%}
+        {%- if section.settings.address_line_2 != blank -%}
+          <span>{{ section.settings.address_line_2 | escape }}</span>
+        {%- endif -%}
+      </address>
+
+      {%- if section.blocks.size > 0 -%}
+        <dl class="visit-store__hours bb-display">
+          {%- for block in section.blocks -%}
+            <div class="visit-store__hours-row" {{ block.shopify_attributes }}>
+              <dt>{{ block.settings.days | escape }}</dt>
+              <dd>{{ block.settings.hours | escape }}</dd>
+            </div>
+          {%- endfor -%}
+        </dl>
+      {%- endif -%}
+
+      <div class="visit-store__actions">
+        {%- if section.settings.show_directions -%}
+          <a class="visit-store__link bb-display" href="{{ directions_url }}" target="_blank" rel="noopener">
+            {{ section.settings.directions_label | escape }}
+          </a>
+        {%- endif -%}
+        {%- if section.settings.phone != blank -%}
+          <a class="visit-store__link bb-display" href="tel:{{ phone_digits }}">{{ section.settings.phone | escape }}</a>
+        {%- endif -%}
+      </div>
+
+      {%- if section.settings.note != blank -%}
+        <p class="visit-store__note bb-accent">{{ section.settings.note | escape }}</p>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Visit our store",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": { "groups": ["header", "footer"] },
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Storefront photo" },
+    { "type": "select", "id": "image_position", "default": "left", "label": "Image position",
+      "options": [ { "value": "left", "label": "Left" }, { "value": "right", "label": "Right" } ] },
+    { "type": "text", "id": "heading", "default": "Visit Our Store", "label": "Heading" },
+    { "type": "text", "id": "address_line_1", "default": "264-A W Marion Ave", "label": "Address line 1" },
+    { "type": "text", "id": "address_line_2", "default": "Punta Gorda, Florida 33950", "label": "Address line 2" },
+    { "type": "text", "id": "phone", "default": "(941) 369-1628", "label": "Phone" },
+    { "type": "checkbox", "id": "show_directions", "default": true, "label": "Show directions link" },
+    { "type": "text", "id": "directions_label", "default": "Get Directions", "label": "Directions label" },
+    { "type": "url", "id": "directions_link", "label": "Directions link override", "info": "Leave blank to auto-build a Google Maps link from the address." },
+    { "type": "text", "id": "note", "default": "In-store pickup available", "label": "Note (accent font)" },
+    { "type": "color_scheme", "id": "color_scheme", "default": "scheme-1", "label": "Color scheme" },
+    { "type": "header", "content": "Section padding" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 36, "label": "Top" },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 36, "label": "Bottom" }
+  ],
+  "blocks": [
+    {
+      "type": "hours",
+      "name": "Hours row",
+      "settings": [
+        { "type": "text", "id": "days", "default": "Tuesday – Friday", "label": "Days" },
+        { "type": "text", "id": "hours", "default": "10AM – 5PM", "label": "Hours" }
+      ]
+    }
+  ],
+  "max_blocks": 7,
+  "presets": [
+    {
+      "name": "Visit our store",
+      "blocks": [
+        { "type": "hours", "settings": { "days": "Tuesday – Friday", "hours": "10AM – 5PM" } },
+        { "type": "hours", "settings": { "days": "Saturday", "hours": "10AM – 4PM" } },
+        { "type": "hours", "settings": { "days": "Sunday – Monday", "hours": "Closed" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

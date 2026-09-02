@@ -1,0 +1,54 @@
+{
+  "name": "t:sections.footer.name",
+  "type": "footer",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "help": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Help",
+            "menu": "footer"
+          }
+        },
+        "get-in-touch": {
+          "type": "text",
+          "settings": {
+            "heading": "Get in touch",
+            "subtext": "<p>Any questions?<br>Let us know in store at<br>264-A W Marion Ave, Punta Gorda, FL 33950<br>Or call us at <a href=\"tel:9413691628\">(941) 369-1628</a><br><a href=\"mailto:beyoutifulboutiquebymichele@gmail.com\">beyoutifulboutiquebymichele@gmail.com</a></p>"
+          }
+        },
+        "hours": {
+          "type": "text",
+          "settings": {
+            "heading": "Store hours",
+            "subtext": "<p>Tuesday – Friday · 10AM – 5PM<br>Saturday · 10AM – 4PM<br>Sunday – Monday · Closed</p>"
+          }
+        }
+      },
+      "block_order": [
+        "help",
+        "get-in-touch",
+        "hours"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "newsletter_enable": true,
+        "newsletter_heading": "Join our mailing list",
+        "enable_follow_on_shop": false,
+        "show_social": true,
+        "enable_country_selector": false,
+        "enable_language_selector": false,
+        "payment_enable": true,
+        "show_policy": true,
+        "margin_top": 48,
+        "padding_top": 48,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}

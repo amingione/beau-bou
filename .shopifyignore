@@ -1,0 +1,11 @@
+# Never uploaded to Shopify
+docs/
+scripts/
+README.md
+LICENSE.md
+package.json
+package-lock.json
+.theme-check.yml
+.gitignore
+.shopifyignore
+shopify.theme.toml
