@@ -8,13 +8,21 @@ Built 2026-09-02 in the Assembly desktop app. Michele's contact showed **Active*
 
 **Client Studio → Project:** *Be-YOU-tiful Boutique Shopify Website* · Phase: Client review · Launch target: Oct 15, 2026 · Progress 40% · Service: Custom Website Design & Development (In progress) · LaunchWell workflow applied.
 
+### 2026-09-03 simplification (after Michele & Aundrea reported "couldn't find the design or files / didn't know what to do next")
+
+- Deleted the 7 generic LaunchWell requests (Services & product copy, Domain, Project Brief, Testimonials, Legal, etc.) and the two verbose originals.
+- Requests are now exactly three, numbered, Notify OFF: **Step 1 of 3 — Look at your website design and tell me yes or no** · **Step 2 of 3 — Answer 14 quick questions (about 15 minutes)** · **Step 3 of 3 — Send me 10 photos from your phone**. Completed requests kept: Photos (reply: FB photos link) and Logo files (reply: "wrong address but right logo image").
+- "What's happening now" / "Next from the client" rewritten in plain words pointing at Step 1/2/3 and Messages.
+- Progress update **START HERE — Your portal in 3 steps** posted, visible to client.
+- New PDF `Be-YOU-tiful_Portal_Guide.pdf` (source `portal-guide.html`) — one page, hand to them by text/email or upload to Files.
+
 | Section | Contents |
 | --- | --- |
-| What's happening now / Next from client | Design done → review preview, answer decisions, upload photos, upload original logo |
+| What's happening now / Next from client | Plain-words intro → Step 1 approve, Step 2 answer 14 questions, Step 3 send 10 photos; "tap Messages if confused" |
 | Project brief (client-editable) | All 14 fields prefilled from the brief: business summary, goals, audience, CTA, products, differentiators, reference site, desired pages, features, domain options, existing site, social, hours/address, notes |
 | Milestone checklist | Discovery complete ✓ |
 | Progress updates | Week 1 — Design complete (visible to client) |
-| Client requests | 7 LaunchWell defaults + **Answer the 14 Website Decisions** + **Upload your 10 photos (see Photo Shot List)** — both created with *Notify the client* OFF |
+| Client requests | Step 1 of 3 · Step 2 of 3 · Step 3 of 3 (see simplification note above) + two completed client replies |
 | Approvals | **Homepage design v1** — Awaiting review, PDF attached |
 | Content vault | Logos & brand files: Logo pack zip · Downloads: Homepage preview PDF, Website Decisions PDF, Photo Shot List PDF (all visible to client) |
 | Onboarding checklist | Company & contact confirmed ✓ · Launch target set ✓ |
@@ -32,9 +40,12 @@ Built 2026-09-02 in the Assembly desktop app. Michele's contact showed **Active*
 
 Regenerate PDFs: `python3 -c "from playwright.sync_api import sync_playwright; ..."` — see session notes; any headless Chromium `page.pdf(format='Letter', print_background=True)` works.
 
-## Before inviting Michele
+- `Be-YOU-tiful_Portal_Guide.pdf` — one-page "Your portal in 3 steps" for Michele & Aundrea (`portal-guide.html`)
 
-1. Confirm surname.
-2. Read the auto-posted welcome message in Messages (Assembly's default) — edit if it doesn't sound like you.
-3. Optionally tick "Content requests sent" once you notify her.
-4. CRM → contact ⋯ → Email magic link.
+## Open items for Amber
+
+1. Both contacts (Michele Mansfield, Aundrea Pedigo) are already **Active** — they have portal access.
+2. Michele's reply on the Logo files request: *"wrong address but right logo image"*. Address on file is 264-A W Marion Ave; Facebook shows 264 West Marion Ave. Confirm the correct one with her and fix CRM → Custom fields → Address.
+3. Confirm surname "Mansfield" (inferred from the Facebook URL).
+4. Text or email them `Be-YOU-tiful_Portal_Guide.pdf` with the portal link; optionally upload it to Files as well.
+5. Mobile PDF/screens and the proposal are not yet in the Content vault — upload when convenient.
