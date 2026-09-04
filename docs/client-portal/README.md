@@ -49,3 +49,10 @@ Regenerate PDFs: `python3 -c "from playwright.sync_api import sync_playwright; .
 3. Confirm surname "Mansfield" (inferred from the Facebook URL).
 4. Text or email them `Be-YOU-tiful_Portal_Guide.pdf` with the portal link; optionally upload it to Files as well.
 5. Mobile PDF/screens and the proposal are not yet in the Content vault — upload when convenient.
+
+## Print booklet (2026-09-04)
+
+`Be-YOU-tiful_Website_Booklet.pdf` — 15 Letter pages for the in-person visit: cover · how to use / contents · portal guide · design desktop + phone · 14 decisions (tickable) · shot list · proposal (sign page 13) · "Today's meeting" checklist (address, name, domain, Shopify email, deposit) · from-here-to-launch + contact. Phone/email on the back page are intentionally blank — write them in by hand or fill them in `booklet.html` before the next print.
+
+Rebuild: render `booklet.html` with Playwright (`prefer_css_page_size=True`) to `_booklet_wrap.pdf`, then merge with pypdf in this order: wrap 1–2, Portal Guide, wrap 3–4, Decisions, Shot List, Proposal, wrap 5–6. `desk-a.png`/`desk-b.png` are the top/bottom halves of `Be-YOU-tiful_Homepage_Preview.png`.
+Print: Letter, double-sided, flip on long edge, staple top-left or 3-hole punch.

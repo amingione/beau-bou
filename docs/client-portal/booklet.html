@@ -1,0 +1,164 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Your Website Booklet — Be-YOU-tiful Boutique</title><link rel="stylesheet" href="_style.css">
+<style>
+  @page{size:letter;margin:0}
+  body{font-size:14px}
+  .sheet{width:8.5in;height:11in;padding:.6in .7in;position:relative;break-after:page;page-break-after:always;overflow:hidden}
+  .sheet:last-child{break-after:auto;page-break-after:auto}
+  .pn{position:absolute;bottom:.4in;left:.7in;right:.7in;display:flex;justify-content:space-between;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--soft)}
+
+  /* cover */
+  .cover{background:#fff;display:flex;flex-direction:column;justify-content:space-between;padding:.9in .9in .8in}
+  .cover .frame{position:absolute;inset:.45in;border:1px solid var(--hair);pointer-events:none}
+  .cover .frame::after{content:'';position:absolute;inset:6px;border:1px solid rgba(43,43,43,.25)}
+  .cover .top{display:flex;justify-content:space-between;align-items:flex-start}
+  .cover .logo{width:2.6in}
+  .cover h1{font-size:54px;line-height:1.05;margin:.35in 0 .15in;max-width:6in}
+  .cover .sub{font:italic 400 22px/1.3 'Playfair Display',serif;color:var(--peacock);max-width:5.4in}
+  .cover .mid{flex:1;display:flex;flex-direction:column;justify-content:center}
+  .cover .band{background:var(--peacock);color:#fff;padding:14px 18px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px;font-size:12px;margin-top:.3in}
+  .cover .band b{display:block;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;opacity:.75;margin-bottom:3px;font-weight:500}
+  .cover .bottom{display:flex;justify-content:space-between;align-items:flex-end;font-size:12px;color:var(--soft)}
+  .cover .bottom img{width:64px;opacity:.9}
+
+  /* welcome */
+  .letter p{font-size:14.5px;max-width:62ch}
+  .toc{margin-top:22px;border-top:1px solid var(--hair);}
+  .toc>div{display:grid;grid-template-columns:44px 1fr auto;gap:12px;padding:11px 0;border-bottom:1px solid rgba(43,43,43,.15);align-items:baseline}
+  .toc .n{font:400 20px 'Playfair Display',serif;color:var(--peacock)}
+  .toc b{font-weight:600}
+  .toc small{display:block;color:var(--soft);font-size:12.5px}
+  .toc .who{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--soft);white-space:nowrap}
+
+  /* design pages */
+  .design .two{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:12px}
+  .design .two img{width:100%;border:1px solid var(--hair);display:block}
+  .design .cap{font-size:11.5px;color:var(--soft);margin-top:6px}
+  .design .mob{margin-top:14px;border:1px solid var(--hair);padding:14px;background:var(--linen)}
+  .design .mob img{width:100%;display:block}
+  .legend{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:14px;font-size:12.5px}
+  .legend div{border-left:3px solid var(--peacock);padding:2px 0 2px 10px}
+  .legend b{display:block;font-weight:600}
+
+  /* meeting page */
+  .chk{list-style:none;padding:0;margin:8px 0 0}
+  .chk li{display:grid;grid-template-columns:22px 1fr;gap:10px;padding:9px 0;border-bottom:1px solid rgba(43,43,43,.15);font-size:13.5px;align-items:start}
+  .chk li::before{content:'';width:14px;height:14px;border:1px solid var(--hair);margin-top:3px}
+  .chk small{display:block;color:var(--soft);font-size:12px}
+  .lines div{border-bottom:1px dotted rgba(43,43,43,.5);height:30px}
+
+  /* back */
+  .back{display:flex;flex-direction:column;justify-content:space-between}
+  .card{border:1px solid var(--hair);padding:22px 26px;display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center}
+  .card img{width:70px}
+  .card b{font-weight:600;display:block;font-size:16px}
+  .card .accent{margin:2px 0 8px}
+  .timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:24px 0 0;border-top:1px solid var(--hair)}
+  .timeline div{padding:14px 12px 0 0;border-right:1px solid rgba(43,43,43,.15);font-size:12.5px}
+  .timeline div:last-child{border-right:0}
+  .timeline b{display:block;font:400 15px 'Playfair Display',serif;color:var(--peacock);letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px}
+</style></head><body>
+
+<!-- 1 · COVER -->
+<div class="sheet cover">
+  <div class="frame"></div>
+  <div class="top">
+    <img class="logo" src="beyoutiful-logo-black.svg" alt="Be-YOU-tiful Boutique by Michele">
+    <div class="eyebrow" style="text-align:right">Website project<br>September 2026</div>
+  </div>
+  <div class="mid">
+    <div class="eyebrow">Prepared for Michele &amp; Aundrea</div>
+    <h1>Your new website, all in one place.</h1>
+    <p class="sub">The design, the three things I need from you, the photo list, and the proposal — printed so you can flip through it at the counter.</p>
+    <div class="band">
+      <div><b>Design status</b>Homepage done · ready for your yes</div>
+      <div><b>Launch target</b>October 15, 2026</div>
+      <div><b>Your part</b>3 steps · about 20 minutes + photos</div>
+    </div>
+  </div>
+  <div class="bottom">
+    <div>Amber Mingione · LaunchWell Brands<br>Punta Gorda, FL · launchwellbrands.com</div>
+    <img src="lw-monogram-ink.png" alt="LaunchWell Brands">
+  </div>
+</div>
+
+<!-- 2 · WELCOME + CONTENTS -->
+<div class="sheet letter">
+  <header><div><div class="eyebrow">Hello</div><h1>How to use this booklet</h1><p class="accent">Read the first two pages. Everything else is reference.</p></div><img src="beyoutiful-logo-black.svg" alt=""></header>
+  <p>Michele, Aundrea — the portal was more confusing than it should have been, and that's on me. So here's everything on paper. You can mark up these pages with a pen and hand them back to me, or do the same three steps in the portal on your phone. Either way works and I'll take it from there.</p>
+  <p>Pages marked <b>you</b> need something from you. Pages marked <b>keep</b> are for your records.</p>
+  <div class="toc">
+    <div><span class="n">3</span><div><b>Your portal in 3 steps</b><small>The whole job in one page. If you read nothing else, read this.</small></div><span class="who">you</span></div>
+    <div><span class="n">4</span><div><b>Your homepage design</b><small>Desktop and phone. Beige boxes are where your photos go.</small></div><span class="who">keep</span></div>
+    <div><span class="n">6</span><div><b>Website decisions — 14 quick questions</b><small>Each has my suggested answer already ticked. Change only what you'd change.</small></div><span class="who">you</span></div>
+    <div><span class="n">9</span><div><b>Photo shot list</b><small>Ten photos from a phone. No photographer needed.</small></div><span class="who">you</span></div>
+    <div><span class="n">11</span><div><b>Proposal &amp; agreement</b><small>$1,000 flat, what's included, what's not, and the timeline.</small></div><span class="who">you · sign</span></div>
+    <div><span class="n">14</span><div><b>Today's meeting</b><small>The handful of things we'll settle together while I'm here.</small></div><span class="who">together</span></div>
+    <div><span class="n">15</span><div><b>What happens next &amp; how to reach me</b><small>Timeline to launch and my direct contact.</small></div><span class="who">keep</span></div>
+  </div>
+  <div class="pn"><span>Be-YOU-tiful Boutique by Michele · Website booklet</span><span>2</span></div>
+</div>
+
+<!-- 4 · DESIGN (desktop) -->
+<div class="sheet design">
+  <header><div><div class="eyebrow">Keep · Your homepage</div><h1>The design, on a desktop</h1><p class="accent">Styled after the Smith + Co. site you love — clean white, thin black frames, your peacock front and center</p></div><img src="beyoutiful-logo-black.svg" alt=""></header>
+  <div class="two">
+    <div><img src="desk-a.png" alt="Homepage, top half"><div class="cap">Top of the page: header with your categories, hero with your logo, "Shop What's New", and the first category tiles.</div></div>
+    <div><img src="desk-b.png" alt="Homepage, bottom half"><div class="cap">Continuing down: remaining categories, the teal "Every body. Every occasion." promise band, Sale row, Visit Our Store, and the footer.</div></div>
+  </div>
+  <div class="legend">
+    <div><b>Beige boxes = your photos</b>Each one is labeled with the shot that goes there (see the shot list).</div>
+    <div><b>Products are examples</b>Names and prices are placeholders. You load the real ones.</div>
+    <div><b>Colors from your logo</b>Peacock teal, ink black, linen. Nothing invented.</div>
+  </div>
+  <div class="pn"><span>Be-YOU-tiful Boutique by Michele · Website booklet</span><span>4</span></div>
+</div>
+
+<!-- 5 · DESIGN (mobile) -->
+<div class="sheet design">
+  <header><div><div class="eyebrow">Keep · Your homepage</div><h1>The design, on a phone</h1><p class="accent">This is how most of your shoppers will see it</p></div><img src="beyoutiful-logo-black.svg" alt=""></header>
+  <div class="mob"><img src="Be-YOU-tiful_Mobile_Screens.png" alt="Four phone screens of the homepage"></div>
+  <div class="legend">
+    <div><b>Menu button, centered logo</b>Search, account and bag icons on the right — the same pattern shoppers already know.</div>
+    <div><b>Tiles stack in one column</b>Every category gets a full-width photo, tap to shop.</div>
+    <div><b>Hours and map on the page</b>Tap-to-call phone number and Get Directions button in Visit Our Store.</div>
+  </div>
+  <div class="pn"><span>Be-YOU-tiful Boutique by Michele · Website booklet</span><span>5</span></div>
+</div>
+
+<!-- 14 · TODAY'S MEETING -->
+<div class="sheet">
+  <header><div><div class="eyebrow">Together · Today</div><h1>Today's meeting</h1><p class="accent">Six things to settle while I'm in the shop — fifteen minutes, tops</p></div><img src="beyoutiful-logo-black.svg" alt=""></header>
+  <ul class="chk">
+    <li><div><b>The design: yes, or what to change?</b><small>Look at pages 4–5. A yes here is Step 1 done.</small></div></li>
+    <li><div><b>Your exact street address for the website and Google.</b><small>I have 264-A W Marion Ave — you mentioned that isn't quite right. Write the correct one below.</small></div></li>
+    <li><div><b>How your name should appear on the About page and the agreement.</b><small>Michele ______________________ · Aundrea's role on the site: ______________________</small></div></li>
+    <li><div><b>Pick a web address.</b><small>☐ beyoutifulboutique.com &nbsp; ☐ beyoutifulbymichele.com &nbsp; ☐ shopbeyoutiful.com &nbsp; ☐ other: ______________</small></div></li>
+    <li><div><b>Shopify account.</b><small>Five-minute signup in your name; I'll walk you through it on your phone. Email to use: ______________________</small></div></li>
+    <li><div><b>Sign the proposal (page 13) and the $500 deposit to begin.</b><small>Card, check, or the invoice I'll send through the portal — your choice.</small></div></li>
+  </ul>
+  <h2 style="margin-top:22px">Notes</h2>
+  <div class="lines"><div></div><div></div><div></div><div></div><div></div><div></div></div>
+  <div class="pn"><span>Be-YOU-tiful Boutique by Michele · Website booklet</span><span>14</span></div>
+</div>
+
+<!-- 15 · BACK -->
+<div class="sheet back">
+  <div>
+    <header><div><div class="eyebrow">Keep · What happens next</div><h1>From here to launch</h1><p class="accent">Target: October 15, 2026 — sooner if your photos and answers come in early</p></div><img src="beyoutiful-logo-black.svg" alt=""></header>
+    <div class="timeline">
+      <div><b>This week</b>You approve the design, answer the 14 questions, and shoot the 10 photos. Deposit received.</div>
+      <div><b>Week 2</b>I create your Shopify store, load your categories and pages, connect the web address, and send you a private preview link.</div>
+      <div><b>Week 3</b>Screen share: we load your first 12 products together. You review the whole site on your phone. Final tweaks.</div>
+      <div><b>Launch</b>Site goes live. Final $500. Then 30 days of "how do I…" support included.</div>
+    </div>
+    <h2 style="margin-top:28px">Three ways to reach me</h2>
+    <p style="font-size:13.5px;max-width:62ch"><b>Portal:</b> tap Messages on the left, type anything. &nbsp; <b>Text or call:</b> the number on my card. &nbsp; <b>Email:</b> ______________________________ . I answer within one business day, usually the same day.</p>
+    <div class="note" style="margin-top:18px"><b>Handing the booklet back?</b> Totally fine. Mark up the decisions pages, sign the proposal, and I'll enter everything into the portal for you. Photos can come by text.</div>
+  </div>
+  <div class="card">
+    <div><b>Amber Mingione</b><p class="accent">LaunchWell Brands · web design, SEO &amp; business tools for local shops</p><span style="font-size:13px">Punta Gorda, Florida · launchwellbrands.com · phone: ______________________</span></div>
+    <img src="lw-monogram-ink.png" alt="LaunchWell Brands">
+  </div>
+  <div class="pn"><span>Be-YOU-tiful Boutique by Michele · Website booklet</span><span>15</span></div>
+</div>
+</body></html>
