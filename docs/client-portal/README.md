@@ -52,7 +52,7 @@ Regenerate PDFs: `python3 -c "from playwright.sync_api import sync_playwright; .
 
 ## Print booklet (2026-09-04)
 
-`Be-YOU-tiful_Website_Booklet.pdf` — 15 Letter pages for the in-person visit: cover · how to use / contents · portal guide · design desktop + phone · 14 decisions (tickable) · shot list · proposal (sign page 13) · "Today's meeting" checklist (address, name, domain, Shopify email, deposit) · from-here-to-launch + contact. Contact on the back page: buildwith@launchwellbrands.com (phone left off — add in `booklet.html` if wanted).
+`Be-YOU-tiful_Website_Booklet.pdf` — 15 Letter pages for the in-person visit: cover · how to use / contents · portal guide · design desktop + phone · 14 decisions (tickable) · shot list · proposal (sign page 13) · "Today's meeting" checklist (address, name, domain, Shopify email, deposit) · from-here-to-launch + contact. Contact on the back page and portal guide: (239) 770-4924 · buildwith@launchwellbrands.com.
 
 Rebuild: render `booklet.html` with Playwright (`prefer_css_page_size=True`) to `_booklet_wrap.pdf`, then merge with pypdf in this order: wrap 1–2, Portal Guide, wrap 3–4, Decisions, Shot List, Proposal, wrap 5–6. `desk-a.png`/`desk-b.png` are the top/bottom halves of `Be-YOU-tiful_Homepage_Preview.png`.
 Print: Letter, double-sided, flip on long edge, staple top-left or 3-hole punch.
