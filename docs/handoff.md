@@ -21,10 +21,13 @@ Store facts (from Google Business Profile + Facebook, verified 2026-09-02):
 
 ## 2. Theme install
 
-- [ ] `npm run push:client` (after setting the store handle in `shopify.theme.toml`) **or** `npm run package` → upload zip in Online Store → Themes
+- [ ] `npm run push:client` (after setting the store handle in `shopify.theme.toml`) **or** `npm run package` → upload zip in Online Store → Themes **or** the no-login API path in `docs/store/README.md` (zip → Files → `themeCreate`). After any zip import, diff the theme's file list against the zip — Shopify drops files that fail validation without telling you.
 - [ ] Theme settings → Logo: upload transparent PNG (≥ 600px wide); Favicon: the circle logo
 - [ ] Theme settings → Social: Facebook URL; add Instagram when she has one
-- [ ] Create collections + menus exactly as `docs/collections.md`
+- [ ] Create collections + menus exactly as `docs/collections.md` (already scripted once on the dev store — see `docs/store/README.md`; menus must be handles `beau-bou-main` / `beau-bou-footer`)
+- [ ] Upload the image set to Files first (`docs/images/`), same filenames — templates already point at `shopify://shop_images/beyoutiful-*`
+- [ ] Pages: about, visit-us, questions, size-guide, shop-the-look, contact with the matching template suffixes
+- [ ] Policies from `docs/policies/` (Settings → Policies)
 - [ ] Homepage: open editor, assign photos to **Hero**, six **Category tiles**, **Visit our store** (pull from Facebook album with Michele's permission — screenshots are not print quality; ask for originals)
 - [ ] Announcement bar copy confirmed with Michele (current: pickup + XS–3X)
 - [ ] Preview on phone: nav drawer, search, cart drawer, checkout

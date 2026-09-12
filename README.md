@@ -53,3 +53,7 @@ scripts/      aliases.zsh
 ## License
 
 Dawn is MIT-licensed by Shopify (see `LICENSE.md`). Custom work © LaunchWell Brands, delivered to the client under the project agreement.
+
+## Build state (2026-09-12)
+
+Design approved by Michele. Theme v1.1 is on Amber's dev store `kw59hc-k1` (unpublished) with the full page set — About, Visit Us, Contact, Questions, Size Guide, **Shop the Look** (live/try-on video + shoppable rail) — 12 sample products, 10 collections, brand placeholders in every image slot. See `docs/store/README.md` (what's in the store and how it got there), `docs/images/README.md` (placeholder → real photo swap), `docs/policies/` (policy text for Michele's store).
