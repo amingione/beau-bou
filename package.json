@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "description": "Be-YOU-tiful Boutique by Michele — Shopify Online Store 2.0 theme (Dawn 16 fork) styled after shopsmithco.com.",
-  "author": "LaunchWell Brands <hello@launchwellbrands.com>",
+  "author": "LaunchWell Brands <buildwith@launchwellbrands.com>",
   "license": "MIT",
   "scripts": {
     "dev": "shopify theme dev -e dev",

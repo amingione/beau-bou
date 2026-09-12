@@ -1,0 +1,55 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+  .map-embed__frame { position: relative; aspect-ratio: {{ section.settings.ratio }}; overflow: hidden; }
+  .map-embed__frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; filter: grayscale(1) contrast(1.05); }
+  .map-embed__frame:hover iframe { filter: none; }
+  .map-embed__caption { text-align: center; margin: 1.6rem 0 0; font-size: 1.3rem; letter-spacing: 0.08em; text-transform: uppercase; }
+  .map-embed__caption a { color: inherit; text-underline-offset: 0.3rem; }
+{%- endstyle -%}
+
+{%- liquid
+  assign q = section.settings.query | default: '264-A W Marion Ave, Punta Gorda, FL 33950' | url_encode
+  assign src = 'https://www.google.com/maps?q=' | append: q | append: '&z=' | append: section.settings.zoom | append: '&output=embed'
+-%}
+
+<div class="map-embed color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding{% unless section.settings.full_width %} page-width{% endunless %}">
+  <div class="map-embed__frame{% if section.settings.frame %} bb-frame{% endif %}">
+    <iframe src="{{ src }}" title="{{ section.settings.title | default: 'Map to our store' | escape }}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+  </div>
+  {%- if section.settings.caption != blank -%}
+    <p class="map-embed__caption">
+      <a href="https://www.google.com/maps/search/?api=1&query={{ q }}" target="_blank" rel="noopener">{{ section.settings.caption | escape }}</a>
+    </p>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Map",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": { "groups": ["header", "footer"] },
+  "settings": [
+    { "type": "text", "id": "query", "default": "Be-YOU-tiful Boutique by Michele, 264-A W Marion Ave, Punta Gorda, FL 33950", "label": "Place / address", "info": "No API key needed — uses the free Google Maps embed." },
+    { "type": "range", "id": "zoom", "min": 12, "max": 19, "step": 1, "default": 16, "label": "Zoom" },
+    { "type": "select", "id": "ratio", "default": "21 / 9", "label": "Shape", "options": [ { "value": "21 / 9", "label": "Wide" }, { "value": "16 / 9", "label": "16:9" }, { "value": "4 / 3", "label": "4:3" } ] },
+    { "type": "text", "id": "caption", "default": "Open in Google Maps · Free street parking on Marion Ave", "label": "Caption link" },
+    { "type": "text", "id": "title", "default": "Map to Be-YOU-tiful Boutique", "label": "Accessible title" },
+    { "type": "checkbox", "id": "frame", "default": true, "label": "Hairline frame" },
+    { "type": "checkbox", "id": "full_width", "default": false, "label": "Full width" },
+    { "type": "color_scheme", "id": "color_scheme", "default": "scheme-1", "label": "Color scheme" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 12, "label": "Top padding" },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 48, "label": "Bottom padding" }
+  ],
+  "presets": [ { "name": "Map" } ]
+}
+{% endschema %}

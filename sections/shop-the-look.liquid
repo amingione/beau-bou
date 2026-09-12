@@ -1,0 +1,223 @@
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+{{ 'component-deferred-media.css' | asset_url | stylesheet_tag }}
+{{ 'section-shop-the-look.css' | asset_url | stylesheet_tag }}
+
+{%- if section.settings.quick_add != 'none' -%}
+  {{ 'quick-add.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+{%- liquid
+  comment
+    Video source priority: live embed URL (when "Live now" is on) → Shopify-hosted video → external URL (YouTube/Vimeo) → poster image.
+  endcomment
+  assign live_src = blank
+  if section.settings.live_now and section.settings.live_url != blank
+    assign url = section.settings.live_url
+    if url contains 'facebook.com'
+      assign encoded = url | url_encode
+      assign live_src = 'https://www.facebook.com/plugins/video.php?autoplay=1&show_text=false&href=' | append: encoded
+    elsif url contains 'youtube.com' or url contains 'youtu.be'
+      assign yt_id = url | split: 'v=' | last | split: '&' | first | split: '/' | last
+      assign live_src = 'https://www.youtube.com/embed/' | append: yt_id | append: '?autoplay=1&mute=1&playsinline=1'
+    elsif url contains 'instagram.com'
+      assign live_src = url | append: 'embed/'
+    else
+      assign live_src = url
+    endif
+  endif
+
+  assign look_blocks = section.blocks | where: 'type', 'look'
+  assign piece_blocks = section.blocks | where: 'type', 'piece'
+  assign look = look_blocks.first
+-%}
+
+<div class="shop-look color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding{% unless section.settings.full_width %} page-width{% endunless %}" id="ShopLook-{{ section.id }}">
+  {%- if section.settings.eyebrow != blank or section.settings.heading != blank -%}
+    <header class="shop-look__header">
+      {%- if section.settings.eyebrow != blank -%}<span class="bb-eyebrow">{{ section.settings.eyebrow | escape }}</span>{%- endif -%}
+      {%- if section.settings.heading != blank -%}<h2 class="shop-look__heading bb-display">{{ section.settings.heading | escape }}</h2>{%- endif -%}
+      {%- if section.settings.subheading != blank -%}<p class="shop-look__sub bb-accent">{{ section.settings.subheading | escape }}</p>{%- endif -%}
+    </header>
+  {%- endif -%}
+
+  <div class="shop-look__grid shop-look__grid--video-{{ section.settings.video_position }}">
+    {%- comment -%} ---------- LEFT: video / live ---------- {%- endcomment -%}
+    <div class="shop-look__stage">
+      <div class="shop-look__player shop-look__player--{{ section.settings.aspect }} bb-frame" data-shop-look-player>
+        {%- if section.settings.live_now -%}
+          <span class="shop-look__live-badge" aria-live="polite">
+            <span class="shop-look__live-dot" aria-hidden="true"></span>{{ section.settings.live_label | default: 'Live now' | escape }}
+          </span>
+        {%- endif -%}
+
+        {%- if live_src != blank -%}
+          <iframe
+            class="shop-look__iframe"
+            src="{{ live_src }}"
+            title="{{ section.settings.heading | default: 'Live shopping' | escape }}"
+            allow="autoplay; encrypted-media; picture-in-picture; web-share"
+            allowfullscreen
+            loading="lazy"
+          ></iframe>
+        {%- elsif section.settings.video != null -%}
+          {{
+            section.settings.video
+            | video_tag:
+              image_size: '1100x',
+              autoplay: section.settings.autoplay,
+              loop: true,
+              muted: section.settings.autoplay,
+              controls: true,
+              playsinline: true,
+              class: 'shop-look__video'
+          }}
+        {%- elsif section.settings.video_url != blank -%}
+          {%- if section.settings.video_url.type == 'youtube' -%}
+            <iframe class="shop-look__iframe" src="https://www.youtube.com/embed/{{ section.settings.video_url.id }}?playsinline=1&rel=0{% if section.settings.autoplay %}&autoplay=1&mute=1&loop=1&playlist={{ section.settings.video_url.id }}{% endif %}" title="{{ section.settings.heading | escape }}" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+          {%- else -%}
+            <iframe class="shop-look__iframe" src="https://player.vimeo.com/video/{{ section.settings.video_url.id }}?{% if section.settings.autoplay %}autoplay=1&muted=1&loop=1&{% endif %}playsinline=1" title="{{ section.settings.heading | escape }}" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+          {%- endif -%}
+        {%- elsif section.settings.poster != blank -%}
+          {{ section.settings.poster | image_url: width: 1400 | image_tag: loading: 'lazy', class: 'shop-look__poster', widths: '600, 900, 1400' }}
+        {%- else -%}
+          {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg shop-look__poster' }}
+        {%- endif -%}
+      </div>
+
+      {%- if section.settings.schedule != blank or section.settings.schedule_link != blank -%}
+        <p class="shop-look__schedule">
+          {%- if section.settings.schedule != blank -%}<span class="bb-display">{{ section.settings.schedule | escape }}</span>{%- endif -%}
+          {%- if section.settings.schedule_link != blank -%}
+            <a class="shop-look__schedule-link" href="{{ section.settings.schedule_link }}" target="_blank" rel="noopener">{{ section.settings.schedule_link_label | default: 'Watch on Facebook' | escape }}</a>
+          {%- endif -%}
+        </p>
+      {%- endif -%}
+    </div>
+
+    {%- comment -%} ---------- RIGHT: the outfit + goes-with pieces ---------- {%- endcomment -%}
+    <aside class="shop-look__rail" aria-label="{{ section.settings.rail_heading | default: 'Shop this look' | escape }}">
+      {%- if look and look.settings.product != blank -%}
+        {%- assign p = look.settings.product -%}
+        <div class="shop-look__hero-card bb-frame" {{ look.shopify_attributes }}>
+          <span class="shop-look__tag">{{ section.settings.rail_heading | default: 'Shop this look' | escape }}</span>
+          {% render 'card-product',
+            card_product: p,
+            media_aspect_ratio: 'portrait',
+            show_secondary_image: true,
+            section_id: section.id,
+            quick_add: section.settings.quick_add,
+            lazy_load: false
+          %}
+          {%- if look.settings.note != blank -%}
+            <p class="shop-look__note bb-accent">{{ look.settings.note | escape }}</p>
+          {%- endif -%}
+        </div>
+      {%- elsif request.design_mode -%}
+        <div class="shop-look__hero-card bb-frame shop-look__hero-card--empty">
+          <span class="shop-look__tag">{{ section.settings.rail_heading | default: 'Shop this look' | escape }}</span>
+          <p>Add a <b>The look</b> block and pick the outfit product.</p>
+        </div>
+      {%- endif -%}
+
+      {%- if piece_blocks.size > 0 -%}
+        <h3 class="shop-look__pieces-heading bb-display">{{ section.settings.pieces_heading | default: 'Pieces that go with it' | escape }}</h3>
+        <ul class="shop-look__pieces list-unstyled" role="list">
+          {%- for block in piece_blocks -%}
+            {%- assign pp = block.settings.product -%}
+            {%- if pp != blank -%}
+              <li class="shop-look__piece" {{ block.shopify_attributes }}>
+                {% render 'card-product',
+                  card_product: pp,
+                  media_aspect_ratio: 'portrait',
+                  show_secondary_image: false,
+                  section_id: section.id,
+                  quick_add: section.settings.quick_add,
+                  lazy_load: true,
+                  skip_styles: true
+                %}
+              </li>
+            {%- elsif request.design_mode -%}
+              <li class="shop-look__piece shop-look__piece--empty" {{ block.shopify_attributes }}><span>Pick a product</span></li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+
+      {%- if section.settings.collection != blank -%}
+        <a class="shop-look__all button button--secondary" href="{{ section.settings.collection.url }}">{{ section.settings.collection_label | default: 'See everything from this live' | escape }}</a>
+      {%- endif -%}
+    </aside>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Shop the look (live)",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": { "groups": ["header", "footer"] },
+  "settings": [
+    { "type": "header", "content": "Heading" },
+    { "type": "text", "id": "eyebrow", "default": "Try-on Thursdays", "label": "Eyebrow" },
+    { "type": "text", "id": "heading", "default": "Shop the Look", "label": "Heading" },
+    { "type": "text", "id": "subheading", "default": "Watch it on, then tap to add it to your bag", "label": "Subheading (accent font)" },
+
+    { "type": "header", "content": "Video" },
+    { "type": "video", "id": "video", "label": "Shopify-hosted video", "info": "Upload the recorded try-on or live replay. Plays inline; 9:16 or 4:5 looks best." },
+    { "type": "video_url", "id": "video_url", "accept": ["youtube", "vimeo"], "label": "…or YouTube / Vimeo URL" },
+    { "type": "image_picker", "id": "poster", "label": "Poster image", "info": "Shown when no video is set (or before an external video loads)." },
+    { "type": "checkbox", "id": "autoplay", "default": true, "label": "Autoplay muted" },
+    { "type": "select", "id": "aspect", "default": "4/5", "label": "Player shape", "options": [
+      { "value": "9/16", "label": "Phone (9:16)" }, { "value": "4/5", "label": "Portrait (4:5)" }, { "value": "1/1", "label": "Square" }, { "value": "16/9", "label": "Wide (16:9)" } ] },
+    { "type": "select", "id": "video_position", "default": "left", "label": "Video position (desktop)", "options": [ { "value": "left", "label": "Left" }, { "value": "right", "label": "Right" } ] },
+
+    { "type": "header", "content": "Live stream", "info": "Turn on during a Facebook / YouTube / Instagram live and the stream replaces the video." },
+    { "type": "checkbox", "id": "live_now", "default": false, "label": "Live now" },
+    { "type": "text", "id": "live_label", "default": "Live now", "label": "Badge text" },
+    { "type": "url", "id": "live_url", "label": "Live video URL", "info": "Paste the Facebook video/live URL, YouTube live URL, or an embed URL." },
+    { "type": "text", "id": "schedule", "default": "Next live · Thursday 7PM", "label": "Schedule line" },
+    { "type": "url", "id": "schedule_link", "label": "Schedule link" },
+    { "type": "text", "id": "schedule_link_label", "default": "Follow on Facebook for reminders", "label": "Schedule link label" },
+
+    { "type": "header", "content": "Shopping rail" },
+    { "type": "text", "id": "rail_heading", "default": "Shop this look", "label": "Look card tag" },
+    { "type": "text", "id": "pieces_heading", "default": "Pieces that go with it", "label": "Pieces heading" },
+    { "type": "select", "id": "quick_add", "default": "standard", "label": "Quick add", "options": [ { "value": "none", "label": "Off" }, { "value": "standard", "label": "Standard" }, { "value": "bulk", "label": "Bulk" } ] },
+    { "type": "collection", "id": "collection", "label": "\"See everything\" collection", "info": "e.g. a Live Picks collection you add items to during the stream." },
+    { "type": "text", "id": "collection_label", "default": "See everything from this live", "label": "Collection button label" },
+
+    { "type": "header", "content": "Layout" },
+    { "type": "checkbox", "id": "full_width", "default": false, "label": "Full width" },
+    { "type": "color_scheme", "id": "color_scheme", "default": "scheme-1", "label": "Color scheme" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 36, "label": "Top padding" },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 36, "label": "Bottom padding" }
+  ],
+  "blocks": [
+    { "type": "look", "name": "The look", "limit": 1, "settings": [
+      { "type": "product", "id": "product", "label": "Outfit product" },
+      { "type": "text", "id": "note", "label": "Styling note", "default": "Michele is wearing a Medium" } ] },
+    { "type": "piece", "name": "Goes-with piece", "settings": [
+      { "type": "product", "id": "product", "label": "Product" } ] }
+  ],
+  "max_blocks": 7,
+  "presets": [
+    { "name": "Shop the look (live)", "blocks": [ { "type": "look" }, { "type": "piece" }, { "type": "piece" }, { "type": "piece" } ] }
+  ]
+}
+{% endschema %}

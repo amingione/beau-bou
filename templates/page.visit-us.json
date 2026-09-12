@@ -1,0 +1,75 @@
+{
+  "sections": {
+    "hero": {
+      "type": "page-hero",
+      "settings": {
+        "eyebrow": "Historic downtown Punta Gorda",
+        "heading": "Visit Us",
+        "accent": "Two blocks from the harbor, right on Marion Ave",
+        "text": "<p>Come try things on, bring a friend, and let us style you in person. Free street parking on Marion Ave and in the public lots one block over. Ordered online? Choose in-store pickup at checkout and we'll have it ready at the counter.</p>",
+        "color_scheme": "scheme-1",
+        "padding_top": 48,
+        "padding_bottom": 12
+      }
+    },
+    "store": {
+      "type": "visit-our-store",
+      "blocks": {
+        "h1": { "type": "hours", "settings": { "days": "Tuesday – Friday", "hours": "10AM – 5PM" } },
+        "h2": { "type": "hours", "settings": { "days": "Saturday", "hours": "10AM – 4PM" } },
+        "h3": { "type": "hours", "settings": { "days": "Sunday – Monday", "hours": "Closed" } }
+      },
+      "block_order": ["h1", "h2", "h3"],
+      "settings": {
+        "image_position": "left",
+        "heading": "Be-YOU-tiful Boutique",
+        "address_line_1": "264-A W Marion Ave",
+        "address_line_2": "Punta Gorda, Florida 33950",
+        "phone": "(941) 369-1628",
+        "show_directions": true,
+        "directions_label": "Get Directions",
+        "note": "In-store pickup available · Private styling by appointment",
+        "color_scheme": "scheme-1",
+        "padding_top": 24,
+        "padding_bottom": 24
+      }
+    },
+    "map": {
+      "type": "map-embed",
+      "settings": {
+        "query": "Be-YOU-tiful Boutique by Michele, 264-A W Marion Ave, Punta Gorda, FL 33950",
+        "zoom": 16,
+        "ratio": "21 / 9",
+        "caption": "Open in Google Maps · Free street parking on Marion Ave",
+        "frame": true,
+        "color_scheme": "scheme-1",
+        "padding_top": 12,
+        "padding_bottom": 36
+      }
+    },
+    "faq": {
+      "type": "collapsible-content",
+      "blocks": {
+        "q1": { "type": "collapsible_row", "settings": { "heading": "Can I pick up an online order in store?", "row_content": "<p>Yes — pick <b>In-store pickup</b> at checkout. We'll text or email when it's ready, usually the same business day. Pickups are held for 14 days.</p>" } },
+        "q2": { "type": "collapsible_row", "settings": { "heading": "Do you offer private styling or group shopping?", "row_content": "<p>We love a girls' night. Call <a href=\"tel:9413691628\">(941) 369-1628</a> or message us on Facebook to book a private hour before or after regular hours — bridal parties, birthdays, or just you and your best friend.</p>" } },
+        "q3": { "type": "collapsible_row", "settings": { "heading": "Where do I park?", "row_content": "<p>Free street parking along Marion Ave and in the public lots a block toward the harbor. Downtown Punta Gorda is flat and walkable — make an afternoon of it.</p>" } }
+      },
+      "block_order": ["q1", "q2", "q3"],
+      "settings": {
+        "caption": "",
+        "heading": "Good to know",
+        "heading_size": "h2",
+        "heading_alignment": "center",
+        "layout": "none",
+        "container_color_scheme": "scheme-1",
+        "color_scheme": "scheme-1",
+        "open_first_collapsible_row": true,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 24,
+        "padding_bottom": 48
+      }
+    }
+  },
+  "order": ["hero", "store", "map", "faq"]
+}

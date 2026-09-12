@@ -1,0 +1,65 @@
+{
+  "sections": {
+    "hero": {
+      "type": "page-hero",
+      "settings": {
+        "eyebrow": "XS to 3X, always",
+        "heading": "Size Guide",
+        "accent": "Real measurements, no guessing",
+        "text": "<p>Every category in the shop runs XS–3X. Grab a soft tape measure (or a string and a ruler), take three numbers, and match them below. When a brand runs small or generous, we note it right on the product page.</p>",
+        "color_scheme": "scheme-1",
+        "padding_top": 48,
+        "padding_bottom": 12
+      }
+    },
+    "guide": {
+      "type": "size-guide",
+      "blocks": {
+        "xs": { "type": "row", "settings": { "size": "XS", "us": "0–2", "bust": "32–33", "waist": "25–26", "hips": "35–36" } },
+        "s":  { "type": "row", "settings": { "size": "S", "us": "4–6", "bust": "34–35", "waist": "27–28", "hips": "37–38" } },
+        "m":  { "type": "row", "settings": { "size": "M", "us": "8–10", "bust": "36–37", "waist": "29–30", "hips": "39–40" } },
+        "l":  { "type": "row", "settings": { "size": "L", "us": "12–14", "bust": "38–40", "waist": "31–33", "hips": "41–43" } },
+        "xl": { "type": "row", "settings": { "size": "XL", "us": "16", "bust": "41–43", "waist": "34–36", "hips": "44–46" } },
+        "x1": { "type": "row", "settings": { "size": "1X", "us": "16W–18W", "bust": "44–46", "waist": "37–39", "hips": "47–49" } },
+        "x2": { "type": "row", "settings": { "size": "2X", "us": "20W–22W", "bust": "47–49", "waist": "40–42", "hips": "50–52" } },
+        "x3": { "type": "row", "settings": { "size": "3X", "us": "24W–26W", "bust": "50–52", "waist": "43–45", "hips": "53–55" } },
+        "t1": { "type": "tip", "settings": { "title": "Bust", "text": "<p>Around the fullest part, tape level and snug but not tight. Wear the bra you'd wear with the piece.</p>" } },
+        "t2": { "type": "tip", "settings": { "title": "Waist", "text": "<p>Around your natural waist — the narrowest point, usually just above the belly button. Relax; don't suck in.</p>" } },
+        "t3": { "type": "tip", "settings": { "title": "Hips", "text": "<p>Around the fullest part of your hips and seat, feet together. For swim, this is the number that matters most.</p>" } }
+      },
+      "block_order": ["xs", "s", "m", "l", "xl", "x1", "x2", "x3", "t1", "t2", "t3"],
+      "settings": {
+        "heading": "Find your fit",
+        "intro": "<p>Measurements are in inches and reflect body size, not garment size. Boutique brands run a little differently from each other — between sizes? Size up for woven fabrics (linen, chiffon, denim without stretch), down for stretch knits.</p>",
+        "footnote": "Not sure? Message us a photo of the tag and your usual size — we'll tell you straight.",
+        "color_scheme": "scheme-1",
+        "padding_top": 12,
+        "padding_bottom": 48
+      }
+    },
+    "swim": {
+      "type": "collapsible-content",
+      "blocks": {
+        "q1": { "type": "collapsible_row", "settings": { "heading": "Swimsuits: how should they fit?", "row_content": "<p>Snug in the store — swim fabric relaxes about half a size once wet. Straps should sit flat without digging; a bottom that rides up a touch dry will settle in the water.</p>" } },
+        "q2": { "type": "collapsible_row", "settings": { "heading": "Gowns and dresses: what about length?", "row_content": "<p>Our gowns are cut for a 5'5\" wearer in a 2–3\" heel. Bring or tell us your shoe height and we'll point you to the styles that won't need a hem — or recommend our local tailor.</p>" } },
+        "q3": { "type": "collapsible_row", "settings": { "heading": "Do you carry plus sizes in every category?", "row_content": "<p>Yes. XS–3X isn't a corner of the store — it's every rack: swim, dresses, gowns, tops, bottoms. If your size is out online, ask; we can often get it in.</p>" } }
+      },
+      "block_order": ["q1", "q2", "q3"],
+      "settings": {
+        "caption": "",
+        "heading": "Fit notes by category",
+        "heading_size": "h2",
+        "heading_alignment": "center",
+        "layout": "none",
+        "container_color_scheme": "scheme-1",
+        "color_scheme": "scheme-2",
+        "open_first_collapsible_row": false,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 36,
+        "padding_bottom": 56
+      }
+    }
+  },
+  "order": ["hero", "guide", "swim"]
+}

@@ -1,0 +1,72 @@
+.review-strip__header {
+  text-align: center;
+  margin-bottom: 2.8rem;
+}
+
+.review-strip__heading {
+  font-size: clamp(2rem, 2.8vw, 3.2rem);
+  margin: 0;
+}
+
+.review-strip__rating {
+  margin: 1rem 0 0;
+  font-size: 1.3rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.review-strip__rating a {
+  color: inherit;
+  text-underline-offset: 0.3rem;
+}
+
+.review-strip__stars {
+  color: #0f5f66;
+  letter-spacing: 0.15em;
+  font-size: 1.4rem;
+  margin-right: 0.6rem;
+}
+
+.review-strip__list {
+  display: grid;
+  gap: 1.6rem;
+  margin: 0;
+  padding: 0;
+}
+
+@media screen and (min-width: 750px) {
+  .review-strip__list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2rem;
+  }
+}
+
+.review-strip__item {
+  padding: 2.4rem 2.2rem 2rem;
+  background: rgb(var(--color-background));
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.review-strip__quote {
+  margin: 0;
+  font-family: var(--font-accent-family);
+  font-style: var(--font-accent-style);
+  font-size: 1.8rem;
+  line-height: 1.5;
+  flex: 1;
+}
+
+.review-strip__quote p {
+  margin: 0;
+}
+
+.review-strip__cite {
+  font-style: normal;
+  font-size: 1.1rem;
+}
+
+.review-strip__cite span {
+  opacity: 0.6;
+}

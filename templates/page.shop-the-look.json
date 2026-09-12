@@ -1,0 +1,90 @@
+{
+  "sections": {
+    "look": {
+      "type": "shop-the-look",
+      "blocks": {
+        "look": { "type": "look", "settings": { "product": "harbor-nights-sequin-gown", "note": "Michele is wearing a Medium" } },
+        "p1": { "type": "piece", "settings": { "product": "gold-leaf-drop-earrings" } },
+        "p2": { "type": "piece", "settings": { "product": "marion-ave-linen-blouse" } },
+        "p3": { "type": "piece", "settings": { "product": "charlotte-harbor-wrap-dress" } }
+      },
+      "block_order": ["look", "p1", "p2", "p3"],
+      "settings": {
+        "eyebrow": "Try-on Thursdays",
+        "heading": "Shop the Look",
+        "subheading": "Watch it on, then tap to add it to your bag",
+        "autoplay": true,
+        "aspect": "4/5",
+        "video_position": "left",
+        "live_now": false,
+        "live_label": "Live now",
+        "schedule": "Next live · Thursday 7PM on Facebook",
+        "schedule_link": "https://www.facebook.com/MicheleMonksEnsmingerMansfield",
+        "schedule_link_label": "Follow for reminders",
+        "rail_heading": "Shop this look",
+        "pieces_heading": "Pieces that go with it",
+        "quick_add": "standard",
+        "collection": "live-picks",
+        "collection_label": "See everything from this live",
+        "full_width": false,
+        "color_scheme": "scheme-1",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "how": {
+      "type": "multicolumn",
+      "blocks": {
+        "c1": { "type": "column", "settings": { "title": "1 · Watch", "text": "<p>Michele tries the week's new arrivals on real bodies, real sizes. Ask questions in the comments — she answers live.</p>", "link_label": "", "link": "" } },
+        "c2": { "type": "column", "settings": { "title": "2 · Tap", "text": "<p>Everything she's wearing is right here beside the video. Pick your size and add it — no digging through the shop.</p>", "link_label": "", "link": "" } },
+        "c3": { "type": "column", "settings": { "title": "3 · Pick up or ship", "text": "<p>Free in-store pickup the next business day, or we ship it from Punta Gorda within 1–2 days.</p>", "link_label": "", "link": "" } }
+      },
+      "block_order": ["c1", "c2", "c3"],
+      "settings": {
+        "title": "How live shopping works",
+        "heading_size": "h2",
+        "image_width": "third",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "center",
+        "background_style": "none",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "scheme-2",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
+    },
+    "picks": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Live Picks",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "live-picks",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "color_scheme": "scheme-1",
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "outline",
+        "enable_desktop_slider": false,
+        "swipe_on_mobile": true,
+        "image_ratio": "portrait",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "standard",
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 48
+      }
+    }
+  },
+  "order": ["look", "how", "picks"]
+}

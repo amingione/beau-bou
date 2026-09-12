@@ -1,0 +1,49 @@
+{
+  "sections": {
+    "hero": {
+      "type": "page-hero",
+      "settings": {
+        "eyebrow": "Help",
+        "heading": "Questions & Answers",
+        "accent": "The short version of everything people ask at the counter",
+        "text": "<p>Don't see yours? Call or text <a href=\"tel:9413691628\">(941) 369-1628</a> or use the <a href=\"/pages/contact\">contact form</a>.</p>",
+        "color_scheme": "scheme-1",
+        "padding_top": 48,
+        "padding_bottom": 0
+      }
+    },
+    "orders": {
+      "type": "collapsible-content",
+      "blocks": {
+        "q1": { "type": "collapsible_row", "settings": { "heading": "How does in-store pickup work?", "row_content": "<p>Choose <b>Pickup</b> at checkout — no shipping charge. We'll email or text when it's ready (usually the same business day). Bring your order number or the name on the order. We hold pickups for 14 days.</p>" } },
+        "q2": { "type": "collapsible_row", "settings": { "heading": "How fast do you ship?", "row_content": "<p>Orders ship within 1–2 business days from Punta Gorda, FL by USPS. Most of Florida arrives in 2–3 days; the rest of the US in 3–5. You'll get a tracking link by email the moment it leaves the shop.</p>" } },
+        "q3": { "type": "collapsible_row", "settings": { "heading": "What are your shipping rates?", "row_content": "<p>Flat-rate shipping is shown at checkout, and orders over the free-shipping threshold ship free. Local? Pickup is always free.</p>" } },
+        "q4": { "type": "collapsible_row", "settings": { "heading": "Can I put something on hold?", "row_content": "<p>Yes — call or message us and we'll hold an in-store item for 48 hours. For online items, add it to your cart and check out; you can always pick up later.</p>" } }
+      },
+      "block_order": ["q1", "q2", "q3", "q4"],
+      "settings": { "caption": "", "heading": "Orders, pickup & shipping", "heading_size": "h2", "heading_alignment": "left", "layout": "none", "container_color_scheme": "scheme-1", "color_scheme": "scheme-1", "open_first_collapsible_row": true, "image_ratio": "adapt", "desktop_layout": "image_second", "padding_top": 24, "padding_bottom": 12 }
+    },
+    "returns": {
+      "type": "collapsible-content",
+      "blocks": {
+        "q1": { "type": "collapsible_row", "settings": { "heading": "What's your return policy?", "row_content": "<p>Unworn, unwashed items with tags attached can be returned within <b>14 days</b> for store credit, or exchanged for another size or style. Swimwear, jewelry, and sale items are final sale for hygiene and inventory reasons. Full details are on our <a href=\"/policies/refund-policy\">Returns page</a>.</p>" } },
+        "q2": { "type": "collapsible_row", "settings": { "heading": "Can I return an online order in the store?", "row_content": "<p>Absolutely — bring it in with your order confirmation and we'll take care of it at the counter, no return shipping needed.</p>" } },
+        "q3": { "type": "collapsible_row", "settings": { "heading": "Something arrived damaged or wrong.", "row_content": "<p>We're sorry — that's on us. Message us within 3 days with a photo and your order number and we'll make it right with a replacement or refund, shipping included.</p>" } }
+      },
+      "block_order": ["q1", "q2", "q3"],
+      "settings": { "caption": "", "heading": "Returns & exchanges", "heading_size": "h2", "heading_alignment": "left", "layout": "none", "container_color_scheme": "scheme-1", "color_scheme": "scheme-1", "open_first_collapsible_row": false, "image_ratio": "adapt", "desktop_layout": "image_second", "padding_top": 12, "padding_bottom": 12 }
+    },
+    "fit": {
+      "type": "collapsible-content",
+      "blocks": {
+        "q1": { "type": "collapsible_row", "settings": { "heading": "What sizes do you carry?", "row_content": "<p>XS through 3X in every category — swim, dresses, gowns, tops, and bottoms. See the <a href=\"/pages/size-guide\">Size Guide</a> for measurements.</p>" } },
+        "q2": { "type": "collapsible_row", "settings": { "heading": "How do I know if something will fit?", "row_content": "<p>Each product page lists the fit (true to size, runs small, runs generous) and the model's size when we have it. Still unsure? Message us your measurements and we'll tell you honestly.</p>" } },
+        "q3": { "type": "collapsible_row", "settings": { "heading": "Do you restock sold-out items?", "row_content": "<p>Sometimes — boutique pieces are often limited runs. Tap <b>Notify me</b> on the product page or ask us; if it's coming back, you'll be first to know.</p>" } },
+        "q4": { "type": "collapsible_row", "settings": { "heading": "Do you sell gift cards?", "row_content": "<p>Yes, digital gift cards in any amount — delivered by email instantly and good online or in store. <a href=\"/products/gift-card\">Buy a gift card</a>.</p>" } }
+      },
+      "block_order": ["q1", "q2", "q3", "q4"],
+      "settings": { "caption": "", "heading": "Sizing, stock & gifts", "heading_size": "h2", "heading_alignment": "left", "layout": "none", "container_color_scheme": "scheme-1", "color_scheme": "scheme-1", "open_first_collapsible_row": false, "image_ratio": "adapt", "desktop_layout": "image_second", "padding_top": 12, "padding_bottom": 56 }
+    }
+  },
+  "order": ["hero", "orders", "returns", "fit"]
+}
