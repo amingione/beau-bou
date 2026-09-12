@@ -4,3 +4,7 @@ node_modules/
 *.log
 .env
 .env.*
+docs/images/photos-in/*
+!docs/images/photos-in/README.md
+docs/images/final/
+_to_delete/

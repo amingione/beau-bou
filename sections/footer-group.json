@@ -9,7 +9,7 @@
           "type": "link_list",
           "settings": {
             "heading": "Help",
-            "menu": "footer"
+            "menu": "beau-bou-footer"
           }
         },
         "get-in-touch": {

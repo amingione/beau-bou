@@ -16,7 +16,9 @@
         "full_width": false,
         "color_scheme": "scheme-1",
         "padding_top": 24,
-        "padding_bottom": 24
+        "padding_bottom": 24,
+        "image": "shopify://shop_images/beyoutiful-hero-storefront.jpg",
+        "logo": "shopify://shop_images/beyoutiful-logo-black-1200.png"
       }
     },
     "whats_new": {
@@ -54,21 +56,24 @@
           "type": "tile",
           "settings": {
             "collection": "swimsuits",
-            "caption": "Swimsuits"
+            "caption": "Swimsuits",
+            "image": "shopify://shop_images/beyoutiful-tile-swimsuits.jpg"
           }
         },
         "dresses": {
           "type": "tile",
           "settings": {
             "collection": "dresses",
-            "caption": "Dresses"
+            "caption": "Dresses",
+            "image": "shopify://shop_images/beyoutiful-tile-dresses.jpg"
           }
         },
         "gowns": {
           "type": "tile",
           "settings": {
             "collection": "gowns",
-            "caption": "Gowns"
+            "caption": "Gowns",
+            "image": "shopify://shop_images/beyoutiful-tile-gowns.jpg"
           }
         }
       },
@@ -94,21 +99,24 @@
           "type": "tile",
           "settings": {
             "collection": "tops",
-            "caption": "Tops"
+            "caption": "Tops",
+            "image": "shopify://shop_images/beyoutiful-tile-tops.jpg"
           }
         },
         "bottoms": {
           "type": "tile",
           "settings": {
             "collection": "bottoms",
-            "caption": "Bottoms"
+            "caption": "Bottoms",
+            "image": "shopify://shop_images/beyoutiful-tile-bottoms.jpg"
           }
         },
         "accessories": {
           "type": "tile",
           "settings": {
             "collection": "jewelry-accessories",
-            "caption": "Jewelry + Accessories"
+            "caption": "Jewelry + Accessories",
+            "image": "shopify://shop_images/beyoutiful-tile-jewelry-accessories.jpg"
           }
         }
       },
@@ -240,7 +248,8 @@
         "note": "In-store pickup available",
         "color_scheme": "scheme-1",
         "padding_top": 36,
-        "padding_bottom": 48
+        "padding_bottom": 48,
+        "image": "shopify://shop_images/beyoutiful-storefront-marion-ave.jpg"
       }
     }
   },

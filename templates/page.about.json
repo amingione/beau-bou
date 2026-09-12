@@ -11,18 +11,50 @@
         "button_link": "shopify://collections/new-arrivals",
         "color_scheme": "scheme-1",
         "padding_top": 48,
-        "padding_bottom": 36
+        "padding_bottom": 36,
+        "image": "shopify://shop_images/beyoutiful-michele-portrait.jpg"
       }
     },
     "story": {
       "type": "image-with-text",
       "blocks": {
-        "caption": { "type": "caption", "settings": { "caption": "The shop", "text_style": "caption-with-letter-spacing", "text_size": "small" } },
-        "heading": { "type": "heading", "settings": { "heading": "A judgment-free zone on Marion Ave", "heading_size": "h1" } },
-        "text": { "type": "text", "settings": { "text": "<p>Our customers call it a judgment-free zone, and we take that seriously. Michele and the team style you the way a good friend would — honest, warm, and on your side. You'll find size-inclusive racks in every category, one-of-a-kind pieces you won't see on everyone else in town, and prices that don't need a sale to make sense.</p><p>Come in for a swimsuit before the beach, a dress for date night, a gown for the gala, or just to say hi. In-store pickup is always free if you'd rather shop from the couch and swing by later.</p>", "text_style": "body" } },
-        "button": { "type": "button", "settings": { "button_label": "Visit Us", "button_link": "shopify://pages/visit-us", "button_style_secondary": true } }
+        "caption": {
+          "type": "caption",
+          "settings": {
+            "caption": "The shop",
+            "text_style": "caption-with-letter-spacing",
+            "text_size": "small"
+          }
+        },
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "A judgment-free zone on Marion Ave",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Our customers call it a judgment-free zone, and we take that seriously. Michele and the team style you the way a good friend would — honest, warm, and on your side. You'll find size-inclusive racks in every category, one-of-a-kind pieces you won't see on everyone else in town, and prices that don't need a sale to make sense.</p><p>Come in for a swimsuit before the beach, a dress for date night, a gown for the gala, or just to say hi. In-store pickup is always free if you'd rather shop from the couch and swing by later.</p>",
+            "text_style": "body"
+          }
+        },
+        "button": {
+          "type": "button",
+          "settings": {
+            "button_label": "Visit Us",
+            "button_link": "shopify://pages/visit-us",
+            "button_style_secondary": true
+          }
+        }
       },
-      "block_order": ["caption", "heading", "text", "button"],
+      "block_order": [
+        "caption",
+        "heading",
+        "text",
+        "button"
+      ],
       "settings": {
         "height": "adapt",
         "desktop_image_width": "medium",
@@ -35,18 +67,48 @@
         "image_behavior": "none",
         "mobile_content_alignment": "left",
         "padding_top": 24,
-        "padding_bottom": 36
+        "padding_bottom": 36,
+        "image": "shopify://shop_images/beyoutiful-storefront-marion-ave.jpg"
       }
     },
     "promise": {
       "type": "brand-strip",
       "blocks": {
-        "v1": { "type": "value", "settings": { "title": "XS – 3X", "text": "Size-inclusive racks, always." } },
-        "v2": { "type": "value", "settings": { "title": "Swim to Gowns", "text": "Beach day to black tie under one roof." } },
-        "v3": { "type": "value", "settings": { "title": "Affordable", "text": "Boutique finds without boutique markups." } },
-        "v4": { "type": "value", "settings": { "title": "Local", "text": "Woman-owned, downtown Punta Gorda." } }
+        "v1": {
+          "type": "value",
+          "settings": {
+            "title": "XS – 3X",
+            "text": "Size-inclusive racks, always."
+          }
+        },
+        "v2": {
+          "type": "value",
+          "settings": {
+            "title": "Swim to Gowns",
+            "text": "Beach day to black tie under one roof."
+          }
+        },
+        "v3": {
+          "type": "value",
+          "settings": {
+            "title": "Affordable",
+            "text": "Boutique finds without boutique markups."
+          }
+        },
+        "v4": {
+          "type": "value",
+          "settings": {
+            "title": "Local",
+            "text": "Woman-owned, downtown Punta Gorda."
+          }
+        }
       },
-      "block_order": ["v1", "v2", "v3", "v4"],
+      "block_order": [
+        "v1",
+        "v2",
+        "v3",
+        "v4"
+      ],
       "settings": {
         "show_ribbon": false,
         "eyebrow": "Our promise",
@@ -62,11 +124,36 @@
     "reviews": {
       "type": "review-strip",
       "blocks": {
-        "r1": { "type": "review", "settings": { "quote": "<p>This boutique has the most adorable selections in Punta Gorda! Classy and stylish! Michele offers knowledgeable and friendly service from the moment you step in — it's like shopping with a friend!</p>", "name": "Amity", "source": "Google review" } },
-        "r2": { "type": "review", "settings": { "quote": "<p>The clothing is very unique, reasonably priced and the owner Michele and her staff are so friendly. This is definitely a judgment free zone! Michele encourages us to love ourselves for who we are!</p>", "name": "Lori", "source": "Google review" } },
-        "r3": { "type": "review", "settings": { "quote": "<p>The space in Michele's store is absolutely gorgeous. If you're looking for something for a fun night out you must check this store. Unique & different plus cute fun hats & totes. A little of everything.</p>", "name": "AnnaMarie", "source": "Google review" } }
+        "r1": {
+          "type": "review",
+          "settings": {
+            "quote": "<p>This boutique has the most adorable selections in Punta Gorda! Classy and stylish! Michele offers knowledgeable and friendly service from the moment you step in — it's like shopping with a friend!</p>",
+            "name": "Amity",
+            "source": "Google review"
+          }
+        },
+        "r2": {
+          "type": "review",
+          "settings": {
+            "quote": "<p>The clothing is very unique, reasonably priced and the owner Michele and her staff are so friendly. This is definitely a judgment free zone! Michele encourages us to love ourselves for who we are!</p>",
+            "name": "Lori",
+            "source": "Google review"
+          }
+        },
+        "r3": {
+          "type": "review",
+          "settings": {
+            "quote": "<p>The space in Michele's store is absolutely gorgeous. If you're looking for something for a fun night out you must check this store. Unique & different plus cute fun hats & totes. A little of everything.</p>",
+            "name": "AnnaMarie",
+            "source": "Google review"
+          }
+        }
       },
-      "block_order": ["r1", "r2", "r3"],
+      "block_order": [
+        "r1",
+        "r2",
+        "r3"
+      ],
       "settings": {
         "heading": "What our customers say",
         "rating_line": "5.0 on Google · 15 reviews",
@@ -79,11 +166,33 @@
     "visit": {
       "type": "visit-our-store",
       "blocks": {
-        "h1": { "type": "hours", "settings": { "days": "Tuesday – Friday", "hours": "10AM – 5PM" } },
-        "h2": { "type": "hours", "settings": { "days": "Saturday", "hours": "10AM – 4PM" } },
-        "h3": { "type": "hours", "settings": { "days": "Sunday – Monday", "hours": "Closed" } }
+        "h1": {
+          "type": "hours",
+          "settings": {
+            "days": "Tuesday – Friday",
+            "hours": "10AM – 5PM"
+          }
+        },
+        "h2": {
+          "type": "hours",
+          "settings": {
+            "days": "Saturday",
+            "hours": "10AM – 4PM"
+          }
+        },
+        "h3": {
+          "type": "hours",
+          "settings": {
+            "days": "Sunday – Monday",
+            "hours": "Closed"
+          }
+        }
       },
-      "block_order": ["h1", "h2", "h3"],
+      "block_order": [
+        "h1",
+        "h2",
+        "h3"
+      ],
       "settings": {
         "image_position": "right",
         "heading": "Come say hi",
@@ -95,9 +204,16 @@
         "note": "In-store pickup available",
         "color_scheme": "scheme-1",
         "padding_top": 48,
-        "padding_bottom": 48
+        "padding_bottom": 48,
+        "image": "shopify://shop_images/beyoutiful-storefront-marion-ave.jpg"
       }
     }
   },
-  "order": ["hero", "story", "promise", "reviews", "visit"]
+  "order": [
+    "hero",
+    "story",
+    "promise",
+    "reviews",
+    "visit"
+  ]
 }

@@ -3,12 +3,38 @@
     "look": {
       "type": "shop-the-look",
       "blocks": {
-        "look": { "type": "look", "settings": { "product": "harbor-nights-sequin-gown", "note": "Michele is wearing a Medium" } },
-        "p1": { "type": "piece", "settings": { "product": "gold-leaf-drop-earrings" } },
-        "p2": { "type": "piece", "settings": { "product": "marion-ave-linen-blouse" } },
-        "p3": { "type": "piece", "settings": { "product": "charlotte-harbor-wrap-dress" } }
+        "look": {
+          "type": "look",
+          "settings": {
+            "product": "harbor-nights-sequin-gown",
+            "note": "Michele is wearing a Medium"
+          }
+        },
+        "p1": {
+          "type": "piece",
+          "settings": {
+            "product": "gold-leaf-drop-earrings"
+          }
+        },
+        "p2": {
+          "type": "piece",
+          "settings": {
+            "product": "marion-ave-linen-blouse"
+          }
+        },
+        "p3": {
+          "type": "piece",
+          "settings": {
+            "product": "charlotte-harbor-wrap-dress"
+          }
+        }
       },
-      "block_order": ["look", "p1", "p2", "p3"],
+      "block_order": [
+        "look",
+        "p1",
+        "p2",
+        "p3"
+      ],
       "settings": {
         "eyebrow": "Try-on Thursdays",
         "heading": "Shop the Look",
@@ -29,17 +55,46 @@
         "full_width": false,
         "color_scheme": "scheme-1",
         "padding_top": 36,
-        "padding_bottom": 36
+        "padding_bottom": 36,
+        "poster": "shopify://shop_images/beyoutiful-shop-the-look-poster.jpg"
       }
     },
     "how": {
       "type": "multicolumn",
       "blocks": {
-        "c1": { "type": "column", "settings": { "title": "1 · Watch", "text": "<p>Michele tries the week's new arrivals on real bodies, real sizes. Ask questions in the comments — she answers live.</p>", "link_label": "", "link": "" } },
-        "c2": { "type": "column", "settings": { "title": "2 · Tap", "text": "<p>Everything she's wearing is right here beside the video. Pick your size and add it — no digging through the shop.</p>", "link_label": "", "link": "" } },
-        "c3": { "type": "column", "settings": { "title": "3 · Pick up or ship", "text": "<p>Free in-store pickup the next business day, or we ship it from Punta Gorda within 1–2 days.</p>", "link_label": "", "link": "" } }
+        "c1": {
+          "type": "column",
+          "settings": {
+            "title": "1 · Watch",
+            "text": "<p>Michele tries the week's new arrivals on real bodies, real sizes. Ask questions in the comments — she answers live.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "c2": {
+          "type": "column",
+          "settings": {
+            "title": "2 · Tap",
+            "text": "<p>Everything she's wearing is right here beside the video. Pick your size and add it — no digging through the shop.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "c3": {
+          "type": "column",
+          "settings": {
+            "title": "3 · Pick up or ship",
+            "text": "<p>Free in-store pickup the next business day, or we ship it from Punta Gorda within 1–2 days.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
       },
-      "block_order": ["c1", "c2", "c3"],
+      "block_order": [
+        "c1",
+        "c2",
+        "c3"
+      ],
       "settings": {
         "title": "How live shopping works",
         "heading_size": "h2",
@@ -86,5 +141,9 @@
       }
     }
   },
-  "order": ["look", "how", "picks"]
+  "order": [
+    "look",
+    "how",
+    "picks"
+  ]
 }
