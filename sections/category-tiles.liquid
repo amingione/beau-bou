@@ -30,7 +30,12 @@
     {%- for block in section.blocks -%}
       {%- liquid
         assign collection = block.settings.collection
-        assign image = block.settings.image | default: collection.featured_image
+        assign bb_tile_image = block.settings.image
+        if bb_tile_image != blank and bb_tile_image.src == blank
+          assign bb_fname = bb_tile_image | remove: 'shopify://shop_images/'
+          assign bb_tile_image = images[bb_fname]
+        endif
+        assign image = bb_tile_image | default: collection.featured_image
         assign caption = block.settings.caption | default: collection.title
         assign link = block.settings.link | default: collection.url
       -%}
@@ -69,7 +74,7 @@
   "class": "section",
   "disabled_on": { "groups": ["header", "footer"] },
   "settings": [
-    { "type": "text", "id": "title", "label": "Heading", "default": "" },
+    { "type": "text", "id": "title", "label": "Heading" },
     { "type": "range", "id": "columns_desktop", "min": 2, "max": 4, "step": 1, "default": 3, "label": "Columns on desktop" },
     { "type": "select", "id": "columns_mobile", "default": "1", "label": "Columns on mobile",
       "options": [ { "value": "1", "label": "1" }, { "value": "2", "label": "2" } ] },

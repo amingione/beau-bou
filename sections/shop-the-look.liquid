@@ -1,3 +1,10 @@
+{%- liquid
+  assign bb_poster = section.settings.poster
+  if bb_poster != blank and bb_poster.src == blank
+    assign bb_fname = bb_poster | remove: 'shopify://shop_images/'
+    assign bb_poster = images[bb_fname]
+  endif
+-%}
 {{ 'component-card.css' | asset_url | stylesheet_tag }}
 {{ 'component-price.css' | asset_url | stylesheet_tag }}
 {{ 'component-deferred-media.css' | asset_url | stylesheet_tag }}
@@ -93,8 +100,8 @@
           {%- else -%}
             <iframe class="shop-look__iframe" src="https://player.vimeo.com/video/{{ section.settings.video_url.id }}?{% if section.settings.autoplay %}autoplay=1&muted=1&loop=1&{% endif %}playsinline=1" title="{{ section.settings.heading | escape }}" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe>
           {%- endif -%}
-        {%- elsif section.settings.poster != blank -%}
-          {{ section.settings.poster | image_url: width: 1400 | image_tag: loading: 'lazy', class: 'shop-look__poster', widths: '600, 900, 1400' }}
+        {%- elsif bb_poster != blank -%}
+          {{ bb_poster | image_url: width: 1400 | image_tag: loading: 'lazy', class: 'shop-look__poster', widths: '600, 900, 1400' }}
         {%- else -%}
           {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg shop-look__poster' }}
         {%- endif -%}

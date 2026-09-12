@@ -1,3 +1,10 @@
+{%- liquid
+  assign bb_image = section.settings.image
+  if bb_image != blank and bb_image.src == blank
+    assign bb_fname = bb_image | remove: 'shopify://shop_images/'
+    assign bb_image = images[bb_fname]
+  endif
+-%}
 {{ 'section-page-hero.css' | asset_url | stylesheet_tag }}
 
 {%- style -%}
@@ -20,8 +27,8 @@
   endif
 -%}
 
-<div class="page-hero color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding{% if section.settings.image != blank %} page-hero--has-image{% endif %}">
-  <div class="page-width page-hero__inner{% if section.settings.image != blank %} page-hero__inner--split{% endif %}">
+<div class="page-hero color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding{% if bb_image != blank %} page-hero--has-image{% endif %}">
+  <div class="page-width page-hero__inner{% if bb_image != blank %} page-hero__inner--split{% endif %}">
     <div class="page-hero__text">
       {%- if section.settings.eyebrow != blank -%}<span class="bb-eyebrow">{{ section.settings.eyebrow | escape }}</span>{%- endif -%}
       <h1 class="page-hero__heading bb-display">{{ heading | escape }}</h1>
@@ -31,9 +38,9 @@
         <a class="button button--secondary page-hero__button" href="{{ section.settings.button_link }}">{{ section.settings.button_label | escape }}</a>
       {%- endif -%}
     </div>
-    {%- if section.settings.image != blank -%}
+    {%- if bb_image != blank -%}
       <div class="page-hero__media bb-frame">
-        {{ section.settings.image | image_url: width: 1400 | image_tag: loading: 'eager', widths: '480, 720, 960, 1400', sizes: '(min-width: 990px) 45vw, 100vw', class: 'page-hero__image' }}
+        {{ bb_image | image_url: width: 1400 | image_tag: loading: 'eager', widths: '480, 720, 960, 1400', sizes: '(min-width: 990px) 45vw, 100vw', class: 'page-hero__image' }}
       </div>
     {%- endif -%}
   </div>

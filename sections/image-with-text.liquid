@@ -1,3 +1,10 @@
+{%- liquid
+  assign bb_image = section.settings.image
+  if bb_image != blank and bb_image.src == blank
+    assign bb_fname = bb_image | remove: 'shopify://shop_images/'
+    assign bb_image = images[bb_fname]
+  endif
+-%}
 {{ 'component-image-with-text.css' | asset_url | stylesheet_tag }}
 
 {%- style -%}
@@ -30,12 +37,12 @@
       <div class="image-with-text__grid grid grid--gapless grid--1-col grid--{% if section.settings.desktop_image_width == 'medium' %}2-col-tablet{% else %}3-col-tablet{% endif %}{% if section.settings.layout == 'text_first' %} image-with-text__grid--reverse{% endif %}">
         <div class="image-with-text__media-item image-with-text__media-item--{{ section.settings.desktop_image_width }} image-with-text__media-item--{{ section.settings.desktop_content_position }} grid__item">
           <div
-            class="image-with-text__media image-with-text__media--{{ section.settings.height }} global-media-settings{% unless remove_color_classes %} gradient color-{{ section.settings.color_scheme }}{% else %} background-transparent{% endunless %}{% if section.settings.image != blank %} media{% else %} image-with-text__media--placeholder placeholder{% endif %}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}"
-            {% if section.settings.height == 'adapt' and section.settings.image != blank %}
-              style="padding-bottom: {{ 1 | divided_by: section.settings.image.aspect_ratio | times: 100 }}%;"
+            class="image-with-text__media image-with-text__media--{{ section.settings.height }} global-media-settings{% unless remove_color_classes %} gradient color-{{ section.settings.color_scheme }}{% else %} background-transparent{% endunless %}{% if bb_image != blank %} media{% else %} image-with-text__media--placeholder placeholder{% endif %}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}"
+            {% if section.settings.height == 'adapt' and bb_image != blank %}
+              style="padding-bottom: {{ 1 | divided_by: bb_image.aspect_ratio | times: 100 }}%;"
             {% endif %}
           >
-            {%- if section.settings.image != blank -%}
+            {%- if bb_image != blank -%}
               {%- if section.settings.image_behavior == 'ambient' or section.settings.image_behavior == 'zoom-in' -%}
                 {%- assign widths = '198, 432, 642, 900, 1284, 1800' -%}
                 {%- capture sizes -%}
@@ -50,7 +57,7 @@
             {%- endcapture -%}
               {%- endif -%}
               {{
-                section.settings.image
+                bb_image
                 | image_url: width: 1500
                 | image_tag: sizes: sizes, widths: widths, fetchpriority: fetch_priority
               }}

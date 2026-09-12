@@ -83,7 +83,6 @@
         "gowns"
       ],
       "settings": {
-        "title": "",
         "columns_desktop": 3,
         "columns_mobile": "1",
         "image_ratio": "1 / 1.15",
@@ -126,7 +125,6 @@
         "accessories"
       ],
       "settings": {
-        "title": "",
         "columns_desktop": 3,
         "columns_mobile": "1",
         "image_ratio": "1 / 1.15",

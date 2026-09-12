@@ -1,3 +1,10 @@
+{%- liquid
+  assign bb_image = section.settings.image
+  if bb_image != blank and bb_image.src == blank
+    assign bb_fname = bb_image | remove: 'shopify://shop_images/'
+    assign bb_image = images[bb_fname]
+  endif
+-%}
 {{ 'section-visit-our-store.css' | asset_url | stylesheet_tag }}
 
 {%- style -%}
@@ -26,9 +33,9 @@
 <div class="visit-store color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding page-width" id="Visit-{{ section.id }}">
   <div class="visit-store__frame bb-frame visit-store__frame--image-{{ section.settings.image_position }}">
     <div class="visit-store__media">
-      {%- if section.settings.image != blank -%}
+      {%- if bb_image != blank -%}
         {{
-          section.settings.image
+          bb_image
           | image_url: width: 1600
           | image_tag:
             loading: 'lazy',

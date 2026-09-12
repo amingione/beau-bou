@@ -1,3 +1,17 @@
+{%- liquid
+  assign bb_logo = section.settings.logo
+  if bb_logo != blank and bb_logo.src == blank
+    assign bb_fname = bb_logo | remove: 'shopify://shop_images/'
+    assign bb_logo = images[bb_fname]
+  endif
+-%}
+{%- liquid
+  assign bb_image = section.settings.image
+  if bb_image != blank and bb_image.src == blank
+    assign bb_fname = bb_image | remove: 'shopify://shop_images/'
+    assign bb_image = images[bb_fname]
+  endif
+-%}
 {{ 'section-hero-logo.css' | asset_url | stylesheet_tag }}
 
 {%- style -%}
@@ -28,9 +42,9 @@
 
 <div class="hero-logo color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding{% if section.settings.full_width %} hero-logo--full{% else %} page-width{% endif %}" id="Hero-{{ section.id }}">
   <div class="hero-logo__media{{ frame_class }}">
-    {%- if section.settings.image != blank -%}
+    {%- if bb_image != blank -%}
       {{
-        section.settings.image
+        bb_image
         | image_url: width: 3200
         | image_tag:
           loading: 'eager',
@@ -46,10 +60,10 @@
     <div class="hero-logo__overlay" aria-hidden="true"></div>
 
     <div class="hero-logo__content hero-logo__content--{{ section.settings.content_position }}">
-      {%- if section.settings.logo != blank -%}
+      {%- if bb_logo != blank -%}
         <div class="hero-logo__logo" style="--logo-width: {{ section.settings.logo_width }}px;">
           {{
-            section.settings.logo
+            bb_logo
             | image_url: width: 1200
             | image_tag: loading: 'eager', widths: '300, 600, 900, 1200', sizes: '(min-width: 750px) 600px, 70vw', alt: shop.name
           }}
