@@ -1,4 +1,25 @@
-# Looks — hero slideshow + shop-this-look pages
+# Looks — fashion runway + shop-this-look pages
+
+Last updated: 2026-09-21
+
+## Approved runway placement — 2026-09-21
+
+[DECIDED] Amber approved a separate fashion-show section directly beneath the existing cover hero, with different outfit slideshows left/right and a stationary standalone holographic peacock in the center. Ivory ground with a lavender sheen, five-second synchronized transitions, and soft floor shadows. On phones the peacock sits above the two outfit panels. This supersedes the earlier choice to use the runway itself as the homepage hero.
+
+[VERIFIED] The saved Shopify draft homepage was pulled before editing; its cover hero and other sections were preserved. The new `runway` instance reuses `hero-looks`; its editor label is **Fashion runway**. A Presentation setting retains the older dark editorial appearance as an option. Source photos are unchanged. The selected cutouts and peacock have deployment copies in theme assets so the section works before the Files/metaobject import. Image pickers override bundled cutouts.
+
+[VERIFIED] Pause/play applies to both sides. Reduced motion starts paused; manual pause survives tab/hover changes. Keyboard focus on an outfit stops rotation. Inactive outfits cannot receive focus, and removing the section in the theme editor cleans up its timer and listeners.
+
+[VERIFIED] Draft verification on 2026-09-21: desktop three-column runway and Shopify phone preview rendered with all three images. Play/Pause and synchronized outfit changes were exercised. New-store `/looks/<handle>` links returned 404 because the look entries are not published there yet; manual cards now resolve a published metaobject URL when present and otherwise link to Contact labeled **Ask about this look**. This is the current empty-content state, not a completed shoppable catalog. Michele still supplies product associations and pricing.
+
+[VERIFIED] Final checks: Shopify theme check passed (zero errors, nine existing warnings); JavaScript syntax and seven motion/lifecycle cases passed. Desktop and phone screenshots showed no clipping. The fallback outfit link opened the Contact form. Chrome console showed Shopify preview preload/custom-pixel warnings and analytics collection failure, with no runway-script error observed. Browser-extension calls timed out, so visual QA used the native Chrome surface through CUA. Draft theme ID: `192212107628`; not published.
+
+### Change log
+- 2026-09-21: recorded Amber's approved below-hero runway design, preserved the saved cover hero, added playback/accessibility support and safe unpublished-look links.
+
+## Earlier implementation reference
+
+The description below records the earlier hero layout; the approved placement and controls above take precedence.
 
 The home-page hero is the silver-blue holographic logo center stage with an outfit slideshow either
 side. Both sides crossfade to their next outfit **on the same beat** (5s default) while showing

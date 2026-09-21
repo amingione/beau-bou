@@ -40,7 +40,7 @@
     {%- endfor -%}
   {%- else -%}
     {%- for block in look_blocks -%}
-      {%- if block.settings.image == blank and request.design_mode == false -%}{%- continue -%}{%- endif -%}
+      {%- if block.settings.image == blank and block.settings.image_asset == blank and request.design_mode == false -%}{%- continue -%}{%- endif -%}
       {%- assign slot = n | modulo: 2 -%}
       {%- assign n = n | plus: 1 -%}
       {%- if slot != parity -%}{%- continue -%}{%- endif -%}
@@ -50,7 +50,20 @@
       {%- if shown < 3 -%}{%- assign lazy = false -%}{%- endif -%}
       {%- assign attrs = 'data-slide ' | append: block.shopify_attributes -%}
       {%- if shown == 1 -%}{%- assign attrs = attrs | append: ' aria-current="true"' -%}{%- endif -%}
-      {% render 'look-card', image: block.settings.image, url: block.settings.link, title: block.settings.title, eyebrow: section.settings.card_eyebrow, show_caption: section.settings.show_captions, lazy: lazy, class: 'looks-slide', attrs: attrs %}
+      {%- liquid
+        assign look_link = block.settings.link
+        assign look_label = section.settings.card_eyebrow
+        if look_link contains '/looks/'
+          assign look_handle = look_link | split: '/looks/' | last | split: '?' | first
+          assign published_look = shop.metaobjects.look[look_handle]
+          assign look_link = published_look.system.url
+        endif
+        if look_link == blank
+          assign look_link = '/pages/contact'
+          assign look_label = 'Ask about this look'
+        endif
+      -%}
+      {% render 'look-card', image: block.settings.image, image_asset: block.settings.image_asset, url: look_link, title: block.settings.title, eyebrow: look_label, show_caption: section.settings.show_captions, lazy: lazy, class: 'looks-slide', attrs: attrs %}
     {%- endfor -%}
   {%- endif -%}
 {%- endcapture -%}

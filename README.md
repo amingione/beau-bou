@@ -27,12 +27,12 @@ Zsh shortcuts: `source scripts/aliases.zsh` → `bb-dev`, `bb-check`, `bb-push`,
 | `assets/beau-bou.css` | All global overrides (nav, buttons, cards, badges, facets, footer) + `.bb-display` / `.bb-accent` / `.bb-frame` utilities |
 | `sections/header.liquid` + `snippets/header-inline-search.liquid` | Always-visible desktop search field (setting `show_inline_search`) |
 | `sections/hero-logo.liquid` | Framed hero image with centered logo overlay + tagline + accent line + CTA |
-| `sections/hero-looks.liquid` + `snippets/hero-looks-stage.liquid` + `assets/hero-looks.js` + `snippets/look-card.liquid` | **Hero looks** (current home hero): silver-blue holographic logo center stage, an outfit slideshow either side that crossfades in sync while showing different looks; no controls, no copy. Every outfit links to its `/looks/<handle>` page. Reads `look` metaobjects; manual blocks as fallback. See [`docs/looks.md`](docs/looks.md) |
+| `sections/hero-looks.liquid` + `snippets/hero-looks-stage.liquid` + `assets/hero-looks.js` + `snippets/look-card.liquid` | **Fashion runway** (beneath the cover hero): standalone holographic peacock centered between synchronized outfit slideshows on an ivory/lavender stage; pause/play and reduced-motion support. Every outfit links to its `/looks/<handle>` page. Reads `look` metaobjects; manual blocks as fallback. See [`docs/looks.md`](docs/looks.md) |
 | `templates/metaobject/look.json` + `sections/main-look.liquid` | LTK-style **shop this look** page per outfit: photo/video left, pieces + goes-with grids right, share, more looks |
 | `sections/category-tiles.liquid` | Hairline-framed collection tiles with wide-tracked serif captions (the Smith + Co. signature) |
 | `sections/brand-strip.liquid` | Peacock-scheme statement band with scrolling ribbon (XS–3X, swim to gowns) and value cards |
 | `sections/visit-our-store.liquid` | Framed storefront photo + address, hours rows, Get Directions (auto Google Maps link), phone |
-| `templates/index.json` | Homepage wired: hero looks → What's New slider → 2×3 category tiles → brand strip → Sale slider → Visit |
+| `templates/index.json` | Homepage wired: cover hero → fashion runway → What's New slider → 2×3 category tiles → brand strip → Sale slider → Visit |
 | `templates/collection.json` | Vertical (sidebar) filters, 4-col portrait grid, quick-add, 24/page |
 | `sections/header-group.json`, `footer-group.json` | Announcement copy; footer = mailing list, Help menu, Get in touch, Store hours, social, payment icons |
 

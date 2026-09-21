@@ -216,3 +216,65 @@
     transform: none !important;
   }
 }
+
+/* The runway sits below the cover hero, on a quiet ivory/lavender stage. */
+.hero-looks--runway {
+  color: #2e2a33;
+  background: #fbf8f5;
+  --color-background: 251, 248, 245;
+  --color-foreground: 46, 42, 51;
+  border-block: 1px solid rgba(110, 95, 134, 0.12);
+}
+.hero-looks--runway .hero-looks__bg,
+.hero-looks--runway.hero-looks--gradient .hero-looks__bg {
+  background:
+    radial-gradient(ellipse at 50% 45%, rgba(220, 212, 236, 0.55), transparent 65%),
+    linear-gradient(120deg, #fbf8f5, #f6f0f6 50%, #fbf8f5);
+}
+.hero-looks--runway .hero-looks__bg-img,
+.hero-looks--runway .hero-looks__bg::after { display: none; }
+.hero-looks--runway .hero-looks__logo { max-width: 100%; }
+.hero-looks--runway .hero-looks__logo img {
+  max-height: 34rem;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 18px rgba(110, 95, 134, 0.14));
+}
+.hero-looks--runway .hero-looks__peacock { width: min(var(--logo-width), 18.6rem); }
+.hero-looks--runway .look-card__img { filter: drop-shadow(0 14px 22px rgba(46, 42, 51, 0.14)); }
+.hero-looks--runway .look-card__floor {
+  background: radial-gradient(ellipse at center, rgba(110, 95, 134, 0.18), transparent 68%);
+}
+.hero-looks--runway .look-card__caption { max-width: 100%; box-sizing: border-box; }
+.hero-looks--runway .look-card__title { max-width: 100%; }
+.hero-looks__motion {
+  position: absolute;
+  bottom: 1rem;
+  right: 1.6rem;
+  z-index: 2;
+  min-height: 44px;
+  padding: 0.8rem 1.2rem;
+  border: 1px solid rgba(var(--color-foreground), 0.25);
+  background: rgba(var(--color-background), 0.9);
+  color: rgb(var(--color-foreground));
+  font: inherit;
+  font-size: 1.1rem;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+}
+.hero-looks__motion[hidden] { display: none; }
+.hero-looks__motion:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+.hero-looks--runway .hero-looks__grid { padding-bottom: 7rem; }
+@media screen and (max-width: 989px) {
+  .hero-looks--runway { min-height: 0; }
+  .hero-looks--runway .hero-looks__grid { gap: 1.2rem; padding-top: 1.6rem; }
+  .hero-looks--runway .hero-looks__logo img { max-height: 15rem; }
+  .hero-looks--runway .hero-looks__center { padding: 0; }
+  .hero-looks--runway .looks-stage { height: clamp(22rem, 38vh, 38rem); }
+  .hero-looks--runway .look-card__title { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-looks .looks-slide,
+  .hero-looks .look-card__img,
+  .hero-looks .look-card__caption { transition: none; transform: none; }
+  .hero-looks .look-card__caption { transform: translateX(-50%); }
+}

@@ -43,7 +43,7 @@
 
 <div
   id="Looks-{{ section.id }}"
-  class="hero-looks color-{{ section.settings.color_scheme }}{% if section.settings.full_width %} hero-looks--full{% endif %}{% if section.settings.show_floor %} hero-looks--floor{% endif %}{% if bb_bg == blank %} hero-looks--gradient{% endif %}"
+  class="hero-looks hero-looks--{{ section.settings.presentation | default: 'editorial' }} color-{{ section.settings.color_scheme }}{% if section.settings.full_width %} hero-looks--full{% endif %}{% if section.settings.show_floor %} hero-looks--floor{% endif %}{% if bb_bg == blank %} hero-looks--gradient{% endif %}"
   data-hero-looks
   data-interval="{{ section.settings.interval | times: 1000 }}"
   data-pause-hover="{{ section.settings.pause_on_hover }}"
@@ -83,6 +83,10 @@
               alt: shop.name
           }}
         {%- if section.settings.logo_link != blank -%}</a>{%- else -%}</div>{%- endif -%}
+      {%- elsif section.settings.presentation == 'runway' -%}
+        <div class="hero-looks__logo hero-looks__peacock">
+          <img src="{{ 'beyoutiful-peacock-holographic-iridescent-icon.webp' | asset_url }}" loading="lazy" width="186" height="308" alt="Be-YOU-tiful Boutique peacock">
+        </div>
       {%- else -%}
         <h1 class="hero-looks__heading bb-display">{{ shop.name }}</h1>
       {%- endif -%}
@@ -96,15 +100,21 @@
       {% render 'hero-looks-stage', section: section, parity: 1, label: 'Outfit inspiration, right' %}
     </div>
   </div>
+  <button type="button" class="hero-looks__motion" data-looks-toggle aria-controls="Looks-{{ section.id }}" hidden>
+    Pause slideshow
+  </button>
 </div>
 
 {% schema %}
 {
-  "name": "Hero looks",
+  "name": "Fashion runway",
   "tag": "section",
   "class": "section section--hero-looks",
   "disabled_on": { "groups": ["header", "footer"] },
   "settings": [
+    { "type": "select", "id": "presentation", "label": "Presentation", "default": "runway", "options": [
+      { "value": "runway", "label": "Ivory runway beneath hero" },
+      { "value": "editorial", "label": "Dark editorial hero" } ] },
     { "type": "paragraph", "content": "Logo center stage, an outfit slideshow either side. Both sides change together while showing different looks; each outfit opens its own Shop-this-look page. Looks come from Content → Metaobjects → Look; manual Look blocks are the fallback." },
 
     { "type": "header", "content": "Backdrop" },
@@ -117,7 +127,7 @@
 
     { "type": "header", "content": "Logo" },
     { "type": "image_picker", "id": "logo", "label": "Logo", "info": "Transparent PNG/WebP, 1100px+ wide." },
-    { "type": "range", "id": "logo_width", "min": 240, "max": 720, "step": 20, "unit": "px", "default": 440, "label": "Logo width (desktop)" },
+    { "type": "range", "id": "logo_width", "min": 120, "max": 720, "step": 20, "unit": "px", "default": 240, "label": "Logo width (desktop)" },
     { "type": "url", "id": "logo_link", "label": "Logo link (optional)" },
     { "type": "text", "id": "button_label", "label": "Button label (optional)", "info": "Leave blank for a logo-only hero." },
     { "type": "url", "id": "button_link", "label": "Button link" },
@@ -148,10 +158,11 @@
   "blocks": [
     { "type": "look", "name": "Look (manual)", "settings": [
       { "type": "image_picker", "id": "image", "label": "Cutout image", "info": "Transparent background — scripts/cutouts.py makes these." },
+      { "type": "text", "id": "image_asset", "label": "Bundled image filename", "info": "Preloaded boutique photo. Choosing a cutout image above replaces it." },
       { "type": "text", "id": "title", "label": "Title", "default": "Shop this look" },
       { "type": "url", "id": "link", "label": "Link" } ] }
   ],
   "max_blocks": 24,
-  "presets": [ { "name": "Hero looks" } ]
+  "presets": [ { "name": "Fashion runway" } ]
 }
 {% endschema %}
