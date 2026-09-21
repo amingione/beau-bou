@@ -1,0 +1,73 @@
+{% comment %}
+  One slideshow stage for sections/hero-looks.liquid.
+  Renders every look assigned to this side as a stacked slide; assets/hero-looks.js flips
+  `.is-active` on every stage in the section at the same instant, so left and right change together
+  while showing different outfits.
+
+  Accepts:
+  - section: {Object} the hero-looks section
+  - parity:  {Number} 0 = left (looks 1,3,5…), 1 = right (looks 2,4,6…)
+  - label:   {String} accessible name
+{% endcomment %}
+{%- liquid
+  assign meta_looks = shop.metaobjects.look.values
+  assign use_meta = false
+  if section.settings.source == 'auto' and meta_looks.size > 0
+    assign use_meta = true
+  endif
+  assign look_blocks = section.blocks | where: 'type', 'look'
+  assign per_side = section.settings.max_looks | default: 12 | divided_by: 2.0 | ceil
+-%}
+{%- capture slides -%}
+  {%- assign shown = 0 -%}
+  {%- assign n = 0 -%}
+  {%- if use_meta -%}
+    {%- for look in meta_looks -%}
+      {%- if look.featured.value == false -%}{%- continue -%}{%- endif -%}
+      {%- if section.settings.full_body_only and look.full_body.value == false -%}{%- continue -%}{%- endif -%}
+      {%- assign img = look.cutout.value | default: look.image.value -%}
+      {%- if img == blank -%}{%- continue -%}{%- endif -%}
+      {%- assign slot = n | modulo: 2 -%}
+      {%- assign n = n | plus: 1 -%}
+      {%- if slot != parity -%}{%- continue -%}{%- endif -%}
+      {%- if shown >= per_side -%}{%- break -%}{%- endif -%}
+      {%- assign shown = shown | plus: 1 -%}
+      {%- assign lazy = true -%}
+      {%- if shown < 3 -%}{%- assign lazy = false -%}{%- endif -%}
+      {%- assign attrs = 'data-slide' -%}
+      {%- if shown == 1 -%}{%- assign attrs = 'data-slide aria-current="true"' -%}{%- endif -%}
+      {% render 'look-card', image: img, url: look.system.url, title: look.title.value, eyebrow: section.settings.card_eyebrow, show_caption: section.settings.show_captions, lazy: lazy, class: 'looks-slide', attrs: attrs %}
+    {%- endfor -%}
+  {%- else -%}
+    {%- for block in look_blocks -%}
+      {%- if block.settings.image == blank and request.design_mode == false -%}{%- continue -%}{%- endif -%}
+      {%- assign slot = n | modulo: 2 -%}
+      {%- assign n = n | plus: 1 -%}
+      {%- if slot != parity -%}{%- continue -%}{%- endif -%}
+      {%- if shown >= per_side -%}{%- break -%}{%- endif -%}
+      {%- assign shown = shown | plus: 1 -%}
+      {%- assign lazy = true -%}
+      {%- if shown < 3 -%}{%- assign lazy = false -%}{%- endif -%}
+      {%- assign attrs = 'data-slide ' | append: block.shopify_attributes -%}
+      {%- if shown == 1 -%}{%- assign attrs = attrs | append: ' aria-current="true"' -%}{%- endif -%}
+      {% render 'look-card', image: block.settings.image, url: block.settings.link, title: block.settings.title, eyebrow: section.settings.card_eyebrow, show_caption: section.settings.show_captions, lazy: lazy, class: 'looks-slide', attrs: attrs %}
+    {%- endfor -%}
+  {%- endif -%}
+{%- endcapture -%}
+{%- assign slide_count = slides | split: 'data-look-card' | size | minus: 1 -%}
+
+<div
+  class="looks-stage looks-stage--{{ section.settings.transition }}{% if slide_count == 0 %} looks-stage--empty{% endif %}"
+  data-looks-stage
+  data-count="{{ slide_count }}"
+  role="region"
+  aria-roledescription="carousel"
+  aria-label="{{ label | default: 'Outfit inspiration' | escape }}"
+  aria-live="off"
+>
+  {%- if slide_count > 0 -%}
+    {{ slides }}
+  {%- elsif request.design_mode -%}
+    <p class="looks-stage__hint">Add <b>Look</b> blocks, or create <b>Look</b> entries under Content → Metaobjects.</p>
+  {%- endif -%}
+</div>

@@ -1,0 +1,283 @@
+{
+  "logo": "docs/images/photos-in/01_Logo-holo/beyoutiful-logo-holographic-rainbow-peacock.webp",
+  "looks": [
+    {
+      "handle": "black-t-shirt-geometric-wide-leg-pants",
+      "title": "Black T-Shirt Geometric Wide Leg Pants",
+      "caption": "",
+      "pieces": [],
+      "goes_with": [],
+      "featured": true,
+      "sort": 1,
+      "source": "docs/images/photos-in/tops:bottoms:outfitStyles/beyoutiful-black-t-shirt-geometric-wide-leg-pants.webp",
+      "cutout": "docs/images/photos-in/looks/beyoutiful-black-t-shirt-geometric-wide-leg-pants-cutout.webp",
+      "full_body": true
+    },
+    {
+      "handle": "black-white-print-jacket-white-pants",
+      "title": "Black White Print Jacket White Pants",
+      "caption": "",
+      "pieces": [],
+      "goes_with": [],
+      "featured": true,
+      "sort": 2,
+      "source": "docs/images/photos-in/tops:bottoms:outfitStyles/beyoutiful-black-white-print-jacket-white-pants.webp",
+      "cutout": "docs/images/photos-in/looks/beyoutiful-black-white-print-jacket-white-pants-cutout.webp",
+      "full_body": false
+    },
+    {
+      "handle": "blue-leaf-print-top-white-pants-store-model",
+      "title": "Blue Leaf Print Top White Pants",
+      "caption": "",
+      "pieces": [],
+      "goes_with": [],
+      "featured": true,
+      "sort": 3,
+      "source": "docs/images/photos-in/tops:bottoms:outfitStyles/beyoutiful-blue-leaf-print-top-white-pants-store-model.webp",
+      "cutout": "docs/images/photos-in/looks/beyoutiful-blue-leaf-print-top-white-pants-store-model-cutout.webp",
+      "full_body": true
+    },
+    {
+      "handle": "blue-ruffle-trim-blouse-jeans",
+      "title": "Blue Ruffle Trim Blouse Jeans",
+      "caption": "",
+      "pieces": [],
+      "goes_with": [],
+      "featured": true,
+      "sort": 4,
+      "source": "docs/images/photos-in/tops:bottoms:outfitStyles/beyoutiful-blue-ruffle-trim-blouse-jeans.webp",
+      "cutout": "docs/images/photos-in/looks/beyoutiful-blue-ruffle-trim-blouse-jeans-cutout.webp",
+      "full_body": false
+    },
+    {
+      "handle": "blue-tunic-blue-white-printed-pants",
+      "title": "Blue Tunic Blue White Printed Pants",
+      "caption": "",
+      "pieces": [],
+      "goes_with": [],
+      "featured": true,
+      "sort": 5,
+      "source": "docs/images/photos-in/tops:bottoms:outfitStyles/beyoutiful-blue-tunic-blue-white-printed-pants.webp",
+      "cutout": "docs/images/photos-in/looks/beyoutiful-blue-tunic-blue-white-printed-pants-cutout.webp",
+      "full_body": true
+    },
+    {
+      "handle": "blue-tunic-white-cropped-pants",
+      "title": "Blue Tunic White Cropped Pants",
+      "caption": "",
+      "pieces": [],
+      "goes_with": [],
+      "featured": true,
+      "sort": 6,
+      "source": "docs/images/photos-in/tops:bottoms:outfitStyles/beyoutiful-blue-tunic-white-cropped-pants.webp",
+      "cutout": "docs/images/photos-in/looks/beyoutiful-blue-tunic-white-cropped-pants-cutout.webp",
+      "full_body": true
+    },
+    {
+      "handle": "blue-white-leaf-print-top-blue-pants",
+      "title": "Blue White Leaf Print Top Blue Pants",
+      "caption": "",
+      "pieces": [],
+      "goes_with": [],
+      "featured": true,
+      "sort": 7,
+      "source": "docs/images/photos-in/tops:bottoms:outfitStyles/beyoutiful-blue-white-leaf-print-top-blue-pants.webp",
+      "cutout": "docs/images/photos-in/looks/beyoutiful-blue-white-leaf-print-top-blue-pants-cutout.webp",
+      "full_body": false
+    },
+    {
+      "handle": "colorful-art-print-top-black-tiered-skirt",
+      "title": "Colorful Art Print Top Black Tiered Skirt",
+      "caption": "",
+      "pieces": [],
+      "goes_with": [],
+      "featured": true,
+      "sort": 8,
+      "source": "docs/images/photos-in/tops:bottoms:outfitStyles/beyoutiful-colorful-art-print-top-black-tiered-skirt.webp",
+      "cutout": "docs/images/photos-in/looks/beyoutiful-colorful-art-print-top-black-tiered-skirt-cutout.webp",
+      "full_body": false
+    },
+    {
+      "handle": "coral-tunic-outfit-mirror-selfie",
+      "title": "Coral Tunic Outfit",
+      "caption": "",
+      "pieces": [],
+      "goes_with": [],
+      "featured": true,
+      "sort": 9,
+      "source": "docs/images/photos-in/tops:bottoms:outfitStyles/beyoutiful-coral-tunic-outfit-mirror-selfie.webp",
+      "cutout": "docs/images/photos-in/looks/beyoutiful-coral-tunic-outfit-mirror-selfie-cutout.webp",
+      "full_body": false
+    },
+    {
+      "handle": "cream-crochet-ruffle-top-jeans",
+      "title": "Cream Crochet Ruffle Top Jeans",
+      "caption": "",
+      "pieces": [],
+      "goes_with": [],
+      "featured": true,
+      "sort": 10,
+      "source": "docs/images/photos-in/tops:bottoms:outfitStyles/beyoutiful-cream-crochet-ruffle-top-jeans.webp",
+      "cutout": "docs/images/photos-in/looks/beyoutiful-cream-crochet-ruffle-top-jeans-cutout.webp",
+      "full_body": true
+    },
+    {
+      "handle": "denim-button-front-vest-dark-jeans",
+      "title": "Denim Button Front Vest Dark Jeans",
+      "caption": "",
+      "pieces": [],
+      "goes_with": [],
+      "featured": true,
+      "sort": 11,
+      "source": "docs/images/photos-in/tops:bottoms:outfitStyles/beyoutiful-denim-button-front-vest-dark-jeans.webp",
+      "cutout": "docs/images/photos-in/looks/beyoutiful-denim-button-front-vest-dark-jeans-cutout.webp",
+      "full_body": true
+    },
+    {
+      "handle": "mustard-button-front-jacket-jeans",
+      "title": "Mustard Button Front Jacket Jeans",
+      "caption": "",
+      "pieces": [],
+      "goes_with": [],
+      "featured": true,
+      "sort": 12,
+      "source": "docs/images/photos-in/tops:bottoms:outfitStyles/beyoutiful-mustard-button-front-jacket-jeans.webp",
+      "cutout": "docs/images/photos-in/looks/beyoutiful-mustard-button-front-jacket-jeans-cutout.webp",
+      "full_body": false
+    },
+    {
+      "handle": "pink-green-floral-outfit-pink-beach-tote",
+      "title": "Pink Green Floral Outfit Pink Beach Tote",
+      "caption": "",
+      "pieces": [],
+      "goes_with": [],
+      "featured": true,
+      "sort": 13,
+      "source": "docs/images/photos-in/tops:bottoms:outfitStyles/beyoutiful-pink-green-floral-outfit-pink-beach-tote.webp",
+      "cutout": "docs/images/photos-in/looks/beyoutiful-pink-green-floral-outfit-pink-beach-tote-cutout.webp",
+      "full_body": true
+    },
+    {
+      "handle": "pink-one-shoulder-top-colorful-printed-skirt",
+      "title": "Pink One Shoulder Top Colorful Printed Skirt",
+      "caption": "",
+      "pieces": [],
+      "goes_with": [],
+      "featured": true,
+      "sort": 14,
+      "source": "docs/images/photos-in/tops:bottoms:outfitStyles/beyoutiful-pink-one-shoulder-top-colorful-printed-skirt.webp",
+      "cutout": "docs/images/photos-in/looks/beyoutiful-pink-one-shoulder-top-colorful-printed-skirt-cutout.webp",
+      "full_body": false
+    },
+    {
+      "handle": "royal-blue-outfit-printed-tote",
+      "title": "Royal Blue Outfit Printed Tote",
+      "caption": "",
+      "pieces": [],
+      "goes_with": [],
+      "featured": true,
+      "sort": 15,
+      "source": "docs/images/photos-in/tops:bottoms:outfitStyles/beyoutiful-royal-blue-outfit-printed-tote.webp",
+      "cutout": "docs/images/photos-in/looks/beyoutiful-royal-blue-outfit-printed-tote-cutout.webp",
+      "full_body": true
+    },
+    {
+      "handle": "white-blue-floral-top-jeans",
+      "title": "White Blue Floral Top Jeans",
+      "caption": "",
+      "pieces": [],
+      "goes_with": [],
+      "featured": true,
+      "sort": 16,
+      "source": "docs/images/photos-in/tops:bottoms:outfitStyles/beyoutiful-white-blue-floral-top-jeans.webp",
+      "cutout": "docs/images/photos-in/looks/beyoutiful-white-blue-floral-top-jeans-cutout.webp",
+      "full_body": true
+    },
+    {
+      "handle": "white-embroidered-blouse-olive-pants",
+      "title": "White Embroidered Blouse Olive Pants",
+      "caption": "",
+      "pieces": [],
+      "goes_with": [],
+      "featured": true,
+      "sort": 17,
+      "source": "docs/images/photos-in/tops:bottoms:outfitStyles/beyoutiful-white-embroidered-blouse-olive-pants.webp",
+      "cutout": "docs/images/photos-in/looks/beyoutiful-white-embroidered-blouse-olive-pants-cutout.webp",
+      "full_body": true
+    },
+    {
+      "handle": "white-embroidered-blouse-white-pants",
+      "title": "White Embroidered Blouse White Pants",
+      "caption": "",
+      "pieces": [],
+      "goes_with": [],
+      "featured": true,
+      "sort": 18,
+      "source": "docs/images/photos-in/tops:bottoms:outfitStyles/beyoutiful-white-embroidered-blouse-white-pants.webp",
+      "cutout": "docs/images/photos-in/looks/beyoutiful-white-embroidered-blouse-white-pants-cutout.webp",
+      "full_body": true
+    },
+    {
+      "handle": "white-t-shirt-black-wide-leg-pants",
+      "title": "White T-Shirt Black Wide Leg Pants",
+      "caption": "",
+      "pieces": [],
+      "goes_with": [],
+      "featured": true,
+      "sort": 19,
+      "source": "docs/images/photos-in/tops:bottoms:outfitStyles/beyoutiful-white-t-shirt-black-wide-leg-pants.webp",
+      "cutout": "docs/images/photos-in/looks/beyoutiful-white-t-shirt-black-wide-leg-pants-cutout.webp",
+      "full_body": true
+    },
+    {
+      "handle": "white-t-shirt-denim-shorts",
+      "title": "White T-Shirt Denim Shorts",
+      "caption": "",
+      "pieces": [],
+      "goes_with": [],
+      "featured": true,
+      "sort": 20,
+      "source": "docs/images/photos-in/tops:bottoms:outfitStyles/beyoutiful-white-t-shirt-denim-shorts.webp",
+      "cutout": "docs/images/photos-in/looks/beyoutiful-white-t-shirt-denim-shorts-cutout.webp",
+      "full_body": true
+    },
+    {
+      "handle": "white-top-black-tiered-skirt",
+      "title": "White Top Black Tiered Skirt",
+      "caption": "",
+      "pieces": [],
+      "goes_with": [],
+      "featured": true,
+      "sort": 21,
+      "source": "docs/images/photos-in/tops:bottoms:outfitStyles/beyoutiful-white-top-black-tiered-skirt.webp",
+      "cutout": "docs/images/photos-in/looks/beyoutiful-white-top-black-tiered-skirt-cutout.webp",
+      "full_body": false
+    },
+    {
+      "handle": "white-top-gray-patterned-wide-leg-pants",
+      "title": "White Top Gray Patterned Wide Leg Pants",
+      "caption": "",
+      "pieces": [],
+      "goes_with": [],
+      "featured": true,
+      "sort": 22,
+      "source": "docs/images/photos-in/tops:bottoms:outfitStyles/beyoutiful-white-top-gray-patterned-wide-leg-pants.webp",
+      "cutout": "docs/images/photos-in/looks/beyoutiful-white-top-gray-patterned-wide-leg-pants-cutout.webp",
+      "full_body": true
+    }
+  ],
+  "overrides": {
+    "black-white-print-jacket-white-pants": {
+      "full_body": false
+    },
+    "blue-ruffle-trim-blouse-jeans": {
+      "full_body": false
+    },
+    "denim-button-front-vest-dark-jeans": {
+      "full_body": true
+    },
+    "white-top-gray-patterned-wide-leg-pants": {
+      "full_body": true
+    }
+  }
+}

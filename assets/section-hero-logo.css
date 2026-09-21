@@ -104,3 +104,9 @@
     padding: 4rem 1.6rem;
   }
 }
+
+/* Branded cover artwork needs its full aspect ratio, including on phones. */
+.hero-logo--content-below .hero-logo__media { display: block; min-height: 0; }
+.hero-logo--content-below .hero-logo__image { position: relative; inset: auto; width: 100%; height: auto; display: block; object-fit: contain; }
+.hero-logo--content-below .hero-logo__overlay { display: none; }
+.hero-logo--content-below .hero-logo__content { padding: 2.8rem 1.6rem 3.2rem; background: rgb(var(--color-background)); }

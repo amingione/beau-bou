@@ -17,7 +17,7 @@
         "announcement-bar-0": {
           "type": "announcement",
           "settings": {
-            "text": "Free in-store pickup in downtown Punta Gorda · Sizes XS – 3X",
+            "text": "Swimsuits to gowns \u00b7 Sizes XS \u2013 3X \u00b7 Downtown Punta Gorda",
             "link": ""
           }
         }
@@ -32,7 +32,7 @@
         "color_scheme": "scheme-1",
         "menu_color_scheme": "scheme-1",
         "logo_position": "middle-left",
-        "menu": "beau-bou-main",
+        "menu": "main-menu",
         "menu_type_desktop": "dropdown",
         "sticky_header_type": "on-scroll-up",
         "show_line_separator": false,

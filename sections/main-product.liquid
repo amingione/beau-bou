@@ -210,6 +210,43 @@
                   </p>
                 {%- when 'custom_liquid' -%}
                   {{ block.settings.custom_liquid }}
+                {%- when 'boutique_details' -%}
+                  {%- assign fit_notes = product.metafields.custom.fit_notes -%}
+                  {%- assign materials_care = product.metafields.custom.materials_care -%}
+                  {%- assign size_page = product.metafields.custom.size_guide.value | default: block.settings.size_page -%}
+                  <div class="quick-add-hidden" {{ block.shopify_attributes }}>
+                    {%- if fit_notes != blank or size_page != blank -%}
+                      <div class="product__accordion accordion">
+                        <details id="Details-Fit-{{ block.id }}-{{ section.id }}">
+                          <summary><div class="summary__title">{% render 'icon-accordion', icon: 'ruler' %}<h2 class="h4 accordion__title">{{ block.settings.fit_heading | escape }}</h2></div>{{ 'icon-caret.svg' | inline_asset_content }}</summary>
+                          <div class="accordion__content rte">
+                            {%- if fit_notes != blank -%}{{ fit_notes | metafield_tag }}{%- endif -%}
+                            {%- if size_page != blank -%}<p><a href="{{ size_page.url }}">{{ size_page.title | escape }}</a></p>{%- endif -%}
+                          </div>
+                        </details>
+                      </div>
+                    {%- endif -%}
+                    {%- if materials_care != blank -%}
+                      <div class="product__accordion accordion">
+                        <details id="Details-Care-{{ block.id }}-{{ section.id }}">
+                          <summary><div class="summary__title">{% render 'icon-accordion', icon: 'washing' %}<h2 class="h4 accordion__title">{{ block.settings.care_heading | escape }}</h2></div>{{ 'icon-caret.svg' | inline_asset_content }}</summary>
+                          <div class="accordion__content rte">{{ materials_care | metafield_tag }}</div>
+                        </details>
+                      </div>
+                    {%- endif -%}
+                    {%- if shop.shipping_policy != blank or shop.refund_policy != blank or block.settings.delivery_note != blank -%}
+                      <div class="product__accordion accordion">
+                        <details id="Details-Delivery-{{ block.id }}-{{ section.id }}">
+                          <summary><div class="summary__title">{% render 'icon-accordion', icon: 'box' %}<h2 class="h4 accordion__title">{{ block.settings.delivery_heading | escape }}</h2></div>{{ 'icon-caret.svg' | inline_asset_content }}</summary>
+                          <div class="accordion__content rte">
+                            {{ block.settings.delivery_note }}
+                            {%- if shop.shipping_policy != blank -%}<p><a href="{{ shop.shipping_policy.url }}">{{ shop.shipping_policy.title | escape }}</a></p>{%- endif -%}
+                            {%- if shop.refund_policy != blank -%}<p><a href="{{ shop.refund_policy.url }}">{{ shop.refund_policy.title | escape }}</a></p>{%- endif -%}
+                          </div>
+                        </details>
+                      </div>
+                    {%- endif -%}
+                  </div>
                 {%- when 'collapsible_tab' -%}
                   <div class="product__accordion accordion quick-add-hidden" {{ block.shopify_attributes }}>
                     <details id="Details-{{ block.id }}-{{ section.id }}">
@@ -2142,6 +2179,46 @@
           "default": "t:sections.main-product.blocks.icon_with_text.settings.heading_3.default",
           "label": "t:sections.main-product.blocks.icon_with_text.settings.heading_3.label",
           "info": "t:sections.main-product.blocks.icon_with_text.settings.heading.info"
+        }
+      ]
+    },
+    {
+      "type": "boutique_details",
+      "name": "Boutique product details",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Edit each product’s Fit notes, Materials & care, and optional Size guide metafields in Products. Empty details stay hidden."
+        },
+        {
+          "type": "text",
+          "id": "fit_heading",
+          "label": "Fit heading",
+          "default": "Fit & sizing"
+        },
+        {
+          "type": "text",
+          "id": "care_heading",
+          "label": "Care heading",
+          "default": "Materials & care"
+        },
+        {
+          "type": "page",
+          "id": "size_page",
+          "label": "Default size guide"
+        },
+        {
+          "type": "text",
+          "id": "delivery_heading",
+          "label": "Delivery heading",
+          "default": "Pickup, shipping & returns"
+        },
+        {
+          "type": "richtext",
+          "id": "delivery_note",
+          "label": "Delivery note",
+          "default": "<p>For questions about pickup, delivery or returns, <a href=\"/pages/contact\">contact the boutique</a>.</p>"
         }
       ]
     }

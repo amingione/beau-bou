@@ -1,0 +1,235 @@
+{%- comment -%}
+  Main look — the "shop this post" page for one `look` metaobject (LTK / LikeToKnowIt style).
+  Route: /looks/<handle> via templates/metaobject/look.json
+  Left: the styled photo (or video), caption, share. Right: "Shop this look" pieces, then
+  "Goes with it" pieces. Bottom: more looks. Docs: docs/looks.md
+{%- endcomment -%}
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+{{ 'component-look-card.css' | asset_url | stylesheet_tag }}
+{{ 'section-main-look.css' | asset_url | stylesheet_tag }}
+
+{%- if section.settings.quick_add != 'none' -%}
+  {{ 'quick-add.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+{%- liquid
+  assign look = metaobject
+  assign title = look.title.value | default: look.system.handle | replace: '-', ' ' | capitalize
+  assign photo = look.image.value
+  assign cutout = look.cutout.value
+  assign video = look.video.value
+  assign pieces = look.pieces.value
+  assign goes_with = look.goes_with.value
+  assign caption = look.caption.value
+  assign media_pref = section.settings.media
+  if media_pref == 'cutout' and cutout != blank
+    assign photo = cutout
+  endif
+  assign share_url = shop.url | append: look.system.url
+-%}
+
+<div class="look-page color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding page-width" id="Look-{{ section.id }}">
+  <nav class="look-page__crumbs" aria-label="Breadcrumb">
+    <a href="{{ routes.root_url }}">Home</a>
+    <span aria-hidden="true">/</span>
+    <a href="{{ section.settings.all_looks_link | default: routes.root_url }}">{{ section.settings.all_looks_label | default: 'Looks' | escape }}</a>
+    <span aria-hidden="true">/</span>
+    <span aria-current="page">{{ title | escape }}</span>
+  </nav>
+
+  <div class="look-page__grid">
+    {%- comment -%} ---------- LEFT: the styled photo ---------- {%- endcomment -%}
+    <div class="look-page__media">
+      <div class="look-page__frame bb-frame{% if media_pref == 'cutout' and cutout != blank %} look-page__frame--runway{% endif %}">
+        {%- if video != blank -%}
+          {{ video | video_tag: image_size: '1100x', autoplay: true, loop: true, muted: true, controls: true, playsinline: true, class: 'look-page__video' }}
+        {%- elsif photo != blank -%}
+          {{ photo | image_url: width: 1400 | image_tag: loading: 'eager', fetchpriority: 'high', widths: '500, 800, 1100, 1400', sizes: '(min-width: 990px) 46vw, 100vw', class: 'look-page__photo', alt: title }}
+        {%- else -%}
+          {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg look-page__photo' }}
+        {%- endif -%}
+        {%- if section.settings.badge != blank -%}
+          <span class="look-page__badge">{{ section.settings.badge | escape }}</span>
+        {%- endif -%}
+      </div>
+
+      <div class="look-page__byline">
+        {%- if section.settings.byline != blank -%}
+          <p class="look-page__styled-by bb-accent">{{ section.settings.byline | escape }}</p>
+        {%- endif -%}
+        {%- if caption != blank -%}
+          <div class="look-page__caption rte">{{ caption | newline_to_br }}</div>
+        {%- endif -%}
+        {%- if section.settings.show_share -%}
+          <div class="look-page__share">
+            <span class="look-page__share-label">Share</span>
+            <a href="https://www.facebook.com/sharer/sharer.php?u={{ share_url | url_encode }}" target="_blank" rel="noopener" aria-label="Share on Facebook">Facebook</a>
+            <a href="https://pinterest.com/pin/create/button/?url={{ share_url | url_encode }}&description={{ title | url_encode }}{% if photo != blank %}&media={{ photo | image_url: width: 1000 | url_encode }}{% endif %}" target="_blank" rel="noopener" aria-label="Pin it">Pinterest</a>
+            <a href="sms:?&body={{ title | url_encode }}%20{{ share_url | url_encode }}" aria-label="Text this look">Text</a>
+            <button type="button" class="look-page__copy" data-copy="{{ share_url }}">Copy link</button>
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+
+    {%- comment -%} ---------- RIGHT: shop this look ---------- {%- endcomment -%}
+    <aside class="look-page__shop" aria-label="{{ section.settings.pieces_heading | default: 'Shop this look' | escape }}">
+      <header class="look-page__head">
+        <h1 class="look-page__title bb-display">{{ title | escape }}</h1>
+        <p class="look-page__sub">{{ section.settings.pieces_heading | default: 'Shop this look' | escape }}</p>
+      </header>
+
+      {%- if pieces != blank and pieces.size > 0 -%}
+        <ul class="look-page__products look-page__products--{{ section.settings.columns }}" role="list">
+          {%- for p in pieces -%}
+            {%- liquid
+              assign lazy = true
+              if forloop.index <= 2
+                assign lazy = false
+              endif
+            -%}
+            <li class="look-page__product">
+              {% render 'card-product',
+                card_product: p,
+                media_aspect_ratio: 'portrait',
+                show_secondary_image: true,
+                section_id: section.id,
+                quick_add: section.settings.quick_add,
+                lazy_load: lazy,
+                skip_styles: true
+              %}
+            </li>
+          {%- endfor -%}
+        </ul>
+      {%- else -%}
+        <div class="look-page__empty bb-frame">
+          <h2 class="bb-display h3">{{ section.settings.empty_heading | default: 'Love this look?' | escape }}</h2>
+          <p>{{ section.settings.empty_text | default: 'Message us and we’ll pull the pieces in your size.' | escape }}</p>
+          <a class="button button--secondary" href="{{ section.settings.empty_link | default: '/pages/contact' }}">{{ section.settings.empty_button | default: 'Ask about this look' | escape }}</a>
+        </div>
+      {%- endif -%}
+
+      {%- if goes_with != blank and goes_with.size > 0 -%}
+        <h2 class="look-page__goes-heading bb-display">{{ section.settings.goes_with_heading | default: 'Goes with it' | escape }}</h2>
+        {%- if section.settings.goes_with_sub != blank -%}
+          <p class="look-page__goes-sub bb-accent">{{ section.settings.goes_with_sub | escape }}</p>
+        {%- endif -%}
+        <ul class="look-page__products look-page__products--{{ section.settings.columns }} look-page__products--goes" role="list">
+          {%- for p in goes_with -%}
+            <li class="look-page__product">
+              {% render 'card-product',
+                card_product: p,
+                media_aspect_ratio: 'portrait',
+                show_secondary_image: true,
+                section_id: section.id,
+                quick_add: section.settings.quick_add,
+                lazy_load: true,
+                skip_styles: true
+              %}
+            </li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+
+      {%- if section.settings.collection != blank -%}
+        <a class="button button--secondary look-page__all" href="{{ section.settings.collection.url }}">{{ section.settings.collection_label | default: 'Shop all new arrivals' | escape }}</a>
+      {%- endif -%}
+    </aside>
+  </div>
+
+  {%- comment -%} ---------- MORE LOOKS ---------- {%- endcomment -%}
+  {%- if section.settings.show_more -%}
+    {%- assign others = shop.metaobjects.look.values -%}
+    {%- if others.size > 1 -%}
+      <section class="look-page__more" aria-labelledby="MoreLooks-{{ section.id }}">
+        <h2 id="MoreLooks-{{ section.id }}" class="look-page__more-heading bb-display">{{ section.settings.more_heading | default: 'More looks' | escape }}</h2>
+        <ul class="look-page__more-grid list-unstyled" role="list">
+          {%- assign shown = 0 -%}
+          {%- for o in others -%}
+            {%- if o.system.id == look.system.id -%}{%- continue -%}{%- endif -%}
+            {%- if o.featured.value == false -%}{%- continue -%}{%- endif -%}
+            {%- assign oimg = o.cutout.value | default: o.image.value -%}
+            {%- if oimg == blank -%}{%- continue -%}{%- endif -%}
+            {%- assign shown = shown | plus: 1 -%}
+            <li class="look-page__more-item">{% render 'look-card', image: oimg, url: o.system.url, title: o.title.value %}</li>
+            {%- if shown >= 6 -%}{%- break -%}{%- endif -%}
+          {%- endfor -%}
+        </ul>
+      </section>
+    {%- endif -%}
+  {%- endif -%}
+</div>
+
+<script>
+  (function () {
+    document.querySelectorAll('[data-copy]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var url = btn.getAttribute('data-copy');
+        var done = function () { var t = btn.textContent; btn.textContent = 'Copied ✓'; setTimeout(function () { btn.textContent = t; }, 1600); };
+        if (navigator.clipboard) navigator.clipboard.writeText(url).then(done); else { window.prompt('Copy this link', url); }
+      });
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Look page",
+  "tag": "section",
+  "class": "section",
+  "limit": 1,
+  "enabled_on": { "templates": ["metaobject"] },
+  "settings": [
+    { "type": "paragraph", "content": "Renders one Look metaobject: photo left, shoppable pieces right. Fields come from Content → Metaobjects → Look." },
+    { "type": "header", "content": "Media" },
+    { "type": "select", "id": "media", "default": "photo", "label": "Show", "options": [
+      { "value": "photo", "label": "Original styled photo" },
+      { "value": "cutout", "label": "Cutout on the runway" } ] },
+    { "type": "text", "id": "badge", "label": "Badge on the photo", "default": "As styled in store" },
+    { "type": "text", "id": "byline", "label": "Byline (script)", "default": "Styled by Michele" },
+    { "type": "checkbox", "id": "show_share", "default": true, "label": "Show share links" },
+
+    { "type": "header", "content": "Shopping" },
+    { "type": "text", "id": "pieces_heading", "default": "Shop this look", "label": "Pieces heading" },
+    { "type": "text", "id": "goes_with_heading", "default": "Goes with it", "label": "Goes-with heading" },
+    { "type": "text", "id": "goes_with_sub", "default": "Not in the photo — but they belong together", "label": "Goes-with subline" },
+    { "type": "select", "id": "columns", "default": "3", "label": "Product columns (desktop)", "options": [ { "value": "2", "label": "2" }, { "value": "3", "label": "3" }, { "value": "4", "label": "4" } ] },
+    { "type": "select", "id": "quick_add", "default": "standard", "label": "Quick add", "options": [ { "value": "none", "label": "Off" }, { "value": "standard", "label": "Standard" }, { "value": "bulk", "label": "Bulk" } ] },
+    { "type": "collection", "id": "collection", "label": "\"Shop all\" collection" },
+    { "type": "text", "id": "collection_label", "default": "Shop all new arrivals", "label": "Collection button label" },
+
+    { "type": "header", "content": "When a look has no pieces linked yet" },
+    { "type": "text", "id": "empty_heading", "default": "Love this look?", "label": "Heading" },
+    { "type": "text", "id": "empty_text", "default": "Message us and we’ll pull the pieces in your size.", "label": "Text" },
+    { "type": "text", "id": "empty_button", "default": "Ask about this look", "label": "Button label" },
+    { "type": "url", "id": "empty_link", "label": "Button link" },
+
+    { "type": "header", "content": "Navigation" },
+    { "type": "text", "id": "all_looks_label", "default": "Looks", "label": "Breadcrumb label" },
+    { "type": "url", "id": "all_looks_link", "label": "Breadcrumb link", "info": "Home page (the runway) unless you make a looks page." },
+    { "type": "checkbox", "id": "show_more", "default": true, "label": "Show \"More looks\" runway" },
+    { "type": "text", "id": "more_heading", "default": "More looks", "label": "More looks heading" },
+
+    { "type": "header", "content": "Layout" },
+    { "type": "color_scheme", "id": "color_scheme", "default": "scheme-1", "label": "Color scheme" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 24, "label": "Top padding" },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 48, "label": "Bottom padding" }
+  ]
+}
+{% endschema %}

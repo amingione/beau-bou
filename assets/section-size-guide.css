@@ -84,5 +84,5 @@
   text-align: center;
   margin: 3rem 0 0;
   font-size: 1.7rem;
-  color: #0f5f66;
+  color: var(--bb-accent);
 }

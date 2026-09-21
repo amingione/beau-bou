@@ -1,0 +1,157 @@
+{%- comment -%}
+  Hero looks — the logo center stage, one outfit slideshow either side.
+  Both sides change on the same beat (assets/hero-looks.js) while showing different looks.
+  Every outfit links to its /looks/<handle> page. Looks come from the `look` metaobject;
+  manual blocks are the fallback. Docs: docs/looks.md
+{%- endcomment -%}
+{%- liquid
+  assign bb_logo = section.settings.logo
+  if bb_logo != blank and bb_logo.src == blank
+    assign bb_fname = bb_logo | remove: 'shopify://shop_images/'
+    assign bb_logo = images[bb_fname]
+  endif
+  assign bb_bg = section.settings.background
+  if bb_bg != blank and bb_bg.src == blank
+    assign bb_fname = bb_bg | remove: 'shopify://shop_images/'
+    assign bb_bg = images[bb_fname]
+  endif
+-%}
+{{ 'component-look-card.css' | asset_url | stylesheet_tag }}
+{{ 'section-hero-looks.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'hero-looks.js' | asset_url }}" defer="defer"></script>
+
+{%- style -%}
+  #Looks-{{ section.id }} {
+    --looks-h: {{ section.settings.stage_height }}vh;
+    --looks-h-mobile: {{ section.settings.stage_height | times: 0.6 | round: 0 }}vh;
+    --looks-fade: {{ section.settings.fade_ms }}ms;
+    --logo-width: {{ section.settings.logo_width }}px;
+    --hero-min-h: {{ section.settings.min_height }}vh;
+    --hero-overlay: {{ section.settings.overlay | divided_by: 100.0 }};
+    --hero-blur: {{ section.settings.blur }}px;
+    --hero-bg-pos: {{ section.settings.bg_position }};
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  @media screen and (min-width: 750px) {
+    #Looks-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div
+  id="Looks-{{ section.id }}"
+  class="hero-looks color-{{ section.settings.color_scheme }}{% if section.settings.full_width %} hero-looks--full{% endif %}{% if section.settings.show_floor %} hero-looks--floor{% endif %}{% if bb_bg == blank %} hero-looks--gradient{% endif %}"
+  data-hero-looks
+  data-interval="{{ section.settings.interval | times: 1000 }}"
+  data-pause-hover="{{ section.settings.pause_on_hover }}"
+>
+  <div class="hero-looks__bg" aria-hidden="true">
+    {%- if bb_bg != blank -%}
+      {{
+        bb_bg
+        | image_url: width: 2600
+        | image_tag:
+          loading: 'eager',
+          fetchpriority: 'high',
+          widths: '900, 1400, 1920, 2600',
+          sizes: '100vw',
+          class: 'hero-looks__bg-img',
+          alt: ''
+      }}
+    {%- endif -%}
+  </div>
+
+  <div class="hero-looks__grid{% unless section.settings.full_width %} page-width{% endunless %}">
+    <div class="hero-looks__side hero-looks__side--left">
+      {% render 'hero-looks-stage', section: section, parity: 0, label: 'Outfit inspiration, left' %}
+    </div>
+
+    <div class="hero-looks__center">
+      {%- if bb_logo != blank -%}
+        {%- if section.settings.logo_link != blank -%}<a href="{{ section.settings.logo_link }}" class="hero-looks__logo">{%- else -%}<div class="hero-looks__logo">{%- endif -%}
+          {{
+            bb_logo
+            | image_url: width: 1400
+            | image_tag:
+              loading: 'eager',
+              fetchpriority: 'high',
+              widths: '400, 600, 800, 1100, 1400',
+              sizes: '(min-width: 990px) 30vw, 76vw',
+              alt: shop.name
+          }}
+        {%- if section.settings.logo_link != blank -%}</a>{%- else -%}</div>{%- endif -%}
+      {%- else -%}
+        <h1 class="hero-looks__heading bb-display">{{ shop.name }}</h1>
+      {%- endif -%}
+
+      {%- if section.settings.button_label != blank -%}
+        <a href="{{ section.settings.button_link | default: '/collections/all' }}" class="button hero-looks__button">{{ section.settings.button_label | escape }}</a>
+      {%- endif -%}
+    </div>
+
+    <div class="hero-looks__side hero-looks__side--right">
+      {% render 'hero-looks-stage', section: section, parity: 1, label: 'Outfit inspiration, right' %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Hero looks",
+  "tag": "section",
+  "class": "section section--hero-looks",
+  "disabled_on": { "groups": ["header", "footer"] },
+  "settings": [
+    { "type": "paragraph", "content": "Logo center stage, an outfit slideshow either side. Both sides change together while showing different looks; each outfit opens its own Shop-this-look page. Looks come from Content → Metaobjects → Look; manual Look blocks are the fallback." },
+
+    { "type": "header", "content": "Backdrop" },
+    { "type": "image_picker", "id": "background", "label": "Background photo", "info": "Full-bleed, edge to edge. A moody in-store shot works best; 2400px+ wide. Leave blank for a dark iridescent gradient." },
+    { "type": "range", "id": "overlay", "min": 0, "max": 90, "step": 5, "unit": "%", "default": 65, "label": "Darken" },
+    { "type": "range", "id": "blur", "min": 0, "max": 20, "step": 1, "unit": "px", "default": 0, "label": "Blur", "info": "Hides low-resolution or busy backgrounds." },
+    { "type": "select", "id": "bg_position", "default": "center center", "label": "Focal point", "options": [
+      { "value": "center top", "label": "Top" }, { "value": "center center", "label": "Center" }, { "value": "center bottom", "label": "Bottom" } ] },
+    { "type": "range", "id": "min_height", "min": 50, "max": 100, "step": 2, "unit": "vh", "default": 80, "label": "Minimum height" },
+
+    { "type": "header", "content": "Logo" },
+    { "type": "image_picker", "id": "logo", "label": "Logo", "info": "Transparent PNG/WebP, 1100px+ wide." },
+    { "type": "range", "id": "logo_width", "min": 240, "max": 720, "step": 20, "unit": "px", "default": 440, "label": "Logo width (desktop)" },
+    { "type": "url", "id": "logo_link", "label": "Logo link (optional)" },
+    { "type": "text", "id": "button_label", "label": "Button label (optional)", "info": "Leave blank for a logo-only hero." },
+    { "type": "url", "id": "button_link", "label": "Button link" },
+
+    { "type": "header", "content": "Slideshow" },
+    { "type": "select", "id": "source", "default": "auto", "label": "Look source", "options": [
+      { "value": "auto", "label": "Look metaobjects (automatic)" },
+      { "value": "manual", "label": "Manual blocks below" } ] },
+    { "type": "checkbox", "id": "full_body_only", "default": true, "label": "Full-body looks only" },
+    { "type": "range", "id": "max_looks", "min": 4, "max": 24, "step": 2, "default": 14, "label": "Max looks (split across both sides)" },
+    { "type": "range", "id": "interval", "min": 3, "max": 12, "step": 1, "unit": "s", "default": 5, "label": "Seconds per look" },
+    { "type": "select", "id": "transition", "default": "fade", "label": "Transition", "options": [
+      { "value": "fade", "label": "Crossfade" },
+      { "value": "slide", "label": "Slide" } ] },
+    { "type": "range", "id": "fade_ms", "min": 300, "max": 2000, "step": 100, "unit": "ms", "default": 1100, "label": "Transition length" },
+    { "type": "range", "id": "stage_height", "min": 30, "max": 70, "step": 2, "unit": "vh", "default": 56, "label": "Outfit height (desktop)" },
+    { "type": "checkbox", "id": "show_floor", "default": true, "label": "Soft floor shadow" },
+    { "type": "checkbox", "id": "pause_on_hover", "default": true, "label": "Pause on hover" },
+    { "type": "checkbox", "id": "show_captions", "default": true, "label": "\"Shop the look\" caption on hover" },
+    { "type": "text", "id": "card_eyebrow", "default": "Shop the look", "label": "Caption label" },
+
+    { "type": "header", "content": "Layout" },
+    { "type": "checkbox", "id": "full_width", "default": true, "label": "Full bleed (edge to edge)" },
+    { "type": "color_scheme", "id": "color_scheme", "default": "scheme-4", "label": "Color scheme", "info": "Use a dark scheme over a photo so captions stay readable." },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 0, "label": "Top padding" },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 0, "label": "Bottom padding" }
+  ],
+  "blocks": [
+    { "type": "look", "name": "Look (manual)", "settings": [
+      { "type": "image_picker", "id": "image", "label": "Cutout image", "info": "Transparent background — scripts/cutouts.py makes these." },
+      { "type": "text", "id": "title", "label": "Title", "default": "Shop this look" },
+      { "type": "url", "id": "link", "label": "Link" } ] }
+  ],
+  "max_blocks": 24,
+  "presets": [ { "name": "Hero looks" } ]
+}
+{% endschema %}

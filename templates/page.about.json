@@ -3,16 +3,16 @@
     "hero": {
       "type": "page-hero",
       "settings": {
-        "eyebrow": "Downtown Punta Gorda since day one",
-        "heading": "Meet Michele",
+        "eyebrow": "Downtown Punta Gorda",
+        "heading": "Be-YOU-tiful, by Michele",
         "accent": "Accept yourself as you were designed by God",
-        "text": "<p>Be-YOU-tiful Boutique started with one idea: every woman who walks in should find something that makes her stand a little taller — whatever her size, her budget, or the occasion. Swimsuits to gowns, XS to 3X, priced so you can say yes.</p>",
+        "text": "<p>Swimsuits to gowns, everyday favorites to something for a special occasion. Discover Be-YOU-tiful Boutique by Michele in downtown Punta Gorda, with styles in sizes XS to 3X and affordable prices.</p>",
         "button_label": "Shop What's New",
         "button_link": "shopify://collections/new-arrivals",
         "color_scheme": "scheme-1",
         "padding_top": 48,
         "padding_bottom": 36,
-        "image": "shopify://shop_images/beyoutiful-michele-portrait.jpg"
+        "image": "shopify://shop_images/beyoutiful-blue-tops-and-accessories-store-display.webp"
       }
     },
     "story": {
@@ -29,14 +29,14 @@
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "A judgment-free zone on Marion Ave",
+            "heading": "Find your next favorite on Marion Ave",
             "heading_size": "h1"
           }
         },
         "text": {
           "type": "text",
           "settings": {
-            "text": "<p>Our customers call it a judgment-free zone, and we take that seriously. Michele and the team style you the way a good friend would — honest, warm, and on your side. You'll find size-inclusive racks in every category, one-of-a-kind pieces you won't see on everyone else in town, and prices that don't need a sale to make sense.</p><p>Come in for a swimsuit before the beach, a dress for date night, a gown for the gala, or just to say hi. In-store pickup is always free if you'd rather shop from the couch and swing by later.</p>",
+            "text": "<p>Explore colorful dresses, tops, bottoms, jewelry, handbags, and gifts. Visit the boutique to see the selection in person, try on a new look, and find the finishing touches.</p><p>Have a style or size in mind? Contact us before your visit and ask about current availability.</p>",
             "text_style": "body"
           }
         },
@@ -68,7 +68,7 @@
         "mobile_content_alignment": "left",
         "padding_top": 24,
         "padding_bottom": 36,
-        "image": "shopify://shop_images/beyoutiful-storefront-marion-ave.jpg"
+        "image": "shopify://shop_images/beyoutiful-blue-tops-and-accessories-store-display.webp"
       }
     },
     "promise": {
@@ -78,7 +78,7 @@
           "type": "value",
           "settings": {
             "title": "XS – 3X",
-            "text": "Size-inclusive racks, always."
+            "text": "Styles in sizes XS to 3X."
           }
         },
         "v2": {
@@ -92,7 +92,7 @@
           "type": "value",
           "settings": {
             "title": "Affordable",
-            "text": "Boutique finds without boutique markups."
+            "text": "Distinctive finds at affordable prices."
           }
         },
         "v4": {
@@ -161,7 +161,8 @@
         "color_scheme": "scheme-2",
         "padding_top": 48,
         "padding_bottom": 48
-      }
+      },
+      "disabled": true
     },
     "visit": {
       "type": "visit-our-store",
@@ -196,16 +197,16 @@
       "settings": {
         "image_position": "right",
         "heading": "Come say hi",
-        "address_line_1": "264-A W Marion Ave",
+        "address_line_1": "264 W Marion Ave",
         "address_line_2": "Punta Gorda, Florida 33950",
         "phone": "(941) 369-1628",
         "show_directions": true,
         "directions_label": "Get Directions",
-        "note": "In-store pickup available",
+        "note": "Visit us in downtown Punta Gorda",
         "color_scheme": "scheme-1",
         "padding_top": 48,
         "padding_bottom": 48,
-        "image": "shopify://shop_images/beyoutiful-storefront-marion-ave.jpg"
+        "image": "shopify://shop_images/beyoutiful-blue-tops-and-accessories-store-display.webp"
       }
     }
   },

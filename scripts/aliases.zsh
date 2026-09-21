@@ -14,6 +14,11 @@ bb-pull()      { bb && shopify theme pull -e client --only config/settings_data.
 bb-zip()       { bb && shopify theme package && ls -1t *.zip | head -1; }   # zip for manual upload in Themes > Add theme
 bb-preview()   { bb && open docs/preview/index.html; }
 
+# Looks — hero runway cutouts + shop-this-look metaobjects (docs/looks.md)
+bb-cutouts()   { bb && python3 scripts/cutouts.py "$@"; }               # styled photos → transparent runway cutouts + docs/looks/looks.json
+bb-looks-seed(){ bb && node scripts/looks/seed-looks.ts "$@"; }         # needs SHOPIFY_STORE + SHOPIFY_ADMIN_TOKEN; --dry / --skip-files / --only <handle>
+bb-looks-client(){ SHOPIFY_STORE=v0m0hb-x3 bb-looks-seed "$@"; }        # Michele's store (token still from env)
+
 # One-shot: create Michele's empty collections in whichever store you're logged into (needs `shopify` auth + Admin API scope)
 # Prefer the Shopify MCP / admin UI; this is a fallback list to paste.
 bb-collections(){ cat "$BEAU_BOU_DIR/docs/collections.md"; }

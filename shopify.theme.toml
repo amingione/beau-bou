@@ -6,5 +6,5 @@ store = "kw59hc-k1"            # Amber's build store — preview only
 ignore = ["docs/*", "scripts/*", "README.md"]
 
 [environments.client]
-store = "REPLACE-WITH-MICHELE-STORE-HANDLE"
+store = "v0m0hb-x3"
 ignore = ["docs/*", "scripts/*", "README.md"]

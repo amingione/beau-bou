@@ -1,5 +1,50 @@
 # Client handoff checklist — Be-YOU-tiful Boutique by Michele
 
+## Current owner workflow — September 20, 2026
+
+**Scope confirmed by Amber:** Michele owns products, prices, variants, photos and inventory. Our work is the reusable boutique templates, app configuration, navigation and collection structure. Catalog entry is not a prerequisite for completing that setup.
+
+**Correct store:** `v0m0hb-x3` / `shopbeyoutifulboutique.com`. Work is in draft theme `be-you-tiful-1-2-0` (`192212107628`). Horizon is still live and the store is password protected as of the latest inspection. Do not modify the old `kw59hc-k1` development store.
+
+### Adding a product
+
+1. Enter title, description, photos, price and inventory. Use the **Default product** template.
+2. Use option names **Size** and **Color** consistently. Set the real variants and stock for each item.
+3. Set **Product type** to one of the exact category names in [collections.md](collections.md). Collections populate automatically. Add tag `new` for New Arrivals; add tag `sale` for Sale. Removing the tag removes the product from that collection. The `sale` tag does not change prices; Michele controls the actual price and compare-at price.
+4. Complete the pinned **Fit notes** and **Materials care** fields near the bottom of the product editor. Both are rich text, displayed by the boutique product template and hidden when blank. Never infer fabric composition or care instructions from photos.
+5. Optionally choose a published brand-specific **Size guide** page. This replaces the general guide link for that product; otherwise the template uses `/pages/size-guide`.
+6. Choose **Complementary products** (pinned by Search & Discovery) to populate **Complete the look**. These must be eligible, available products before Shopify returns recommendations.
+
+### Apps and built-in tools
+
+- **Shopify Search & Discovery is installed.** Availability and Price filters were already present. Product type was added; empty filter values are now hidden. Sold-out search results remain at the end. Size and Color filter sources are not offered until products with those options exist. After the first catalog entries: Apps → Search & Discovery → Filters → Add filter → Size / Color.
+- **Shopify Messaging** was already installed. No campaigns or customer messages were sent.
+- The theme includes size/color selectors, swatches, quick-add, cart, sale badges, related products, contact form, newsletter signup and app-block support. No paid plugin was added. Reviews, wishlist, back-in-stock alerts and chat are optional additions to decide from actual operating needs.
+
+### Completed setup
+
+- Nine automated collections created in the new store; exact rules are in [collections.md](collections.md).
+- Created visible **Size Guide**, **Visit Us**, **About**, and **Questions** pages with useful editable body content. Existing Contact and Your Privacy Choices pages preserved. Existing Shop the Look, Make it Yours page is hidden; preserve its content and the concurrent look/hero work.
+- Main menu now includes Home, Shop All, Contact, New Arrivals, Shop by Category, Sale, Visit Us. Footer includes Search, Your Privacy Choices, Size Guide, Questions, Visit Us, About, Contact. Header uses `main-menu`; footer uses `footer`.
+- Product template now has Boutique product details and Complete the look blocks. Policy links read the store’s saved shipping/refund policies. Removed unconfirmed delivery times and return promises. Removed invented numeric chart presets from the size-guide section.
+- Four changed theme files uploaded successfully to the draft only: `sections/main-product.liquid`, `templates/product.json`, `sections/size-guide.liquid`, `sections/footer-group.json`. Homepage, hero, colors and outfit work were not overwritten.
+
+### Final launch work
+
+- Shopify currently lists only the live Horizon theme’s page templates in page administration. When the boutique theme is published, assign About → `about`, Visit Us → `visit-us`, Questions → `faq`, Size Guide → `size-guide`, Contact → `contact`, Shop the Look → `shop-the-look`. The first four pages currently use Default page and already have real body content. Custom size-guide preview was verified in the draft.
+- Preserve and reconcile the theme editor’s existing unsaved design session before publishing. Look metaobject/hero work is tracked separately in [looks.md](looks.md); do not broad-push unrelated local files.
+- Michele must confirm shipping, pickup and returns terms in Shopify settings. Do not copy unapproved sample policy wording into the live store.
+- After catalog entry, activate Size/Color filters and check variants → add to cart → checkout using actual merchandise. No fake product records or prices were created.
+
+### Verification
+
+- Shopify accepted all four targeted theme files; draft remained unpublished.
+- Theme Check: zero errors in deployable theme files; nine upstream warnings. Whole-folder check also sees four errors and 49 warnings inside the existing `_to_delete/hero-runway-v1` archive, which is outside Shopify’s theme directories. Those archive files were not changed or uploaded.
+- Authenticated Chrome preview: custom size-guide template renders, sizing accordion expands (`aria-expanded=true`), mobile layout inspected, footer links rendered; no captured console errors. Mobile preview reset. Full product/cart/checkout flow awaits catalog data.
+- Brand preflight consulted the global brand index and this project’s source docs. No boutique-specific global brand entry exists; this handoff records the confirmed ownership and setup decisions.
+
+---
+
 Store facts (from Google Business Profile + Facebook, verified 2026-09-02):
 
 - 264-A W Marion Ave, Punta Gorda, FL 33950 · (941) 369-1628 · beyoutifulboutiquebymichele@gmail.com
@@ -17,14 +62,14 @@ Store facts (from Google Business Profile + Facebook, verified 2026-09-02):
 - [ ] Settings → Payments: Shopify Payments; enable Shop Pay; consider Sezzle/Afterpay (reference offers Sezzle)
 - [ ] Settings → Policies: generate Refund, Privacy, Terms, Shipping (theme footer links to these)
 - [ ] Settings → Customer accounts: **New customer accounts** on (header account icon)
-- [ ] Domain: buy `beyoutifulboutique.com` (or similar) via Shopify or point Michele's registrar
+- [ ] Domain: verify the configured `shopbeyoutifulboutique.com` domain
 
 ## 2. Theme install
 
 - [ ] `npm run push:client` (after setting the store handle in `shopify.theme.toml`) **or** `npm run package` → upload zip in Online Store → Themes **or** the no-login API path in `docs/store/README.md` (zip → Files → `themeCreate`). After any zip import, diff the theme's file list against the zip — Shopify drops files that fail validation without telling you.
 - [ ] Theme settings → Logo: upload transparent PNG (≥ 600px wide); Favicon: the circle logo
 - [ ] Theme settings → Social: Facebook URL; add Instagram when she has one
-- [ ] Create collections + menus exactly as `docs/collections.md` (already scripted once on the dev store — see `docs/store/README.md`; menus must be handles `beau-bou-main` / `beau-bou-footer`)
+- [ ] Create collections + menus exactly as `docs/collections.md` (already scripted once on the dev store — see `docs/store/README.md`; current new-store menus use `main-menu` / `footer`)
 - [ ] Upload the image set to Files first (`docs/images/`), same filenames — templates already point at `shopify://shop_images/beyoutiful-*`
 - [ ] Pages: about, visit-us, questions, size-guide, shop-the-look, contact with the matching template suffixes
 - [ ] Policies from `docs/policies/` (Settings → Policies)
@@ -37,7 +82,7 @@ Store facts (from Google Business Profile + Facebook, verified 2026-09-02):
 - [ ] Products: title, price, compare-at (for SALE badge), **Product type** (drives category collections), sizes as variants XS–3X, 2+ photos each
 - [ ] About page copy (her story, faith line)
 - [ ] Contact page live (`page.contact` template)
-- [ ] Mailing list: Shopify Email is free to 10k sends/mo — footer form already collects subscribers
+- [ ] Mailing list: the footer form collects subscribers; review current Shopify Messaging pricing before sending campaigns
 
 ## 4. Launch
 
@@ -51,3 +96,23 @@ Store facts (from Google Business Profile + Facebook, verified 2026-09-02):
 
 - Theme editor covers 95% of changes. Code changes → this repo → `npm run push:client` (stays unpublished until published in admin).
 - Dawn updates: compare against `Shopify/dawn` releases; only `layout/theme.liquid` and `sections/header.liquid` carry hand edits — everything else custom is additive.
+
+## Launch preparation — 2026-09-20
+
+- [VERIFIED] New client store: `v0m0hb-x3`; domain: `shopbeyoutifulboutique.com`. Store was private, with Horizon as its only installed theme at inspection. The custom v1.1 theme remains in development store `kw59hc-k1`.
+- [DECIDED] Amber requested completion today and supplied LIKEtoKNOW.it references for the page reached from a homepage banner. References are in `docs/images/inspo- banner routed page/`. The homepage now links to `/pages/shop-the-look`, retaining the shoppable outfit/video section.
+- [VERIFIED] Restored 75 missing local theme files from the September 18 Shopify export, preserving four locally differing templates. Rebuilt the empty theme settings schema from official Shopify Dawn v16.0.0 and restored the three boutique-specific styling controls.
+- [VERIFIED] Prepared `be-you-tiful-1.2.0.zip`; final Shopify Theme Check returned zero errors and nine warnings in upstream Dawn code. Browser rendering and mobile interactions remain untested until import.
+- [VERIFIED] Theme now references descriptive WebP photos, preserves the full branded cover on mobile, and suppresses example cards for empty featured collections. Draft copy no longer promises unconfirmed shipping times, returns terms, gift cards, or a live-stream schedule. Unverified review section remains disabled.
+- [VERIFIED] The new store had no products. Real prices, variants, inventory, and confirmed fulfillment/return terms are still required for online sales. Requested this information from Amber; no response received yet.
+- [VERIFIED] New store had Contact and Your Privacy Choices pages. About, Visit Us, Questions, Size Guide, and Shop the Look still need creation and template assignment after import, along with collections and menus.
+- [VERIFIED 15:45] Imported `be-you-tiful-1-2-0` as draft theme `192212107628` in `v0m0hb-x3`. Native Chrome picker succeeded where extension uploads returned “Not allowed.” Uploaded the 10 distinct WebPs referenced by the theme; Files count increased from 23 to 33. Temporary upload copies were removed after source hash verification.
+- [VERIFIED] Connected homepage hero, six category images, Shop the Look banner, and boutique image using the editor; all 10 rendered homepage image elements (including logo) loaded successfully. Inspected at 1440px and 390px; mobile document width equaled viewport (390px), no captured preview console errors. Full shopping flow is not validated.
+- [VERIFIED] Store visibility changed to Public during the session; Horizon remains the live theme. This agent has not published a theme or changed visibility.
+- [VERIFIED] Existing menus are Main menu (Home, Catalog, Contact), Footer menu (Search, Your Privacy Choices), and Customer account main menu. Header was connected to Main menu in the editor; a later partial CLI upload restored the old group configuration, so local header now uses `main-menu`. A subsequent header-only CLI push succeeded and the preview navigation shows Home, Catalog, Contact.
+- [BLOCKED] Shop the Look page content is entered in an open admin tab but NOT saved: Shopify reports “Title is required” despite the populated field. No new pages have been created. Retain the tab for recovery; do not duplicate the page blindly.
+- [VERIFIED] Shopify CLI login succeeded. A settings/templates-only push completed partially; index.json and templates/metaobject/look.json were rejected because new `hero-runway` / `main-look` sections were not in the uploaded draft.
+- [COORDINATION] New runway/look files and docs were added locally concurrently (15:31–15:39), outside this task’s edits. Preserve them; do not perform a broad push until their owner confirms readiness. The uploaded ZIP remains the earlier stable snapshot. Amber has been asked whether another agent is working on this theme.
+- [PENDING] Create/assign pages, collections, and complete menus; confirm real products/prices/sizes/inventory and fulfillment/return terms; verify interactions and checkout before publishing. Preview: https://shopbeyoutifulboutique.com/?preview_theme_id=192212107628
+
+- [VERIFIED 15:49] Mobile menu opens/closes with Home, Catalog, Contact; search dialog opens/closes; empty-cart drawer opens/closes. Preview console captured zero errors. Temporary viewport overrides were reset. Checkout/product flow remains blocked by absent catalog.

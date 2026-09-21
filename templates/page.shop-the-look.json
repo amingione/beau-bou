@@ -6,26 +6,26 @@
         "look": {
           "type": "look",
           "settings": {
-            "product": "harbor-nights-sequin-gown",
-            "note": "Michele is wearing a Medium"
+            "product": "",
+            "note": ""
           }
         },
         "p1": {
           "type": "piece",
           "settings": {
-            "product": "gold-leaf-drop-earrings"
+            "product": ""
           }
         },
         "p2": {
           "type": "piece",
           "settings": {
-            "product": "marion-ave-linen-blouse"
+            "product": ""
           }
         },
         "p3": {
           "type": "piece",
           "settings": {
-            "product": "charlotte-harbor-wrap-dress"
+            "product": ""
           }
         }
       },
@@ -36,27 +36,27 @@
         "p3"
       ],
       "settings": {
-        "eyebrow": "Try-on Thursdays",
+        "eyebrow": "Style inspiration",
         "heading": "Shop the Look",
-        "subheading": "Watch it on, then tap to add it to your bag",
+        "subheading": "See the outfit. Find your favorites.",
         "autoplay": true,
         "aspect": "4/5",
         "video_position": "left",
         "live_now": false,
         "live_label": "Live now",
-        "schedule": "Next live · Thursday 7PM on Facebook",
+        "schedule": "",
         "schedule_link": "https://www.facebook.com/MicheleMonksEnsmingerMansfield",
-        "schedule_link_label": "Follow for reminders",
+        "schedule_link_label": "Follow the boutique on Facebook",
         "rail_heading": "Shop this look",
         "pieces_heading": "Pieces that go with it",
         "quick_add": "standard",
-        "collection": "live-picks",
+        "collection": "",
         "collection_label": "See everything from this live",
         "full_width": false,
         "color_scheme": "scheme-1",
         "padding_top": 36,
         "padding_bottom": 36,
-        "poster": "shopify://shop_images/beyoutiful-shop-the-look-poster.jpg"
+        "poster": "shopify://shop_images/beyoutiful-blue-ruffle-trim-blouse-jeans.webp"
       }
     },
     "how": {
@@ -65,8 +65,8 @@
         "c1": {
           "type": "column",
           "settings": {
-            "title": "1 · Watch",
-            "text": "<p>Michele tries the week's new arrivals on real bodies, real sizes. Ask questions in the comments — she answers live.</p>",
+            "title": "1 · Explore",
+            "text": "<p>Discover outfit inspiration from the boutique.</p>",
             "link_label": "",
             "link": ""
           }
@@ -74,8 +74,8 @@
         "c2": {
           "type": "column",
           "settings": {
-            "title": "2 · Tap",
-            "text": "<p>Everything she's wearing is right here beside the video. Pick your size and add it — no digging through the shop.</p>",
+            "title": "2 · Choose your favorites",
+            "text": "<p>Follow the linked pieces to see their product details, or ask us about the look.</p>",
             "link_label": "",
             "link": ""
           }
@@ -83,8 +83,8 @@
         "c3": {
           "type": "column",
           "settings": {
-            "title": "3 · Pick up or ship",
-            "text": "<p>Free in-store pickup the next business day, or we ship it from Punta Gorda within 1–2 days.</p>",
+            "title": "3 · Make it yours",
+            "text": "<p>Check available sizes and styles, or visit us in downtown Punta Gorda.</p>",
             "link_label": "",
             "link": ""
           }
@@ -96,7 +96,7 @@
         "c3"
       ],
       "settings": {
-        "title": "How live shopping works",
+        "title": "Find your next look",
         "heading_size": "h2",
         "image_width": "third",
         "image_ratio": "adapt",

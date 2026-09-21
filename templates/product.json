@@ -42,22 +42,23 @@
             "share_label": "Share"
           }
         },
-        "fit": {
-          "type": "collapsible_tab",
+        "boutique_details": {
+          "type": "boutique_details",
           "settings": {
-            "heading": "Fit & sizing",
-            "icon": "ruler",
-            "content": "",
-            "page": "size-guide"
+            "size_page": "size-guide"
           }
         },
-        "pickup": {
-          "type": "collapsible_tab",
+        "complete_the_look": {
+          "type": "complementary",
           "settings": {
-            "heading": "Pickup, shipping & returns",
-            "icon": "box",
-            "content": "<p>Free in-store pickup at 264-A W Marion Ave, ready the next business day. Ships from Punta Gorda in 1–2 business days. Unworn items with tags: 14-day exchange or store credit (swim, jewelry and sale are final sale).</p>",
-            "page": ""
+            "block_heading": "Complete the look",
+            "make_collapsible_row": false,
+            "icon": "shirt",
+            "product_list_limit": 4,
+            "products_per_page": 2,
+            "pagination_style": "dots",
+            "image_ratio": "portrait",
+            "enable_quick_add": true
           }
         }
       },
@@ -69,9 +70,9 @@
         "quantity_selector",
         "buy_buttons",
         "description",
-        "fit",
-        "pickup",
-        "share"
+        "boutique_details",
+        "share",
+        "complete_the_look"
       ],
       "settings": {
         "enable_sticky_info": true,
@@ -104,7 +105,7 @@
         "products_to_show": 4,
         "columns_desktop": 4,
         "color_scheme": "scheme-1",
-        "image_ratio": "square",
+        "image_ratio": "portrait",
         "image_shape": "default",
         "show_secondary_image": true,
         "show_vendor": false,

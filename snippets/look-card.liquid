@@ -1,0 +1,56 @@
+{% comment %}
+  One "look" card — a background-free outfit cutout, whole card is the link to its /looks/<handle> page.
+  Used by sections/hero-looks.liquid (slides) and sections/main-look.liquid ("More looks").
+  Styles: assets/component-look-card.css
+
+  Accepts:
+  - image:   {Image|String} cutout image. "shopify://shop_images/x.webp" strings resolve through images[].
+  - url:     {String} link target.
+  - title:   {String} look title (caption + aria-label).
+  - eyebrow: {String} caption label. Default "Shop the look".
+  - lazy:    {Boolean} lazy-load. Default true.
+  - show_caption: {Boolean} default true.
+  - class:   {String} extra classes.
+  - attrs:   {String} extra attributes (e.g. data-slide).
+{% endcomment %}
+{%- liquid
+  assign bb_img = image
+  if bb_img != blank and bb_img.src == blank
+    assign bb_fname = bb_img | remove: 'shopify://shop_images/'
+    assign bb_img = images[bb_fname]
+  endif
+  assign card_title = title | default: 'Shop the look'
+  assign card_eyebrow = eyebrow | default: 'Shop the look'
+  assign loading = 'lazy'
+  if lazy == false
+    assign loading = 'eager'
+  endif
+  unless show_caption == false
+    assign caption_on = true
+  endunless
+-%}
+<a class="look-card {{ class }}" href="{{ url | default: '#' }}" aria-label="{{ card_eyebrow | escape }}: {{ card_title | escape }}" {{ attrs }} data-look-card>
+  <span class="look-card__figure">
+    {%- if bb_img != blank -%}
+      {{
+        bb_img
+        | image_url: width: 900
+        | image_tag:
+          loading: loading,
+          widths: '300, 450, 600, 900',
+          sizes: '(min-width: 990px) 24vw, 46vw',
+          class: 'look-card__img',
+          alt: card_title
+      }}
+    {%- else -%}
+      {{ 'lifestyle-1' | placeholder_svg_tag: 'look-card__img look-card__img--placeholder' }}
+    {%- endif -%}
+    <span class="look-card__floor" aria-hidden="true"></span>
+  </span>
+  {%- if caption_on -%}
+    <span class="look-card__caption">
+      <span class="look-card__eyebrow">{{ card_eyebrow | escape }}</span>
+      <span class="look-card__title bb-display">{{ card_title | escape }}</span>
+    </span>
+  {%- endif -%}
+</a>

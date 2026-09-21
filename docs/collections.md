@@ -1,55 +1,47 @@
-# Collections & menus the theme expects
+# Boutique collections and navigation
 
-Create these **empty** collections in Michele's store before pushing the theme so the homepage tiles and sliders resolve. Handles must match exactly (Shopify derives the handle from the title; edit the URL handle field if it differs).
+Created in `v0m0hb-x3` on September 20, 2026. Michele enters products and prices; these collections automatically organize her catalog.
 
-| Title | Handle | Used by |
+| Collection | Handle | Membership rule |
 | --- | --- | --- |
-| New Arrivals | `new-arrivals` | Hero CTA, "Shop What's New" slider |
-| Swimsuits | `swimsuits` | Category tile |
-| Dresses | `dresses` | Category tile |
-| Gowns | `gowns` | Category tile |
-| Tops | `tops` | Category tile |
-| Bottoms | `bottoms` | Category tile |
-| Jewelry + Accessories | `jewelry-accessories` | Category tile |
-| Sale | `sale` | "Sale" slider |
-| Shop All | `all` | Built-in Shopify collection — nothing to create |
+| New Arrivals | `new-arrivals` | Tag includes `new` |
+| Sale | `sale` | Tag includes `sale` |
+| Dresses | `dresses` | Product type equals `Dresses` |
+| Gowns | `gowns` | Product type equals `Gowns` |
+| Tops | `tops` | Product type equals `Tops` |
+| Bottoms | `bottoms` | Product type equals `Bottoms` |
+| Handbags | `handbags` | Product type equals `Handbags` |
+| Jewelry + Accessories | `jewelry-accessories` | Product type equals `Jewelry + Accessories` |
+| Swimsuits | `swimsuits` | Product type equals `Swimsuits` |
+| Shop All | `all` | Shopify’s built-in all-products route |
 
-Suggested automated rules (Products → Collections → Automated):
+Use those exact Product type names. A product can appear in its category, New Arrivals and Sale at the same time. Remove `new` or `sale` tags when appropriate. The Sale collection does not alter prices; the owner sets Price and Compare-at price. No product records, prices or inventory were created during setup.
 
-- **New Arrivals**: Product tag equals `new` (Michele tags new drops; remove tag after 30 days) — or Created date within last 30 days once Shopify supports it in your plan.
-- **Sale**: Compare-at price is greater than 0.
-- Category collections: Product type equals the category name — then Michele only sets **Product type** when adding an item.
+The existing empty Home page collection was preserved. The category listing `/collections` is linked from the main menu. The theme’s category tiles refer to Dresses, Gowns, Tops, Bottoms, Jewelry + Accessories and Handbags; featured sections use New Arrivals and Sale.
 
-## Menus (Navigation)
+## Main menu (`main-menu`)
 
-**main-menu** (header) — mirrors the reference's two-row nav, sized for a boutique:
+- Home → `/`
+- Shop All → `/collections/all`
+- Contact → `/pages/contact`
+- New Arrivals → `/collections/new-arrivals`
+- Shop by Category → `/collections`
+- Sale → `/collections/sale`
+- Visit Us → `/pages/visit-us`
 
-```
-What's New            → /collections/new-arrivals
-Best Sellers          → /collections/all?sort_by=best-selling
-Swimsuits             → /collections/swimsuits
-Dresses + Gowns       → /collections/dresses
-  ├ Dresses           → /collections/dresses
-  └ Gowns             → /collections/gowns
-Tops                  → /collections/tops
-Bottoms               → /collections/bottoms
-Jewelry + Accessories → /collections/jewelry-accessories
-Shop All              → /collections/all
-SALE!                 → /collections/sale
-Visit Us              → /pages/visit
-```
+## Footer menu (`footer`)
 
-**footer** menu (Help):
+Search, Your Privacy Choices, Size Guide, Questions, Visit Us, About, Contact. Shopify policy links are displayed separately by the footer when those policies are saved.
 
-```
-Contact Us          → /pages/contact
-About Us            → /pages/about
-Shipping & Returns  → /policies/refund-policy
-Privacy Policy      → /policies/privacy-policy
-```
+## Pages and template assignment
 
-## Pages
+| Page handle | Custom template | Current state |
+| --- | --- | --- |
+| `about` | `about` | Created, visible, Default page until theme launch |
+| `visit-us` | `visit-us` | Created, visible, Default page until theme launch |
+| `questions` | `faq` | Created, visible, Default page until theme launch |
+| `size-guide` | `size-guide` | Created, visible, Default page until theme launch |
+| `contact` | `contact` | Existing page; preserve |
+| `shop-the-look` | `shop-the-look` | Existing Shop the Look page is hidden; check its actual handle and outfit setup before linking/publishing |
 
-- `contact` — use template `page.contact` (Dawn contact form). Prefill heading "Any questions?"
-- `about` — Michele's story; the FB intro line "Accept yourself as you were designed by God" belongs here.
-- `visit` — add the **Visit our store** section via the editor (Add section → Visit our store).
+Only the live theme’s templates appear in Shopify’s page assignment menu. Assign the boutique templates after publishing the boutique theme. Until then, the four created pages have editable body content, and custom templates can be inspected through the draft theme editor. See [handoff.md](handoff.md) for product-field and app instructions.

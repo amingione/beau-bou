@@ -1,10 +1,39 @@
+# Dependencies
 node_modules/
-.DS_Store
+
+# Shopify CLI local state
 .shopify/
-*.log
+
+# Theme package builds (`npm run package` → be-you-tiful-<version>.zip)
+/*.zip
+
+# Client source material — lives in ~/LocalStorm/Work/Be-YOU-tiful Boutique/,
+# symlinked here so scripts/ and docs/looks/looks.json keep their paths
+/docs/images/Logo
+/docs/images/photos-in
+/docs/images/inspo- banner routed page
+/docs/images/final/
+
+# Agent scratch output (verification screenshots)
+/Claude outputs/
+
+# Env / secrets — env files live in ~/.env-store and are symlinked in
 .env
 .env.*
-docs/images/photos-in/*
-!docs/images/photos-in/README.md
-docs/images/final/
+!.env.example
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Logs & OS / editor noise
+*.log
+npm-debug.log*
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Staging area for files pending deletion
 _to_delete/

@@ -1,24 +1,163 @@
 {
   "sections": {
     "hero": {
-      "type": "hero-logo",
+      "type": "hero-looks",
+      "blocks": {
+        "look_1": {
+          "type": "look",
+          "settings": {
+            "image": "shopify://shop_images/beyoutiful-black-t-shirt-geometric-wide-leg-pants-cutout.webp",
+            "title": "Black T-Shirt Geometric Wide Leg Pants",
+            "link": "/looks/black-t-shirt-geometric-wide-leg-pants"
+          }
+        },
+        "look_2": {
+          "type": "look",
+          "settings": {
+            "image": "shopify://shop_images/beyoutiful-blue-leaf-print-top-white-pants-store-model-cutout.webp",
+            "title": "Blue Leaf Print Top White Pants",
+            "link": "/looks/blue-leaf-print-top-white-pants-store-model"
+          }
+        },
+        "look_3": {
+          "type": "look",
+          "settings": {
+            "image": "shopify://shop_images/beyoutiful-blue-tunic-blue-white-printed-pants-cutout.webp",
+            "title": "Blue Tunic Blue White Printed Pants",
+            "link": "/looks/blue-tunic-blue-white-printed-pants"
+          }
+        },
+        "look_4": {
+          "type": "look",
+          "settings": {
+            "image": "shopify://shop_images/beyoutiful-blue-tunic-white-cropped-pants-cutout.webp",
+            "title": "Blue Tunic White Cropped Pants",
+            "link": "/looks/blue-tunic-white-cropped-pants"
+          }
+        },
+        "look_5": {
+          "type": "look",
+          "settings": {
+            "image": "shopify://shop_images/beyoutiful-cream-crochet-ruffle-top-jeans-cutout.webp",
+            "title": "Cream Crochet Ruffle Top Jeans",
+            "link": "/looks/cream-crochet-ruffle-top-jeans"
+          }
+        },
+        "look_6": {
+          "type": "look",
+          "settings": {
+            "image": "shopify://shop_images/beyoutiful-denim-button-front-vest-dark-jeans-cutout.webp",
+            "title": "Denim Button Front Vest Dark Jeans",
+            "link": "/looks/denim-button-front-vest-dark-jeans"
+          }
+        },
+        "look_7": {
+          "type": "look",
+          "settings": {
+            "image": "shopify://shop_images/beyoutiful-pink-green-floral-outfit-pink-beach-tote-cutout.webp",
+            "title": "Pink Green Floral Outfit Pink Beach Tote",
+            "link": "/looks/pink-green-floral-outfit-pink-beach-tote"
+          }
+        },
+        "look_8": {
+          "type": "look",
+          "settings": {
+            "image": "shopify://shop_images/beyoutiful-royal-blue-outfit-printed-tote-cutout.webp",
+            "title": "Royal Blue Outfit Printed Tote",
+            "link": "/looks/royal-blue-outfit-printed-tote"
+          }
+        },
+        "look_9": {
+          "type": "look",
+          "settings": {
+            "image": "shopify://shop_images/beyoutiful-white-blue-floral-top-jeans-cutout.webp",
+            "title": "White Blue Floral Top Jeans",
+            "link": "/looks/white-blue-floral-top-jeans"
+          }
+        },
+        "look_10": {
+          "type": "look",
+          "settings": {
+            "image": "shopify://shop_images/beyoutiful-white-embroidered-blouse-olive-pants-cutout.webp",
+            "title": "White Embroidered Blouse Olive Pants",
+            "link": "/looks/white-embroidered-blouse-olive-pants"
+          }
+        },
+        "look_11": {
+          "type": "look",
+          "settings": {
+            "image": "shopify://shop_images/beyoutiful-white-embroidered-blouse-white-pants-cutout.webp",
+            "title": "White Embroidered Blouse White Pants",
+            "link": "/looks/white-embroidered-blouse-white-pants"
+          }
+        },
+        "look_12": {
+          "type": "look",
+          "settings": {
+            "image": "shopify://shop_images/beyoutiful-white-t-shirt-black-wide-leg-pants-cutout.webp",
+            "title": "White T-Shirt Black Wide Leg Pants",
+            "link": "/looks/white-t-shirt-black-wide-leg-pants"
+          }
+        },
+        "look_13": {
+          "type": "look",
+          "settings": {
+            "image": "shopify://shop_images/beyoutiful-white-t-shirt-denim-shorts-cutout.webp",
+            "title": "White T-Shirt Denim Shorts",
+            "link": "/looks/white-t-shirt-denim-shorts"
+          }
+        },
+        "look_14": {
+          "type": "look",
+          "settings": {
+            "image": "shopify://shop_images/beyoutiful-white-top-gray-patterned-wide-leg-pants-cutout.webp",
+            "title": "White Top Gray Patterned Wide Leg Pants",
+            "link": "/looks/white-top-gray-patterned-wide-leg-pants"
+          }
+        }
+      },
+      "block_order": [
+        "look_1",
+        "look_2",
+        "look_3",
+        "look_4",
+        "look_5",
+        "look_6",
+        "look_7",
+        "look_8",
+        "look_9",
+        "look_10",
+        "look_11",
+        "look_12",
+        "look_13",
+        "look_14"
+      ],
       "settings": {
-        "logo_width": 480,
-        "heading": "Be-YOU-tiful Boutique",
-        "tagline": "Swimsuits to gowns · XS to 3X",
-        "accent": "Accept yourself as you were designed by God",
-        "button_label": "Shop What's New",
-        "button_link": "shopify://collections/new-arrivals",
-        "content_position": "center",
-        "min_height": 60,
-        "overlay_opacity": 25,
-        "show_frame": true,
-        "full_width": false,
-        "color_scheme": "scheme-1",
-        "padding_top": 24,
-        "padding_bottom": 24,
-        "image": "shopify://shop_images/beyoutiful-hero-storefront.jpg",
-        "logo": "shopify://shop_images/beyoutiful-logo-black-1200.png"
+        "logo": "shopify://shop_images/beyoutiful-logo-holographic-silver-blue.webp",
+        "logo_width": 440,
+        "logo_link": "",
+        "button_label": "",
+        "button_link": "",
+        "source": "auto",
+        "full_body_only": true,
+        "max_looks": 14,
+        "interval": 5,
+        "transition": "fade",
+        "fade_ms": 1100,
+        "stage_height": 56,
+        "show_floor": true,
+        "pause_on_hover": true,
+        "show_captions": true,
+        "card_eyebrow": "Shop the look",
+        "full_width": true,
+        "color_scheme": "scheme-4",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "background": "shopify://shop_images/beyoutiful-hero-backdrop-mannequins.webp",
+        "overlay": 65,
+        "blur": 6,
+        "bg_position": "center center",
+        "min_height": 80
       }
     },
     "whats_new": {
@@ -52,20 +191,13 @@
     "tiles_1": {
       "type": "category-tiles",
       "blocks": {
-        "swim": {
-          "type": "tile",
-          "settings": {
-            "collection": "swimsuits",
-            "caption": "Swimsuits",
-            "image": "shopify://shop_images/beyoutiful-tile-swimsuits.jpg"
-          }
-        },
         "dresses": {
           "type": "tile",
           "settings": {
             "collection": "dresses",
             "caption": "Dresses",
-            "image": "shopify://shop_images/beyoutiful-tile-dresses.jpg"
+            "image": "shopify://shop_images/beyoutiful-pink-navy-floral-collared-dress-modeled.webp",
+            "link": "/collections/dresses"
           }
         },
         "gowns": {
@@ -73,18 +205,28 @@
           "settings": {
             "collection": "gowns",
             "caption": "Gowns",
-            "image": "shopify://shop_images/beyoutiful-tile-gowns.jpg"
+            "image": "shopify://shop_images/beyoutiful-cream-sleeveless-belted-maxi-dress.webp",
+            "link": "/collections/gowns"
+          }
+        },
+        "tops": {
+          "type": "tile",
+          "settings": {
+            "collection": "tops",
+            "caption": "Tops",
+            "image": "shopify://shop_images/beyoutiful-blue-fringe-hem-top-and-sandal-display.webp",
+            "link": "/collections/tops"
           }
         }
       },
       "block_order": [
-        "swim",
         "dresses",
-        "gowns"
+        "gowns",
+        "tops"
       ],
       "settings": {
         "columns_desktop": 3,
-        "columns_mobile": "1",
+        "columns_mobile": "2",
         "image_ratio": "1 / 1.15",
         "color_scheme": "scheme-1",
         "padding_top": 24,
@@ -94,39 +236,42 @@
     "tiles_2": {
       "type": "category-tiles",
       "blocks": {
-        "tops": {
-          "type": "tile",
-          "settings": {
-            "collection": "tops",
-            "caption": "Tops",
-            "image": "shopify://shop_images/beyoutiful-tile-tops.jpg"
-          }
-        },
         "bottoms": {
           "type": "tile",
           "settings": {
             "collection": "bottoms",
             "caption": "Bottoms",
-            "image": "shopify://shop_images/beyoutiful-tile-bottoms.jpg"
+            "image": "shopify://shop_images/beyoutiful-dark-wash-denim-shorts.webp",
+            "link": "/collections/bottoms"
           }
         },
-        "accessories": {
+        "jewelry-accessories": {
           "type": "tile",
           "settings": {
             "collection": "jewelry-accessories",
             "caption": "Jewelry + Accessories",
-            "image": "shopify://shop_images/beyoutiful-tile-jewelry-accessories.jpg"
+            "image": "shopify://shop_images/beyoutiful-rings-and-bracelets-jewelry-counter.webp",
+            "link": "/collections/jewelry-accessories"
+          }
+        },
+        "handbags": {
+          "type": "tile",
+          "settings": {
+            "collection": "handbags",
+            "caption": "Handbags",
+            "image": "shopify://shop_images/beyoutiful-floral-crossbody-bag-display.webp",
+            "link": "/collections/handbags"
           }
         }
       },
       "block_order": [
-        "tops",
         "bottoms",
-        "accessories"
+        "jewelry-accessories",
+        "handbags"
       ],
       "settings": {
         "columns_desktop": 3,
-        "columns_mobile": "1",
+        "columns_mobile": "2",
         "image_ratio": "1 / 1.15",
         "color_scheme": "scheme-1",
         "padding_top": 12,
@@ -140,7 +285,7 @@
           "type": "value",
           "settings": {
             "title": "XS – 3X",
-            "text": "Size-inclusive racks, always."
+            "text": "Styles in sizes XS to 3X."
           }
         },
         "v2": {
@@ -154,7 +299,7 @@
           "type": "value",
           "settings": {
             "title": "Affordable",
-            "text": "Boutique finds without boutique markups."
+            "text": "Distinctive finds at affordable prices."
           }
         }
       },
@@ -165,7 +310,7 @@
       ],
       "settings": {
         "show_ribbon": true,
-        "ribbon_items": "Swimsuits to gowns | Sizes XS – 3X | Affordable prices | Downtown Punta Gorda | In-store pickup",
+        "ribbon_items": "Swimsuits to gowns | Sizes XS – 3X | Affordable prices | Downtown Punta Gorda",
         "ribbon_scroll": true,
         "eyebrow": "Our promise",
         "statement": "Every body. Every occasion. <em>Be-YOU-tiful.</em>",
@@ -238,16 +383,63 @@
       "settings": {
         "image_position": "left",
         "heading": "Visit Our Store",
-        "address_line_1": "264-A W Marion Ave",
+        "address_line_1": "264 W Marion Ave",
         "address_line_2": "Punta Gorda, Florida 33950",
         "phone": "(941) 369-1628",
         "show_directions": true,
         "directions_label": "Get Directions",
-        "note": "In-store pickup available",
+        "note": "Visit us in downtown Punta Gorda",
         "color_scheme": "scheme-1",
         "padding_top": 36,
         "padding_bottom": 48,
-        "image": "shopify://shop_images/beyoutiful-storefront-marion-ave.jpg"
+        "image": "shopify://shop_images/beyoutiful-blue-tops-and-accessories-store-display.webp"
+      }
+    },
+    "shop_the_look_banner": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "See it. Style it. Make it yours.",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Discover outfit inspiration from the boutique, then explore the pieces that bring the look together.</p>",
+            "text_style": "body"
+          }
+        },
+        "button": {
+          "type": "button",
+          "settings": {
+            "button_label": "Shop the Look",
+            "button_link": "/pages/shop-the-look",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "text",
+        "button"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/beyoutiful-blue-ruffle-trim-blouse-jeans.webp",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "scheme-1",
+        "color_scheme": "scheme-2",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     }
   },
@@ -256,6 +448,7 @@
     "whats_new",
     "tiles_1",
     "tiles_2",
+    "shop_the_look_banner",
     "brand",
     "sale",
     "visit"

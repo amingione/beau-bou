@@ -135,6 +135,12 @@
             <p class="shop-look__note bb-accent">{{ look.settings.note | escape }}</p>
           {%- endif -%}
         </div>
+      {%- elsif request.design_mode == false -%}
+        <div class="shop-look__hero-card bb-frame">
+          <h3 class="bb-display">Love this look?</h3>
+          <p>Ask us about the pieces, available sizes, and styling options.</p>
+          <a class="button button--secondary" href="/pages/contact">Ask about this look</a>
+        </div>
       {%- elsif request.design_mode -%}
         <div class="shop-look__hero-card bb-frame shop-look__hero-card--empty">
           <span class="shop-look__tag">{{ section.settings.rail_heading | default: 'Shop this look' | escape }}</span>

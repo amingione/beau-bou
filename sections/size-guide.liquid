@@ -22,6 +22,8 @@
       <div class="size-guide__intro rte">{{ section.settings.intro }}</div>
     {%- endif -%}
 
+    {%- assign size_rows = section.blocks | where: 'type', 'row' -%}
+    {%- if size_rows.size > 0 -%}
     <div class="size-guide__table-wrap">
       <table class="size-guide__table">
         <thead>
@@ -49,6 +51,8 @@
       </table>
     </div>
 
+    {%- endif -%}
+
     {%- assign tips = section.blocks | where: 'type', 'tip' -%}
     {%- if tips.size > 0 -%}
       <div class="size-guide__tips">
@@ -72,46 +76,170 @@
   "name": "Size guide",
   "tag": "section",
   "class": "section",
-  "disabled_on": { "groups": ["header", "footer"] },
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer"
+    ]
+  },
   "settings": [
-    { "type": "text", "id": "heading", "default": "Find your fit", "label": "Heading" },
-    { "type": "richtext", "id": "intro", "label": "Intro", "default": "<p>Measurements are in inches. Boutique brands run a little differently from each other — when a piece runs small or generous, we say so on the product page. Between sizes? Size up for woven fabrics, down for stretch knits.</p>" },
-    { "type": "header", "content": "Column labels" },
-    { "type": "text", "id": "col_size", "default": "Size", "label": "Size" },
-    { "type": "text", "id": "col_us", "default": "US", "label": "US size" },
-    { "type": "text", "id": "col_bust", "default": "Bust", "label": "Bust" },
-    { "type": "text", "id": "col_waist", "default": "Waist", "label": "Waist" },
-    { "type": "text", "id": "col_hips", "default": "Hips", "label": "Hips" },
-    { "type": "text", "id": "footnote", "default": "Not sure? Message us a photo of the tag and your usual size — we'll tell you straight.", "label": "Footnote (accent font)" },
-    { "type": "color_scheme", "id": "color_scheme", "default": "scheme-1", "label": "Color scheme" },
-    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 24, "label": "Top padding" },
-    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 48, "label": "Bottom padding" }
+    {
+      "type": "text",
+      "id": "heading",
+      "default": "Find your fit",
+      "label": "Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "intro",
+      "label": "Intro",
+      "default": "<p>Sizes vary by brand, style and fabric. Check the product’s fit notes or contact us for its size chart and garment measurements.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Column labels"
+    },
+    {
+      "type": "text",
+      "id": "col_size",
+      "default": "Size",
+      "label": "Size"
+    },
+    {
+      "type": "text",
+      "id": "col_us",
+      "default": "US",
+      "label": "US size"
+    },
+    {
+      "type": "text",
+      "id": "col_bust",
+      "default": "Bust",
+      "label": "Bust"
+    },
+    {
+      "type": "text",
+      "id": "col_waist",
+      "default": "Waist",
+      "label": "Waist"
+    },
+    {
+      "type": "text",
+      "id": "col_hips",
+      "default": "Hips",
+      "label": "Hips"
+    },
+    {
+      "type": "text",
+      "id": "footnote",
+      "default": "Not sure? Message us a photo of the tag and your usual size — we'll tell you straight.",
+      "label": "Footnote (accent font)"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "default": "scheme-1",
+      "label": "Color scheme"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 24,
+      "label": "Top padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 48,
+      "label": "Bottom padding"
+    }
   ],
   "blocks": [
-    { "type": "row", "name": "Size row", "settings": [
-      { "type": "text", "id": "size", "label": "Size", "default": "M" },
-      { "type": "text", "id": "us", "label": "US", "default": "8–10" },
-      { "type": "text", "id": "bust", "label": "Bust", "default": "36–37" },
-      { "type": "text", "id": "waist", "label": "Waist", "default": "29–30" },
-      { "type": "text", "id": "hips", "label": "Hips", "default": "39–40" } ] },
-    { "type": "tip", "name": "How-to-measure tip", "settings": [
-      { "type": "text", "id": "title", "label": "Title", "default": "Bust" },
-      { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Around the fullest part, tape level and snug but not tight.</p>" } ] }
+    {
+      "type": "row",
+      "name": "Size row",
+      "settings": [
+        {
+          "type": "text",
+          "id": "size",
+          "label": "Size"
+        },
+        {
+          "type": "text",
+          "id": "us",
+          "label": "US"
+        },
+        {
+          "type": "text",
+          "id": "bust",
+          "label": "Bust"
+        },
+        {
+          "type": "text",
+          "id": "waist",
+          "label": "Waist"
+        },
+        {
+          "type": "text",
+          "id": "hips",
+          "label": "Hips"
+        }
+      ]
+    },
+    {
+      "type": "tip",
+      "name": "How-to-measure tip",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Bust"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Around the fullest part, tape level and snug but not tight.</p>"
+        }
+      ]
+    }
   ],
   "presets": [
-    { "name": "Size guide", "blocks": [
-      { "type": "row", "settings": { "size": "XS", "us": "0–2", "bust": "32–33", "waist": "25–26", "hips": "35–36" } },
-      { "type": "row", "settings": { "size": "S", "us": "4–6", "bust": "34–35", "waist": "27–28", "hips": "37–38" } },
-      { "type": "row", "settings": { "size": "M", "us": "8–10", "bust": "36–37", "waist": "29–30", "hips": "39–40" } },
-      { "type": "row", "settings": { "size": "L", "us": "12–14", "bust": "38–40", "waist": "31–33", "hips": "41–43" } },
-      { "type": "row", "settings": { "size": "XL", "us": "16", "bust": "41–43", "waist": "34–36", "hips": "44–46" } },
-      { "type": "row", "settings": { "size": "1X", "us": "16W–18W", "bust": "44–46", "waist": "37–39", "hips": "47–49" } },
-      { "type": "row", "settings": { "size": "2X", "us": "20W–22W", "bust": "47–49", "waist": "40–42", "hips": "50–52" } },
-      { "type": "row", "settings": { "size": "3X", "us": "24W–26W", "bust": "50–52", "waist": "43–45", "hips": "53–55" } },
-      { "type": "tip", "settings": { "title": "Bust", "text": "<p>Around the fullest part, tape level and snug but not tight.</p>" } },
-      { "type": "tip", "settings": { "title": "Waist", "text": "<p>Around your natural waist — the narrowest point, usually just above the belly button.</p>" } },
-      { "type": "tip", "settings": { "title": "Hips", "text": "<p>Around the fullest part of your hips and seat, feet together.</p>" } }
-    ] }
+    {
+      "name": "Size guide",
+      "blocks": [
+        {
+          "type": "tip",
+          "settings": {
+            "title": "Bust",
+            "text": "<p>Around the fullest part, tape level and snug but not tight.</p>"
+          }
+        },
+        {
+          "type": "tip",
+          "settings": {
+            "title": "Waist",
+            "text": "<p>Around your natural waist — the narrowest point, usually just above the belly button.</p>"
+          }
+        },
+        {
+          "type": "tip",
+          "settings": {
+            "title": "Hips",
+            "text": "<p>Around the fullest part of your hips and seat, feet together.</p>"
+          }
+        }
+      ]
+    }
   ]
 }
 {% endschema %}

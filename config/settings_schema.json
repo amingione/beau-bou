@@ -1,11 +1,11 @@
 [
   {
     "name": "theme_info",
-    "theme_name": "Beau Bou",
-    "theme_version": "1.0.0",
+    "theme_name": "Be-YOU-tiful",
+    "theme_version": "1.2.0",
     "theme_author": "LaunchWell Brands",
-    "theme_documentation_url": "https://github.com/ambermingione/beau-bou",
-    "theme_support_url": "mailto:hello@launchwellbrands.com"
+    "theme_documentation_url": "https://help.shopify.com/manual/online-store/themes",
+    "theme_support_url": "https://support.shopify.com/"
   },
   {
     "name": "t:settings_schema.logo.name",
@@ -111,7 +111,7 @@
       {
         "type": "font_picker",
         "id": "type_header_font",
-        "default": "assistant_n4",
+        "default": "playfair_display_n4",
         "label": "t:settings_schema.typography.settings.type_header_font.label"
       },
       {
@@ -131,36 +131,8 @@
       {
         "type": "font_picker",
         "id": "type_body_font",
-        "default": "assistant_n4",
+        "default": "poppins_n4",
         "label": "t:settings_schema.typography.settings.type_body_font.label"
-      },
-      {
-        "type": "font_picker",
-        "id": "type_accent_font",
-        "default": "playfair_display_i4",
-        "label": "Accent font (script/italic details)",
-        "info": "Used for small brand accents like “by Michele” and eyebrow labels."
-      },
-      {
-        "type": "range",
-        "id": "nav_letter_spacing",
-        "min": 0,
-        "max": 30,
-        "step": 1,
-        "unit": "em%",
-        "default": 12,
-        "label": "Navigation letter spacing"
-      },
-      {
-        "type": "range",
-        "id": "display_letter_spacing",
-        "min": 0,
-        "max": 60,
-        "step": 2,
-        "unit": "em%",
-        "default": 30,
-        "label": "Display heading letter spacing",
-        "info": "Applies to tile captions and boxed section titles (the wide-tracked serif look)."
       },
       {
         "type": "range",
@@ -1492,6 +1464,35 @@
         "id": "customer_account_menu",
         "default": "customer-account-main-menu",
         "label": "t:settings_schema.customer_accounts.settings.customer_account_menu.label"
+      }
+    ]
+  },
+  {
+    "name": "Boutique styling",
+    "settings": [
+      {
+        "type": "font_picker",
+        "id": "type_accent_font",
+        "label": "Accent font",
+        "default": "playfair_display_i4"
+      },
+      {
+        "type": "range",
+        "id": "nav_letter_spacing",
+        "label": "Navigation letter spacing",
+        "min": 0,
+        "max": 40,
+        "step": 1,
+        "default": 12
+      },
+      {
+        "type": "range",
+        "id": "display_letter_spacing",
+        "label": "Display letter spacing",
+        "min": 0,
+        "max": 50,
+        "step": 1,
+        "default": 30
       }
     ]
   }

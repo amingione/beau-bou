@@ -21,7 +21,7 @@
 }
 
 .review-strip__stars {
-  color: #0f5f66;
+  color: var(--bb-accent);
   letter-spacing: 0.15em;
   font-size: 1.4rem;
   margin-right: 0.6rem;
