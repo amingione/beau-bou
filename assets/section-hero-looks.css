@@ -217,64 +217,129 @@
   }
 }
 
-/* The runway sits below the cover hero, on a quiet ivory/lavender stage. */
+
+/* A contained editorial triptych: photographs frame the brand at every width. */
 .hero-looks--runway {
-  color: #2e2a33;
-  background: #fbf8f5;
   --color-background: 251, 248, 245;
   --color-foreground: 46, 42, 51;
-  border-block: 1px solid rgba(110, 95, 134, 0.12);
+  color: #2e2a33;
+  background: #fbf8f5;
+  min-height: 0;
+  container-type: inline-size;
+  border-block: 1px solid rgba(110, 95, 134, 0.15);
 }
-.hero-looks--runway .hero-looks__bg,
-.hero-looks--runway.hero-looks--gradient .hero-looks__bg {
-  background:
-    radial-gradient(ellipse at 50% 45%, rgba(220, 212, 236, 0.55), transparent 65%),
-    linear-gradient(120deg, #fbf8f5, #f6f0f6 50%, #fbf8f5);
+.hero-looks--runway .hero-looks__bg { display: none; }
+.hero-looks--runway .hero-looks__grid {
+  box-sizing: border-box;
+  max-width: 1160px;
+  margin-inline: auto;
+  padding: clamp(28px, 4vw, 56px) clamp(16px, 4vw, 56px);
+  grid-template-columns: minmax(0, 1fr) minmax(130px, 0.55fr) minmax(0, 1fr);
+  grid-template-areas: 'left center right';
+  gap: clamp(16px, 3vw, 40px);
+  align-items: center;
 }
-.hero-looks--runway .hero-looks__bg-img,
-.hero-looks--runway .hero-looks__bg::after { display: none; }
-.hero-looks--runway .hero-looks__logo { max-width: 100%; }
+.hero-looks--runway .hero-looks__center { gap: 20px; padding: 0; min-width: 0; }
+.hero-looks--runway .hero-looks__logo { width: min(var(--logo-width), 100%); }
 .hero-looks--runway .hero-looks__logo img {
-  max-height: 34rem;
+  width: 100%;
+  max-height: 190px;
   object-fit: contain;
-  filter: drop-shadow(0 8px 18px rgba(110, 95, 134, 0.14));
+  filter: none;
 }
-.hero-looks--runway .hero-looks__peacock { width: min(var(--logo-width), 18.6rem); }
-.hero-looks--runway .look-card__img { filter: drop-shadow(0 14px 22px rgba(46, 42, 51, 0.14)); }
-.hero-looks--runway .look-card__floor {
-  background: radial-gradient(ellipse at center, rgba(110, 95, 134, 0.18), transparent 68%);
+.hero-looks--runway .hero-looks__peacock { width: 92px; }
+.hero-looks__editorial-title {
+  font-family: var(--font-heading-family);
+  font-weight: var(--font-heading-weight);
+  font-size: clamp(20px, 2.3vw, 32px);
+  line-height: 1.18;
+  letter-spacing: -0.025em;
+  text-align: center;
+  margin: 0;
+  max-width: 8ch;
 }
-.hero-looks--runway .look-card__caption { max-width: 100%; box-sizing: border-box; }
-.hero-looks--runway .look-card__title { max-width: 100%; }
-.hero-looks__motion {
-  position: absolute;
-  bottom: 1rem;
-  right: 1.6rem;
-  z-index: 2;
-  min-height: 44px;
-  padding: 0.8rem 1.2rem;
-  border: 1px solid rgba(var(--color-foreground), 0.25);
-  background: rgba(var(--color-background), 0.9);
-  color: rgb(var(--color-foreground));
-  font: inherit;
-  font-size: 1.1rem;
-  letter-spacing: 0.06em;
-  cursor: pointer;
+.hero-looks--runway .looks-stage {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 4.5;
 }
-.hero-looks__motion[hidden] { display: none; }
-.hero-looks__motion:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
-.hero-looks--runway .hero-looks__grid { padding-bottom: 7rem; }
-@media screen and (max-width: 989px) {
-  .hero-looks--runway { min-height: 0; }
-  .hero-looks--runway .hero-looks__grid { gap: 1.2rem; padding-top: 1.6rem; }
-  .hero-looks--runway .hero-looks__logo img { max-height: 15rem; }
-  .hero-looks--runway .hero-looks__center { padding: 0; }
-  .hero-looks--runway .looks-stage { height: clamp(22rem, 38vh, 38rem); }
-  .hero-looks--runway .look-card__title { display: none; }
+.hero-looks--photography .looks-stage { border: 1px solid rgba(46, 42, 51, 0.2); background: #f0ebe6; }
+.hero-looks--photography .look-card__figure { height: calc(100% - 54px); overflow: hidden; }
+.hero-looks--photography .look-card__img {
+  width: 100%; height: 100%; max-width: none;
+  object-fit: cover; object-position: center;
+  filter: none; transform: none;
+}
+.hero-looks--photography .look-card__floor,
+.hero-looks--photography .looks-stage::after { display: none; }
+.hero-looks--photography .looks-slide { transform: none; }
+.hero-looks--photography .look-card__caption {
+  box-sizing: border-box;
+  inset: auto 0 0;
+  height: 54px;
+  max-width: 100%;
+  transform: none;
+  opacity: 1;
+  border: 0;
+  border-top: 1px solid rgba(46, 42, 51, 0.14);
+  padding: 9px 12px;
+  background: #fbf8f5;
+  backdrop-filter: none;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 3px;
+}
+.hero-looks--photography .look-card__title {
+  display: block;
+  order: -1;
+  max-width: 100%;
+  font-family: var(--font-heading-family);
+  font-size: 15px;
+  line-height: 1.2;
+  letter-spacing: 0;
+  text-transform: none;
+}
+.hero-looks--photography .look-card__eyebrow { font-size: 8px; line-height: 1.3; letter-spacing: 0.1em; opacity: 0.75; }
+.hero-looks__controls { display: flex; align-items: center; justify-content: center; gap: 4px; }
+.hero-looks__controls[hidden] { display: none; }
+.hero-looks__control {
+  display: grid; place-items: center;
+  width: 40px; height: 44px; padding: 0;
+  background: transparent; color: inherit;
+  border: 0; cursor: pointer;
+}
+.hero-looks__control:hover { background: rgba(110, 95, 134, 0.08); }
+.hero-looks__control:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+.hero-looks__control svg { display: block; width: 14px; height: 14px; }
+.hero-looks__motion [data-play-icon] { display: none; }
+.hero-looks__motion[data-paused='true'] [data-play-icon] { display: block; }
+.hero-looks__motion[data-paused='true'] [data-pause-icon] { display: none; }
+.hero-looks__counter { font-size: 10px; letter-spacing: 0.16em; margin: -14px 0 0; color: #6e5f86; }
+@container (max-width: 620px) {
+  .hero-looks--runway .hero-looks__grid {
+    grid-template-columns: minmax(0, 1fr) 66px minmax(0, 1fr);
+    gap: 12px;
+    padding: 24px 16px 70px;
+  }
+  .hero-looks--runway .hero-looks__center { gap: 12px; }
+  .hero-looks--runway .hero-looks__peacock { width: 52px; }
+  .hero-looks--runway .hero-looks__logo img { max-height: 96px; }
+  .hero-looks__editorial-title { font-size: 15px; max-width: 8ch; }
+  .hero-looks__controls { position: absolute; bottom: 14px; left: 50%; transform: translateX(-50%); }
+  .hero-looks__counter { display: none; }
+  .hero-looks--photography .look-card__figure { height: calc(100% - 36px); }
+  .hero-looks--photography .look-card__caption { height: 36px; padding: 4px 6px; }
+  .hero-looks--photography .look-card__title { font-family: var(--font-body-family); font-size: 10px; }
+  .hero-looks--photography .look-card__eyebrow { display: none; }
+}
+@container (max-width: 380px) {
+  .hero-looks--runway .hero-looks__grid { grid-template-columns: minmax(0, 1fr) 44px minmax(0, 1fr); gap: 8px; padding-inline: 12px; }
+  .hero-looks--runway .hero-looks__peacock { width: 40px; }
+  .hero-looks__editorial-title { font-size: 12px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .hero-looks .looks-slide,
   .hero-looks .look-card__img,
   .hero-looks .look-card__caption { transition: none; transform: none; }
-  .hero-looks .look-card__caption { transform: translateX(-50%); }
 }

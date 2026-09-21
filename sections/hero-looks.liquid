@@ -43,7 +43,7 @@
 
 <div
   id="Looks-{{ section.id }}"
-  class="hero-looks hero-looks--{{ section.settings.presentation | default: 'editorial' }} color-{{ section.settings.color_scheme }}{% if section.settings.full_width %} hero-looks--full{% endif %}{% if section.settings.show_floor %} hero-looks--floor{% endif %}{% if bb_bg == blank %} hero-looks--gradient{% endif %}"
+  class="hero-looks hero-looks--{{ section.settings.presentation | default: 'editorial' }} hero-looks--{{ section.settings.media_style | default: 'cutout' }} color-{{ section.settings.color_scheme }}{% if section.settings.full_width %} hero-looks--full{% endif %}{% if section.settings.show_floor %} hero-looks--floor{% endif %}{% if bb_bg == blank %} hero-looks--gradient{% endif %}"
   data-hero-looks
   data-interval="{{ section.settings.interval | times: 1000 }}"
   data-pause-hover="{{ section.settings.pause_on_hover }}"
@@ -91,6 +91,22 @@
         <h1 class="hero-looks__heading bb-display">{{ shop.name }}</h1>
       {%- endif -%}
 
+      {%- if section.settings.center_heading != blank -%}
+        <h2 class="hero-looks__editorial-title">{{ section.settings.center_heading | escape }}</h2>
+      {%- endif -%}
+      <div class="hero-looks__controls" data-looks-controls hidden>
+        <button type="button" class="hero-looks__control" data-looks-prev aria-label="Previous outfits" aria-controls="Looks-{{ section.id }}">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M14 5l-7 7 7 7"/></svg>
+        </button>
+        <button type="button" class="hero-looks__control hero-looks__motion" data-looks-toggle aria-label="Pause slideshow" aria-controls="Looks-{{ section.id }}">
+          <svg data-pause-icon viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M8 5v14M16 5v14"/></svg>
+          <svg data-play-icon viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M8 4l12 8-12 8z"/></svg>
+        </button>
+        <button type="button" class="hero-looks__control" data-looks-next aria-label="Next outfits" aria-controls="Looks-{{ section.id }}">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M10 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+      <p class="hero-looks__counter" data-looks-counter hidden></p>
       {%- if section.settings.button_label != blank -%}
         <a href="{{ section.settings.button_link | default: '/collections/all' }}" class="button hero-looks__button">{{ section.settings.button_label | escape }}</a>
       {%- endif -%}
@@ -100,9 +116,6 @@
       {% render 'hero-looks-stage', section: section, parity: 1, label: 'Outfit inspiration, right' %}
     </div>
   </div>
-  <button type="button" class="hero-looks__motion" data-looks-toggle aria-controls="Looks-{{ section.id }}" hidden>
-    Pause slideshow
-  </button>
 </div>
 
 {% schema %}
@@ -112,6 +125,10 @@
   "class": "section section--hero-looks",
   "disabled_on": { "groups": ["header", "footer"] },
   "settings": [
+    { "type": "text", "id": "center_heading", "label": "Center heading", "default": "The boutique edit" },
+    { "type": "select", "id": "media_style", "label": "Photo presentation", "default": "photography", "options": [
+      { "value": "photography", "label": "Framed photography" },
+      { "value": "cutout", "label": "Transparent cutouts" } ] },
     { "type": "select", "id": "presentation", "label": "Presentation", "default": "runway", "options": [
       { "value": "runway", "label": "Ivory runway beneath hero" },
       { "value": "editorial", "label": "Dark editorial hero" } ] },
@@ -157,8 +174,8 @@
   ],
   "blocks": [
     { "type": "look", "name": "Look (manual)", "settings": [
-      { "type": "image_picker", "id": "image", "label": "Cutout image", "info": "Transparent background — scripts/cutouts.py makes these." },
-      { "type": "text", "id": "image_asset", "label": "Bundled image filename", "info": "Preloaded boutique photo. Choosing a cutout image above replaces it." },
+      { "type": "image_picker", "id": "image", "label": "Outfit photo", "info": "Use a clear portrait photo with the outfit centered." },
+      { "type": "text", "id": "image_asset", "label": "Bundled image filename", "info": "Preloaded boutique photo. Choosing an outfit photo above replaces it." },
       { "type": "text", "id": "title", "label": "Title", "default": "Shop this look" },
       { "type": "url", "id": "link", "label": "Link" } ] }
   ],

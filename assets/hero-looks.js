@@ -12,6 +12,8 @@
       this.hovered = false;
       this.focused = false;
       this.toggle = root.querySelector('[data-looks-toggle]');
+      this.controls = root.querySelector('[data-looks-controls]');
+      this.counter = root.querySelector('[data-looks-counter]');
       this.stages = Array.from(root.querySelectorAll('[data-looks-stage]'))
         .map((el) => ({ el, slides: Array.from(el.querySelectorAll('[data-slide]')), index: 0 }))
         .filter((stage) => stage.slides.length > 0);
@@ -21,6 +23,15 @@
       });
       if (this.stages.every((stage) => stage.slides.length < 2)) return;
       const on = (target, event, handler) => target.addEventListener(event, handler, { signal: this.events.signal });
+      if (this.controls) this.controls.hidden = false;
+      if (this.counter) this.counter.hidden = false;
+      [[root.querySelector('[data-looks-prev]'), -1], [root.querySelector('[data-looks-next]'), 1]].forEach(([button, direction]) => {
+        if (button) on(button, 'click', () => {
+          this.userPaused = true;
+          this.advance(direction);
+          this.sync();
+        });
+      });
       if (this.toggle) {
         this.toggle.hidden = false;
         on(this.toggle, 'click', () => {
@@ -57,20 +68,30 @@
       if (active) slide.setAttribute('aria-current', 'true');
       else slide.removeAttribute('aria-current');
     }
-    advance() {
+    advance(direction = 1) {
       this.stages.forEach((stage) => {
         if (stage.slides.length < 2) return;
         this.setSlide(stage.slides[stage.index], false);
-        stage.index = (stage.index + 1) % stage.slides.length;
+        stage.index = (stage.index + direction + stage.slides.length) % stage.slides.length;
         this.setSlide(stage.slides[stage.index], true);
         const next = stage.slides[(stage.index + 1) % stage.slides.length].querySelector('img');
         if (next) next.loading = 'eager';
       });
+      this.updateCounter();
+    }
+    updateCounter() {
+      if (!this.counter || !this.stages.length) return;
+      const stage = this.stages.reduce((longest, item) => item.slides.length > longest.slides.length ? item : longest);
+      this.counter.textContent = `${String(stage.index + 1).padStart(2, '0')} / ${String(stage.slides.length).padStart(2, '0')}`;
     }
     sync() {
       window.clearInterval(this.timer);
       this.timer = 0;
-      if (this.toggle) this.toggle.textContent = this.userPaused ? 'Play slideshow' : 'Pause slideshow';
+      if (this.toggle) {
+        this.toggle.setAttribute('aria-label', this.userPaused ? 'Play slideshow' : 'Pause slideshow');
+        this.toggle.dataset.paused = String(this.userPaused);
+      }
+      this.updateCounter();
       if (!this.userPaused && !this.hovered && !this.focused && !document.hidden) {
         this.timer = window.setInterval(() => this.advance(), this.interval);
       }

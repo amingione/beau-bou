@@ -328,172 +328,74 @@
           "type": "look",
           "settings": {
             "image": "",
-            "title": "Black T-Shirt Geometric Wide Leg Pants",
-            "link": "/looks/black-t-shirt-geometric-wide-leg-pants",
-            "image_asset": "beyoutiful-black-t-shirt-geometric-wide-leg-pants-cutout.webp"
-          }
-        },
-        "look_2": {
-          "type": "look",
-          "settings": {
-            "image": "",
-            "title": "Blue Leaf Print Top White Pants",
-            "link": "/looks/blue-leaf-print-top-white-pants-store-model",
-            "image_asset": "beyoutiful-blue-leaf-print-top-white-pants-store-model-cutout.webp"
+            "image_asset": "beyoutiful-runway-orange-floral-midi-dress.webp",
+            "title": "Orange floral dress",
+            "link": "/pages/contact"
           }
         },
         "look_3": {
           "type": "look",
           "settings": {
             "image": "",
-            "title": "Blue Tunic Blue White Printed Pants",
-            "link": "/looks/blue-tunic-blue-white-printed-pants",
-            "image_asset": "beyoutiful-blue-tunic-blue-white-printed-pants-cutout.webp"
+            "image_asset": "beyoutiful-runway-navy-white-floral-maxi-dress.webp",
+            "title": "Navy & white maxi",
+            "link": "/pages/contact"
           }
         },
         "look_4": {
           "type": "look",
           "settings": {
             "image": "",
-            "title": "Blue Tunic White Cropped Pants",
-            "link": "/looks/blue-tunic-white-cropped-pants",
-            "image_asset": "beyoutiful-blue-tunic-white-cropped-pants-cutout.webp"
+            "image_asset": "beyoutiful-runway-blue-ruffle-sleeve-blouse.webp",
+            "title": "Blue ruffle blouse",
+            "link": "/pages/contact"
           }
         },
         "look_5": {
           "type": "look",
           "settings": {
             "image": "",
-            "title": "Cream Crochet Ruffle Top Jeans",
-            "link": "/looks/cream-crochet-ruffle-top-jeans",
-            "image_asset": "beyoutiful-cream-crochet-ruffle-top-jeans-cutout.webp"
-          }
-        },
-        "look_6": {
-          "type": "look",
-          "settings": {
-            "image": "",
-            "title": "Denim Button Front Vest Dark Jeans",
-            "link": "/looks/denim-button-front-vest-dark-jeans",
-            "image_asset": "beyoutiful-denim-button-front-vest-dark-jeans-cutout.webp"
-          }
-        },
-        "look_7": {
-          "type": "look",
-          "settings": {
-            "image": "",
-            "title": "Pink Green Floral Outfit Pink Beach Tote",
-            "link": "/looks/pink-green-floral-outfit-pink-beach-tote",
-            "image_asset": "beyoutiful-pink-green-floral-outfit-pink-beach-tote-cutout.webp"
-          }
-        },
-        "look_8": {
-          "type": "look",
-          "settings": {
-            "image": "",
-            "title": "Royal Blue Outfit Printed Tote",
-            "link": "/looks/royal-blue-outfit-printed-tote",
-            "image_asset": "beyoutiful-royal-blue-outfit-printed-tote-cutout.webp"
-          }
-        },
-        "look_9": {
-          "type": "look",
-          "settings": {
-            "image": "",
-            "title": "White Blue Floral Top Jeans",
-            "link": "/looks/white-blue-floral-top-jeans",
-            "image_asset": "beyoutiful-white-blue-floral-top-jeans-cutout.webp"
-          }
-        },
-        "look_10": {
-          "type": "look",
-          "settings": {
-            "image": "",
-            "title": "White Embroidered Blouse Olive Pants",
-            "link": "/looks/white-embroidered-blouse-olive-pants",
-            "image_asset": "beyoutiful-white-embroidered-blouse-olive-pants-cutout.webp"
-          }
-        },
-        "look_11": {
-          "type": "look",
-          "settings": {
-            "image": "",
-            "title": "White Embroidered Blouse White Pants",
-            "link": "/looks/white-embroidered-blouse-white-pants",
-            "image_asset": "beyoutiful-white-embroidered-blouse-white-pants-cutout.webp"
-          }
-        },
-        "look_12": {
-          "type": "look",
-          "settings": {
-            "image": "",
-            "title": "White T-Shirt Black Wide Leg Pants",
-            "link": "/looks/white-t-shirt-black-wide-leg-pants",
-            "image_asset": "beyoutiful-white-t-shirt-black-wide-leg-pants-cutout.webp"
-          }
-        },
-        "look_13": {
-          "type": "look",
-          "settings": {
-            "image": "",
-            "title": "White T-Shirt Denim Shorts",
-            "link": "/looks/white-t-shirt-denim-shorts",
-            "image_asset": "beyoutiful-white-t-shirt-denim-shorts-cutout.webp"
-          }
-        },
-        "look_14": {
-          "type": "look",
-          "settings": {
-            "image": "",
-            "title": "White Top Gray Patterned Wide Leg Pants",
-            "link": "/looks/white-top-gray-patterned-wide-leg-pants",
-            "image_asset": "beyoutiful-white-top-gray-patterned-wide-leg-pants-cutout.webp"
+            "image_asset": "beyoutiful-runway-blue-green-printed-dress.webp",
+            "title": "Blue & green dress",
+            "link": "/pages/contact"
           }
         }
       },
       "block_order": [
         "look_1",
-        "look_2",
         "look_3",
         "look_4",
-        "look_5",
-        "look_6",
-        "look_7",
-        "look_8",
-        "look_9",
-        "look_10",
-        "look_11",
-        "look_12",
-        "look_13",
-        "look_14"
+        "look_5"
       ],
       "settings": {
         "logo": "",
-        "logo_width": 240,
+        "logo_width": 140,
         "logo_link": "",
         "button_label": "",
         "button_link": "",
-        "source": "auto",
+        "source": "manual",
         "full_body_only": true,
-        "max_looks": 14,
+        "max_looks": 4,
         "interval": 5,
         "transition": "fade",
-        "fade_ms": 1100,
+        "fade_ms": 800,
         "stage_height": 52,
-        "show_floor": true,
-        "pause_on_hover": true,
+        "show_floor": false,
+        "pause_on_hover": false,
         "show_captions": true,
-        "card_eyebrow": "Shop the look",
+        "card_eyebrow": "Ask about this look",
         "full_width": true,
         "color_scheme": "scheme-1",
-        "padding_top": 24,
-        "padding_bottom": 24,
+        "padding_top": 0,
+        "padding_bottom": 0,
         "background": "",
         "overlay": 65,
         "blur": 6,
         "bg_position": "center center",
         "min_height": 60,
-        "presentation": "runway"
+        "presentation": "runway",
+        "media_style": "photography",
+        "center_heading": "The boutique edit"
       }
     }
   },

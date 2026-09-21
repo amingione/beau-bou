@@ -2,9 +2,17 @@
 
 Last updated: 2026-09-21
 
+## Current revision — 2026-09-21
+
+[VERIFIED] Amber rejected the first rendered runway: the standalone cutouts, oversized empty stage, and peacock stacked above the outfits did not meet the intended feature quality. Do not restore that presentation or describe it as approved based on the earlier concept approval.
+
+[OBSERVED] A newer client source set exists at `~/LocalStorm/Work/Be-YOU-tiful Boutique/beyoutiful-try-ons/`. Selected portrait sources are 1536×2048, substantially better than the old 414px thumbnails. Original files remain untouched. The theme uses four 900px WebP deployment assets (`assets/beyoutiful-runway-*.webp`), sourced from try-on-01 (orange floral dress), try-on-03 (navy/white maxi), try-on-08 (blue blouse), and try-on-02 (blue/green dress).
+
+[TESTING] The revised draft uses framed photographs around a compact central peacock/title, content-sized section height, and container-responsive columns. The peacock stays between the photo panels even in the Shopify sidebar preview and on phones. Compact previous/play-pause/next controls replace the oversized text button; previous/next stops autoplay so the selected photos remain stable. Verified in the Shopify draft at 390px, 780px, and 1440px: three columns, no horizontal overflow, both active photos loaded at 900px source width. Previous/next changed both panels and updated the counter; keyboard Enter worked. Console showed only the Shopify custom-pixel sandbox warning. The new layout still awaits Amber's visual acceptance. Existing Contact fallbacks remain until published look entries and product associations are available.
+
 ## Approved runway placement — 2026-09-21
 
-[DECIDED] Amber approved a separate fashion-show section directly beneath the existing cover hero, with different outfit slideshows left/right and a stationary standalone holographic peacock in the center. Ivory ground with a lavender sheen, five-second synchronized transitions, and soft floor shadows. On phones the peacock sits above the two outfit panels. This supersedes the earlier choice to use the runway itself as the homepage hero.
+[SUPERSEDED — rendered execution rejected; placement remains valid] Amber approved the concept of a separate fashion-show section directly beneath the existing cover hero, with different outfit slideshows left/right and a stationary standalone holographic peacock in the center. Ivory ground with a lavender sheen, five-second synchronized transitions, and soft floor shadows. On phones the peacock sits above the two outfit panels. This supersedes the earlier choice to use the runway itself as the homepage hero.
 
 [VERIFIED] The saved Shopify draft homepage was pulled before editing; its cover hero and other sections were preserved. The new `runway` instance reuses `hero-looks`; its editor label is **Fashion runway**. A Presentation setting retains the older dark editorial appearance as an option. Source photos are unchanged. The selected cutouts and peacock have deployment copies in theme assets so the section works before the Files/metaobject import. Image pickers override bundled cutouts.
 
@@ -15,6 +23,7 @@ Last updated: 2026-09-21
 [VERIFIED] Final checks: Shopify theme check passed (zero errors, nine existing warnings); JavaScript syntax and seven motion/lifecycle cases passed. Desktop and phone screenshots showed no clipping. The fallback outfit link opened the Contact form. Chrome console showed Shopify preview preload/custom-pixel warnings and analytics collection failure, with no runway-script error observed. Browser-extension calls timed out, so visual QA used the native Chrome surface through CUA. Draft theme ID: `192212107628`; not published.
 
 ### Change log
+- 2026-09-21: recorded rejection of the cutout stage and rebuilt the draft with higher-resolution framed portraits, compact controls, and columns based on component width. Pending visual acceptance.
 - 2026-09-21: recorded Amber's approved below-hero runway design, preserved the saved cover hero, added playback/accessibility support and safe unpublished-look links.
 
 ## Earlier implementation reference

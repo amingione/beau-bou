@@ -26,6 +26,9 @@
       {%- if look.featured.value == false -%}{%- continue -%}{%- endif -%}
       {%- if section.settings.full_body_only and look.full_body.value == false -%}{%- continue -%}{%- endif -%}
       {%- assign img = look.cutout.value | default: look.image.value -%}
+      {%- if section.settings.media_style == 'photography' -%}
+        {%- assign img = look.image.value | default: look.cutout.value -%}
+      {%- endif -%}
       {%- if img == blank -%}{%- continue -%}{%- endif -%}
       {%- assign slot = n | modulo: 2 -%}
       {%- assign n = n | plus: 1 -%}
