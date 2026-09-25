@@ -1,0 +1,21 @@
+{% comment %}
+  Text for a marked-down product's badge (compare-at price above price).
+
+  "Sale" is reserved for sale events: products tagged `sale`, in any capitalization. The same tag
+  puts a product in the Sale collection. Every other markdown reads "Clearance", matching the
+  Clearance collection (price reduced, not tagged `sale`).
+
+  Accepts:
+  - product: {Object} Product Liquid object
+
+  Usage:
+  {% render 'markdown-badge-label', product: product %}
+{% endcomment %}
+{%- liquid
+  assign tags = product.tags | join: '|' | downcase | split: '|'
+  if tags contains 'sale'
+    echo 'products.product.on_sale' | t
+  else
+    echo 'products.product.clearance' | t
+  endif
+-%}

@@ -250,9 +250,9 @@
     "sale": {
       "type": "featured-collection",
       "settings": {
-        "collection": "sale",
+        "collection": "clearance",
         "products_to_show": 8,
-        "title": "Sale",
+        "title": "Clearance",
         "heading_size": "h1",
         "description": "",
         "show_description": false,

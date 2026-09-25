@@ -10,7 +10,7 @@
 
 1. Enter title, description, photos, price and inventory. Use the **Default product** template.
 2. Use option names **Size** and **Color** consistently. Set the real variants and stock for each item.
-3. Set **Product type** to one of the exact category names in [collections.md](collections.md). Collections populate automatically. Add tag `new` for New Arrivals; add tag `sale` for Sale. Removing the tag removes the product from that collection. The `sale` tag does not change prices; Michele controls the actual price and compare-at price.
+3. Set **Product type** to one of the exact category names in [collections.md](collections.md). Collections populate automatically. Add tag `new` for New Arrivals. **Markdowns are Clearance automatically:** set a compare-at price above the price and the product shows a **Clearance** badge and joins the Clearance collection, no tag needed. **"Sale" is only for sale events:** add tag `sale` to the event's products and they show a **Sale** badge and move from Clearance to the Sale collection; remove the tag when the event ends. Tags never change prices; Michele controls the actual price and compare-at price.
 4. Complete the pinned **Fit notes** and **Materials care** fields near the bottom of the product editor. Both are rich text, displayed by the boutique product template and hidden when blank. Never infer fabric composition or care instructions from photos.
 5. Optionally choose a published brand-specific **Size guide** page. This replaces the general guide link for that product; otherwise the template uses `/pages/size-guide`.
 6. Choose **Complementary products** (pinned by Search & Discovery) to populate **Complete the look**. These must be eligible, available products before Shopify returns recommendations.
@@ -93,7 +93,7 @@ Store facts (from Google Business Profile + Facebook, verified 2026-09-02):
 
 ## 3. Content Michele owns
 
-- [ ] Products: title, price, compare-at (for SALE badge), **Product type** (drives category collections), sizes as variants XS–3X, 2+ photos each
+- [ ] Products: title, price, compare-at (for the Clearance badge; tag `sale` only for sale events), **Product type** (drives category collections), sizes as variants XS–3X, 2+ photos each
 - [ ] About page copy (her story, faith line)
 - [ ] Contact page live (`page.contact` template)
 - [ ] Mailing list: the footer form collects subscribers; review current Shopify Messaging pricing before sending campaigns

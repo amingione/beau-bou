@@ -5,7 +5,8 @@ Created in `v0m0hb-x3` on September 20, 2026. Michele enters products and prices
 | Collection | Handle | Membership rule |
 | --- | --- | --- |
 | New Arrivals | `new-arrivals` | Tag includes `new` |
-| Sale | `sale` | Tag includes `sale` |
+| Sale | `sale` | Tag includes `sale`. Reserved for sale events. |
+| Clearance | `clearance` | Price is reduced (compare-at above price) **and** tag is not `sale`. Created 2026-09-25. |
 | Dresses | `dresses` | Product type equals `Dresses` |
 | Gowns | `gowns` | Product type equals `Gowns` |
 | Tops | `tops` | Product type equals `Tops` |
@@ -15,9 +16,9 @@ Created in `v0m0hb-x3` on September 20, 2026. Michele enters products and prices
 | Swimsuits | `swimsuits` | Product type equals `Swimsuits` |
 | Shop All | `all` | Shopify’s built-in all-products route |
 
-Use those exact Product type names. A product can appear in its category, New Arrivals and Sale at the same time. Remove `new` or `sale` tags when appropriate. The Sale collection does not alter prices; the owner sets Price and Compare-at price. The original setup created no product records. On September 21, Amber authorized eighteen fictional test products; their exact types and `new`/`sale` tags now populate these collections. See [handoff.md](handoff.md#test-catalog--september-21-2026).
+Use those exact Product type names. A product can appear in its category, New Arrivals and Sale (or Clearance) at the same time. Any markdown is Clearance by default; tag `sale` only for a sale event and remove it afterwards. A product is never in both Sale and Clearance. Remove `new` or `sale` tags when appropriate. The Sale collection does not alter prices; the owner sets Price and Compare-at price. The original setup created no product records. On September 21, Amber authorized eighteen fictional test products; their exact types and `new`/`sale` tags now populate these collections. See [handoff.md](handoff.md#test-catalog--september-21-2026).
 
-The existing empty Home page collection was preserved. The category listing `/collections` is linked from the main menu. The theme’s category tiles refer to Dresses, Gowns, Tops, Bottoms, Jewelry + Accessories and Handbags; featured sections use New Arrivals and Sale.
+The existing empty Home page collection was preserved. The category listing `/collections` is linked from the main menu. The theme’s category tiles refer to Dresses, Gowns, Tops, Bottoms, Jewelry + Accessories and Handbags; featured sections use New Arrivals and Clearance (switch the homepage row's collection to Sale during an event).
 
 ## Main menu (`main-menu`)
 
@@ -26,7 +27,7 @@ The existing empty Home page collection was preserved. The category listing `/co
 - Contact → `/pages/contact`
 - New Arrivals → `/collections/new-arrivals`
 - Shop by Category → `/collections`
-- Sale → `/collections/sale`
+- Clearance → `/collections/clearance` (was Sale → `/collections/sale` until 2026-09-25; add a Sale link back during events)
 - Visit Us → `/pages/visit-us`
 
 ## Footer menu (`footer`)
