@@ -9,17 +9,17 @@
         "show_share": true,
         "pieces_heading": "Shop this look",
         "goes_with_heading": "Goes with it",
-        "goes_with_sub": "Not in the photo — but they belong together",
+        "goes_with_sub": "Not in the photo \u2014 but they belong together",
         "columns": "3",
         "quick_add": "standard",
         "collection": "new-arrivals",
         "collection_label": "Shop all new arrivals",
         "empty_heading": "Love this look?",
-        "empty_text": "Message us and we’ll pull the pieces in your size.",
+        "empty_text": "Contact the boutique about availability and sizing.",
         "empty_button": "Ask about this look",
         "empty_link": "/pages/contact",
-        "all_looks_label": "Looks",
-        "all_looks_link": "/",
+        "all_looks_label": "Shop the Look",
+        "all_looks_link": "/pages/shop-the-look",
         "show_more": true,
         "more_heading": "More looks",
         "color_scheme": "scheme-1",
@@ -28,5 +28,7 @@
       }
     }
   },
-  "order": ["main"]
+  "order": [
+    "main"
+  ]
 }

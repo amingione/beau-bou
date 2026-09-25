@@ -1,8 +1,8 @@
 # Client handoff checklist — Be-YOU-tiful Boutique by Michele
 
-## Current owner workflow — September 20, 2026
+## Current owner workflow — September 21, 2026
 
-**Scope confirmed by Amber:** Michele owns products, prices, variants, photos and inventory. Our work is the reusable boutique templates, app configuration, navigation and collection structure. Catalog entry is not a prerequisite for completing that setup.
+**Scope confirmed by Amber:** Michele owns products, prices, variants, photos and inventory. Our work is the reusable boutique templates, app configuration, navigation and collection structure. Catalog entry is not a prerequisite for completing that setup. On September 21, Amber explicitly authorized a separate fictional catalog for testing; the details below do not replace Michele’s responsibility for real merchandise.
 
 **Correct store:** `v0m0hb-x3` / `shopbeyoutifulboutique.com`. Work is in draft theme `be-you-tiful-1-2-0` (`192212107628`). Horizon is still live and the store is password protected as of the latest inspection. Do not modify the old `kw59hc-k1` development store.
 
@@ -15,6 +15,20 @@
 5. Optionally choose a published brand-specific **Size guide** page. This replaces the general guide link for that product; otherwise the template uses `/pages/size-guide`.
 6. Choose **Complementary products** (pinned by Search & Discovery) to populate **Complete the look**. These must be eligible, available products before Shopify returns recommendations.
 
+### Managing Shop the Look
+
+Open **Content → Metaobjects → Look**, choose an outfit, and select **every featured outfit item** under **Pieces**: garments, shoes, jewelry and bags actually being shown off. Each product gets its own photo, price, size options and cart action. This is a curated product list, not automatic image recognition. Optional **Goes with** products are separate recommendations and appear below. Photo, title and caption belong to that outfit entry. Keep entries Active to show their pages. The four homepage photos already link to matching Look pages; the homepage Shop the Look banner opens the gallery. Products and prices remain Michele's responsibility. See [looks.md](looks.md) for current routing and theme details.
+
+### Test catalog — September 21, 2026
+
+Imported **18 test products / 55 variants / 18 images** into `v0m0hb-x3` using [client-test-products.csv](store/client-test-products.csv). Source photos came from the local boutique assets and remain untouched. Titles begin `TEST —`, handles begin `test-`, SKUs begin `BB-TEST-`, and all products have `test-product`, `sample`, and `new` tags. Descriptions explicitly identify fictional prices, sizes and copy. Prices range from $16 to $78; three products have compare-at prices and the `sale` tag.
+
+Eleven clothing products have S/M/L/XL variants; sandals have test sizes 6–10; the handbag and jewelry use One Size. Six supporting products were added after Amber clarified that a look must break down the complete outfit. Their isolated photos are AI-generated test illustrations based on visible pieces in the local outfit photos, not verified retail photography. Local assets are `docs/images/placeholders/test-*.png`; details and mapping are in [looks.md](looks.md). Inventory is untracked for cart testing. Products are Active and published to Online Store only. This is store-level catalog data, shared across themes; the store remains password protected and the boutique theme remains a draft.
+
+All four Look entries now reference matching test products under Pieces, plus complementary test products under Goes with. Before launch, replace those references with Michele’s real merchandise, then filter Products by tag `test-product` and archive the eighteen samples. Keep the original photos in Files because the theme and Look entries also use them. The older `store/sample-products.json` belongs to the previous development store, not this import.
+
+Verified in the boutique draft: Shop All shows twelve products, New Arrivals and Sale populate, and Orange Blossom Midi Dress size M / Orange adds to the cart at $64. The test cart item was removed afterward. No checkout or order was submitted.
+
 ### Apps and built-in tools
 
 - **Shopify Search & Discovery is installed.** Availability and Price filters were already present. Product type was added; empty filter values are now hidden. Sold-out search results remain at the end. Size and Color filter sources are not offered until products with those options exist. After the first catalog entries: Apps → Search & Discovery → Filters → Add filter → Size / Color.
@@ -24,7 +38,7 @@
 ### Completed setup
 
 - Nine automated collections created in the new store; exact rules are in [collections.md](collections.md).
-- Created visible **Size Guide**, **Visit Us**, **About**, and **Questions** pages with useful editable body content. Existing Contact and Your Privacy Choices pages preserved. Existing Shop the Look, Make it Yours page is hidden; preserve its content and the concurrent look/hero work.
+- Created visible **Size Guide**, **Visit Us**, **About**, and **Questions** pages with useful editable body content. Existing Contact and Your Privacy Choices pages preserved. Shop the Look, Make it Yours is now visible at `/pages/shop-the-look`, with four outfit pages at `/pages/looks/<handle>` in the boutique draft.
 - Main menu now includes Home, Shop All, Contact, New Arrivals, Shop by Category, Sale, Visit Us. Footer includes Search, Your Privacy Choices, Size Guide, Questions, Visit Us, About, Contact. Header uses `main-menu`; footer uses `footer`.
 - Product template now has Boutique product details and Complete the look blocks. Policy links read the store’s saved shipping/refund policies. Removed unconfirmed delivery times and return promises. Removed invented numeric chart presets from the size-guide section.
 - Four changed theme files uploaded successfully to the draft only: `sections/main-product.liquid`, `templates/product.json`, `sections/size-guide.liquid`, `sections/footer-group.json`. Homepage, hero, colors and outfit work were not overwritten.
@@ -34,13 +48,13 @@
 - Shopify currently lists only the live Horizon theme’s page templates in page administration. When the boutique theme is published, assign About → `about`, Visit Us → `visit-us`, Questions → `faq`, Size Guide → `size-guide`, Contact → `contact`, Shop the Look → `shop-the-look`. The first four pages currently use Default page and already have real body content. Custom size-guide preview was verified in the draft.
 - Preserve and reconcile the theme editor’s existing unsaved design session before publishing. Look metaobject/hero work is tracked separately in [looks.md](looks.md); do not broad-push unrelated local files.
 - Michele must confirm shipping, pickup and returns terms in Shopify settings. Do not copy unapproved sample policy wording into the live store.
-- After catalog entry, activate Size/Color filters and check variants → add to cart → checkout using actual merchandise. No fake product records or prices were created.
+- Activate Size/Color filters now that sample options exist, then repeat variant/cart/checkout checks with actual merchandise before launch. Archive the explicitly authorized test catalog first.
 
 ### Verification
 
 - Shopify accepted all four targeted theme files; draft remained unpublished.
 - Theme Check: zero errors in deployable theme files; nine upstream warnings. Whole-folder check also sees four errors and 49 warnings inside the existing `_to_delete/hero-runway-v1` archive, which is outside Shopify’s theme directories. Those archive files were not changed or uploaded.
-- Authenticated Chrome preview: custom size-guide template renders, sizing accordion expands (`aria-expanded=true`), mobile layout inspected, footer links rendered; no captured console errors. Mobile preview reset. Full product/cart/checkout flow awaits catalog data.
+- Authenticated Chrome preview: custom size-guide template renders, sizing accordion expands (`aria-expanded=true`), mobile layout inspected, footer links rendered; no captured console errors. Mobile preview reset. The September 21 test catalog now verifies quick-add and cart behavior; checkout and real-inventory validation remain launch work.
 - Brand preflight consulted the global brand index and this project’s source docs. No boutique-specific global brand entry exists; this handoff records the confirmed ownership and setup decisions.
 
 ---

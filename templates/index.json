@@ -330,7 +330,7 @@
             "image": "",
             "image_asset": "beyoutiful-runway-orange-floral-midi-dress.webp",
             "title": "Orange floral dress",
-            "link": "/pages/contact"
+            "link": "/pages/looks/orange-floral-dress"
           }
         },
         "look_3": {
@@ -339,7 +339,7 @@
             "image": "",
             "image_asset": "beyoutiful-runway-navy-white-floral-maxi-dress.webp",
             "title": "Navy & white maxi",
-            "link": "/pages/contact"
+            "link": "/pages/looks/navy-white-maxi"
           }
         },
         "look_4": {
@@ -348,7 +348,7 @@
             "image": "",
             "image_asset": "beyoutiful-runway-blue-ruffle-sleeve-blouse.webp",
             "title": "Blue ruffle blouse",
-            "link": "/pages/contact"
+            "link": "/pages/looks/blue-ruffle-blouse"
           }
         },
         "look_5": {
@@ -357,7 +357,7 @@
             "image": "",
             "image_asset": "beyoutiful-runway-blue-green-printed-dress.webp",
             "title": "Blue & green dress",
-            "link": "/pages/contact"
+            "link": "/pages/looks/blue-green-dress"
           }
         }
       },
@@ -383,7 +383,7 @@
         "show_floor": false,
         "pause_on_hover": false,
         "show_captions": true,
-        "card_eyebrow": "Ask about this look",
+        "card_eyebrow": "Shop the look",
         "full_width": true,
         "color_scheme": "scheme-1",
         "padding_top": 0,

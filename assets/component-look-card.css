@@ -1,4 +1,4 @@
-/* Look card — outfit cutout, whole card links to /looks/<handle>. Shared by hero-looks + main-look. */
+/* Shared outfit card. Portrait mode is used by the gallery and related looks. */
 .look-card {
   --card-h: 100%;
   position: relative;
@@ -108,3 +108,13 @@
     display: none;
   }
 }
+
+.look-card--portrait { height: auto; overflow: hidden; }
+.look-card--portrait .look-card__figure { height: auto; aspect-ratio: 3 / 4; overflow: hidden; }
+.look-card--portrait .look-card__img { width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: none; }
+.look-card--portrait .look-card__floor { display: none; }
+.look-card--portrait .look-card__caption { position: static; display: flex; opacity: 1; transform: none; white-space: normal; align-items: flex-start; padding: 1.4rem 0; border: 0; background: transparent; }
+.look-card--portrait:hover .look-card__caption, .look-card--portrait:focus-visible .look-card__caption { transform: none; }
+.look-card--portrait .look-card__title { display: block; font-size: 1.6rem; max-width: none; }
+.look-card--portrait:hover .look-card__img, .look-card--portrait:focus-visible .look-card__img { transform: scale(1.025); filter: none; }
+@media (prefers-reduced-motion: reduce) { .look-card--portrait .look-card__img { transition: none; } }

@@ -1,6 +1,6 @@
 {%- comment -%}
   Main look — the "shop this post" page for one `look` metaobject (LTK / LikeToKnowIt style).
-  Route: /looks/<handle> via templates/metaobject/look.json
+  Route: Shopify's look.system.url via templates/metaobject/look.json
   Left: the styled photo (or video), caption, share. Right: "Shop this look" pieces, then
   "Goes with it" pieces. Bottom: more looks. Docs: docs/looks.md
 {%- endcomment -%}
@@ -30,7 +30,7 @@
 
 {%- liquid
   assign look = metaobject
-  assign title = look.title.value | default: look.system.handle | replace: '-', ' ' | capitalize
+  assign title = look.title.value | default: look.system.handle
   assign photo = look.image.value
   assign cutout = look.cutout.value
   assign video = look.video.value
@@ -79,10 +79,14 @@
         {%- if section.settings.show_share -%}
           <div class="look-page__share">
             <span class="look-page__share-label">Share</span>
-            <a href="https://www.facebook.com/sharer/sharer.php?u={{ share_url | url_encode }}" target="_blank" rel="noopener" aria-label="Share on Facebook">Facebook</a>
-            <a href="https://pinterest.com/pin/create/button/?url={{ share_url | url_encode }}&description={{ title | url_encode }}{% if photo != blank %}&media={{ photo | image_url: width: 1000 | url_encode }}{% endif %}" target="_blank" rel="noopener" aria-label="Pin it">Pinterest</a>
-            <a href="sms:?&body={{ title | url_encode }}%20{{ share_url | url_encode }}" aria-label="Text this look">Text</a>
-            <button type="button" class="look-page__copy" data-copy="{{ share_url }}">Copy link</button>
+            <a href="https://www.facebook.com/sharer/sharer.php?u={{ share_url | url_encode }}" target="_blank" rel="noopener" aria-label="Share on Facebook" title="Share on Facebook"><span aria-hidden="true">{{ 'icon-facebook.svg' | inline_asset_content }}</span></a>
+            <a href="https://pinterest.com/pin/create/button/?url={{ share_url | url_encode }}&description={{ title | url_encode }}{% if photo != blank %}&media={{ photo | image_url: width: 1000 | url_encode }}{% endif %}" target="_blank" rel="noopener" aria-label="Share on Pinterest" title="Share on Pinterest"><span aria-hidden="true">{{ 'icon-pinterest.svg' | inline_asset_content }}</span></a>
+            <a href="sms:?&body={{ title | url_encode }}%20{{ share_url | url_encode }}" aria-label="Text this look" title="Text this look"><span aria-hidden="true">{{ 'icon-chat-bubble.svg' | inline_asset_content }}</span></a>
+            <button type="button" class="look-page__copy" data-copy="{{ share_url | escape }}" aria-label="Copy link" title="Copy link">
+              <span class="look-page__copy-icon" aria-hidden="true">{{ 'icon-copy.svg' | inline_asset_content }}</span>
+              <span class="look-page__copied-icon" aria-hidden="true">{{ 'icon-checkmark.svg' | inline_asset_content }}</span>
+            </button>
+            <span class="look-page__share-status visually-hidden" role="status" aria-live="polite"></span>
           </div>
         {%- endif -%}
       </div>
@@ -93,6 +97,9 @@
       <header class="look-page__head">
         <h1 class="look-page__title bb-display">{{ title | escape }}</h1>
         <p class="look-page__sub">{{ section.settings.pieces_heading | default: 'Shop this look' | escape }}</p>
+        {%- if pieces != blank and pieces.size > 0 -%}
+          <p class="look-page__piece-count">{{ pieces.size }} {% if pieces.size == 1 %}piece{% else %}pieces{% endif %} in this look · Shop each item below</p>
+        {%- endif -%}
       </header>
 
       {%- if pieces != blank and pieces.size > 0 -%}
@@ -120,7 +127,7 @@
       {%- else -%}
         <div class="look-page__empty bb-frame">
           <h2 class="bb-display h3">{{ section.settings.empty_heading | default: 'Love this look?' | escape }}</h2>
-          <p>{{ section.settings.empty_text | default: 'Message us and we’ll pull the pieces in your size.' | escape }}</p>
+          <p>{{ section.settings.empty_text | default: 'Contact the boutique about availability and sizing.' | escape }}</p>
           <a class="button button--secondary" href="{{ section.settings.empty_link | default: '/pages/contact' }}">{{ section.settings.empty_button | default: 'Ask about this look' | escape }}</a>
         </div>
       {%- endif -%}
@@ -164,10 +171,10 @@
           {%- for o in others -%}
             {%- if o.system.id == look.system.id -%}{%- continue -%}{%- endif -%}
             {%- if o.featured.value == false -%}{%- continue -%}{%- endif -%}
-            {%- assign oimg = o.cutout.value | default: o.image.value -%}
+            {%- assign oimg = o.image.value | default: o.cutout.value -%}
             {%- if oimg == blank -%}{%- continue -%}{%- endif -%}
             {%- assign shown = shown | plus: 1 -%}
-            <li class="look-page__more-item">{% render 'look-card', image: oimg, url: o.system.url, title: o.title.value %}</li>
+            <li class="look-page__more-item">{% render 'look-card', image: oimg, url: o.system.url, title: o.title.value, class: 'look-card--portrait' %}</li>
             {%- if shown >= 6 -%}{%- break -%}{%- endif -%}
           {%- endfor -%}
         </ul>
@@ -178,11 +185,29 @@
 
 <script>
   (function () {
-    document.querySelectorAll('[data-copy]').forEach(function (btn) {
+    var root = document.getElementById('Look-{{ section.id }}');
+    if (!root) return;
+    root.querySelectorAll('[data-copy]').forEach(function (btn) {
+      var reset;
+      var status = root.querySelector('.look-page__share-status');
       btn.addEventListener('click', function () {
         var url = btn.getAttribute('data-copy');
-        var done = function () { var t = btn.textContent; btn.textContent = 'Copied ✓'; setTimeout(function () { btn.textContent = t; }, 1600); };
-        if (navigator.clipboard) navigator.clipboard.writeText(url).then(done); else { window.prompt('Copy this link', url); }
+        var fallback = function () { window.prompt('Copy this link', url); };
+        var done = function () {
+          clearTimeout(reset);
+          btn.classList.add('is-copied');
+          btn.setAttribute('aria-label', 'Link copied');
+          btn.setAttribute('title', 'Link copied');
+          status.textContent = 'Link copied';
+          reset = setTimeout(function () {
+            btn.classList.remove('is-copied');
+            btn.setAttribute('aria-label', 'Copy link');
+            btn.setAttribute('title', 'Copy link');
+            status.textContent = '';
+          }, 2000);
+        };
+        if (navigator.clipboard) navigator.clipboard.writeText(url).then(done).catch(fallback);
+        else fallback();
       });
     });
   })();

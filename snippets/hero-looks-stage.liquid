@@ -62,8 +62,8 @@
           assign look_link = published_look.system.url
         endif
         if look_link == blank
-          assign look_link = '/pages/contact'
-          assign look_label = 'Ask about this look'
+          assign look_link = '/pages/shop-the-look'
+          assign look_label = 'Explore the looks'
         endif
       -%}
       {% render 'look-card', image: block.settings.image, image_asset: block.settings.image_asset, url: look_link, title: block.settings.title, eyebrow: look_label, show_caption: section.settings.show_captions, lazy: lazy, class: 'looks-slide', attrs: attrs %}

@@ -4,11 +4,49 @@ Last updated: 2026-09-21
 
 ## Current revision — 2026-09-21
 
+### Complete outfit breakdown — September 21
+
+**Owner clarification:** A Look represents multiple individually shoppable items being shown off, not just the main garment with unrelated recommendations. Every featured item belongs in `Pieces`; `Goes with` is optional styling outside the photo. The owner curates these associations in Content → Metaobjects → Look; the template does not automatically recognize products in images.
+
+The test catalog now contains 18 products / 55 variants. Six additions are tagged `outfit-piece` plus `test-product`, `sample`, `new`. The existing CSV was extended and imported with overwrite disabled, preserving the original twelve products. Active products publish to Online Store only; the boutique theme remains unpublished.
+
+| Look | Pieces (individual prices and cart controls) |
+| --- | --- |
+| `blue-ruffle-blouse` | Coastal Blue Ruffle Blouse $42; Aqua & White Beaded Necklace $22; Medium Wash Straight-Leg Jeans $48; Textured Gold-Tone Stud Earrings $18 |
+| `navy-white-maxi` | Harbor Bloom Maxi Dress $72; Delicate Gold-Tone Bracelet $16; Fine Gold-Tone Chain Necklace $18 |
+| `orange-floral-dress` | Orange Blossom Midi Dress $64; Delicate Gold-Tone Bracelet $16; White Strappy Flat Sandals $38 |
+| `blue-green-dress` | Palm Garden Printed Dress $58; Delicate Gold-Tone Bracelet $16; White Strappy Flat Sandals $38 |
+
+The accessory images are explicitly generated **test illustrations**, inspired by the visible pieces rather than verified matches to retail inventory. No handbag is being carried in these four photos; the floral crossbody remains a separate recommendation. Do not present the generated shoes or jewelry as authenticated product photography. Michele must replace samples, pictures and associations before launch.
+
+Generated with built-in image generation and saved locally in `docs/images/placeholders/`: `test-sandals.png`, `test-jeans.png`, `test-beaded-necklace.png`, `test-fine-chain-necklace.png`, `test-bracelet.png`, `test-earrings.png`. Originals remain untouched. These six PNGs were uploaded to the client store Files and referenced in `docs/store/client-test-products.csv`.
+
+Prompt set: one isolated square product on a white studio background, centered with generous margin and subtle shadow, no text/logo/person/collage; preserve the visible reference styling as closely as possible, for a clearly fictional Shopify test catalog. Specific targets: white flat multi-strap sandals from the blue-green dress photo (not wedges); medium-wash jeans from the blue blouse photo (unseen lower legs interpreted as straight-leg and disclosed); aqua/white necklace and small gold-tone textured studs from the blue blouse photo; fine plain chain necklace and delicate phone-wrist bracelet from the navy maxi photo. No claims about metal purity, materials or exact retail specifications.
+
+The template now displays the number of pieces and keeps isolated accessory images fully visible. Theme Check passed: zero errors, eleven existing unrelated warnings. Only the main Look section and its stylesheet were uploaded to draft `192212107628`. Fresh storefront verification showed four pieces on the blue look and three on each dress look. All new product images loaded. The aqua necklace added independently at $22 and was removed after the test; sandal sizes 6–10 and jeans sizes S–XL appeared in quick-shop. Phone viewport measured 487 CSS pixels under the browser’s current scaling, matching document width with no overflow; desktop was also inspected. No captured console errors. Temporary viewport reset.
+
+### Product cards and sharing controls — September 21
+
+Amber requested shoppable items with prices instead of the empty inquiry box, and icons instead of text sharing links. A fresh navy Look render confirmed the linked Harbor Bloom dress at $72 with size selection and cart controls; the older screenshot showed the pre-import empty state. Verified size S / Navy / White adds at $72, then removed the test cart item. All four looks use their linked test catalog products.
+
+Sharing now uses the theme’s Facebook, Pinterest, message and copy SVGs in 44px controls, with accessible names, tooltips and visible keyboard focus. Copy shows a checkmark and announces success without replacing the icon markup. Only `sections/main-look.liquid` and `assets/section-main-look.css` were uploaded to the unpublished boutique theme. Theme Check passed with zero errors and eleven existing unrelated warnings. Desktop and 390px phone previews verified four 44px icon controls, working copy/checkmark feedback, and no horizontal overflow; no captured console errors.
+
+### Shop the Look routing — verified September 21
+
+The new store now has a `look` metaobject definition with Title, Image, Pieces (product list), Caption, and Goes with (product list). Entries are Active with web pages enabled. Four entries match the current slideshow: `orange-floral-dress`, `navy-white-maxi`, `blue-ruffle-blouse`, and `blue-green-dress`. Their canonical routes are `/pages/looks/<handle>`; always render `look.system.url` rather than guessing routes.
+
+The existing page (ID `712517419372`) is now Visible at `/pages/shop-the-look`; its original body content is preserved. The draft's default page section recognizes that handle and renders `snippets/look-gallery.liquid`, so the gallery works before the boutique theme becomes live. `page.shop-the-look.json` uses that same section. The live-video `shop-the-look` section remains available separately.
+
+Each slideshow card opens its own Look template, not Contact. The homepage banner opens the four-look gallery. Breadcrumbs and More looks link between them. The four original WebP photos are also in Shopify Files and attached to the entries. Michele adds actual catalog products to **Content → Metaobjects → Look → [outfit] → Pieces** and optional **Goes with**. Amber subsequently authorized twelve fictional test products on September 21; all four entries now have matching Pieces and complementary Goes with products. See [handoff.md](handoff.md#test-catalog--september-21-2026) and [the import CSV](store/client-test-products.csv). Replace the test references before launch. When no pieces are linked, the detail template shows the outfit photo and an availability inquiry.
+
+Verified by clicking all four slideshow cards and the homepage banner in draft `192212107628`; desktop and 390px detail/gallery render with loaded images and no horizontal overflow. Theme check: zero errors, eleven warnings in unrelated existing files. Browser console: only Shopify's custom-pixel sandbox warning. Theme remains unpublished. This supersedes the Contact fallback described in the earlier revision notes below.
+
+
 [VERIFIED] Amber rejected the first rendered runway: the standalone cutouts, oversized empty stage, and peacock stacked above the outfits did not meet the intended feature quality. Do not restore that presentation or describe it as approved based on the earlier concept approval.
 
 [OBSERVED] A newer client source set exists at `~/LocalStorm/Work/Be-YOU-tiful Boutique/beyoutiful-try-ons/`. Selected portrait sources are 1536×2048, substantially better than the old 414px thumbnails. Original files remain untouched. The theme uses four 900px WebP deployment assets (`assets/beyoutiful-runway-*.webp`), sourced from try-on-01 (orange floral dress), try-on-03 (navy/white maxi), try-on-08 (blue blouse), and try-on-02 (blue/green dress).
 
-[TESTING] The revised draft uses framed photographs around a compact central peacock/title, content-sized section height, and container-responsive columns. The peacock stays between the photo panels even in the Shopify sidebar preview and on phones. Compact previous/play-pause/next controls replace the oversized text button; previous/next stops autoplay so the selected photos remain stable. Verified in the Shopify draft at 390px, 780px, and 1440px: three columns, no horizontal overflow, both active photos loaded at 900px source width. Previous/next changed both panels and updated the counter; keyboard Enter worked. Console showed only the Shopify custom-pixel sandbox warning. The new layout still awaits Amber's visual acceptance. Existing Contact fallbacks remain until published look entries and product associations are available.
+[TESTING] The revised draft uses framed photographs around a compact central peacock/title, content-sized section height, and container-responsive columns. The peacock stays between the photo panels even in the Shopify sidebar preview and on phones. Compact previous/play-pause/next controls replace the oversized text button; previous/next stops autoplay so the selected photos remain stable. Verified in the Shopify draft at 390px, 780px, and 1440px: three columns, no horizontal overflow, both active photos loaded at 900px source width. Previous/next changed both panels and updated the counter; keyboard Enter worked. Console showed only the Shopify custom-pixel sandbox warning. The new layout still awaits Amber's visual acceptance. Contact fallbacks were replaced by the individual Look pages described above.
 
 ## Approved runway placement — 2026-09-21
 
@@ -18,7 +56,7 @@ Last updated: 2026-09-21
 
 [VERIFIED] Pause/play applies to both sides. Reduced motion starts paused; manual pause survives tab/hover changes. Keyboard focus on an outfit stops rotation. Inactive outfits cannot receive focus, and removing the section in the theme editor cleans up its timer and listeners.
 
-[VERIFIED] Draft verification on 2026-09-21: desktop three-column runway and Shopify phone preview rendered with all three images. Play/Pause and synchronized outfit changes were exercised. New-store `/looks/<handle>` links returned 404 because the look entries are not published there yet; manual cards now resolve a published metaobject URL when present and otherwise link to Contact labeled **Ask about this look**. This is the current empty-content state, not a completed shoppable catalog. Michele still supplies product associations and pricing.
+[VERIFIED] Draft verification on 2026-09-21: desktop three-column runway and Shopify phone preview rendered with all three images. Play/Pause and synchronized outfit changes were exercised. New-store `/looks/<handle>` links returned 404 because the look entries are not published there yet; manual cards now resolve a published metaobject URL when present and otherwise link to Contact labeled **Ask about this look**. That was the initial empty-content state, superseded by the routing fix above. Michele still supplies product associations and pricing.
 
 [VERIFIED] Final checks: Shopify theme check passed (zero errors, nine existing warnings); JavaScript syntax and seven motion/lifecycle cases passed. Desktop and phone screenshots showed no clipping. The fallback outfit link opened the Contact form. Chrome console showed Shopify preview preload/custom-pixel warnings and analytics collection failure, with no runway-script error observed. Browser-extension calls timed out, so visual QA used the native Chrome surface through CUA. Draft theme ID: `192212107628`; not published.
 
@@ -120,4 +158,4 @@ Manual corrections live in `overrides`.
 
 ## Palette (2026-09-20 — "soft iridescent pastels")
 No stark white, no green. `config/settings_data.json` color schemes: **scheme-1** ivory `#FBF8F5` · **scheme-2** blush-lavender mist `#F3EDF3` · **scheme-3** lavender `#DCD4EC` (was peacock green) · **scheme-4** midnight plum `#2E2A33` · **scheme-5** blush `#F5E4EA`. Text everywhere charcoal-plum `#2E2A33`; primary buttons dusty lavender `#6E5F86`. Tokens in `assets/beau-bou.css`: `--bb-ink`, `--bb-accent` (replaced every hard-coded `#0f5f66`), `--bb-hairline` (soft plum), `--bb-holo` (iridescent gradient, for ribbons/accents).
-- The pre-existing **Shop the Look (live)** page (`page.shop-the-look`) is the live-stream/try-on version and stays as is; look pages are the evergreen per-outfit version. They can cross-link: put the live page in the hero CTA when a stream is scheduled.
+- `page.shop-the-look` now renders the look gallery. The **Shop the look (live)** section remains available for a separate live-stream page.
