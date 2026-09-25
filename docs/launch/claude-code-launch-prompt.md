@@ -1,0 +1,189 @@
+# LAUNCH PROMPT — Be-YOU-tiful Boutique by Michele (beau-bou)
+
+You are working in `~/LocalStorm/Workspace/DevProjects/GitHub/beau-bou` (Shopify OS 2.0 theme, Dawn 16 fork). Deadline: **the completed site is handed to the owner tomorrow.** The bar is not "done", it is "blown away": sparkling head to toe, every button real, every form working, every product field ready for a boutique catalog, and a rewards program that costs the client nothing to run.
+
+Be terse in logs: accuracy over ceremony. Explain the why of logic and the how of implementation. No pleasantries.
+
+---
+
+## 0. BOOTSTRAP (do this first, in order, before writing code)
+
+0. **File access, verified 2026-09-25.** You run locally with the whole filesystem: never report a path as unreachable, and never proceed on a guess. Confirmed to exist: `~/LocalStorm/AGENTS.md`, `CLAUDE.md`, `BRAND_MEMORY.md` (symlinks into `~/dotfiles/localstorm/`), `~/LocalStorm/Workspace/DevProjects/GitHub/AGENTS.md`, sibling repo `GitHub/beau-bou-app/`, client files in `~/LocalStorm/Work/Be-YOU-tiful Boutique/`. `~/AGENTS.md` is a verified symlink to `dotfiles/agents/AGENTS.md` and governs everything: read it first. **Do all shell work with Desktop Commander (`start_process`), the real Mac shell; it is Amber's standing instruction.** Do not use any sandboxed shell that only sees mounted folders: those report false "missing" paths. **Known broken:** the symlink `docs/images/Logo` points to `Work/Be-YOU-tiful Boutique/Logo`, which does not exist; the logos are at `Work/Be-YOU-tiful Boutique/photos-in/Logo/` (Holographic, black-logo.png, ...) and holographic options are in `Work/Be-YOU-tiful Boutique/holographic for michelle/`. Repoint it (`ln -sfn "$HOME/LocalStorm/Work/Be-YOU-tiful Boutique/photos-in/Logo" docs/images/Logo`; the folder is git-ignored) and update any doc/script that names the old path (e.g. `docs/looks.md`, `docs/images/README.md`). Run `for l in docs/images/*; do [ -L "$l" ] && [ ! -e "$l" ] && echo "DEAD $l"; done` and fix any other dead link. If a tool is sandboxed and a path is denied, say exactly which path, and continue with the rest.
+
+1. **Read the workspace rules first.** `~/LocalStorm/AGENTS.md`, `~/LocalStorm/CLAUDE.md` and `~/LocalStorm/BRAND_MEMORY.md` are symlinks into `~/dotfiles/localstorm/` (tracked in git; edit the dotfiles copy, never replace the symlink). Also follow `~/AGENTS.md` for filesystem and secrets handling. Rules that apply here: extend existing files/systems before creating another version; preserve approved choices and treat each brand as distinct (do NOT borrow House of Rose voice, layout, or color rules); never copy credential values anywhere (secrets live outside the repo (e.g. `~/.local_secrets/`; `~/AGENTS.md` says where), read from there, never into the repo or chat); Desktop Commander is optional, use whichever tool fits; when a durable decision changes, update the one existing document that owns it, with date, source and scope, and never promote your own inference to owner approval. Amber dictates, so read for intent, not spelling.
+   Then the **repo-level** files: `beau-bou/AGENTS.md` and `beau-bou/CLAUDE.md` do not exist. Create them thin, using the sibling app's pattern: `CLAUDE.md` is just `@AGENTS.md`; `AGENTS.md` holds build commands, architecture map, boutique-specific rules from this prompt, a pointer to `../beau-bou-app`, and points to `GitHub/AGENTS.md` and `~/AGENTS.md` instead of restating them. `BRAND_MEMORY.md` has no row for this project: propose adding a **Be-YOU-tiful Boutique** row pointing to this repo's `README.md`/`AGENTS.md` (edit in `~/dotfiles/localstorm/`, show Amber the diff, then commit it there).
+2. **Review memory + project docs.** Read the project doc `claude/beau-bou-theme-status.md` and memory files for Be-YOU-tiful Boutique. Then read `README.md`, `docs/handoff.md`, `docs/architecture.md`, `docs/looks.md`, `docs/store/README.md`, `docs/images/README.md`.
+3. **Reconcile stale/contradicting docs.** Known conflict: the status doc says the hero is a no-controls, no-copy, synced crossfade slideshow (Amber's latest direction, 2026-09-20/21), while `README.md` still describes a "fashion runway" with previous/play/next controls, and git history has runway commits. Amber rejected the runway marquee. **Amber's latest direction wins.** Inspect the real code (`sections/hero-looks.liquid`, `snippets/hero-looks-stage.liquid`, `assets/hero-looks.js`), make the code match the direction, then fix every doc that says otherwise. If Amber ever corrects you, find the false statement wherever it is written (README, docs, memory, project doc) and make it true.
+4. **Run these skills, in this order:**
+   - `/productivity:start` — set up the task list + memory for this project.
+   - `/ai-firstify:ai-firstify` — make the repo AI-first: write `AGENTS.md` (commands, architecture map, conventions, do/don't, verification steps) and `CLAUDE.md` (points to AGENTS.md + project-specific rules below), structured docs under `docs/`, single source of truth per topic, no duplicated docs.
+   - `/brand-voice:generate-guidelines` — build brand voice guidelines from real source material only: Facebook page copy, Google Business Profile, the client brief at `~/LocalStorm/Work/Be-YOU-tiful Boutique/Be-YOU-tiful Boutique by Michele.md` (verified path; the older `Workspace/IN PROGRESS/` location does not hold it), `docs/client-portal/`, and existing site copy. Output `docs/brand/voice-guidelines.md`. Every page copy below must pass through it.
+   - `/mcp-builder` — use it for Workstream F (the rewards + ePOS Now service). Build the ePOS Now integration as a reusable typed client and expose it as an MCP server too, so Amber can query Michele's ePOS Now (products, stock, customers, transactions) from Claude later.
+5. **Tell Amber about tools that would strengthen the result** (one short list, then proceed, do not wait):
+   - **Shopify Dev MCP / Shopify AI Toolkit**: already configured in `beau-bou-app/.mcp.json` (`shopify-dev-mcp`), and that repo's `AGENTS.md` says to use the Shopify AI Toolkit for all Shopify API/platform work. Use it to validate Liquid and Admin GraphQL in both repos. Do not add tooling to the app repo (its rule); for the theme repo, propose a matching `.mcp.json` to Amber rather than assuming.
+   - Already available and worth using: Context7 (current docs), `chrome-devtools-mcp` (Lighthouse + a11y + LCP debugging), Claude in Chrome / Playwright (real-browser QA), `design:accessibility-review`, `design:ux-copy`, `engineering:deploy-checklist`, `searchfit-seo:schema-markup` / `on-page-seo`, `anthropic-skills:mcp-builder`, Zapier MCP, Sanity is NOT needed here.
+6. Only then start work.
+
+---
+
+## 1. GROUND TRUTH (don't re-derive, don't contradict)
+
+- **Client:** Be-YOU-tiful Boutique by Michele, women's boutique, 264-A W Marion Ave, Punta Gorda FL 33950 (address wording "264-A" vs "264 W Marion" is still an open question, flag it, don't guess). Phone (941) 369-1628. Email beyoutifulboutiquebymichele@gmail.com. Second contact: Aundrea Pedigo.
+- **Hours (VERIFIED from the Google Business Profile in the client brief):** Tue, Wed, Thu, Fri 10–5; Sat 10–4; Sun closed. The brief's Monday row reads "Monday (Labor Day) Closed", which is a holiday override, so **regular Monday hours are UNKNOWN**: print `[CONFIRM: Monday hours]`, never "closed Mondays". In-store pickup offered. Service area listed on Facebook: Port Charlotte, Fort Myers, North Port, Englewood, Punta Gorda, Cape Coral (use for local SEO copy and `areaServed`).
+- **Positioning (from her own words):** "Unique Boutique with affordable prices… from swimsuits to gowns. Size XS to 3X." Facebook tagline: "Accept yourself as you were designed by God." ~2.1K Facebook followers, 16 reviews, 100% recommend.
+- **Reference look:** shopsmithco.com (CommentSold). We recreate natively in Liquid; nothing copied.
+- **Stores:** `v0m0hb-x3` = **Michele's store** (all store work goes here; `shopify.theme.toml [environments.client]`). `kw59hc-k1` = Amber's own store (also House of Rose). Do NOT put boutique content on `kw59hc-k1`. Known stray leftovers there: `look` metaobject definition `gid://shopify/MetaobjectDefinition/27040415817` + 45 Files (harmless; offer to delete).
+- **Design decisions (locked):** silver-blue holographic peacock lockup logo in the hero center, no words. Soft iridescent pastels (ivory, lavender, blush, midnight plum text). Home hero = full-bleed, edge to edge, transparent, no background image, three blocks: cutout-model slideshow | peacock | cutout-model slideshow; both sides change every 5s in sync, showing different images; no visible controls. Every slide links to a shop-this-look (LTK-style) page. **Rejected:** rainbow logo, runway marquee, dark photo backdrop, stark white + green scheme, hero copy.
+- **Pipeline already built:** `look` metaobject → `/looks/<handle>` via `templates/metaobject/look.json` + `sections/main-look.liquid`; `scripts/cutouts.py`; `scripts/looks/seed-looks.ts`; `scripts/placeholders.py`; `scripts/swap-photos.py`; aliases in `scripts/aliases.zsh`. Reuse; do not rebuild.
+- **Photos:** `docs/images/photos-in/` (Facebook/Google, WebP; many are 414x414 thumbnails). Cutouts caveat: rerun `bb-cutouts --force` if larger originals exist.
+- **Existing pages/templates:** About, Visit Us, Contact, FAQ, Size Guide, Shop the Look, plus metaobject look. Policy text in `docs/policies/`. Audit what exists before adding anything, then extend.
+- **Stack rules:** Liquid + vanilla JS/CSS in the theme; **TypeScript strict for all scripts/services, no `any`**, specific interfaces/generics; Nanostores if any client state framework is needed (don't add one just to have one); GROQ n/a here.
+- **Amber's working style:** organized, nothing duplicated (check the repo before creating; one source of truth per topic), CLI-first (add npm scripts + zsh aliases in `scripts/aliases.zsh` for anything repeatable), dotfiles/symlinks/GNU stow where they fit (e.g. keep large client photos outside the repo, symlinked, as already done). Be creative, bold, and fierce with design, but never at the expense of accuracy. Use Desktop Commander / the local shell for CLI work.
+
+## 1A. REPOS + MACHINE FACTS (verified from disk, 2026-09-24)
+
+Two sibling repos under `~/LocalStorm/Workspace/DevProjects/GitHub/` (read `GitHub/AGENTS.md` first; `GitHub/CLAUDE.md` is a symlink to it, and it layers on `~/AGENTS.md`, which governs):
+
+| Repo | What | Facts |
+|---|---|---|
+| `beau-bou/` | Dawn-fork **theme** | remote `amingione/beau-bou` (private), branch `main`. Client photos/logos live in `~/LocalStorm/Work/Be-YOU-tiful Boutique/` and are **symlinked into `docs/images/` (git-ignored). Never commit them, never copy them into the repo.** |
+| `beau-bou-app/` | Shopify **app** (React Router 7 + TS, **pnpm**, Prisma/SQLite sessions, Shopify Dev MCP in `.mcp.json`) | scaffolded 2026-09-21, 4 commits, latest `9796119`. App `be-you-tiful`, `client_id 5e1364ec…`, store `v0m0hb-x3` (primary domain shopbeyoutifulboutique.com). `application_url` `https://app.be-you-tifulboutique.com` is **live on Railway** (HTTP 200 verified 2026-09-25; domain registered on Namecheap). `extensions/` is empty. Scopes and webhooks are already widened (see "Current app state" below). `docs/SETUP.md` documents it. Its `AGENTS.md` says: use the Shopify AI Toolkit; do not add tooling to that repo; `CLAUDE.md` is just `@AGENTS.md`. |
+
+**The rewards + ePOS Now work (Workstream F) belongs in `beau-bou-app`, extending what is there. Do not create a third repo, Netlify project, or parallel service.** Theme-side UI stays in `beau-bou`. Cross-repo tasks (a metafield/metaobject definition + the theme section that reads it) are done in tandem and committed in both. Keep the two repos' docs cross-linked, one owner per fact.
+
+**Current app state (verified on disk 2026-09-25; supersedes any older note in this file or in `beau-bou-app/docs/SETUP.md`):**
+- `Dockerfile` is already fixed to pnpm and targets **Railway**: it symlinks `prisma/dev.sqlite` onto a `/data` volume so sessions survive redeploys. That is acceptable for Shopify sessions only (single instance); the rewards ledger must NOT live in SQLite (it lives in Shopify metaobjects, see F). Before creating any host, check with the Railway MCP/CLI whether a project, volume and domain for `app.be-you-tifulboutique.com` already exist, and reuse them.
+- Scopes are already widened and released (`be-you-tiful-3`): products, themes, content, customers, orders, discounts, inventory, metaobjects and metaobject definitions, read+write. Keep least-privilege; check the Dev Dashboard for **protected customer data** approval (orders/customers webhooks carry PII).
+- Webhooks declared in `shopify.app.toml` (API `2026-07`): `app/uninstalled`, `app/scopes_update`, `orders/create|updated|cancelled`, `customers/create|update`. Handlers `app/routes/webhooks.orders.tsx` and `webhooks.customers.tsx` are **12-line stubs** (authenticate + log). **Missing for rewards:** `orders/paid` and `refunds/create` topics. Add them declaratively, implement the handlers, then `pnpm deploy`.
+- **Hosting is live (verified 2026-09-25 via the Railway CLI):** project `beau-bou-app` (`99c8f7ee-aefa-4159-bd87-11cba105c062`), env `production`, service `be-you-tiful` (deploy SUCCESS), custom domain `https://app.be-you-tifulboutique.com` (returns HTTP 200), volume `be-you-tiful-volume` mounted at `/data`. Do not create another host. Use `railway` CLI in `beau-bou-app/` for logs, variables, deploys. Whether the app is *installed* on `v0m0hb-x3` is still unverified (run `shopify app versions list` from `beau-bou-app/`, not the theme repo; it needs the app config file there).
+- Railway variables present (names only, verified 2026-09-25): `SHOPIFY_API_KEY`, `SHOPIFY_API_SECRET`, `SHOPIFY_APP_URL`, `SCOPES`, `NODE_ENV` plus Railway's own. No Epos Now or rewards variables yet: add `EPOSNOW_*` and any rewards secrets there with `railway variables --set`, never in the repo. Runtime logs show the server up and answering `/` with 200 (the 404s in the log are internet scanner noise).
+- Caution: `shopify app versions list` and `shopify app info` from `beau-bou-app/` hung or failed in a non-interactive shell (they wanted a config lookup or a login). Run them in Amber's own terminal or pass `--path <abs path to beau-bou-app>`; if it prompts for login, stop and give Amber the one-liner.
+- Still true: `extensions/` is empty; `app/routes/` has no rewards/ePOS code yet.
+- The Dev Dashboard form is effectively read-only; `shopify.app.toml` is the source of truth.
+- An app proxy (`[app_proxy]` in the toml) and a **theme app extension** (`extensions/`, app blocks Michele drops into sections) are now possible. Use them for the rewards widget/redeem call instead of the earlier "no app" assumption.
+
+Machine and safety rules from `GitHub/AGENTS.md` (obey them):
+- **`~/.env-store` was deleted 2026-09-16 and only partly rebuilt (verified 2026-09-25: it has entries for FAS, fas-sanity, fas-vendure, house-of-rose-site, hra-backoffice and NO `beau-bou-app` entry; `~/.local_secrets/` is the vault).** Do NOT create an empty `~/.env-store` or empty env files to silence errors. For this project, ask Amber once where the real values should live, or use shell env for the session. Repos never hold their own `.env`; `~/.local_secrets/` (mode 700, files 600) is the vault. Never print or copy secret values.
+- **Commits are SSH-signed via 1Password.** If a commit fails with `failed to fill whole buffer` / `failed to write commit object`, 1Password is locked: ask Amber to unlock it. Never bypass with `-c commit.gpgsign=false`.
+- **Never run `git add -A` blindly.** Check for ` D` deletions first (an iCloud incident on 2026-09-22 deleted files and git objects). Stage explicit paths. iCloud is off; nothing goes to iCloud/Drive/Dropbox.
+- New repos/project folders go only under `GitHub/`. Dotfiles are GNU Stow under `~/dotfiles/`; edit there, never the `$HOME` symlink target.
+- The local shell is a sandbox with only granted folders mounted; it cannot delete without approval. Move dead files to `_to_delete/` unless Amber approves deletion.
+- Amber's earlier failed access ("can't see AGENTS.md") was a folder-grant problem: request `~/LocalStorm` and `~/dotfiles/localstorm` up front; never report the filesystem unreachable before asking.
+
+---
+
+## 2. NON-NEGOTIABLES
+
+1. **No fabricated social proof.** No invented reviews, testimonials, star ratings, sales counts, press logos, or "as seen in". Use only real sources (the 16 Facebook reviews / Google reviews, and only with Michele's OK, flagged `[CONFIRM WITH MICHELE]`). Where real content is missing, use clearly marked placeholders that are impossible to ship by accident (`[CONFIRM: …]`), and list every one in `docs/launch/open-items.md`.
+2. **Label provenance** in open-items and docs with the workspace convention: VERIFIED (sourced), DECIDED (owner choice), OBSERVED, INFERRED, UNKNOWN, SUPERSEDED. Only Amber or Michele can make something DECIDED.
+3. **No invented business facts** (founding year, owner bio, shipping rates, return windows, brand lists). Draft sensible defaults, mark each `[CONFIRM]`, list in open-items.
+4. **No secrets in the repo.** Tokens go in env vars / `.env` (gitignored) / Netlify or Railway env. Verify `.gitignore`.
+5. **Do not publish the theme.** Push unpublished to `v0m0hb-x3` (`npm run push:client`). Amber publishes. Same rule for the app: `pnpm deploy` releases a version but Amber decides when the store install and domain cutover happen.
+6. **No duplicate files/sections/docs.** Search first. Prefer editing what exists. Park/delete dead code (`_to_delete/hero-runway-v1/` etc.) after confirming nothing references it.
+7. **Never claim something works without running it.** Verification is a task, not a sentence.
+
+---
+
+## 3. WORKSTREAMS (execute in priority order; commit per workstream with conventional commits)
+
+### A. Store unblock + push (P0)
+- **The `be-you-tiful` app is NOT installed on `v0m0hb-x3` yet (verified 2026-09-24: the store lists only Search & Discovery and Messaging).** Order: scopes are already released; add the `orders/paid` + `refunds/create` topics, `pnpm deploy`, then Amber installs it from the Dev Dashboard (she must click the permission grant; you cannot). There is no "shown once" token. Get Admin API tokens with the **client credentials grant** (`POST https://v0m0hb-x3.myshopify.com/admin/oauth/access_token`, `grant_type=client_credentials` + client_id + client_secret, 24h token, same-org only), documented in `beau-bou-app/docs/SETUP.md`. The Dev Dashboard's "App automation token" is CI/CD-only (`shopify app deploy`), not an Admin API token. The client secret goes in env only, never the repo or chat. Authenticate Shopify CLI to `v0m0hb-x3` (`shopify auth login`, then `shopify theme list -s v0m0hb-x3`). If auth needs Amber, stop and give the exact one-liner.
+- Create the `look` metaobject definition on Michele's store, upload files, upsert looks (`SHOPIFY_STORE=v0m0hb-x3 SHOPIFY_ADMIN_TOKEN=… bb-looks-seed`), push the theme unpublished, and get a preview URL.
+- Zip import silently drops invalid files, so diff local vs uploaded after every push.
+- **`shopify theme list -s v0m0hb-x3` works from Amber's Mac (CLI already authenticated, verified 2026-09-25).** It shows Horizon `[live]` (19213575 8188), `be-you-tiful-1-2-0` unpublished (192212107628, ours), plus two strays: `theme-export-kw59hc-k1-myshopify-com-beau-bou` and `Updated copy of Horizon`. Never push to the strays; ask Amber before deleting them.
+- **A draft theme already exists on `v0m0hb-x3`:** `be-you-tiful-1-2-0` (`192212107628`), with Horizon still live and the store password-protected (per `docs/handoff.md`, 2026-09-21). Run `shopify theme list -s v0m0hb-x3` and update that draft instead of creating another. Do not broad-push unrelated local files over the theme editor's saved changes: diff first.
+
+### B. Hero + look pages: finish to "wow" (P0)
+- Confirm hero matches the locked design. Cutouts are clean at desktop and mobile, sync is exact, no layout shift, LCP image preloaded, `prefers-reduced-motion` respected (static first pair), pause when tab hidden.
+- Look pages: photo/video left, **Shop this look** pieces right, **Goes with it** grid, share, "More looks". Every piece has a working product link, or a graceful "coming soon / ask in store" state that still drives contact. Sizes/colors selectable inline where the product exists.
+
+### C. Pages + content (P0) — all copy through the brand voice guidelines
+Build or finish, each with real content structure, imagery, SEO title/meta, breadcrumbs, and schema where relevant:
+1. **About** — Michele's story, values, the "designed by God" tagline, what makes the boutique different, XS–3X inclusivity, community. Use only supplied facts; mark gaps `[CONFIRM]`. Add a "Meet Michele" block with a photo slot and swap-ready placeholder.
+2. **Contact** — working form (see D), phone/email/hours/map, directions button, Aundrea if Michele wants her listed `[CONFIRM]`.
+3. **Visit Us** — hours, parking/entry notes `[CONFIRM]`, map, storefront photo, in-store pickup instructions, "Get directions" deep link.
+4. **FAQ** (accordion, `FAQPage` schema), **Size Guide** (see E: women's/plus, kids, baby, shoes, with a "how to measure" block), **Shipping & Returns**, **Privacy**, **Terms**, **Accessibility statement** — from `docs/policies/`, wired into footer + menus.
+5. **Rewards** page (see F) with sign-up CTA, how it works, tiers, FAQs.
+6. **Shop the Look** index (all looks grid) + **Gift cards** page.
+7. **Style Journal** (blog): 3 starter posts (outfit ideas, swim/resort season, sizing tips) written in brand voice, with images.
+8. Real **404** with search + featured looks. Real **search** results page.
+- Wire header/footer menus and all internal links; run a link check; no dead `#` links anywhere.
+
+### D. Forms + buttons that actually work (P0)
+- Contact form, newsletter signup, "Notify me when back in stock" (product form), and rewards signup must use Shopify-native `{% form %}` (`contact`, `customer`) so they work with zero backend and land in Michele's email/customer list. Success + error states styled, accessible (aria-live), spam-protected (Shopify's built-in reCAPTCHA + honeypot), and tested by submitting each one for real.
+- Every CTA/button is audited: `tel:` (call), `mailto:`, Get Directions (Google Maps deep link), social links (only real profile URLs), add to cart, quick add, cart drawer, checkout, wishlist if included. Produce `docs/launch/button-audit.md`: a table of every interactive element, its target, and PASS/FAIL from a real browser run (Playwright / chrome-devtools).
+- Newsletter: welcome incentive tied to rewards ("join rewards, get X pts") `[CONFIRM offer]`.
+
+### E. Catalog architecture for a clothing boutique (P0) — must survive the ePOS Now sync
+Deliver a data model, a CSV template, a validator, and storefront filters. Use Shopify docs (Context7 / Shopify Dev MCP) to verify current limits and the Standard Product Taxonomy attribute handles before locking anything; do not rely on memory.
+
+- **Options (max 3 per product):** `Color`, `Size`. Shoes use `Size` with shoe-size values; do not create a separate size option per size type.
+- **Size systems** (values as a controlled list in one config file, e.g. `config/catalog-taxonomy.ts` or JSON, single source of truth used by the validator, CSV template, size guide, and filters):
+  - Women's/plus apparel: XS, S, M, L, XL, 2X, 3X (+ one-size)
+  - Women's numeric where used: 0–24
+  - Girls/boys: 2T–5T, 4–16 (+ XS–XL youth)
+  - Baby: NB, 0–3M, 3–6M, 6–9M, 9–12M, 12–18M, 18–24M
+  - Shoes: women's US 5–12 incl. halves, toddler 4–10, little kid 10.5C–3Y, big kid 3.5Y–7Y
+  - Swim: tops/bottoms sized separately, supports separates as two variants or two products `[decide + document]`
+- **Attributes as metafields** (prefer Shopify standard/taxonomy metafields where they exist, custom namespace `boutique` otherwise): `brand` (also fills Vendor), `gender` (Women / Men / Girls / Boys / Unisex), `age_group` (Adult / Kids / Toddler / Baby), `color` (with a swatch hex/pattern for the color chip), `category` (Tops, Bottoms, Dresses, Swim, Gowns, Shoes, Accessories, Baby, Kids…), `material`, `care`, `fit`/`size_range`, `season`, `occasion`, `sale` flag/compare-at price.
+- **Collections:** smart (automated) collections driven by tags/metafields: New Arrivals, Sale, Women, Plus (1X–3X), Girls, Boys, Baby, Shoes, Swim, Gowns, Accessories, plus brand collections. Empty is fine; they populate automatically.
+- **Storefront:** faceted filters (size, color swatches, brand, price, availability, age group, gender) on collection + search, size/color pickers on product with sold-out variant states, size-guide link on product, low-stock message, back-in-stock notify, recently viewed, "complete the look" from the `look` metaobject.
+- **SKU convention** (so POS and web line up): `BRANDCODE-STYLE-COLOR-SIZE`, uppercase, hyphenated, unique per variant, barcode field kept. Document it and enforce it in the validator.
+- **Deliverables:** `docs/store/catalog-model.md`, `docs/store/product-import-template.csv` (with 6 realistic sample rows covering apparel, shoes, kids, baby, swim), `scripts/catalog/validate-products.ts` (strict TS, checks options, SKUs, sizes vs taxonomy, required metafields, price/compare-at), `scripts/catalog/seed-taxonomy.ts` (creates metafield definitions + collections via Admin GraphQL, idempotent). Add `bb-catalog-validate` and `bb-catalog-seed` aliases.
+- **Test catalog (already on `v0m0hb-x3`, per `docs/handoff.md`):** 18 `TEST —` products / 55 variants (handles `test-*`, SKUs `BB-TEST-*`, tags `test-product` + `sample`), imported from `docs/store/client-test-products.csv`. **Extend that CSV/set, do not create a second one** (the 12-product `docs/store/sample-products.json` belongs to the old `kw59hc-k1` store, ignore it). Add only what is missing so every product type above appears at least once (girls, boys, baby, kids/toddler shoes, swim separates, a plus-size item), each with real Color + Size variants, brand, gender, age_group. Clearly label test data; Michele owns real merchandise, and everything tagged `test-product` gets archived before launch. Photos from `photos-in` where they map, otherwise the placeholder system; never present AI-generated or stock people as her real merchandise.
+
+### F. Rewards program with zero recurring cost (P1, spec first, then build)
+Goal: a points program built on **ePOS Now REST API + Shopify Admin GraphQL API + Zapier**, hosted on free tiers, so Michele pays for no rewards app.
+
+**Step 1 — research, don't assume.** Pull current docs (Context7 / WebFetch) for: ePOS Now REST API (I believe base `https://api.eposnowhq.com/api/V4/`, HTTP Basic with API key:secret, resources for Product, Category, Customer, Transaction, StockLevel/Location; **verify all of it**, and whether webhooks exist), Shopify Admin GraphQL (customer metafields, metaobjects, `discountCodeBasicCreate`, webhooks `orders/paid`, `refunds/create`, `orders/cancelled`, `customers/create`), and Zapier free-plan limits (currently ~100 tasks/month, 2-step zaps, verify). Write findings to `docs/rewards/research.md` with links and the date. If the ePOS Now API access needs enabling in her account, list exact steps for Amber.
+
+**Step 2 — architecture** (write `docs/rewards/architecture.md` before coding):
+- **Source of truth:** a points **ledger** (append-only events: earn, redeem, adjust, expire, reverse) stored in Shopify as a `reward_event` metaobject, with the running balance/tier cached in customer metafields `rewards.points`, `rewards.tier`, `rewards.lifetime`. The storefront reads balance directly in Liquid (`customer.metafields.rewards.points`, no API call). Verify metafield storefront visibility. Redeem/lookup calls go through the app proxy.
+- **Service = `beau-bou-app`.** Add routes/jobs to the existing React Router app: Shopify webhook routes (authenticated via `authenticate.webhook`, so HMAC is handled), an authenticated ePOS Now poller (a scheduled job, idempotent, cursor by transaction id/time), and `earn`, `redeem`, `adjust`, `lookup` handlers, with shared logic in `app/lib/rewards/` and `app/lib/eposnow/` (strict TS, zod at every boundary). Idempotency keys on every event so retries and duplicates cannot double-award. **Hosting:** the app needs a durable public HTTPS host to replace the placeholder `application_url`. The Dockerfile already targets Railway (`/data` volume): verify what exists there and use it unless it clearly cannot work, put it on `app.be-you-tifulboutique.com` via CNAME, and state the true monthly cost and who pays. Do not promise "free" if the host isn't. Prefer moving anything that can run inside Shopify at no cost (Shopify Flow for simple earn rules, Shopify Functions, theme app extension) so the hosted surface is only what must be hosted (the ePOS Now poller and redeem/lookup).
+- **Identity:** match ePOS Now customers to Shopify customers by normalized email, then phone. Unmatched in-store customers are held as pending and claim on signup.
+- **Earn:** online = Shopify `orders/paid` (net of discounts, shipping, tax, gift cards); in-store = ePOS Now transactions. Refund/cancel reverses points. Rates/tiers/expiry live in one config file (`rewards/config.ts`), placeholders `[CONFIRM WITH MICHELE]` (e.g. 1 pt/$1, 100 pts = $5, welcome bonus, birthday bonus, tiers).
+- **Redeem online:** create single-use, customer-scoped, capped Shopify discount codes via Admin API when the customer redeems; show code in the account page + email. **Redeem in-store:** staff lookup page (phone/email → balance → redeem → coupon/discount to apply in ePOS Now), protected by a PIN/secret, rate-limited.
+- **Zapier's role (be honest about the free-tier ceiling):** use Zapier for the no-code glue Michele can see and edit: new rewards signup → welcome email, birthday reminder, points-milestone email, and optionally ePOS Now → service webhook as a fallback path. The **primary** earn path is the scheduled poller, not Zapier, so the program never dies at 100 tasks. Document exactly which Zaps exist, their trigger/action, and their task usage. Use the Zapier MCP to build/enable what it can.
+- **Security:** HMAC verification, secrets in env, least-privilege Admin API scopes listed in the docs, input validation with a schema lib (e.g. zod), no PII in logs, abuse limits.
+- **Also evaluate Shopify Flow** (free) for any step that is simpler there than in the service, and say which.
+
+**Step 3 — build** via `/mcp-builder`: typed `EposNowClient` (`beau-bou-app/app/lib/eposnow/`), typed `ShopifyAdminClient`, rewards service, an MCP server exposing read tools (`epos_search_products`, `epos_get_stock`, `epos_recent_transactions`, `rewards_lookup_customer`, `rewards_adjust_points` behind confirmation). Tests for ledger math, idempotency, refund reversal, identity matching (vitest or node:test). A `--dry-run` mode and a sandbox seed so it can be demonstrated tomorrow with fake customers before real data exists.
+
+**Step 4 — storefront:** Rewards page, account-page balance/tier/progress bar/history/redeem UI, cart-drawer "you'll earn N points", signup CTA in header/footer/newsletter, product-page "earn N pts" line. All styled in the iridescent palette.
+
+**Triage rule:** if time runs short, ship A–E + the rewards spec, storefront UI, ledger, and Shopify-side earn/redeem fully working, and clearly mark the ePOS Now poller as "built, awaiting Michele's API credentials" rather than half-working. Never ship something half-connected without saying so.
+
+### G. Sparkle pass: design, motion, performance, trust (P1)
+- **Design:** consistent iridescent system (`--bb-holo` gradients used with restraint), subtle shimmer on primary buttons and logo, elegant hover states on cards, scroll-reveal with `IntersectionObserver` (respect reduced motion), refined typography scale, image-forward category tiles, announcement bar with a rotating real message (free pickup / rewards), designed empty states, branded loading skeletons, custom favicon + apple-touch icon + OG/social share image from the logo, branded cart drawer, branded gift card, branded 404, polished mobile nav, sticky add-to-cart on mobile PDP.
+- **Be bold:** at least three signature moments that make Michele say "wow" (e.g. hero slideshow polish, an animated peacock feather reveal on the Rewards page, a shimmering "Shop this look" hotspot experience). Restraint and taste over gimmicks: no autoplaying sound, no layout jank.
+- **Imagery ("pictures"):** every image slot is either a real photo or a swap-ready placeholder that `scripts/swap-photos.py` replaces in one command. The FB photos are mostly 414x414: never upscale them into full-bleed slots (blur is the fastest way to look cheap); use them at or below native size, in collages/tiles/cutouts, and put large hero-scale slots on the best sources. Write `docs/launch/photo-requests.md`: a prioritized shot list for Michele (storefront, interior, her portrait, 10 hero outfits on-body, swim, kids/baby) matching `docs/client-portal/` shot-list PDF. Descriptive alt text on all of them. Real photos only for people; no AI-generated models. Available source folders under `docs/images/photos-in/` (symlink into `~/LocalStorm/Work/Be-YOU-tiful Boutique/photos-in/`): shoes, handbags, jewelry, hats, tops, shorts, dress, Jumper, Toddler Girl Dress, kids toys, Plush Toys, cups, decor, display, mannequin, compliments, banner, slide-show-edit, tops:bottoms:outfitStyles, beyoutiful-try-ons, Logo, plus `webp-conversion-map.csv`. Inventory them before deciding an image slot is missing.
+- **Performance:** Lighthouse mobile ≥ 90 on home, collection, product, look page (use chrome-devtools Lighthouse); responsive `srcset`/`sizes`, WebP/AVIF via Shopify CDN, lazy-load below the fold, no render-blocking assets, CLS < 0.1.
+- **Accessibility:** run `design:accessibility-review` + axe: focus states, contrast on the pastel palette (fix any text-on-lavender failures), alt text on every image, keyboard nav for the hero/cart/filters, semantic landmarks.
+- **SEO:** unique title/meta per page, `LocalBusiness` + `Organization` + `WebSite` (sitelinks search) + `Product`/`Offer` + `FAQPage` + `BreadcrumbList` JSON-LD (use `searchfit-seo:schema-markup`), OG/Twitter tags, sitemap and robots sanity, Google Business Profile link, local keywords (Punta Gorda, Charlotte County, boutique, plus-size, swim) used naturally.
+- **Trust:** payment icons, secure checkout note, clear shipping/return summary near add-to-cart, pickup-in-store option surfaced on PDP, real contact info in header/footer.
+
+### H. QA, docs, handoff (P0, last but not skippable)
+- **Real-browser QA** on the pushed preview theme, desktop + mobile viewport: home, collection with filters, product (color + size selection), cart drawer, checkout handoff, look page, every new page, every form submission, every button in `button-audit.md`. Screenshots to `docs/launch/qa/`. Fix, re-test.
+- `shopify theme check` at gate level; fix or document any new warnings.
+- **Docs (update existing, don't duplicate):** `README.md` (accurate build state, commands, hero description), `AGENTS.md`, `CLAUDE.md`, `docs/handoff.md`, `docs/store/README.md`, `docs/rewards/*`, `docs/launch/open-items.md` (every `[CONFIRM]` with owner + question), `docs/launch/client-handoff.md` (plain-English, no jargon: how Michele adds a product, sets sizes/colors, edits a look, edits page copy, views rewards, who to call), `docs/launch/go-live-checklist.md` (domain, publish, policies, payments, shipping, taxes, ePOS Now sync switch-on, rewards credentials, test order).
+- Update project memory + `claude/beau-bou-theme-status.md` in the Project (read, edit, write the full file back) with true current state.
+
+---
+
+## 4. DEFINITION OF DONE (all must be true, with evidence)
+
+- [ ] Theme pushed unpublished to `v0m0hb-x3`; preview URL recorded in `docs/launch/go-live-checklist.md`.
+- [ ] Hero matches locked design; every look links to a working shop-this-look page.
+- [ ] All pages in C exist, are linked from menus, and contain real, on-brand content; every placeholder listed in open-items.
+- [ ] Every form submitted for real and verified received; `button-audit.md` is 100% PASS.
+- [ ] Catalog model, CSV template, validator, taxonomy seed, and filters exist; sample products cover apparel/shoes/kids/baby/swim with colors and sizes; validator passes.
+- [ ] Rewards: spec, ledger, Shopify earn/redeem, storefront UI working end to end in dry-run/sandbox; ePOS Now client + poller built and tested against mocks (and live if credentials exist); Zapier zaps documented; tests green.
+- [ ] Lighthouse mobile ≥ 90 on 4 key templates; axe clean on key pages; theme-check clean.
+- [ ] Docs updated, nothing duplicated, memory + project doc current.
+- [ ] Final message to Amber: what shipped, what's placeholder, what needs her/Michele (ranked), exact commands to run.
+
+## 5. OPERATING RULES
+- **Desktop Commander for every CLI task** (Amber's standing rule). Verify facts on the real machine before writing them down: `ls`, `readlink`, `railway`, `shopify`, `curl`. Never assert a path or state you did not check.
+- Use the task list. Small commits, conventional messages. Run independent work in parallel with subagents (catalog / rewards / QA are independent after A).
+- Ask Amber only when genuinely blocked (Shopify auth, ePOS Now API credentials, a brand decision that changes design). Otherwise choose the best, most sensible path, state the assumption, and continue.
+- When you finish a workstream, verify it, tick it off, and move on. Do not stop to summarize between workstreams.
