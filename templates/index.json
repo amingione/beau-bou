@@ -281,6 +281,13 @@
         "h1": {
           "type": "hours",
           "settings": {
+            "days": "Monday",
+            "hours": "11AM \u2013 4PM"
+          }
+        },
+        "hours_3BkLJc": {
+          "type": "hours",
+          "settings": {
             "days": "Tuesday \u2013 Friday",
             "hours": "10AM \u2013 5PM"
           }
@@ -295,13 +302,14 @@
         "h3": {
           "type": "hours",
           "settings": {
-            "days": "Sunday \u2013 Monday",
-            "hours": "Closed"
+            "days": "Sunday",
+            "hours": "10AM \u2013 5PM"
           }
         }
       },
       "block_order": [
         "h1",
+        "hours_3BkLJc",
         "h2",
         "h3"
       ],

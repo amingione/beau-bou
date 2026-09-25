@@ -170,29 +170,37 @@
         "h1": {
           "type": "hours",
           "settings": {
+            "days": "Monday",
+            "hours": "11AM – 4PM"
+          }
+        },
+        "h2": {
+          "type": "hours",
+          "settings": {
             "days": "Tuesday – Friday",
             "hours": "10AM – 5PM"
           }
         },
-        "h2": {
+        "h3": {
           "type": "hours",
           "settings": {
             "days": "Saturday",
             "hours": "10AM – 4PM"
           }
         },
-        "h3": {
+        "h4": {
           "type": "hours",
           "settings": {
-            "days": "Sunday – Monday",
-            "hours": "Closed"
+            "days": "Sunday",
+            "hours": "10AM – 5PM"
           }
         }
       },
       "block_order": [
         "h1",
         "h2",
-        "h3"
+        "h3",
+        "h4"
       ],
       "settings": {
         "image_position": "right",

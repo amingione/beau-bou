@@ -23,7 +23,7 @@
           "type": "text",
           "settings": {
             "heading": "Store hours",
-            "subtext": "<p>Tuesday – Friday · 10AM – 5PM<br>Saturday · 10AM – 4PM<br>Sunday – Monday · Closed</p>"
+            "subtext": "<p>Monday | 11AM – 4PM<br/>Tuesday – Friday | 10AM – 5PM<br/>Saturday | 10AM – 4PM<br/>Sunday | 10AM – 5PM</p>"
           }
         }
       },
