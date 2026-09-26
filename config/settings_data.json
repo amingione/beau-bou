@@ -1,64 +1,17 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "current": {
-    "logo_width": 240,
-    "customer_account_menu": "customer-account-main-menu",
-    "color_schemes": {
-      "scheme-1": {
-        "settings": {
-          "background": "#FBF8F5",
-          "background_gradient": "",
-          "text": "#2E2A33",
-          "button": "#6E5F86",
-          "button_label": "#FFFFFF",
-          "secondary_button_label": "#2E2A33",
-          "shadow": "#2E2A33"
-        }
-      },
-      "scheme-2": {
-        "settings": {
-          "background": "#F3EDF3",
-          "background_gradient": "",
-          "text": "#2E2A33",
-          "button": "#2E2A33",
-          "button_label": "#FBF8F5",
-          "secondary_button_label": "#2E2A33",
-          "shadow": "#2E2A33"
-        }
-      },
-      "scheme-3": {
-        "settings": {
-          "background": "#DCD4EC",
-          "background_gradient": "",
-          "text": "#2E2A33",
-          "button": "#2E2A33",
-          "button_label": "#FBF8F5",
-          "secondary_button_label": "#2E2A33",
-          "shadow": "#2E2A33"
-        }
-      },
-      "scheme-4": {
-        "settings": {
-          "background": "#2E2A33",
-          "background_gradient": "",
-          "text": "#F6F1F7",
-          "button": "#F6F1F7",
-          "button_label": "#2E2A33",
-          "secondary_button_label": "#F6F1F7",
-          "shadow": "#2E2A33"
-        }
-      },
-      "scheme-5": {
-        "settings": {
-          "background": "#F5E4EA",
-          "background_gradient": "",
-          "text": "#2E2A33",
-          "button": "#6E5F86",
-          "button_label": "#FFFFFF",
-          "secondary_button_label": "#2E2A33",
-          "shadow": "#2E2A33"
-        }
-      }
-    },
+    "logo": "shopify://shop_images/be-you-tiful-boutique-by-michelle-logo-black_f95b8033-7518-45f3-ae1c-992188660a90.png",
+    "logo_width": 100,
+    "favicon": "shopify://shop_images/3.png",
     "type_header_font": "playfair_display_n4",
     "heading_scale": 100,
     "type_body_font": "poppins_n4",
@@ -153,18 +106,19 @@
     "badge_position": "bottom right",
     "badge_corner_radius": 2,
     "sale_badge_color_scheme": "scheme-1",
-    "sold_out_badge_color_scheme": "scheme-4",
+    "sold_out_badge_color_scheme": "scheme-3",
     "brand_headline": "Be-YOU-tiful Boutique by Michele",
-    "brand_description": "<p>Unique boutique with affordable prices \u2014 from swimsuits to gowns, sizes XS to 3X. Accept yourself as you were designed by God.</p>",
+    "brand_description": "<p>Unique boutique with affordable prices — from swimsuits to gowns, sizes XS to 3X. Accept yourself as you were designed by God.</p>",
+    "brand_image": "shopify://shop_images/black-logo.png",
     "brand_image_width": 100,
-    "social_twitter_link": "",
     "social_facebook_link": "https://www.facebook.com/MicheleMonksEnsmingerMansfield",
-    "social_pinterest_link": "",
-    "social_instagram_link": "",
-    "social_tiktok_link": "",
-    "social_tumblr_link": "",
-    "social_snapchat_link": "",
+    "social_instagram_link": "https://instagram.com/michelensmginer",
     "social_youtube_link": "",
+    "social_tiktok_link": "https://www.tiktok.com/@beyoutiful.boutiq64",
+    "social_twitter_link": "",
+    "social_snapchat_link": "",
+    "social_pinterest_link": "",
+    "social_tumblr_link": "",
     "social_vimeo_link": "",
     "predictive_search_enabled": true,
     "predictive_search_show_vendor": false,
@@ -175,25 +129,82 @@
     "show_cart_note": true,
     "cart_drawer_collection": "",
     "cart_color_scheme": "scheme-1",
+    "customer_account_menu": "main-menu",
+    "type_accent_font": "playfair_display_i4",
+    "nav_letter_spacing": 12,
+    "display_letter_spacing": 30,
     "sections": {
       "main-password-header": {
         "type": "main-password-header",
         "settings": {
-          "color_scheme": "scheme-1"
+          "color_scheme": "scheme-2"
         }
       },
       "main-password-footer": {
         "type": "main-password-footer",
         "settings": {
-          "color_scheme": "scheme-1"
+          "color_scheme": "scheme-2"
         }
       }
     },
-    "type_accent_font": "playfair_display_i4",
-    "nav_letter_spacing": 12,
-    "display_letter_spacing": 30,
-    "logo": "shopify://shop_images/beyoutiful-logo-holographic-blue-signature.webp",
-    "favicon": "shopify://shop_images/3.png"
+    "content_for_index": [],
+    "color_schemes": {
+      "scheme-1": {
+        "settings": {
+          "background": "#f1f1f1",
+          "background_gradient": "",
+          "text": "#2b2b2b",
+          "button": "#ffffff",
+          "button_label": "#3a4543",
+          "secondary_button_label": "#3a4543",
+          "shadow": "#000000"
+        }
+      },
+      "scheme-2": {
+        "settings": {
+          "background": "#ffffff",
+          "background_gradient": "",
+          "text": "#2b2b2b",
+          "button": "#f1f1f1",
+          "button_label": "#3a4543",
+          "secondary_button_label": "#424a49",
+          "shadow": "#313131"
+        }
+      },
+      "scheme-3": {
+        "settings": {
+          "background": "#5B93A0",
+          "background_gradient": "",
+          "text": "#FFFFFF",
+          "button": "#eae7e3",
+          "button_label": "#5B93A0",
+          "secondary_button_label": "#f1f1f1",
+          "shadow": "#42484a"
+        }
+      },
+      "scheme-4": {
+        "settings": {
+          "background": "#272727",
+          "background_gradient": "",
+          "text": "#d7d7d7",
+          "button": "#dbdbdb",
+          "button_label": "#313131",
+          "secondary_button_label": "#c7c7c7",
+          "shadow": "#1a1a1a"
+        }
+      },
+      "scheme-5": {
+        "settings": {
+          "background": "#3f494a",
+          "background_gradient": "",
+          "text": "#f1f1f1",
+          "button": "#ffffff",
+          "button_label": "#3f4e53",
+          "secondary_button_label": "#ede3e0",
+          "shadow": "#f1f1f1"
+        }
+      }
+    }
   },
   "presets": {
     "Be-YOU-tiful": {
@@ -202,57 +213,57 @@
       "color_schemes": {
         "scheme-1": {
           "settings": {
-            "background": "#FBF8F5",
+            "background": "#FFFFFF",
             "background_gradient": "",
-            "text": "#2E2A33",
-            "button": "#6E5F86",
+            "text": "#2B2B2B",
+            "button": "#6A6A6A",
             "button_label": "#FFFFFF",
-            "secondary_button_label": "#2E2A33",
-            "shadow": "#2E2A33"
+            "secondary_button_label": "#2B2B2B",
+            "shadow": "#1a1a1a"
           }
         },
         "scheme-2": {
           "settings": {
-            "background": "#F3EDF3",
+            "background": "#F6F3EE",
             "background_gradient": "",
-            "text": "#2E2A33",
-            "button": "#2E2A33",
-            "button_label": "#FBF8F5",
-            "secondary_button_label": "#2E2A33",
-            "shadow": "#2E2A33"
+            "text": "#2B2B2B",
+            "button": "#2B2B2B",
+            "button_label": "#FFFFFF",
+            "secondary_button_label": "#2B2B2B",
+            "shadow": "#1a1a1a"
           }
         },
         "scheme-3": {
           "settings": {
-            "background": "#DCD4EC",
+            "background": "#0F5F66",
             "background_gradient": "",
-            "text": "#2E2A33",
-            "button": "#2E2A33",
-            "button_label": "#FBF8F5",
-            "secondary_button_label": "#2E2A33",
-            "shadow": "#2E2A33"
+            "text": "#FFFFFF",
+            "button": "#FFFFFF",
+            "button_label": "#0F5F66",
+            "secondary_button_label": "#FFFFFF",
+            "shadow": "#1a1a1a"
           }
         },
         "scheme-4": {
           "settings": {
-            "background": "#2E2A33",
+            "background": "#111111",
             "background_gradient": "",
-            "text": "#F6F1F7",
-            "button": "#F6F1F7",
-            "button_label": "#2E2A33",
-            "secondary_button_label": "#F6F1F7",
-            "shadow": "#2E2A33"
+            "text": "#FFFFFF",
+            "button": "#FFFFFF",
+            "button_label": "#111111",
+            "secondary_button_label": "#FFFFFF",
+            "shadow": "#1a1a1a"
           }
         },
         "scheme-5": {
           "settings": {
-            "background": "#F5E4EA",
+            "background": "#F2E4E1",
             "background_gradient": "",
-            "text": "#2E2A33",
-            "button": "#6E5F86",
+            "text": "#2B2B2B",
+            "button": "#2B2B2B",
             "button_label": "#FFFFFF",
-            "secondary_button_label": "#2E2A33",
-            "shadow": "#2E2A33"
+            "secondary_button_label": "#2B2B2B",
+            "shadow": "#1a1a1a"
           }
         }
       },
@@ -352,7 +363,7 @@
       "sale_badge_color_scheme": "scheme-1",
       "sold_out_badge_color_scheme": "scheme-4",
       "brand_headline": "Be-YOU-tiful Boutique by Michele",
-      "brand_description": "<p>Unique boutique with affordable prices \u2014 from swimsuits to gowns, sizes XS to 3X. Accept yourself as you were designed by God.</p>",
+      "brand_description": "<p>Unique boutique with affordable prices — from swimsuits to gowns, sizes XS to 3X. Accept yourself as you were designed by God.</p>",
       "brand_image_width": 100,
       "social_twitter_link": "",
       "social_facebook_link": "https://www.facebook.com/MicheleMonksEnsmingerMansfield",

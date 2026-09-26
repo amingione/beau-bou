@@ -21,7 +21,7 @@ Zsh shortcuts: `source scripts/aliases.zsh` → `bb-dev`, `bb-check`, `bb-push`,
 
 | Area | Change |
 | --- | --- |
-| `config/settings_data.json` | Preset **Be-YOU-tiful**: Playfair Display headings, Poppins body, Playfair italic accent; 5 color schemes — soft iridescent pastels: Ivory, Blush-lavender mist, Lavender, Midnight plum, Blush (see `docs/looks.md` › Palette); square corners, flat gray buttons, drawer cart, white SALE badge |
+| `config/settings_data.json` | Preset **Be-YOU-tiful**: Playfair Display headings, Poppins body, Playfair italic accent; 5 color schemes, approved by Amber 2026-09-25 (the live theme is the source of truth): light gray `#f1f1f1`, white, teal `#5B93A0`, charcoal `#272727`, slate `#3f494a`; accent teal `#0f5f66`. The earlier iridescent-pastel palette is retired. Square corners, flat gray buttons, drawer cart; markdown badges read Clearance, or Sale for `sale`-tagged event items |
 | `config/settings_schema.json` | Theme info; new settings `type_accent_font`, `nav_letter_spacing`, `display_letter_spacing` |
 | `layout/theme.liquid` | Loads accent font, exposes `--font-accent-*`, `--nav-letter-spacing`, `--display-letter-spacing`; loads `beau-bou.css` |
 | `assets/beau-bou.css` | All global overrides (nav, buttons, cards, badges, facets, footer) + `.bb-display` / `.bb-accent` / `.bb-frame` utilities |

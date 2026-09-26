@@ -1,17 +1,14 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "hero": {
-      "type": "page-hero",
-      "settings": {
-        "eyebrow": "Get in touch",
-        "heading": "Contact",
-        "accent": "Ask us anything — sizing, holds, gift ideas, what's new",
-        "text": "<p>Call <a href=\"tel:9413691628\">(941) 369-1628</a> during store hours, email <a href=\"mailto:beyoutifulboutiquebymichele@gmail.com\">beyoutifulboutiquebymichele@gmail.com</a>, message us on <a href=\"https://www.facebook.com/MicheleMonksEnsmingerMansfield\" target=\"_blank\" rel=\"noopener\">Facebook</a>, or use the form below.</p>",
-        "color_scheme": "scheme-1",
-        "padding_top": 48,
-        "padding_bottom": 0
-      }
-    },
     "form": {
       "type": "contact-form",
       "settings": {
@@ -20,6 +17,21 @@
         "color_scheme": "scheme-1",
         "padding_top": 12,
         "padding_bottom": 36
+      }
+    },
+    "hero": {
+      "type": "page-hero",
+      "settings": {
+        "eyebrow": "Get in touch",
+        "heading": "Contact",
+        "accent": "Ask us anything — sizing, holds, gift ideas, what's new",
+        "text": "<p><a href=\"tel:(941) 369-1628\" target=\"_blank\" title=\"tel:(941) 369-1628\">Call</a> during store hours, <a href=\"mailto:beyoutifulboutiquebymichele@gmail.com\" target=\"_blank\" title=\"mailto:beyoutifulboutiquebymichele@gmail.com\">email</a>, message us on <a href=\"https://www.facebook.com/MicheleMonksEnsmingerMansfield\" target=\"_blank\">Facebook</a>, or use the form below.</p>",
+        "button_label": "",
+        "button_link": "",
+        "image": "shopify://shop_images/be-you-tiful-boutique-beach-blue.jpg",
+        "color_scheme": "scheme-1",
+        "padding_top": 44,
+        "padding_bottom": 20
       }
     },
     "store": {
@@ -61,18 +73,19 @@
         "h4"
       ],
       "settings": {
-        "image_position": "right",
+        "image": "shopify://shop_images/be-you-tiful-boutique-punta-gorda-florida.png",
+        "image_position": "left",
         "heading": "Or just stop in",
         "address_line_1": "264-A W Marion Ave",
         "address_line_2": "Punta Gorda, Florida 33950",
         "phone": "(941) 369-1628",
         "show_directions": true,
         "directions_label": "Get Directions",
+        "directions_link": "",
         "note": "Visit us in downtown Punta Gorda",
-        "color_scheme": "scheme-1",
+        "color_scheme": "scheme-3",
         "padding_top": 24,
-        "padding_bottom": 48,
-        "image": "shopify://shop_images/beyoutiful-blue-tops-and-accessories-store-display.webp"
+        "padding_bottom": 48
       }
     }
   },

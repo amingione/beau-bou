@@ -26,7 +26,7 @@
 .page-hero__accent {
   font-size: clamp(1.8rem, 2vw, 2.4rem);
   margin: 1.2rem 0 0;
-  color: var(--bb-accent);
+  color: #0f5f66;
 }
 
 .page-hero__body {

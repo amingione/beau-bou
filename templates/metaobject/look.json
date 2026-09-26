@@ -1,28 +1,37 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
       "type": "main-look",
       "settings": {
-        "media": "photo",
-        "badge": "As styled in store",
+        "media": "cutout",
+        "badge": "Limited Summer Collection",
         "byline": "Styled by Michele",
         "show_share": true,
         "pieces_heading": "Shop this look",
-        "goes_with_heading": "Goes with it",
-        "goes_with_sub": "Not in the photo \u2014 but they belong together",
+        "goes_with_heading": "Change it up",
+        "goes_with_sub": "Same outfit, new style!",
         "columns": "3",
         "quick_add": "standard",
-        "collection": "new-arrivals",
+        "collection": "all-collections",
         "collection_label": "Shop all new arrivals",
-        "empty_heading": "Love this look?",
-        "empty_text": "Contact the boutique about availability and sizing.",
-        "empty_button": "Ask about this look",
-        "empty_link": "/pages/contact",
+        "empty_heading": "We Sold Out!",
+        "empty_text": "When it's gone, it's GONE!",
+        "empty_button": "Shop Current Selection",
+        "empty_link": "shopify://products/test-orange-floral-dress",
         "all_looks_label": "Shop the Look",
         "all_looks_link": "/pages/shop-the-look",
         "show_more": true,
         "more_heading": "More looks",
-        "color_scheme": "scheme-1",
+        "color_scheme": "scheme-2",
         "padding_top": 24,
         "padding_bottom": 48
       }

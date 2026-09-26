@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "name": "t:sections.footer.name",
   "type": "footer",
@@ -16,14 +25,14 @@
           "type": "text",
           "settings": {
             "heading": "Get in touch",
-            "subtext": "<p>Any questions?<br>Let us know in store at<br>264-A W Marion Ave, Punta Gorda, FL 33950<br>Or call us at <a href=\"tel:9413691628\">(941) 369-1628</a><br><a href=\"mailto:beyoutifulboutiquebymichele@gmail.com\">beyoutifulboutiquebymichele@gmail.com</a></p>"
+            "subtext": "<p>Any questions?<br/>Let us know in store at<br/><strong>264-A W Marion Ave, Punta Gorda, FL 33950</strong></p><p><a href=\"mailto:beyoutifulboutiquebymichele@gmail.com\" title=\"mailto:beyoutifulboutiquebymichele@gmail.com\"><strong>Email</strong></a><br/><strong>Phone</strong>: (941) 369-1628</p>"
           }
         },
         "hours": {
           "type": "text",
           "settings": {
             "heading": "Store hours",
-            "subtext": "<p>Monday | 11AM – 4PM<br/>Tuesday – Friday | 10AM – 5PM<br/>Saturday | 10AM – 4PM<br/>Sunday | 10AM – 5PM</p>"
+            "subtext": "<p><em><strong>Open 7 Days a Week</strong></em><br/><br/><strong>Monday: </strong>11AM – 4PM<br/><strong>Tuesday</strong>: 10AM – 5PM<br/><strong>Wednesday: </strong>10AM – 5PM<br/><strong>Thursday:</strong> 10AM – 5PM<br/><strong>Friday:</strong> 10AM – 5PM<br/><strong>Saturday:</strong> 10AM – 4PM<br/><strong>Sunday:</strong> 10AM – 5PM</p>"
           }
         }
       },
@@ -33,7 +42,7 @@
         "hours"
       ],
       "settings": {
-        "color_scheme": "scheme-1",
+        "color_scheme": "scheme-2",
         "newsletter_enable": true,
         "newsletter_heading": "Join our mailing list",
         "enable_follow_on_shop": false,
@@ -42,7 +51,7 @@
         "enable_language_selector": false,
         "payment_enable": true,
         "show_policy": true,
-        "margin_top": 48,
+        "margin_top": 0,
         "padding_top": 48,
         "padding_bottom": 36
       }
