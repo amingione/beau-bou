@@ -77,7 +77,7 @@
       "settings": {
         "center_heading": "Shop Styles",
         "media_style": "cutout",
-        "presentation": "editorial",
+        "presentation": "gallery",
         "overlay": 20,
         "blur": 0,
         "bg_position": "center top",
@@ -115,7 +115,7 @@
         "show_description": false,
         "description_style": "body",
         "columns_desktop": 4,
-        "enable_desktop_slider": true,
+        "enable_desktop_slider": false,
         "full_width": false,
         "show_view_all": true,
         "view_all_style": "outline",

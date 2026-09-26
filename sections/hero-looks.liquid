@@ -16,9 +16,11 @@
     assign bb_bg = images[bb_fname]
   endif
 -%}
-{{ 'component-look-card.css' | asset_url | stylesheet_tag }}
-{{ 'section-hero-looks.css' | asset_url | stylesheet_tag }}
-<script src="{{ 'hero-looks.js' | asset_url }}" defer="defer"></script>
+{%- unless section.settings.presentation == 'gallery' -%}
+  {{ 'component-look-card.css' | asset_url | stylesheet_tag }}
+  {{ 'section-hero-looks.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'hero-looks.js' | asset_url }}" defer="defer"></script>
+{%- endunless -%}
 
 {%- style -%}
   #Looks-{{ section.id }} {
@@ -41,6 +43,22 @@
   }
 {%- endstyle -%}
 
+{%- if section.settings.presentation == 'gallery' -%}
+  {%- comment -%} Still grid: every look at once, no motion. Uses the Shop the Look page's cards. {%- endcomment -%}
+  <div id="Looks-{{ section.id }}" class="looks-home color-{{ section.settings.color_scheme }} gradient">
+    <div class="page-width">
+      {%- if section.settings.center_heading != blank -%}
+        <h2 class="h1 center">{{ section.settings.center_heading | escape }}</h2>
+      {%- endif -%}
+      {% render 'look-gallery', limit: section.settings.max_looks %}
+      {%- if section.settings.button_label != blank -%}
+        <div class="center">
+          <a href="{{ section.settings.button_link | default: '/pages/shop-the-look' }}" class="button button--secondary">{{ section.settings.button_label | escape }}</a>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+{%- else -%}
 <div
   id="Looks-{{ section.id }}"
   class="hero-looks hero-looks--{{ section.settings.presentation | default: 'editorial' }} hero-looks--{{ section.settings.media_style | default: 'cutout' }} color-{{ section.settings.color_scheme }}{% if section.settings.full_width %} hero-looks--full{% endif %}{% if section.settings.show_floor %} hero-looks--floor{% endif %}{% if bb_bg == blank %} hero-looks--gradient{% endif %}"
@@ -117,6 +135,7 @@
     </div>
   </div>
 </div>
+{%- endif -%}
 
 {% schema %}
 {
@@ -131,7 +150,8 @@
       { "value": "cutout", "label": "Transparent cutouts" } ] },
     { "type": "select", "id": "presentation", "label": "Presentation", "default": "runway", "options": [
       { "value": "runway", "label": "Ivory runway beneath hero" },
-      { "value": "editorial", "label": "Dark editorial hero" } ] },
+      { "value": "editorial", "label": "Dark editorial hero" },
+      { "value": "gallery", "label": "Gallery: still grid of looks (no slideshow)" } ] },
     { "type": "paragraph", "content": "Logo center stage, an outfit slideshow either side. Both sides change together while showing different looks; each outfit opens its own Shop-this-look page. Looks come from Content → Metaobjects → Look; manual Look blocks are the fallback." },
 
     { "type": "header", "content": "Backdrop" },

@@ -1,14 +1,32 @@
-{% comment %}Published Look entries; shared by the gallery page and outfit recommendations.{% endcomment %}
+{% comment %}
+  Published Look entries; shared by the gallery page and outfit recommendations.
+
+  Accepts:
+  - limit: {Number} show at most this many looks, without pagination (homepage row). Optional;
+    without it the full gallery paginates by 24.
+{% endcomment %}
 {{ 'component-look-card.css' | asset_url | stylesheet_tag }}
 {{ 'section-main-look.css' | asset_url | stylesheet_tag }}
-{%- paginate shop.metaobjects.look.values by 24 -%}
+{%- if limit -%}
   <ul class="look-gallery list-unstyled" role="list">
+    {%- assign shown = 0 -%}
     {%- for outfit in shop.metaobjects.look.values -%}
       {%- if outfit.system.url == blank or outfit.image.value == blank -%}{%- continue -%}{%- endif -%}
+      {%- if shown >= limit -%}{%- break -%}{%- endif -%}
+      {%- assign shown = shown | plus: 1 -%}
       <li>{% render 'look-card', image: outfit.image.value, url: outfit.system.url, title: outfit.title.value, class: 'look-card--portrait' %}</li>
-    {%- else -%}
-      <li><p>New outfit inspiration is on its way.</p></li>
     {%- endfor -%}
   </ul>
-  {% render 'pagination', paginate: paginate %}
-{%- endpaginate -%}
+{%- else -%}
+  {%- paginate shop.metaobjects.look.values by 24 -%}
+    <ul class="look-gallery list-unstyled" role="list">
+      {%- for outfit in shop.metaobjects.look.values -%}
+        {%- if outfit.system.url == blank or outfit.image.value == blank -%}{%- continue -%}{%- endif -%}
+        <li>{% render 'look-card', image: outfit.image.value, url: outfit.system.url, title: outfit.title.value, class: 'look-card--portrait' %}</li>
+      {%- else -%}
+        <li><p>New outfit inspiration is on its way.</p></li>
+      {%- endfor -%}
+    </ul>
+    {% render 'pagination', paginate: paginate %}
+  {%- endpaginate -%}
+{%- endif -%}
