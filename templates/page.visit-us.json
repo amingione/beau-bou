@@ -53,7 +53,7 @@
       "settings": {
         "image_position": "left",
         "heading": "Be-YOU-tiful Boutique",
-        "address_line_1": "264 W Marion Ave",
+        "address_line_1": "264-A W Marion Ave",
         "address_line_2": "Punta Gorda, Florida 33950",
         "phone": "(941) 369-1628",
         "show_directions": true,
@@ -68,7 +68,7 @@
     "map": {
       "type": "map-embed",
       "settings": {
-        "query": "Be-YOU-tiful Boutique by Michele, 264 W Marion Ave, Punta Gorda, FL 33950",
+        "query": "Be-YOU-tiful Boutique by Michele, 264-A W Marion Ave, Punta Gorda, FL 33950",
         "zoom": 16,
         "ratio": "21 / 9",
         "caption": "Find us on Google Maps",
@@ -99,7 +99,7 @@
           "type": "collapsible_row",
           "settings": {
             "heading": "Where is the boutique?",
-            "row_content": "<p>Find us at 264 W Marion Ave, Punta Gorda, FL 33950. Use the map above for directions.</p>"
+            "row_content": "<p>Find us at 264-A W Marion Ave, Punta Gorda, FL 33950. Use the map above for directions.</p>"
           }
         }
       },

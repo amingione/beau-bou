@@ -4,7 +4,7 @@ Built 2026-09-02 in the Assembly desktop app. Michele's contact showed **Active*
 
 ## What exists in Assembly
 
-**CRM → Company:** Be-YOU-tiful Boutique by Michele · Contact: Michele Mansfield · beyoutifulboutiquebymichele@gmail.com (last name inferred from the Facebook URL — confirm). Custom fields: Phone number (941) 369-1628 · Address 264-A W Marion Ave, Punta Gorda, FL 33950 · Store hours Tue–Fri 10–5 · Sat 10–4 · Sun–Mon closed.
+**CRM → Company:** Be-YOU-tiful Boutique by Michele · Contact: Michele Mansfield · beyoutifulboutiquebymichele@gmail.com (last name inferred from the Facebook URL — confirm). Custom fields: Phone number (941) 369-1628 · Address 264-A W Marion Ave, Punta Gorda, FL 33950 · Store hours Mon 11–4 · Tue–Fri 10–5 · Sat 10–4 · Sun 10–5 (open 7 days as of 2026-09-25).
 
 **Client Studio → Project:** *Be-YOU-tiful Boutique Shopify Website* · Phase: Client review · Launch target: Oct 15, 2026 · Progress 40% · Service: Custom Website Design & Development (In progress) · LaunchWell workflow applied.
 
@@ -56,3 +56,12 @@ Regenerate PDFs: `python3 -c "from playwright.sync_api import sync_playwright; .
 
 Rebuild: render `booklet.html` with Playwright (`prefer_css_page_size=True`) to `_booklet_wrap.pdf`, then merge with pypdf in this order: wrap 1–2, Portal Guide, wrap 3–4, Decisions, Shot List, Proposal, wrap 5–6. `desk-a.png`/`desk-b.png` are the top/bottom halves of `Be-YOU-tiful_Homepage_Preview.png`.
 Print: Letter, double-sided, flip on long edge, staple top-left or 3-hole punch.
+
+## 2026-09-25 update (Michele meeting)
+
+- Project card: phase Final revisions, 65%, launch target Oct 15. Deposit ($500 check) logged 9/4; $500 due at go-live.
+- "What's happening now" / "Next from the client" rewritten for the five agreed steps: About page, site review → edits, Epos + Faire product sync, rewards program, test custom features before launch.
+- Milestone checklist: added the five steps; unchecked **Content received** and **QA complete** (photos and About answers are outstanding, testing is step 5). Brief "Domain status" updated to shopbeyoutifulboutique.com.
+- **SEO removed from scope** — Michele did not opt for SEO work; the Analytics snapshot section stays empty and nothing SEO-related is promised. The Sept 2 proposal never included SEO.
+- Still open: Approvals card "Homepage design v1" is awaiting review and describes the old teal/white design; the Step 1–3 requests from Sept 3 no longer exist; the generic vault warning (Team bios, Testimonials, Legal copy) does not match what she owes.
+- Meeting packet: `docs/meeting/2026-09-25_Meeting_Packet.pdf` (for Michele); `docs/meeting/2026-09-25_Amber_Prep_Sheet_PRIVATE.pdf` (Amber only).

@@ -4,7 +4,7 @@
 
 **Scope confirmed by Amber:** Michele owns products, prices, variants, photos and inventory. Our work is the reusable boutique templates, app configuration, navigation and collection structure. Catalog entry is not a prerequisite for completing that setup. On September 21, Amber explicitly authorized a separate fictional catalog for testing; the details below do not replace Michele’s responsibility for real merchandise.
 
-**Correct store:** `v0m0hb-x3` / `shopbeyoutifulboutique.com`. Work is in draft theme `be-you-tiful-1-2-0` (`192212107628`). Horizon is still live and the store is password protected as of the latest inspection. Do not modify the old `kw59hc-k1` development store.
+**Correct store:** `v0m0hb-x3` / `shopbeyoutifulboutique.com`. **Update 2026-09-25:** `shopify theme list -s v0m0hb-x3` shows `be-you-tiful-1-2-0` (`192212107628`) as **[live]** and Horizon unpublished, but `https://shopbeyoutifulboutique.com` still redirects to `/password`, so nothing is public. (Earlier notes below that say "draft" or "Horizon live" predate this.) Do not modify the old `kw59hc-k1` development store.
 
 ### Adding a product
 

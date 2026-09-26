@@ -1,4 +1,4 @@
-# Looks — fashion runway + shop-this-look pages
+# Looks — hero slideshows + shop-this-look pages
 
 Last updated: 2026-09-21
 
@@ -61,6 +61,7 @@ Verified by clicking all four slideshow cards and the homepage banner in draft `
 [VERIFIED] Final checks: Shopify theme check passed (zero errors, nine existing warnings); JavaScript syntax and seven motion/lifecycle cases passed. Desktop and phone screenshots showed no clipping. The fallback outfit link opened the Contact form. Chrome console showed Shopify preview preload/custom-pixel warnings and analytics collection failure, with no runway-script error observed. Browser-extension calls timed out, so visual QA used the native Chrome surface through CUA. Draft theme ID: `192212107628`; not published.
 
 ### Change log
+- 2026-09-25: the four live looks already use try-on-01, -02, -03 and -08 (900×1200 WebP in `assets/`). Shortlisted ten more full-body try-ons as `docs/looks/looks-next.json` with 900×1200 WebP in `docs/images/looks-next/` (not in Shopify yet; needs Amber's picks, then product links). Contact sheets in `docs/meeting/photo-audit_*.jpg`.
 - 2026-09-21: recorded rejection of the cutout stage and rebuilt the draft with higher-resolution framed portraits, compact controls, and columns based on component width. Pending visual acceptance.
 - 2026-09-21: recorded Amber's approved below-hero runway design, preserved the saved cover hero, added playback/accessibility support and safe unpublished-look links.
 

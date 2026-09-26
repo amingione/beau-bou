@@ -27,12 +27,12 @@ Zsh shortcuts: `source scripts/aliases.zsh` → `bb-dev`, `bb-check`, `bb-push`,
 | `assets/beau-bou.css` | All global overrides (nav, buttons, cards, badges, facets, footer) + `.bb-display` / `.bb-accent` / `.bb-frame` utilities |
 | `sections/header.liquid` + `snippets/header-inline-search.liquid` | Always-visible desktop search field (setting `show_inline_search`) |
 | `sections/hero-logo.liquid` | Framed hero image with centered logo overlay + tagline + accent line + CTA |
-| `sections/hero-looks.liquid` + `snippets/hero-looks-stage.liquid` + `assets/hero-looks.js` + `snippets/look-card.liquid` | **Fashion runway** (beneath the cover hero): standalone holographic peacock centered between framed outfit photographs; compact previous/play/next controls, container-responsive layout, and reduced-motion support. Revised draft awaits visual acceptance. Every outfit links to its `/looks/<handle>` page. Reads `look` metaobjects; manual blocks as fallback. See [`docs/looks.md`](docs/looks.md) |
+| `sections/hero-looks.liquid` + `snippets/hero-looks-stage.liquid` + `assets/hero-looks.js` + `snippets/look-card.liquid` | **Hero looks** (`runway` section, beneath the cover hero): holographic peacock centered between two outfit slideshows; 5s interval, fade. Every outfit links to its `/looks/<handle>` shop-this-look page. Reads `look` metaobjects; manual blocks as fallback. **Open conflict:** the committed `runway` presentation still renders prev/play/next controls and the heading "The boutique edit", while Amber's Sept 20 direction is no controls and no copy — resolve before showing Michele. See [`docs/looks.md`](docs/looks.md) |
 | `templates/metaobject/look.json` + `sections/main-look.liquid` | LTK-style **shop this look** page per outfit: photo/video left, pieces + goes-with grids right, share, more looks |
 | `sections/category-tiles.liquid` | Hairline-framed collection tiles with wide-tracked serif captions (the Smith + Co. signature) |
 | `sections/brand-strip.liquid` | Peacock-scheme statement band with scrolling ribbon (XS–3X, swim to gowns) and value cards |
 | `sections/visit-our-store.liquid` | Framed storefront photo + address, hours rows, Get Directions (auto Google Maps link), phone |
-| `templates/index.json` | Homepage wired: cover hero → fashion runway → What's New slider → 2×3 category tiles → brand strip → Sale slider → Visit |
+| `templates/index.json` | Homepage wired: cover hero → hero looks → What's New slider → 2×3 category tiles → brand strip → Sale slider → Visit |
 | `templates/collection.json` | Vertical (sidebar) filters, 4-col portrait grid, quick-add, 24/page |
 | `sections/header-group.json`, `footer-group.json` | Announcement copy; footer = mailing list, Help menu, Get in touch, Store hours, social, payment icons |
 
@@ -56,6 +56,8 @@ scripts/      aliases.zsh, cutouts.py (rembg runway cutouts), looks/seed-looks.t
 
 Dawn is MIT-licensed by Shopify (see `LICENSE.md`). Custom work © LaunchWell Brands, delivered to the client under the project agreement.
 
-## Build state (2026-09-12)
+## Build state (2026-09-25)
 
-Design approved by Michele. Theme v1.1 is on Amber's dev store `kw59hc-k1` (unpublished) with the full page set — About, Visit Us, Contact, Questions, Size Guide, **Shop the Look** (live/try-on video + shoppable rail) — 12 sample products, 10 collections, brand placeholders in every image slot. See `docs/store/README.md` (what's in the store and how it got there), `docs/images/README.md` (placeholder → real photo swap), `docs/policies/` (policy text for Michele's store).
+Design approved by Michele. Client store is `v0m0hb-x3` (shopbeyoutifulboutique.com); theme `be-you-tiful-1-2-0` (`192212107628`) is the published theme (verified 2026-09-25 via `shopify theme list`; Horizon unpublished) but the storefront is still password protected, so nothing is public yet. Built: hero looks, four shop-the-look pages with priced pieces, nine automated collections, About / Visit Us / Contact / Questions / Size Guide pages, 18 `TEST —` products (archive before launch). Store is open 7 days: Mon 11–4 · Tue–Fri 10–5 · Sat 10–4 · Sun 10–5.
+
+Remaining to launch (Oct 15 target): About page, site review → edits, Epos + Faire product sync, rewards program (Epos REST API + Shopify Admin API + Zapier webhook), test custom features. **SEO work is not in scope** (client declined). See `docs/handoff.md`, `docs/store/README.md`, `docs/policies/`, and `docs/meeting/` for the Sept 25 meeting packet.
