@@ -195,6 +195,7 @@
         {%- if bb_logo != blank -%}
           <div class="header__heading-logo-wrapper">
             {%- assign logo_alt = bb_logo.alt | default: shop.name | escape -%}
+            {%- if request.page_type == 'index' -%}{%- assign logo_alt = '' -%}{%- endif -%}
             {%- assign logo_height = settings.logo_width | divided_by: bb_logo.aspect_ratio -%}
             {% capture sizes %}(max-width: {{ settings.logo_width | times: 2 }}px) 50vw, {{ settings.logo_width }}px{% endcapture %}
             {% capture widths %}{{ settings.logo_width }}, {{ settings.logo_width | times: 1.5 | round }}, {{ settings.logo_width | times: 2 }}{% endcapture %}
@@ -213,6 +214,9 @@
           </div>
         {%- else -%}
           <span class="h2">{{ shop.name }}</span>
+        {%- endif -%}
+        {%- if request.page_type == 'index' and bb_logo != blank -%}
+          <span class="visually-hidden">{{ shop.name | escape }}, a women's clothing boutique in Punta Gorda, Florida</span>
         {%- endif -%}
       </a>
       {%- if request.page_type == 'index' -%}
@@ -238,6 +242,7 @@
         {%- if bb_logo != blank -%}
           <div class="header__heading-logo-wrapper">
             {%- assign logo_alt = bb_logo.alt | default: shop.name | escape -%}
+            {%- if request.page_type == 'index' -%}{%- assign logo_alt = '' -%}{%- endif -%}
             {%- assign logo_height = settings.logo_width | divided_by: bb_logo.aspect_ratio -%}
             {% capture sizes %}(min-width: 750px) {{ settings.logo_width }}px, 50vw{% endcapture %}
             {% capture widths %}{{ settings.logo_width }}, {{ settings.logo_width | times: 1.5 | round }}, {{ settings.logo_width | times: 2 }}{% endcapture %}
@@ -256,6 +261,9 @@
           </div>
         {%- else -%}
           <span class="h2">{{ shop.name }}</span>
+        {%- endif -%}
+        {%- if request.page_type == 'index' and bb_logo != blank -%}
+          <span class="visually-hidden">{{ shop.name | escape }}, a women's clothing boutique in Punta Gorda, Florida</span>
         {%- endif -%}
       </a>
       {%- if request.page_type == 'index' -%}

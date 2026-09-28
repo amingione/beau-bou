@@ -56,6 +56,16 @@ body {
 }
 
 /* ---------- Announcement bar ---------- */
+/* WCAG AA: white 12px text needs 4.5:1. Same teal family, one step deeper than the #5B93A0 brand band
+   (3.4:1 → 4.8:1); solid white text instead of Dawn's inherited 75% opacity. */
+.utility-bar.color-scheme-3 {
+  background: #3d7b88;
+}
+.utility-bar .announcement-bar__message,
+.utility-bar .announcement-bar__link {
+  color: #ffffff;
+  opacity: 1;
+}
 .announcement-bar__message {
   font-size: 1.2rem;
   text-transform: uppercase;

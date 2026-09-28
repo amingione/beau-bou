@@ -97,7 +97,7 @@
             >
               <span class="ss-tile__media">
                 {%- if poster != blank -%}
-                  {{ poster | image_url: width: 800 | image_tag: loading: loading, widths: '300, 450, 600, 800', sizes: '(min-width: 990px) 24vw, 46vw', class: 'ss-tile__img', alt: '' }}
+                  {{ poster | image_url: width: 800 | image_tag: loading: loading, widths: '300, 450, 600, 800', sizes: '(min-width: 990px) 24vw, 46vw', class: 'ss-tile__img', alt: title }}
                 {%- endif -%}
                 {%- if kind == 'video' -%}
                   <span class="ss-tile__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5l12 7-12 7z"/></svg></span>

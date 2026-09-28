@@ -1495,5 +1495,21 @@
         "default": 30
       }
     ]
+  },
+  {
+    "name": "Search & social listing",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Used as the Google/Facebook description on any page that doesn't have its own (homepage, Contact, collections without a description). Pages, products and collections can still set their own under \"Search engine listing\"."
+      },
+      {
+        "type": "textarea",
+        "id": "bb_meta_description",
+        "label": "Default description",
+        "info": "Aim for 120–155 characters.",
+        "default": "Women's clothing, swim, dresses, jewelry and handbags in sizes XXS to 3X. Shop online or visit Be-YOU-tiful Boutique at 264-A W Marion Ave, Punta Gorda, FL."
+      }
+    ]
   }
 ]

@@ -29,8 +29,11 @@
       {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
     </title>
 
-    {% if page_description %}
-      <meta name="description" content="{{ page_description | escape }}">
+    {%- liquid
+      assign bb_description = page_description | default: settings.bb_meta_description
+    -%}
+    {% if bb_description != blank %}
+      <meta name="description" content="{{ bb_description | escape }}">
     {% endif %}
 
     {% render 'meta-tags' %}
