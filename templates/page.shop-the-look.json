@@ -4,11 +4,29 @@
       "type": "main-page",
       "settings": {
         "padding_top": 28,
-        "padding_bottom": 28
+        "padding_bottom": 12
+      }
+    },
+    "looks": {
+      "type": "shop-styles",
+      "settings": {
+        "heading": "",
+        "show_filters": true,
+        "max_looks": 24,
+        "columns": 4,
+        "empty_text": "Love this look? Call or stop in and we'll pull it in your size.",
+        "empty_label": "Ask about this look",
+        "empty_link": "",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "scheme-1",
+        "padding_top": 0,
+        "padding_bottom": 48
       }
     }
   },
   "order": [
-    "main"
+    "main",
+    "looks"
   ]
 }

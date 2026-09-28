@@ -15,7 +15,8 @@
 {%- endstyle -%}
 
 {%- assign is_look_gallery = false -%}
-{%- if page.handle == 'shop-the-look' -%}{%- assign is_look_gallery = true -%}{%- endif -%}
+{%- comment -%} Fallback gallery for the Shop the Look page when it is not on its own template; page.shop-the-look.json renders the Shop Styles grid instead. {%- endcomment -%}
+{%- if page.handle == 'shop-the-look' and template.suffix != 'shop-the-look' -%}{%- assign is_look_gallery = true -%}{%- endif -%}
 <div class="page-width{% unless is_look_gallery %} page-width--narrow{% endunless %} section-{{ section.id }}-padding">
   <h1 class="main-page-title page-title h0{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
     {{ page.title | escape }}
