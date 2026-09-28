@@ -62,7 +62,7 @@ Verified in the boutique draft: Shop All shows twelve products, New Arrivals and
 Store facts (from Google Business Profile + Facebook, verified 2026-09-02):
 
 - 264-A W Marion Ave, Punta Gorda, FL 33950 · (941) 369-1628 · beyoutifulboutiquebymichele@gmail.com
-- Hours (open 7 days since 2026-09-25): Mon 11–4 · Tue–Fri 10–5 · Sat 10–4 · Sun 10–5 · In-store pickup offered
+- Hours (open 7 days since 2026-09-25): Mon 11–4 · Tue–Fri 10–5 · Sat 10–4 · Sun 11–3 · In-store pickup offered
 - Tagline: "Unique Boutique with affordable prices…from swimsuits to gowns. Size XXS to 3X."
 - Faith line: "Accept yourself as you were designed by God"
 - Facebook: facebook.com/MicheleMonksEnsmingerMansfield (2.1K followers, 16 reviews, 100% recommend)

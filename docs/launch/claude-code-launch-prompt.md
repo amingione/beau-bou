@@ -28,7 +28,7 @@ Be terse in logs: accuracy over ceremony. Explain the why of logic and the how o
 
 ## 1. GROUND TRUTH (don't re-derive, don't contradict)
 
-- **Client:** Be-YOU-tiful Boutique by Michele, women's boutique, 264-A W Marion Ave, Punta Gorda FL 33950 (address wording "264-A" vs "264 W Marion" is still an open question, flag it, don't guess). Phone (941) 369-1628. Email beyoutifulboutiquebymichele@gmail.com. Second contact: Aundrea Pedigo.
+- **Client:** Be-YOU-tiful Boutique by Michele, women's boutique, 264-A W Marion Ave, Punta Gorda FL 33950 (confirmed 2026-09-28: 264-A W Marion Ave). Phone (941) 369-1628. Email beyoutifulboutiquebymichele@gmail.com. Second contact: Aundrea Pedigo.
 - **Hours (VERIFIED from the Google Business Profile in the client brief):** Tue, Wed, Thu, Fri 10–5; Sat 10–4; Sun closed. The brief's Monday row reads "Monday (Labor Day) Closed", which is a holiday override, so **regular Monday hours are UNKNOWN**: print `[CONFIRM: Monday hours]`, never "closed Mondays". In-store pickup offered. Service area listed on Facebook: Port Charlotte, Fort Myers, North Port, Englewood, Punta Gorda, Cape Coral (use for local SEO copy and `areaServed`).
 - **Positioning (from her own words):** "Unique Boutique with affordable prices… from swimsuits to gowns. Size XXS to 3X." Facebook tagline: "Accept yourself as you were designed by God." ~2.1K Facebook followers, 16 reviews, 100% recommend.
 - **Reference look:** shopsmithco.com (CommentSold). We recreate natively in Liquid; nothing copied.

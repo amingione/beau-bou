@@ -17,14 +17,14 @@ $1,000 flat ($500 deposit · $500 at launch). Launch target **October 15, 2026**
 | 7 | Shipping or pickup | **Both** (pickup + flat-rate shipping; no amount written) | Questions page + shipping policy text updated. **Set the flat rate in Settings → Shipping** |
 | 8 | Ways to pay | **✓ Add pay-in-4 installments**; PayPal crossed out | **Enable Shop Pay Installments in Settings → Payments** (admin only) |
 | 9 | Returns | **7 days, tag on item & receipt · excludes final sale (clearance)** · "open 7 days a wk" | Questions page updated. Refund + shipping policy text ready in `docs/policies/` — **paste into Settings → Policies** (connection lacks policy permission) |
-| 10 | Store hours & announcement bar | ✓ "Change to"; wrote hours near Sun–Mon ("11-3", "10-5") + open 7 days | Visit Us now shows the 7-day hours used everywhere else (Mon 11–4 · Tue–Fri 10–5 · Sat 10–4 · Sun 10–5). **Confirm with Michele: her note may mean Sun 11–3.** Announcement: "Get 20% off your first online order!" |
+| 10 | Store hours & announcement bar | ✓ "Change to"; wrote hours near Sun–Mon ("11-3", "10-5") + open 7 days | Confirmed 2026-09-28: **Sunday 11–3**. Site-wide hours now Mon 11–4 · Tue–Fri 10–5 · Sat 10–4 · **Sun 11–3**. Announcement: "Get 20% off your first online order!" |
 | 11 | Website address | shopbeyoutiful.com crossed out | shopbeyoutifulboutique.com in use |
 | 12 | Social links | Instagram: "have broke, look @ new"; TikTok **@beyoutiful.boutiq64** (hard to read) | **Confirm handles**, then add in Theme settings → Social media |
 | 13 | Email list | "*Reg price items* — one time 20% off / Rewards options" | Welcome code (20%, email subscribers, once per customer) now limited to the new **Regular price (welcome offer)** collection (not on sale/clearance) |
 | 14 | About page story | "Will write and send" | Waiting on Michele |
 
 ## Meeting sheet (not filled in)
-- Address: sheet says "I have 264-A W Marion Ave — you mentioned that isn't quite right." No correction written. The site currently mixes **264 W** (pages, policies, store contact) and **264-A W** (homepage, footer, Contact). **Confirm the exact address with Michele, then make every place match** (pages were left as-is).
+- Address: confirmed 2026-09-28 — **264-A W Marion Ave, Punta Gorda, FL 33950**. Made consistent across theme, pages and policy text (store contact details in Settings → Store details still need it — admin only).
 - Name for About/agreement, Aundrea's role, Shopify signup email — blank.
 
 ## Other notes on the packet (not website scope)
