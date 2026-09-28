@@ -122,6 +122,27 @@
           </li>
         {%- endfor -%}
       </ul>
+    {%- elsif section.settings.show_samples -%}
+      {%- comment -%} New store with no Look entries yet: show the bundled sample looks so the grid isn't empty. {%- endcomment -%}
+      {%- if request.design_mode -%}
+        <p class="shop-styles__hint">Showing sample looks. Create <b>Look</b> entries under Content → Metaobjects → Look (photo or try-on video, plus the pieces worn) and they replace these automatically.</p>
+      {%- endif -%}
+      <ul class="shop-styles__grid list-unstyled" role="list">
+        {%- liquid
+          assign sample_files = 'beyoutiful-runway-orange-floral-midi-dress.webp|beyoutiful-runway-navy-white-floral-maxi-dress.webp|beyoutiful-runway-blue-ruffle-sleeve-blouse.webp|beyoutiful-runway-blue-green-printed-dress.webp' | split: '|'
+          assign sample_titles = 'Orange floral dress|Navy & white maxi|Blue ruffle blouse|Blue & green dress' | split: '|'
+        -%}
+        {%- for file in sample_files -%}
+          <li class="shop-styles__item" data-ss-kind="photo">
+            <a class="ss-tile" href="{{ section.settings.button_link | default: '/pages/shop-the-look' }}">
+              <span class="ss-tile__media">
+                <img class="ss-tile__img" src="{{ file | asset_url }}" width="900" height="1200" loading="lazy" alt="{{ sample_titles[forloop.index0] | escape }}">
+              </span>
+              <span class="ss-tile__caption">{{ sample_titles[forloop.index0] | escape }}</span>
+            </a>
+          </li>
+        {%- endfor -%}
+      </ul>
     {%- elsif request.design_mode -%}
       <p class="shop-styles__hint">Create <b>Look</b> entries under Content → Metaobjects → Look (photo or try-on video, plus the pieces worn).</p>
     {%- endif -%}
@@ -156,6 +177,7 @@
     { "type": "checkbox", "id": "show_filters", "label": "Show filter pills", "default": true, "info": "Appears once at least one look has a try-on video." },
     { "type": "range", "id": "max_looks", "min": 4, "max": 24, "step": 1, "default": 12, "label": "Looks to show" },
     { "type": "range", "id": "columns", "min": 2, "max": 5, "step": 1, "default": 4, "label": "Columns (desktop)" },
+    { "type": "checkbox", "id": "show_samples", "label": "Show sample looks until real looks exist", "default": true, "info": "Bundled photos so a brand-new store's grid isn't empty. Hidden automatically once any Look entry is published." },
     { "type": "header", "content": "Looks without linked pieces" },
     { "type": "text", "id": "empty_text", "label": "Message", "default": "Love this look? Call or stop in and we'll pull it in your size." },
     { "type": "text", "id": "empty_label", "label": "Button label", "default": "Ask about this look" },
