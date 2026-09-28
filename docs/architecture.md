@@ -24,7 +24,7 @@ Color schemes (`settings_data.json → color_schemes`):
 | --- | --- | --- |
 | scheme-1 | Paper `#FFFFFF` / ink `#2B2B2B` / button `#6A6A6A` | Default everywhere (matches reference) |
 | scheme-2 | Linen `#F6F3EE` | Alternate band backgrounds |
-| scheme-3 | Peacock `#0F5F66` | Brand strip — the one bold accent, pulled from the peacock in Michele's logo |
+| scheme-3 | Peacock `#0F5F66` | Brand strip — the one bold accent, named "Peacock" after her brand's peacock motif; chosen at the theme's first build (2026-09-02), not sampled from her actual logo file |
 | scheme-4 | Ink `#111111` | Sold-out badge, dark CTAs |
 | scheme-5 | Blush `#F2E4E1` | Seasonal / sale banners |
 
