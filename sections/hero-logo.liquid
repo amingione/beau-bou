@@ -41,7 +41,13 @@
 -%}
 
 <div class="hero-logo{% if section.settings.content_below_image %} hero-logo--content-below{% endif %} color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding{% if section.settings.full_width %} hero-logo--full{% else %} page-width{% endif %}" id="Hero-{{ section.id }}">
-  <div class="hero-logo__media{{ frame_class }}">
+  {%- liquid
+  assign hero_alt = bb_image.alt
+  if hero_alt == blank
+    assign hero_alt = shop.name | append: ', downtown Punta Gorda, Florida'
+  endif
+-%}
+<div class="hero-logo__media{{ frame_class }}">
     {%- if bb_image != blank -%}
       {{
         bb_image
@@ -51,7 +57,8 @@
           fetchpriority: 'high',
           widths: '750, 1100, 1500, 1920, 2400, 3200',
           sizes: '100vw',
-          class: 'hero-logo__image'
+          class: 'hero-logo__image',
+          alt: hero_alt
       }}
     {%- else -%}
       <div class="hero-logo__placeholder">{{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}</div>
