@@ -6,7 +6,7 @@ By placing an order with Be-YOU-tiful Boutique by Michele you agree to these ter
 
 **Orders.** We may cancel or refuse any order that appears fraudulent or that we can't fulfill. You'll receive an email confirmation when your order is placed and another when it ships or is ready for pickup.
 
-**Shipping, pickup & returns** are governed by our Shipping & Returns policy.
+**Shipping, pickup & returns** are governed by our shipping policy and refund policy.
 
 **Accuracy.** We do our best to show colors and fit accurately, but screens vary and boutique brands size differently. Fit notes on each product and our Size Guide are there to help — when in doubt, message us before you order.
 

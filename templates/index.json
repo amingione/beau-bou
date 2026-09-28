@@ -89,13 +89,13 @@
             "link": "/collections/dresses"
           }
         },
-        "gowns": {
+        "jackets": {
           "type": "tile",
           "settings": {
-            "collection": "gowns",
-            "image": "shopify://shop_images/beyoutiful-cream-sleeveless-belted-maxi-dress.webp",
-            "caption": "Gowns",
-            "link": "/collections/gowns"
+            "collection": "jackets",
+            "image": "shopify://shop_images/beyoutiful-long-denim-button-front-vest.webp",
+            "caption": "Jackets",
+            "link": "/collections/jackets"
           }
         },
         "tops": {
@@ -110,8 +110,8 @@
       },
       "block_order": [
         "dresses",
-        "gowns",
-        "tops"
+        "tops",
+        "jackets"
       ],
       "settings": {
         "title": "",
@@ -229,8 +229,8 @@
         "v2": {
           "type": "value",
           "settings": {
-            "title": "Swim to Gowns",
-            "text": "Beach day to black tie under one roof."
+            "title": "Women & Kids",
+            "text": "Women's XXS to 3X, plus kids, baby and toddler."
           }
         },
         "v3": {
@@ -248,7 +248,7 @@
       ],
       "settings": {
         "show_ribbon": true,
-        "ribbon_items": "Swimsuits to gowns | Sizes XXS – 3X | Affordable prices | Downtown Punta Gorda",
+        "ribbon_items": "Swimsuits to jackets | Sizes XXS – 3X | Women, kids & baby | Downtown Punta Gorda",
         "ribbon_scroll": true,
         "eyebrow": "Our promise",
         "statement": "Every body. Every occasion. <em>Be-YOU-tiful.</em>",

@@ -64,7 +64,7 @@
         "q2": {
           "type": "collapsible_row",
           "settings": {
-            "heading": "How can I check dress or gown length?",
+            "heading": "How can I check dress length?",
             "row_content": "<p>Ask us for the length of the particular style. Consider your height and the shoes you plan to wear.</p>"
           }
         },

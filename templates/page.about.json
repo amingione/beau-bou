@@ -6,7 +6,7 @@
         "eyebrow": "Downtown Punta Gorda",
         "heading": "Be-YOU-tiful, by Michele",
         "accent": "Accept yourself as you were designed by God",
-        "text": "<p>Swimsuits to gowns, everyday favorites to something for a special occasion. Discover Be-YOU-tiful Boutique by Michele in downtown Punta Gorda, with styles in sizes XXS to 3X and affordable prices.</p>",
+        "text": "<p>Swimsuits to jackets, everyday favorites to something for a special occasion. Discover Be-YOU-tiful Boutique by Michele in downtown Punta Gorda, with women's styles in sizes XXS to 3X, pieces for kids, babies and toddlers, and affordable prices.</p>",
         "button_label": "Shop What's New",
         "button_link": "shopify://collections/new-arrivals",
         "color_scheme": "scheme-1",
@@ -84,8 +84,8 @@
         "v2": {
           "type": "value",
           "settings": {
-            "title": "Swim to Gowns",
-            "text": "Beach day to black tie under one roof."
+            "title": "Women & Kids",
+            "text": "Women's XXS to 3X, plus kids, baby and toddler."
           }
         },
         "v3": {
