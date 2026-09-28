@@ -7,7 +7,7 @@ if (!customElements.get('shop-styles')) {
   class ShopStyles extends HTMLElement {
     connectedCallback() {
       this.dialog = this.querySelector('[data-ss-dialog]');
-      this.slot = this.querySelector('[data-ss-slot]');
+      this.stage = this.querySelector('[data-ss-slot]');
       if (!this.dialog || typeof this.dialog.showModal !== 'function') return; // no <dialog>: links just navigate
       this.current = 0;
       this.returnFocus = null;
@@ -44,7 +44,7 @@ if (!customElements.get('shop-styles')) {
       const add = event.target.closest('[data-ss-add]');
       if (add) return this.add([add.closest('[data-ss-piece]')], add);
       const all = event.target.closest('[data-ss-add-all]');
-      if (all) return this.add(Array.from(this.slot.querySelectorAll('[data-ss-piece]')).filter((row) => row.querySelector('[data-ss-add]')), all);
+      if (all) return this.add(Array.from(this.stage.querySelectorAll('[data-ss-piece]')).filter((row) => row.querySelector('[data-ss-add]')), all);
       const copy = event.target.closest('[data-ss-copy]');
       if (copy) return this.copy(copy);
     }
@@ -53,15 +53,15 @@ if (!customElements.get('shop-styles')) {
       const template = this.querySelector(`template[data-ss-post="${id}"]`);
       if (!template) return;
       this.pauseMedia();
-      this.slot.replaceChildren(template.content.cloneNode(true));
+      this.stage.replaceChildren(template.content.cloneNode(true));
       this.current = id;
       if (!this.dialog.open) {
         this.dialog.showModal();
         document.body.classList.add('overflow-hidden');
       }
-      const video = this.slot.querySelector('video');
+      const video = this.stage.querySelector('video');
       if (video) video.play().catch(() => {});
-      const close = this.slot.querySelector('[data-ss-close]');
+      const close = this.stage.querySelector('[data-ss-close]');
       if (close) close.focus();
     }
 
@@ -80,13 +80,13 @@ if (!customElements.get('shop-styles')) {
 
     onClosed() {
       this.pauseMedia();
-      this.slot.replaceChildren();
+      this.stage.replaceChildren();
       document.body.classList.remove('overflow-hidden');
       if (this.returnFocus) this.returnFocus.focus();
     }
 
     pauseMedia() {
-      this.slot.querySelectorAll('video').forEach((v) => v.pause());
+      this.stage.querySelectorAll('video').forEach((v) => v.pause());
     }
 
     filter(button) {
@@ -104,7 +104,7 @@ if (!customElements.get('shop-styles')) {
         .map((input) => ({ id: Number(input.value), quantity: 1 }));
       if (!items.length) return;
 
-      const status = this.slot.querySelector('[data-ss-status]');
+      const status = this.stage.querySelector('[data-ss-status]');
       const cart = document.querySelector('cart-drawer');
       const body = { items };
       if (cart && typeof cart.getSectionsToRender === 'function') {
@@ -146,7 +146,7 @@ if (!customElements.get('shop-styles')) {
 
     async copy(button) {
       const url = button.dataset.ssCopy;
-      const status = this.slot.querySelector('[data-ss-status]');
+      const status = this.stage.querySelector('[data-ss-status]');
       try {
         if (navigator.share) await navigator.share({ url });
         else await navigator.clipboard.writeText(url);
