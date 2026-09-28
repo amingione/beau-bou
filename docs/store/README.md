@@ -27,7 +27,7 @@ Saving once in the theme editor also normalises them; the fallback means we neve
 47 images, all prefixed `beyoutiful-`: 43 placeholders from `scripts/placeholders.py` (see `docs/images/README.md`) + logo black/white 1200, favicon 512, OG 1200×630. IDs in `docs/store/file-ids.json`. CDN base `https://cdn.shopify.com/s/files/1/0987/4348/4489/files/`.
 
 ## Catalog
-- **12 sample products** (`docs/store/sample-products.json`) via `productSet` (synchronous, 6 per call). Sizes XS–3X (or One Size), untracked inventory, `inventoryPolicy: CONTINUE`, tags drive collections, all tagged `sample`. Published to Online Store.
+- **12 sample products** (`docs/store/sample-products.json`) via `productSet` (synchronous, 6 per call). Sizes XXS–3X (or One Size), untracked inventory, `inventoryPolicy: CONTINUE`, tags drive collections, all tagged `sample`. Published to Online Store.
 - **10 smart collections**: new-arrivals (tag new) · best-sellers (tag best-seller) · swimsuits/dresses/gowns/tops/bottoms (product type) · jewelry-accessories (type Jewelry OR Accessories) · sale (tag sale) · live-picks (tag live-picks). Each has a banner image.
 - Delete everything tagged `sample` before Michele loads real inventory: `search_products "tag:sample"` → archive/delete.
 

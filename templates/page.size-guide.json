@@ -3,7 +3,7 @@
     "hero": {
       "type": "page-hero",
       "settings": {
-        "eyebrow": "Sizes XS to 3X",
+        "eyebrow": "Sizes XXS to 3X",
         "heading": "Size Guide",
         "accent": "Find the fit that feels right",
         "text": "<p>Sizes vary by brand, style, and fabric. Use the measuring tips below, then contact us about the piece you are considering. Availability varies by item.</p>",
@@ -72,7 +72,7 @@
           "type": "collapsible_row",
           "settings": {
             "heading": "Is every style available in every size?",
-            "row_content": "<p>The boutique carries styles from XS to 3X, but the size range and current stock vary by item. Contact us to check.</p>"
+            "row_content": "<p>The boutique carries styles from XXS to 3X, but the size range and current stock vary by item. Contact us to check.</p>"
           }
         }
       },

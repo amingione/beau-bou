@@ -277,8 +277,8 @@
         "v1": {
           "type": "value",
           "settings": {
-            "title": "XS – 3X",
-            "text": "Styles in sizes XS to 3X."
+            "title": "XXS – 3X",
+            "text": "Styles in sizes XXS to 3X."
           }
         },
         "v2": {
@@ -303,7 +303,7 @@
       ],
       "settings": {
         "show_ribbon": true,
-        "ribbon_items": "Swimsuits to gowns | Sizes XS – 3X | Affordable prices | Downtown Punta Gorda",
+        "ribbon_items": "Swimsuits to gowns | Sizes XXS – 3X | Affordable prices | Downtown Punta Gorda",
         "ribbon_scroll": true,
         "eyebrow": "Our promise",
         "statement": "Every body. Every occasion. <em>Be-YOU-tiful.</em>",

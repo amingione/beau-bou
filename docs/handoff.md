@@ -63,7 +63,7 @@ Store facts (from Google Business Profile + Facebook, verified 2026-09-02):
 
 - 264-A W Marion Ave, Punta Gorda, FL 33950 · (941) 369-1628 · beyoutifulboutiquebymichele@gmail.com
 - Hours (open 7 days since 2026-09-25): Mon 11–4 · Tue–Fri 10–5 · Sat 10–4 · Sun 10–5 · In-store pickup offered
-- Tagline: "Unique Boutique with affordable prices…from swimsuits to gowns. Size XS to 3X."
+- Tagline: "Unique Boutique with affordable prices…from swimsuits to gowns. Size XXS to 3X."
 - Faith line: "Accept yourself as you were designed by God"
 - Facebook: facebook.com/MicheleMonksEnsmingerMansfield (2.1K followers, 16 reviews, 100% recommend)
 - Logo: black circle, white serif "Be-YOU-tiful Boutique", script "by Michele", white peacock. Get the original from Michele (Canva/printer file) — the FB avatar is 480px and too small for the hero.
@@ -88,12 +88,12 @@ Store facts (from Google Business Profile + Facebook, verified 2026-09-02):
 - [ ] Pages: about, visit-us, questions, size-guide, shop-the-look, contact with the matching template suffixes
 - [ ] Policies from `docs/policies/` (Settings → Policies)
 - [ ] Homepage: open editor, assign photos to **Hero**, six **Category tiles**, **Visit our store** (pull from Facebook album with Michele's permission — screenshots are not print quality; ask for originals)
-- [ ] Announcement bar copy confirmed with Michele (current: pickup + XS–3X)
+- [ ] Announcement bar copy confirmed with Michele (current: pickup + XXS–3X)
 - [ ] Preview on phone: nav drawer, search, cart drawer, checkout
 
 ## 3. Content Michele owns
 
-- [ ] Products: title, price, compare-at (for the Clearance badge; tag `sale` only for sale events), **Product type** (drives category collections), sizes as variants XS–3X, 2+ photos each
+- [ ] Products: title, price, compare-at (for the Clearance badge; tag `sale` only for sale events), **Product type** (drives category collections), sizes as variants XXS–3X, 2+ photos each
 - [ ] About page copy (her story, faith line)
 - [ ] Contact page live (`page.contact` template)
 - [ ] Mailing list: the footer form collects subscribers; review current Shopify Messaging pricing before sending campaigns

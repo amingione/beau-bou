@@ -30,7 +30,7 @@ Be terse in logs: accuracy over ceremony. Explain the why of logic and the how o
 
 - **Client:** Be-YOU-tiful Boutique by Michele, women's boutique, 264-A W Marion Ave, Punta Gorda FL 33950 (address wording "264-A" vs "264 W Marion" is still an open question, flag it, don't guess). Phone (941) 369-1628. Email beyoutifulboutiquebymichele@gmail.com. Second contact: Aundrea Pedigo.
 - **Hours (VERIFIED from the Google Business Profile in the client brief):** Tue, Wed, Thu, Fri 10–5; Sat 10–4; Sun closed. The brief's Monday row reads "Monday (Labor Day) Closed", which is a holiday override, so **regular Monday hours are UNKNOWN**: print `[CONFIRM: Monday hours]`, never "closed Mondays". In-store pickup offered. Service area listed on Facebook: Port Charlotte, Fort Myers, North Port, Englewood, Punta Gorda, Cape Coral (use for local SEO copy and `areaServed`).
-- **Positioning (from her own words):** "Unique Boutique with affordable prices… from swimsuits to gowns. Size XS to 3X." Facebook tagline: "Accept yourself as you were designed by God." ~2.1K Facebook followers, 16 reviews, 100% recommend.
+- **Positioning (from her own words):** "Unique Boutique with affordable prices… from swimsuits to gowns. Size XXS to 3X." Facebook tagline: "Accept yourself as you were designed by God." ~2.1K Facebook followers, 16 reviews, 100% recommend.
 - **Reference look:** shopsmithco.com (CommentSold). We recreate natively in Liquid; nothing copied.
 - **Stores:** `v0m0hb-x3` = **Michele's store** (all store work goes here; `shopify.theme.toml [environments.client]`). `kw59hc-k1` = Amber's own store (also House of Rose). Do NOT put boutique content on `kw59hc-k1`. Known stray leftovers there: `look` metaobject definition `gid://shopify/MetaobjectDefinition/27040415817` + 45 Files (harmless; offer to delete).
 - **Design decisions (locked):** silver-blue holographic peacock lockup logo in the hero center, no words. **Palette is grays/white with teal (peacock accent) — this has always been the plan and has never changed.** [CORRECTED 2026-09-28] An earlier version of this doc listed "soft iridescent pastels (ivory, lavender, blush, midnight plum text)" here as a locked decision — that was never true, Michele never stated or approved any such palette, and it has been removed; do not reintroduce it. Home hero = still gallery grid of looks ("Shop Styles"), no slideshow, no autoplay, no controls — verified live 2026-09-28 directly against both the published and unpublished Shopify themes. Every look links to a shop-this-look (LTK-style) page. **Rejected:** rainbow logo, runway marquee, dark photo backdrop, stark white + green scheme, hero copy, any pastel/ivory/lavender/blush palette.
@@ -99,7 +99,7 @@ Machine and safety rules from `GitHub/AGENTS.md` (obey them):
 
 ### C. Pages + content (P0) — all copy through the brand voice guidelines
 Build or finish, each with real content structure, imagery, SEO title/meta, breadcrumbs, and schema where relevant:
-1. **About** — Michele's story, values, the "designed by God" tagline, what makes the boutique different, XS–3X inclusivity, community. Use only supplied facts; mark gaps `[CONFIRM]`. Add a "Meet Michele" block with a photo slot and swap-ready placeholder.
+1. **About** — Michele's story, values, the "designed by God" tagline, what makes the boutique different, XXS–3X inclusivity, community. Use only supplied facts; mark gaps `[CONFIRM]`. Add a "Meet Michele" block with a photo slot and swap-ready placeholder.
 2. **Contact** — working form (see D), phone/email/hours/map, directions button, Aundrea if Michele wants her listed `[CONFIRM]`.
 3. **Visit Us** — hours, parking/entry notes `[CONFIRM]`, map, storefront photo, in-store pickup instructions, "Get directions" deep link.
 4. **FAQ** (accordion, `FAQPage` schema), **Size Guide** (see E: women's/plus, kids, baby, shoes, with a "how to measure" block), **Shipping & Returns**, **Privacy**, **Terms**, **Accessibility statement** — from `docs/policies/`, wired into footer + menus.
@@ -119,7 +119,7 @@ Deliver a data model, a CSV template, a validator, and storefront filters. Use S
 
 - **Options (max 3 per product):** `Color`, `Size`. Shoes use `Size` with shoe-size values; do not create a separate size option per size type.
 - **Size systems** (values as a controlled list in one config file, e.g. `config/catalog-taxonomy.ts` or JSON, single source of truth used by the validator, CSV template, size guide, and filters):
-  - Women's/plus apparel: XS, S, M, L, XL, 2X, 3X (+ one-size)
+  - Women's/plus apparel: XXS, XS, S, M, L, XL, 2X, 3X (+ one-size)
   - Women's numeric where used: 0–24
   - Girls/boys: 2T–5T, 4–16 (+ XS–XL youth)
   - Baby: NB, 0–3M, 3–6M, 6–9M, 9–12M, 12–18M, 18–24M

@@ -30,7 +30,7 @@ Zsh shortcuts: `source scripts/aliases.zsh` → `bb-dev`, `bb-check`, `bb-push`,
 | `sections/hero-looks.liquid` + `snippets/hero-looks-stage.liquid` + `assets/hero-looks.js` + `snippets/look-card.liquid` | **Hero looks** (`runway` section, beneath the cover hero): holographic peacock centered between two outfit slideshows; 5s interval, fade. Every outfit links to its `/looks/<handle>` shop-this-look page. Reads `look` metaobjects; manual blocks as fallback. **Open conflict:** the committed `runway` presentation still renders prev/play/next controls and the heading "The boutique edit", while Amber's Sept 20 direction is no controls and no copy — resolve before showing Michele. See [`docs/looks.md`](docs/looks.md) |
 | `templates/metaobject/look.json` + `sections/main-look.liquid` | LTK-style **shop this look** page per outfit: photo/video left, pieces + goes-with grids right, share, more looks |
 | `sections/category-tiles.liquid` | Hairline-framed collection tiles with wide-tracked serif captions (the Smith + Co. signature) |
-| `sections/brand-strip.liquid` | Peacock-scheme statement band with scrolling ribbon (XS–3X, swim to gowns) and value cards |
+| `sections/brand-strip.liquid` | Peacock-scheme statement band with scrolling ribbon (XXS–3X, swim to gowns) and value cards |
 | `sections/visit-our-store.liquid` | Framed storefront photo + address, hours rows, Get Directions (auto Google Maps link), phone |
 | `templates/index.json` | Homepage wired: cover hero → hero looks → What's New slider → 2×3 category tiles → brand strip → Sale slider → Visit |
 | `templates/collection.json` | Vertical (sidebar) filters, 4-col portrait grid, quick-add, 24/page |
