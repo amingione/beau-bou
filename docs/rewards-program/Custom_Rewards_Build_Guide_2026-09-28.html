@@ -1,0 +1,80 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Custom Rewards Build Guide — Epos + Shopify + Zapier</title><link rel="stylesheet" href="../client-portal/_style.css">
+<style>
+  @page{size:letter;margin:.5in .6in}
+  .phase{border:1px solid var(--hair);padding:12px 14px;margin:0 0 12px;break-inside:avoid}
+  .phase .hdr{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
+  .phase .hdr b{font-size:15px}
+  .phase .hrs{font-size:12px;color:var(--peacock);font-weight:600;border:1px solid var(--peacock);padding:2px 8px;border-radius:10px}
+  .phase ol,.phase ul{margin:4px 0 0;padding-left:20px;font-size:13px}
+  .phase li{margin-bottom:4px}
+  .status{font-size:10px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:2px 6px;border-radius:2px}
+  .status.done{background:#e4efe8;color:#1e6b3f}
+  .status.todo{background:#eef1f8;color:#33436b}
+  code{background:var(--linen);padding:1px 5px;border-radius:2px;font-size:12px}
+  .totalbar{background:var(--peacock);color:#fff;padding:10px 14px;font-weight:600;margin:14px 0}
+</style></head><body>
+<div class="page">
+<header><div><div class="eyebrow">TECHNICAL GUIDE · INTERNAL</div><h1>Build the rewards program: Epos API + Shopify Admin API + Zapier</h1></div><img src="../client-portal/brand/png/beyoutiful-logo-peacock-1200.png" style="width:110px"></header>
+<p class="lead">No monthly rewards-app fee — points run on Epos Now's own loyalty fields, Shopify's Admin API, and a Zapier automation as the connector. This is the concrete build plan, not the pitch page (that's in the meeting packet). Effort estimates assume you, not a client, doing the work with Claude/Cowork assisting on code.</p>
+
+<div class="phase">
+<div class="hdr"><b>Phase 1 — Get the Epos Now API credentials</b><span class="hrs">~30 min</span></div>
+<ol>
+<li>Log into the Epos Now Back Office for Michele's account.</li>
+<li>Find <b>API Key</b> and <b>API Secret</b> under the developer/integrations settings (per-device — the token differs for every registered device/till).</li>
+<li>Epos Now API uses <b>Basic Auth</b>, not OAuth: combine <code>KEY:SECRET</code> and Base64-encode it into an access token. Epos Now's developer portal has an encoder tool that does this for you.</li>
+<li>Every request needs headers <code>Authorization: Basic &lt;token&gt;</code> and <code>Content-type: application/json</code>.</li>
+<li>Store the key/secret in a password manager or environment variable — never in the repo or in chat.</li>
+</ol>
+<p style="font-size:12px;color:var(--soft)">Docs: developer.eposnowhq.com/Docs/Authentication · relevant resources: Customer (has native loyalty-points fields), Product, Transaction (V4 API — the V1/V2 Product endpoints are deprecated).</p>
+</div>
+
+<div class="phase">
+<div class="hdr"><b>Phase 2 — Shopify Admin API access <span class="status done">ALREADY DONE</span></b><span class="hrs">0 hrs — done 9/25</span></div>
+<p style="font-size:13px">The <code>be-you-tiful</code> custom app is installed on v0m0hb-x3 with all 18 scopes (including customers, orders, metafields/metaobjects), live on Railway at <code>app.be-you-tifulboutique.com</code>. Nothing left to configure here — this phase exists only so the plan is complete. Reference: <code>beau-bou-app/docs/SETUP.md</code> for the client-credentials token exchange if a script needs a fresh Admin API token.</p>
+</div>
+
+<div class="phase">
+<div class="hdr"><b>Phase 3 — Design the points data model</b><span class="hrs">~1–2 hrs</span></div>
+<ol>
+<li>Decide where a customer's point balance lives on the Shopify side. Simplest: a <code>customer</code> metafield (namespace <code>rewards</code>, key <code>points_balance</code>, type <code>number_integer</code>) set via the Admin API. Avoids needing a database of your own since the custom app already has the DB, but a metafield is simpler to keep in sync and to display back to the customer.</li>
+<li>Decide the earn/redeem rules with Michele (page 4 of the meeting packet: points per $1, points needed per reward, reward value, join bonus, birthday bonus, expiry).</li>
+<li>Decide how a reward becomes a discount at checkout — the cleanest path is generating a single-use Shopify discount code via the Admin API once a customer redeems, rather than a running account credit.</li>
+</ol>
+</div>
+
+<div class="phase">
+<div class="hdr"><b>Phase 4 — Wire the Zapier automation</b><span class="hrs">~3–4 hrs</span></div>
+<ol>
+<li>In Zapier, add the Epos Now app. Confirmed triggers available: <b>New Transaction</b>, <b>New Customer</b>, <b>New Product</b>, <b>New Customer Rating</b>, <b>New Booking</b>. Use <b>New Transaction</b> as the points-earning trigger.</li>
+<li>Add a Formatter/Filter step: only continue if the transaction is a completed sale (skip refunds/voids), and calculate points earned from the sale total using Michele's chosen rate.</li>
+<li>Add a step to look up (or create) the matching Shopify customer by email/phone — Epos Now's customer record and Shopify's customer record need to be matched, which is the trickiest part; the native Epos↔Shopify sync app (see the separate Product Sync Guide) keeping both customer lists aligned makes this reliable.</li>
+<li>Add a Shopify action (or a webhook call into the <code>be-you-tiful</code> app's own API, which already has Admin API access) to increment the customer's <code>rewards.points_balance</code> metafield.</li>
+<li>Build the mirror path for redemption: a Zap (or a small page in the custom app) that checks the balance, decrements it, and calls the Shopify Admin API to create a single-use discount code, then messages the customer the code.</li>
+</ol>
+</div>
+
+<div class="phase">
+<div class="hdr"><b>Phase 5 — Customer-facing balance display</b><span class="hrs">~2–3 hrs</span></div>
+<ul>
+<li>Simplest: a small section/block on the Shopify customer account page (theme edit in <code>beau-bou</code>) that reads the <code>rewards.points_balance</code> metafield and shows it — metafields can be exposed to the Storefront API/theme with a metafield definition marked storefront-visible.</li>
+<li>Stretch: a "redeem now" button that calls the custom app's endpoint directly instead of waiting on a Zap.</li>
+</ul>
+</div>
+
+<div class="phase">
+<div class="hdr"><b>Phase 6 — Test end to end</b><span class="hrs">~2–3 hrs</span></div>
+<ol>
+<li>Ring a real test sale through Epos Now (small dollar amount), confirm the Zap fires and the Shopify metafield updates.</li>
+<li>Redeem a reward, confirm the discount code works at checkout and the balance decrements.</li>
+<li>Test the join bonus and (if in scope for launch) the birthday bonus logic.</li>
+</ol>
+</div>
+
+<div class="totalbar">Rough total: 10–16 hours of build + test time, once Michele's rules and Epos credentials are in hand. Phase 2 is already banked at $0.</div>
+
+<p style="font-size:12px;color:var(--soft)">This is genuinely more than a "point and click" app install — it's the trade-off for zero recurring app fees. If timeline pressure builds before Oct 15, Smile.io or Rivo (see the Rewards Options sheet) can go live same-day as a Phase 1 launch, with the custom build swapped in later without disrupting customers (their points would need a one-time migration in that case).</p>
+
+<footer><div>LaunchWell Brands · internal build reference</div><div>2026-09-28</div></footer>
+</div>
+</body></html>

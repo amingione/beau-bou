@@ -1,0 +1,39 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Sync Products — Epos Now Back Office App to Shopify</title><link rel="stylesheet" href="../client-portal/_style.css">
+<style>
+  @page{size:letter;margin:.5in .6in}
+  .step2{display:grid;grid-template-columns:40px 1fr;gap:12px;border:1px solid var(--hair);padding:11px 14px;margin:0 0 10px;break-inside:avoid}
+  .step2 .n{font:400 26px 'Playfair Display',serif;color:var(--peacock)}
+  .step2 b{display:block;font-size:14px;margin-bottom:3px}
+  .step2 p{font-size:13px;margin:0 0 4px}
+  .warn{border-left:3px solid #b23b3b;background:#fdf0ef;padding:8px 12px;margin:10px 0;font-size:12.5px}
+</style></head><body>
+<div class="page">
+<header><div><div class="eyebrow">STEP-BY-STEP · INTERNAL</div><h1>Sync products: Epos Now back-office app → Shopify</h1></div><img src="../client-portal/brand/png/beyoutiful-logo-peacock-1200.png" style="width:110px"></header>
+<p class="lead">This is the native, no-code path for Step 3 — the app in Michele's Epos Now Back Office that gives a real-time, two-way sync with Shopify. Use this before ever considering a custom sync script; it already does products, stock, customers and order history.</p>
+
+<div class="step2"><div class="n">1</div><div><b>Confirm Michele's Shopify account is ready</b><p>She needs an active Shopify account/store (shopbeyoutifulboutique.com, store handle v0m0hb-x3) before connecting — already true here.</p></div></div>
+
+<div class="step2"><div class="n">2</div><div><b>Open the Epos Now Back Office</b><p>Log in at the Epos Now Back Office (Michele's login, or with her permission on her behalf). Go to the <b>App Store</b> / Apps section.</p></div></div>
+
+<div class="step2"><div class="n">3</div><div><b>Find and install the Shopify app</b><p>Search "Shopify" in the Epos Now app store, or go directly to eposnow.com → Store → Apps → Shopify. Click <b>Install</b>.</p></div></div>
+
+<div class="step2"><div class="n">4</div><div><b>Connect the Shopify account</b><p>The app prompts a Shopify sign-in / OAuth authorization — sign into shopbeyoutifulboutique.com's Shopify admin and approve the connection when prompted. This grants Epos Now read/write access to products, inventory and customers on the Shopify side.</p></div></div>
+
+<div class="step2"><div class="n">5</div><div><b>Choose sync direction and scope</b><p>Confirm the app is set to two-way sync (not one-way Epos→Shopify or Shopify→Epos only). Map any category/department fields so Epos categories (clothing/shoe sizes, brands, gender, adult/kids/baby) land in the right Shopify collections and options.</p></div></div>
+
+<div class="step2"><div class="n">6</div><div><b>Run the first sync as a small test</b><p>Create or edit one low-stakes product in Epos (not a live SKU) and confirm it appears correctly in Shopify — right price, size/color variants, stock count. Then edit it from the Shopify side and confirm it flows back to Epos. Do this before trusting it with real inventory.</p></div></div>
+
+<div class="step2"><div class="n">7</div><div><b>Sync customers and order history</b><p>Confirm the app is also pulling customer records and past order history (it does this by default per Epos Now's own description) — this is what will let the rewards build (separate guide) match an Epos customer to their Shopify account.</p></div></div>
+
+<div class="step2"><div class="n">8</div><div><b>Full inventory sync</b><p>Once the test passes, let it sync Michele's full Epos catalog. Expect this to take longer for a full catalog than a single product — Epos Now processes it in the back office and does not need to be watched live.</p></div></div>
+
+<div class="step2"><div class="n">9</div><div><b>Remove the sample/TEST products from Shopify</b><p>The 18 <code>TEST —</code> products (55 variants) currently in the theme for testing need to be archived or deleted once real inventory is flowing, so customers never see placeholder items.</p></div></div>
+
+<div class="warn"><b>Watch for:</b> duplicate SKUs if a product already exists on both sides before the first sync (map/merge, don't let it create a duplicate); Epos "adult/kids/baby" categories not lining up 1:1 with Shopify's collection structure (may need manual collection assignment for edge cases); and any per-transaction or per-SKU fee Epos or Faire charges for the integration — confirm before turning it on for good (flagged as still-unverified in the meeting packet).</div>
+
+<h2>If the native app can't do something we need</h2>
+<p style="font-size:13px">Fall back to the Epos Now REST API directly (Basic Auth with API key + secret from the Back Office, base <code>https://api.eposnowhq.com/api/V2/Product</code> — note V1/V2 Product endpoints are marked deprecated in favor of the V4 API) combined with the Shopify Admin API already live in the <code>be-you-tiful</code> app. That's a real build, not a settings toggle — see the separate Custom Rewards Build Guide for the pattern (Zapier as the connector) if a similar custom bridge is ever needed for products instead of just rewards.</p>
+
+<footer><div>LaunchWell Brands · internal build reference</div><div>2026-09-28</div></footer>
+</div>
+</body></html>
