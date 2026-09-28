@@ -20,7 +20,7 @@ $1,000 flat ($500 deposit · $500 at launch). Launch target **October 15, 2026**
 | 10 | Store hours & announcement bar | ✓ "Change to"; wrote hours near Sun–Mon ("11-3", "10-5") + open 7 days | Confirmed 2026-09-28: **Sunday 11–3**. Site-wide hours now Mon 11–4 · Tue–Fri 10–5 · Sat 10–4 · **Sun 11–3**. Announcement: "Get 20% off your first online order!" |
 | 11 | Website address | shopbeyoutiful.com crossed out | shopbeyoutifulboutique.com in use |
 | 12 | Social links | Instagram: "have broke, look @ new"; TikTok **@beyoutiful.boutiq64** (hard to read) | **Confirm handles**, then add in Theme settings → Social media |
-| 13 | Email list | "*Reg price items* — one time 20% off / Rewards options" | Welcome code (20%, email subscribers, once per customer) now limited to the new **Regular price (welcome offer)** collection (not on sale/clearance) |
+| 13 | Email list | "*Reg price items* — one time 20% off / Rewards options" | Welcome code: **20% off the entire order**, email subscribers, once per customer. Amber confirmed 2026-09-28 it is **not** limited to regular-price items. |
 | 14 | About page story | "Will write and send" | Waiting on Michele |
 
 ## Meeting sheet (not filled in)
