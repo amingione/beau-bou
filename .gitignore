@@ -37,3 +37,4 @@ Thumbs.db
 
 # Staging area for files pending deletion
 _to_delete/
+/dist/
