@@ -2,7 +2,7 @@
   "name": "beau-bou",
   "version": "1.0.0",
   "private": true,
-  "description": "Be-YOU-tiful Boutique by Michele — Shopify Online Store 2.0 theme (Dawn 16 fork) styled after shopsmithco.com.",
+  "description": "Be-YOU-tiful Boutique by Michele \u2014 Shopify Online Store 2.0 theme (Dawn 16 fork) styled after shopsmithco.com.",
   "author": "LaunchWell Brands <buildwith@launchwellbrands.com>",
   "license": "MIT",
   "scripts": {
@@ -14,7 +14,8 @@
     "push:client": "shopify theme push -e client --unpublished",
     "package": "shopify theme package",
     "pull:settings": "shopify theme pull -e client --only config/settings_data.json --only templates/*.json --only sections/*.json",
-    "preview": "open docs/preview/index.html"
+    "preview": "open docs/preview/index.html",
+    "kit": "bash scripts/build-site-kit.sh"
   },
   "devDependencies": {
     "@shopify/cli": "^3.80.0"

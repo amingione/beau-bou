@@ -1,0 +1,23 @@
+# Images the theme references as shopify://shop_images/<filename>.
+# Upload these to Content → Files on the new store with the SAME filenames.
+https://cdn.shopify.com/s/files/1/1017/0253/3484/files/Be-YOU-tiful_Boutique_by_Michele.png
+https://cdn.shopify.com/s/files/1/1017/0253/3484/files/black-logo.png
+https://cdn.shopify.com/s/files/1/1017/0253/3484/files/beyoutiful-logo-black-1200.png
+https://cdn.shopify.com/s/files/1/1017/0253/3484/files/be-you-tiful-boutique-by-michelle-logo-black_f95b8033-7518-45f3-ae1c-992188660a90.png
+https://cdn.shopify.com/s/files/1/1017/0253/3484/files/be-you-tiful-boutique-puntaGorda.png
+https://cdn.shopify.com/s/files/1/1017/0253/3484/files/be-you-tiful-boutique-punta-gorda-florida.png
+https://cdn.shopify.com/s/files/1/1017/0253/3484/files/be-you-tiful-boutique-beach-blue.jpg
+https://cdn.shopify.com/s/files/1/1017/0253/3484/files/3.png
+https://cdn.shopify.com/s/files/1/1017/0253/3484/files/7.svg
+https://cdn.shopify.com/s/files/1/1017/0253/3484/files/beyoutiful-blue-tops-and-accessories-store-display.webp
+https://cdn.shopify.com/s/files/1/1017/0253/3484/files/beyoutiful-rings-and-bracelets-jewelry-counter.webp
+https://cdn.shopify.com/s/files/1/1017/0253/3484/files/beyoutiful-pink-navy-floral-collared-dress-modeled.webp
+https://cdn.shopify.com/s/files/1/1017/0253/3484/files/beyoutiful-long-denim-button-front-vest.webp
+https://cdn.shopify.com/s/files/1/1017/0253/3484/files/beyoutiful-floral-crossbody-bag-display.webp
+https://cdn.shopify.com/s/files/1/1017/0253/3484/files/beyoutiful-dark-wash-denim-shorts.webp
+https://cdn.shopify.com/s/files/1/1017/0253/3484/files/beyoutiful-blue-ruffle-trim-blouse-jeans.webp
+https://cdn.shopify.com/s/files/1/1017/0253/3484/files/beyoutiful-blue-fringe-hem-top-and-sandal-display.webp
+https://cdn.shopify.com/s/files/1/1017/0253/3484/files/beyoutiful-runway-orange-floral-midi-dress.webp
+https://cdn.shopify.com/s/files/1/1017/0253/3484/files/beyoutiful-runway-navy-white-floral-maxi-dress.webp
+https://cdn.shopify.com/s/files/1/1017/0253/3484/files/beyoutiful-runway-blue-ruffle-sleeve-blouse.webp
+https://cdn.shopify.com/s/files/1/1017/0253/3484/files/beyoutiful-runway-blue-green-printed-dress.webp
