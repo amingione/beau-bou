@@ -1,6 +1,30 @@
 # Looks — hero slideshows + shop-this-look pages
 
-Last updated: 2026-09-21
+Last updated: 2026-09-28
+
+## Shop Styles grid + pop-up — 2026-09-28
+
+Amber picked **Option D** from the design canvas: keep the live header and hero, and replace the homepage runway slideshow with a LIKEtoKNOW.it-style grid.
+
+| Piece | File |
+| --- | --- |
+| Section (grid, filters, `<dialog>`) | `sections/shop-styles.liquid` |
+| Opened look ("post") | `snippets/shop-styles-post.liquid` |
+| Behavior | `assets/shop-styles.js` (`<shop-styles>` custom element) |
+| Styles | `assets/section-shop-styles.css` |
+| Homepage wiring | `templates/index.json` → `shop_styles` (replaces `runway`) |
+
+**How it works**
+- Grid = every `look` metaobject with a photo or video (skips `featured = false`), masonry columns like the LTK feed. Tiles show a ▶ + "Try-on video" chip when the look has a **Video**, and "N pieces" when **Pieces** are linked.
+- Click a tile → pop-up with the photo/video left and **Shop the pic** right: each piece has price, a size/option picker when it has variants, and a + button; "Add all N to cart" adds every available piece. Adds go through `/cart/add.js` and refresh Dawn's cart drawer (falls back to `/cart`).
+- Prev/next arrows (and ← → keys) move between looks; Esc or the backdrop closes; video pauses on close; focus returns to the tile.
+- **The look page stays.** Each tile is a real link to `/pages/looks/<handle>` (no JS, or ⌘/Ctrl-click, opens it), and the pop-up has a "View full look page" link.
+- Looks with no pieces show the "Ask about this look" message/button (section settings).
+- Filter pills (All / Try-on videos / Photos) appear once any look has a video.
+
+**Adding a try-on video:** Content → Metaobjects → Look → entry → **Video (optional)** (field already in the definition). The Styled photo is used as the grid poster; without one, Shopify's video preview frame is used.
+
+The old `hero-looks` section is untouched and still available in the theme editor if the runway is ever wanted back.
 
 ## Current revision — 2026-09-21
 
