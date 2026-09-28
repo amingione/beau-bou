@@ -1,0 +1,102 @@
+{% comment %}
+  The opened look in the Shop Styles pop-up (LTK "post" view): photo or try-on video left,
+  "Shop the pic" pieces right, each addable to the cart, plus "Add all".
+  Rendered once per look inside a <template>; assets/shop-styles.js clones it into the dialog.
+  The full /pages/looks/<handle> page (sections/main-look.liquid) stays the canonical page.
+
+  Accepts:
+  - look:        {Metaobject} a `look` entry
+  - index:       {Number} position in the grid (1-based)
+  - total:       {Number} looks in the grid
+  - empty_text:  {String} message when no pieces are linked
+  - empty_label: {String} button label for that case
+  - empty_link:  {String} button link for that case
+{% endcomment %}
+{%- liquid
+  assign title = look.title.value | default: look.system.handle
+  assign photo = look.image.value
+  assign video = look.video.value
+  assign pieces = look.pieces.value
+  assign piece_count = 0
+  if pieces != blank
+    assign piece_count = pieces.size
+  endif
+-%}
+<article class="ss-post" aria-label="{{ title | escape }}">
+  <div class="ss-post__media">
+    {%- if video != blank -%}
+      {{ video | video_tag: image_size: '1100x', controls: true, playsinline: true, muted: true, loop: true, preload: 'none', class: 'ss-post__video' }}
+    {%- elsif photo != blank -%}
+      {{ photo | image_url: width: 1100 | image_tag: loading: 'lazy', widths: '500, 800, 1100', sizes: '(min-width: 990px) 520px, 100vw', class: 'ss-post__photo', alt: title }}
+    {%- endif -%}
+  </div>
+
+  <div class="ss-post__body">
+    <header class="ss-post__head">
+      <span class="ss-post__avatar" aria-hidden="true"><img src="{{ 'beyoutiful-peacock-holographic-iridescent-icon.webp' | asset_url }}" width="186" height="308" alt="" loading="lazy"></span>
+      <span class="ss-post__who">
+        <span class="ss-post__name">{{ shop.name | escape }}</span>
+        <span class="ss-post__kind">{% if video != blank %}Try-on video{% else %}Photo{% endif %} · {{ index }} of {{ total }}</span>
+      </span>
+      <button type="button" class="ss-post__icon" data-ss-copy="{{ shop.url | append: look.system.url | escape }}" aria-label="Copy link to this look" title="Copy link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5"/><path d="M5 13v7h14v-7"/></svg>
+      </button>
+      <button type="button" class="ss-post__icon" data-ss-close aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </header>
+
+    <h2 class="ss-post__title">{{ title | escape }}</h2>
+    <p class="ss-post__rule"><span>Shop the pic</span></p>
+
+    {%- if piece_count > 0 -%}
+      <ul class="ss-post__pieces list-unstyled" role="list">
+        {%- for p in pieces -%}
+          {%- assign v = p.selected_or_first_available_variant -%}
+          <li class="ss-piece" data-ss-piece>
+            <a class="ss-piece__thumb" href="{{ p.url }}" tabindex="-1" aria-hidden="true">
+              {%- if p.featured_media != blank -%}
+                {{ p.featured_media | image_url: width: 200 | image_tag: loading: 'lazy', widths: '100, 200', sizes: '72px', alt: '' }}
+              {%- endif -%}
+            </a>
+            <span class="ss-piece__info">
+              <a class="ss-piece__name" href="{{ p.url }}">{{ p.title | escape }}</a>
+              <span class="ss-piece__price">{{ v.price | default: p.price | money }}</span>
+              {%- if p.has_only_default_variant == false -%}
+                {%- assign sel_id = 'ss-' | append: look.system.handle | append: '-' | append: forloop.index -%}
+                <label class="visually-hidden" for="{{ sel_id }}">{{ p.title | escape }} options</label>
+                <select id="{{ sel_id }}" class="ss-piece__select" data-ss-variant>
+                  {%- for pv in p.variants -%}
+                    <option value="{{ pv.id }}"{% if pv.id == v.id %} selected{% endif %}{% unless pv.available %} disabled{% endunless %}>{{ pv.title | escape }}{% unless pv.available %} — sold out{% endunless %}</option>
+                  {%- endfor -%}
+                </select>
+              {%- else -%}
+                <input type="hidden" value="{{ v.id }}" data-ss-variant>
+              {%- endif -%}
+            </span>
+            {%- if p.available -%}
+              <button type="button" class="ss-piece__add" data-ss-add aria-label="Add {{ p.title | escape }} to cart">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+              </button>
+            {%- else -%}
+              <span class="ss-piece__sold">Sold out</span>
+            {%- endif -%}
+          </li>
+        {%- endfor -%}
+      </ul>
+      {%- if piece_count > 1 -%}
+        <button type="button" class="button ss-post__all" data-ss-add-all>
+          Add all {{ piece_count }} to cart
+        </button>
+      {%- endif -%}
+    {%- else -%}
+      <p class="ss-post__empty">{{ empty_text | escape }}</p>
+      {%- if empty_label != blank -%}
+        <a class="button button--secondary" href="{{ empty_link | default: '/pages/contact' }}">{{ empty_label | escape }}</a>
+      {%- endif -%}
+    {%- endif -%}
+
+    <p class="ss-post__status visually-hidden" role="status" aria-live="polite" data-ss-status></p>
+    <a class="ss-post__page" href="{{ look.system.url }}">View full look page</a>
+  </div>
+</article>

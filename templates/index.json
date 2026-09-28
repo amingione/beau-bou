@@ -32,76 +32,21 @@
         "padding_bottom": 12
       }
     },
-    "runway": {
-      "type": "hero-looks",
-      "blocks": {
-        "look_1": {
-          "type": "look",
-          "settings": {
-            "image_asset": "beyoutiful-runway-orange-floral-midi-dress.webp",
-            "title": "Orange floral dress",
-            "link": "/pages/looks/orange-floral-dress"
-          }
-        },
-        "look_3": {
-          "type": "look",
-          "settings": {
-            "image_asset": "beyoutiful-runway-navy-white-floral-maxi-dress.webp",
-            "title": "Navy & white maxi",
-            "link": "/pages/looks/navy-white-maxi"
-          }
-        },
-        "look_4": {
-          "type": "look",
-          "settings": {
-            "image_asset": "beyoutiful-runway-blue-ruffle-sleeve-blouse.webp",
-            "title": "Blue ruffle blouse",
-            "link": "/pages/looks/blue-ruffle-blouse"
-          }
-        },
-        "look_5": {
-          "type": "look",
-          "settings": {
-            "image_asset": "beyoutiful-runway-blue-green-printed-dress.webp",
-            "title": "Blue & green dress",
-            "link": "/pages/looks/blue-green-dress"
-          }
-        }
-      },
-      "block_order": [
-        "look_1",
-        "look_3",
-        "look_4",
-        "look_5"
-      ],
+    "shop_styles": {
+      "type": "shop-styles",
       "settings": {
-        "center_heading": "Shop Styles",
-        "media_style": "cutout",
-        "presentation": "gallery",
-        "overlay": 20,
-        "blur": 0,
-        "bg_position": "center top",
-        "min_height": 50,
-        "logo": "shopify://shop_images/7.svg",
-        "logo_width": 120,
-        "logo_link": "https://shopbeyoutifulboutique.com",
-        "button_label": "",
-        "button_link": "",
-        "source": "auto",
-        "full_body_only": true,
-        "max_looks": 6,
-        "interval": 5,
-        "transition": "fade",
-        "fade_ms": 800,
-        "stage_height": 52,
-        "show_floor": false,
-        "pause_on_hover": false,
-        "show_captions": true,
-        "card_eyebrow": "Shop this Style",
-        "full_width": true,
+        "heading": "Shop Styles",
+        "show_filters": true,
+        "max_looks": 12,
+        "columns": 4,
+        "empty_text": "Love this look? Call or stop in and we'll pull it in your size.",
+        "empty_label": "Ask about this look",
+        "empty_link": "",
+        "button_label": "See all looks",
+        "button_link": "/pages/shop-the-look",
         "color_scheme": "scheme-1",
-        "padding_top": 0,
-        "padding_bottom": 0
+        "padding_top": 48,
+        "padding_bottom": 48
       }
     },
     "whats_new": {
@@ -400,7 +345,7 @@
   },
   "order": [
     "hero",
-    "runway",
+    "shop_styles",
     "whats_new",
     "tiles_1",
     "tiles_2",
