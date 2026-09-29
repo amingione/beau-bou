@@ -1,5 +1,7 @@
 # Paste these into Shopify — Settings → Policies
 
+> **2026-09-29 — address fix still needed in admin.** The live **Refund policy** and **Shipping policy** still say "264-A W Marion Ave". In Settings → Policies, change it to **264 W Marion Ave** in both (one spot each). The API connection can't edit policies.
+
 The Shopify API connection can't write policies (`write_legal_policies` scope missing), so these are pasted by hand.
 Admin → **Settings → Policies** → open each policy → select all existing text → paste → **Save**.
 All four match Michele's signed Website Decisions (2026-09-21) and the confirmed address/hours (2026-09-28).
