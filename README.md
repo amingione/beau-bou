@@ -31,7 +31,7 @@ Zsh shortcuts: `source scripts/aliases.zsh` → `bb-dev`, `bb-check`, `bb-push`,
 | `sections/shop-styles.liquid` + `snippets/shop-styles-post.liquid` + `assets/shop-styles.js` | **Shop Styles** (homepage, under the hero): LTK-style masonry grid of looks — photo or try-on video. Clicking opens a pop-up post with every piece priced and addable to the cart (drawer refresh); the `/looks/<handle>` page stays and is linked. Replaces the `runway` slideshow on the homepage. See [`docs/looks.md`](docs/looks.md) |
 | `templates/metaobject/look.json` + `sections/main-look.liquid` | LTK-style **shop this look** page per outfit: photo/video left, pieces + goes-with grids right, share, more looks |
 | `sections/category-tiles.liquid` | Hairline-framed collection tiles with wide-tracked serif captions (the Smith + Co. signature) |
-| `sections/brand-strip.liquid` | Peacock-scheme statement band with scrolling ribbon (XXS–3X, swim to gowns) and value cards |
+| `sections/brand-strip.liquid` | Peacock-scheme statement band with scrolling ribbon (XXS–2X, swimwear to formal wear) and value cards |
 | `sections/visit-our-store.liquid` | Framed storefront photo + address, hours rows, Get Directions (auto Google Maps link), phone |
 | `templates/index.json` | Homepage wired: cover hero → Shop Styles grid → What's New slider → 2×3 category tiles → brand strip → Sale slider → Visit |
 | `templates/collection.json` | Vertical (sidebar) filters, 4-col portrait grid, quick-add, 24/page |

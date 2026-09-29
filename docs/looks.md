@@ -184,3 +184,9 @@ Manual corrections live in `overrides`.
 ## Palette (2026-09-20, reverted 9/26) — "soft iridescent pastels" experiment
 [CORRECTED 2026-09-28] This was a same-session dev experiment, never a client request or a locked decision — Michele never stated or approved an ivory/lavender/blush direction, then or since. At the time, `config/settings_data.json` color schemes were briefly set to: scheme-1 ivory `#FBF8F5` · scheme-2 blush-lavender mist `#F3EDF3` · scheme-3 lavender `#DCD4EC` (was peacock green) · scheme-4 midnight plum `#2E2A33` · scheme-5 blush `#F5E4EA`, with tokens in `assets/beau-bou.css` (`--bb-ink`, `--bb-accent`, `--bb-hairline`, `--bb-holo`). It was reverted by commit `e57ac0c` ("retire the pastel palette") and the live theme has used grays/white with teal (peacock) as the accent ever since — confirmed unchanged again 2026-09-28 directly against the live Shopify theme. Kept here only as a historical note; do not treat this section as a live or approved direction.
 - `page.shop-the-look` now renders the look gallery. The **Shop the look (live)** section remains available for a separate live-stream page.
+
+## Homepage carousel (2026-09-29)
+The homepage **Shop Styles** section now runs as an auto-scrolling carousel (Layout → Carousel): 10 tiles, no buttons, loops continuously and pauses on hover/focus or while a look is open. Visitors who set "reduce motion" get a swipeable row instead.
+- Tiles fill in this order: published looks → **Extra photo** blocks (theme editor → Shop Styles → Add block) → bundled samples.
+- Settings: *Tiles in carousel* (4–20, default 10), *Seconds per loop* (20–120, default 50).
+- The Shop the Look page uses the same section with Layout → Grid (filters + full pop-ups).

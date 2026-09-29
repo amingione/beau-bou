@@ -10,7 +10,11 @@
 
 {%- liquid
   assign looks = shop.metaobjects.look.values
+  assign layout = section.settings.layout | default: 'carousel'
   assign max = section.settings.max_looks
+  if layout == 'carousel'
+    assign max = section.settings.carousel_count
+  endif
   assign shown = 0
   assign has_video = false
   for look in looks
@@ -28,11 +32,13 @@
       assign has_video = true
     endif
   endfor
+  assign photo_blocks = section.blocks | where: 'type', 'photo'
 -%}
 
 {%- style -%}
   #ShopStyles-{{ section.id }} {
     --ss-columns: {{ section.settings.columns }};
+    --ss-speed: {{ section.settings.scroll_seconds }}s;
     padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
     padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
   }
@@ -44,13 +50,117 @@
   }
 {%- endstyle -%}
 
-<shop-styles id="ShopStyles-{{ section.id }}" class="shop-styles color-{{ section.settings.color_scheme }} gradient">
+{%- comment -%} ---------- Build the tiles once; posts (pop-up content) separately ---------- {%- endcomment -%}
+{%- assign count = 0 -%}
+{%- capture posts -%}{%- endcapture -%}
+{%- capture tiles -%}
+  {%- assign i = 0 -%}
+  {%- for look in looks -%}
+    {%- if look.featured.value == false -%}{%- continue -%}{%- endif -%}
+    {%- if look.image.value == blank and look.video.value == blank -%}{%- continue -%}{%- endif -%}
+    {%- if i >= shown -%}{%- break -%}{%- endif -%}
+    {%- liquid
+      assign i = i | plus: 1
+      assign title = look.title.value | default: look.system.handle
+      assign video = look.video.value
+      assign poster = look.image.value
+      if poster == blank and video != blank
+        assign poster = video.preview_image
+      endif
+      assign kind = 'photo'
+      if video != blank
+        assign kind = 'video'
+      endif
+      assign n_pieces = 0
+      if look.pieces.value != blank
+        assign n_pieces = look.pieces.value.size
+      endif
+    -%}
+    <li class="shop-styles__item" data-ss-kind="{{ kind }}">
+      <a
+        class="ss-tile"
+        href="{{ look.system.url }}"
+        data-ss-open="{{ i }}"
+        aria-haspopup="dialog"
+        aria-label="{{ title | escape }}{% if kind == 'video' %}, try-on video{% endif %}{% if n_pieces > 0 %}, {{ n_pieces }} {% if n_pieces == 1 %}piece{% else %}pieces{% endif %}{% endif %}"
+      >
+        <span class="ss-tile__media">
+          {%- if poster != blank -%}
+            {{ poster | image_url: width: 800 | image_tag: loading: 'lazy', widths: '300, 450, 600, 800', sizes: '(min-width: 990px) 24vw, 46vw', class: 'ss-tile__img', alt: title }}
+          {%- endif -%}
+          {%- if kind == 'video' -%}
+            <span class="ss-tile__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5l12 7-12 7z"/></svg></span>
+            <span class="ss-tile__chip ss-tile__chip--top" aria-hidden="true">Try-on video</span>
+          {%- endif -%}
+          {%- if n_pieces > 0 -%}
+            <span class="ss-tile__chip" aria-hidden="true">{{ n_pieces }} {% if n_pieces == 1 %}piece{% else %}pieces{% endif %}</span>
+          {%- endif -%}
+        </span>
+        <span class="ss-tile__caption">{{ title | escape }}</span>
+      </a>
+    </li>
+    {%- capture post -%}
+      <template data-ss-post="{{ i }}">
+        {% render 'shop-styles-post', look: look, index: i, total: shown, empty_text: section.settings.empty_text, empty_label: section.settings.empty_label, empty_link: section.settings.empty_link %}
+      </template>
+    {%- endcapture -%}
+    {%- assign posts = posts | append: post -%}
+  {%- endfor -%}
+  {%- assign count = i -%}
+
+  {%- comment -%} Carousel: top up to the target count with the section's extra photos, then bundled samples. {%- endcomment -%}
+  {%- if layout == 'carousel' -%}
+    {%- for block in photo_blocks -%}
+      {%- if count >= max -%}{%- break -%}{%- endif -%}
+      {%- liquid
+        assign bimg = block.settings.image
+        if bimg != blank and bimg.src == blank
+          assign bfname = bimg | remove: 'shopify://shop_images/'
+          assign bimg = images[bfname]
+        endif
+      -%}
+      {%- if bimg == blank -%}{%- continue -%}{%- endif -%}
+      {%- assign count = count | plus: 1 -%}
+      <li class="shop-styles__item" data-ss-kind="photo" {{ block.shopify_attributes }}>
+        <a class="ss-tile" href="{{ block.settings.link | default: section.settings.button_link | default: '/pages/shop-the-look' }}">
+          <span class="ss-tile__media">
+            {{ bimg | image_url: width: 800 | image_tag: loading: 'lazy', widths: '300, 450, 600, 800', sizes: '(min-width: 990px) 24vw, 46vw', class: 'ss-tile__img', alt: block.settings.title | default: 'Outfit from the boutique' }}
+          </span>
+          {%- if block.settings.title != blank -%}<span class="ss-tile__caption">{{ block.settings.title | escape }}</span>{%- endif -%}
+        </a>
+      </li>
+    {%- endfor -%}
+  {%- endif -%}
+
+  {%- if count == 0 or layout == 'carousel' and count < max -%}
+    {%- if section.settings.show_samples -%}
+      {%- liquid
+        assign sample_files = 'beyoutiful-runway-orange-floral-midi-dress.webp|beyoutiful-runway-navy-white-floral-maxi-dress.webp|beyoutiful-runway-blue-ruffle-sleeve-blouse.webp|beyoutiful-runway-blue-green-printed-dress.webp' | split: '|'
+        assign sample_titles = 'Orange floral dress|Navy & white maxi|Blue ruffle blouse|Blue & green dress' | split: '|'
+      -%}
+      {%- if count == 0 -%}
+        {%- for file in sample_files -%}
+          {%- if layout == 'carousel' and count >= max -%}{%- break -%}{%- endif -%}
+          {%- assign count = count | plus: 1 -%}
+          <li class="shop-styles__item" data-ss-kind="photo">
+            <a class="ss-tile" href="{{ section.settings.button_link | default: '/pages/shop-the-look' }}">
+              <span class="ss-tile__media"><img class="ss-tile__img" src="{{ file | asset_url }}" width="900" height="1200" loading="lazy" alt="{{ sample_titles[forloop.index0] | escape }}"></span>
+              <span class="ss-tile__caption">{{ sample_titles[forloop.index0] | escape }}</span>
+            </a>
+          </li>
+        {%- endfor -%}
+      {%- endif -%}
+    {%- endif -%}
+  {%- endif -%}
+{%- endcapture -%}
+
+<shop-styles id="ShopStyles-{{ section.id }}" class="shop-styles shop-styles--{{ layout }} color-{{ section.settings.color_scheme }} gradient">
   <div class="page-width">
     <div class="shop-styles__head">
       {%- if section.settings.heading != blank -%}
         <h2 class="shop-styles__heading bb-display">{{ section.settings.heading | escape }}</h2>
       {%- endif -%}
-      {%- if section.settings.show_filters and has_video -%}
+      {%- if layout == 'grid' and section.settings.show_filters and has_video -%}
         <div class="shop-styles__filters" role="group" aria-label="Filter looks">
           <button type="button" class="shop-styles__pill" data-ss-filter="all" aria-pressed="true">All looks</button>
           <button type="button" class="shop-styles__pill" data-ss-filter="video" aria-pressed="false">Try-on videos</button>
@@ -58,101 +168,38 @@
         </div>
       {%- endif -%}
     </div>
-
-    {%- if shown > 0 -%}
-      <ul class="shop-styles__grid list-unstyled" role="list">
-        {%- assign i = 0 -%}
-        {%- for look in looks -%}
-          {%- if look.featured.value == false -%}{%- continue -%}{%- endif -%}
-          {%- if look.image.value == blank and look.video.value == blank -%}{%- continue -%}{%- endif -%}
-          {%- if i >= shown -%}{%- break -%}{%- endif -%}
-          {%- liquid
-            assign i = i | plus: 1
-            assign title = look.title.value | default: look.system.handle
-            assign video = look.video.value
-            assign poster = look.image.value
-            if poster == blank and video != blank
-              assign poster = video.preview_image
-            endif
-            assign kind = 'photo'
-            if video != blank
-              assign kind = 'video'
-            endif
-            assign n_pieces = 0
-            if look.pieces.value != blank
-              assign n_pieces = look.pieces.value.size
-            endif
-            assign loading = 'lazy'
-            if i <= 4
-              assign loading = 'eager'
-            endif
-          -%}
-          <li class="shop-styles__item" data-ss-kind="{{ kind }}">
-            <a
-              class="ss-tile"
-              href="{{ look.system.url }}"
-              data-ss-open="{{ i }}"
-              aria-haspopup="dialog"
-              aria-label="{{ title | escape }}{% if kind == 'video' %}, try-on video{% endif %}{% if n_pieces > 0 %}, {{ n_pieces }} {% if n_pieces == 1 %}piece{% else %}pieces{% endif %}{% endif %}"
-            >
-              <span class="ss-tile__media">
-                {%- if poster != blank -%}
-                  {{ poster | image_url: width: 800 | image_tag: loading: loading, widths: '300, 450, 600, 800', sizes: '(min-width: 990px) 24vw, 46vw', class: 'ss-tile__img', alt: title }}
-                {%- endif -%}
-                {%- if kind == 'video' -%}
-                  <span class="ss-tile__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5l12 7-12 7z"/></svg></span>
-                  <span class="ss-tile__chip ss-tile__chip--top" aria-hidden="true">Try-on video</span>
-                {%- endif -%}
-                {%- if n_pieces > 0 -%}
-                  <span class="ss-tile__chip" aria-hidden="true">{{ n_pieces }} {% if n_pieces == 1 %}piece{% else %}pieces{% endif %}</span>
-                {%- endif -%}
-              </span>
-              <span class="ss-tile__caption">{{ title | escape }}</span>
-            </a>
-            <template data-ss-post="{{ i }}">
-              {% render 'shop-styles-post',
-                look: look,
-                index: i,
-                total: shown,
-                empty_text: section.settings.empty_text,
-                empty_label: section.settings.empty_label,
-                empty_link: section.settings.empty_link
-              %}
-            </template>
-          </li>
-        {%- endfor -%}
-      </ul>
-    {%- elsif section.settings.show_samples -%}
-      {%- comment -%} New store with no Look entries yet: show the bundled sample looks so the grid isn't empty. {%- endcomment -%}
-      {%- if request.design_mode -%}
-        <p class="shop-styles__hint">Showing sample looks. Create <b>Look</b> entries under Content → Metaobjects → Look (photo or try-on video, plus the pieces worn) and they replace these automatically.</p>
-      {%- endif -%}
-      <ul class="shop-styles__grid list-unstyled" role="list">
-        {%- liquid
-          assign sample_files = 'beyoutiful-runway-orange-floral-midi-dress.webp|beyoutiful-runway-navy-white-floral-maxi-dress.webp|beyoutiful-runway-blue-ruffle-sleeve-blouse.webp|beyoutiful-runway-blue-green-printed-dress.webp' | split: '|'
-          assign sample_titles = 'Orange floral dress|Navy & white maxi|Blue ruffle blouse|Blue & green dress' | split: '|'
-        -%}
-        {%- for file in sample_files -%}
-          <li class="shop-styles__item" data-ss-kind="photo">
-            <a class="ss-tile" href="{{ section.settings.button_link | default: '/pages/shop-the-look' }}">
-              <span class="ss-tile__media">
-                <img class="ss-tile__img" src="{{ file | asset_url }}" width="900" height="1200" loading="lazy" alt="{{ sample_titles[forloop.index0] | escape }}">
-              </span>
-              <span class="ss-tile__caption">{{ sample_titles[forloop.index0] | escape }}</span>
-            </a>
-          </li>
-        {%- endfor -%}
-      </ul>
-    {%- elsif request.design_mode -%}
-      <p class="shop-styles__hint">Create <b>Look</b> entries under Content → Metaobjects → Look (photo or try-on video, plus the pieces worn).</p>
-    {%- endif -%}
-
-    {%- if section.settings.button_label != blank -%}
-      <div class="shop-styles__more">
-        <a class="button button--secondary" href="{{ section.settings.button_link | default: '/pages/shop-the-look' }}">{{ section.settings.button_label | escape }}</a>
-      </div>
+    {%- if count == 0 and request.design_mode -%}
+      <p class="shop-styles__hint">Create <b>Look</b> entries under Content → Metaobjects → Look, or add <b>Extra photo</b> blocks to this section.</p>
     {%- endif -%}
   </div>
+
+  {%- if count > 0 -%}
+    {%- if layout == 'carousel' -%}
+      {%- comment -%}
+        Continuous, button-free marquee. The list renders twice; the copy is hidden from assistive tech
+        and keyboard so the loop is seamless. Pauses on hover/focus; static and swipeable when the
+        visitor has "reduce motion" on.
+      {%- endcomment -%}
+      <div class="ss-marquee" aria-label="{{ section.settings.heading | default: 'Shop Styles' | escape }}" role="region">
+        <div class="ss-marquee__rail">
+          <ul class="ss-marquee__track list-unstyled" role="list">{{ tiles }}</ul>
+          <ul class="ss-marquee__track list-unstyled" role="list" aria-hidden="true" data-ss-clone>{{ tiles | replace: 'class="ss-tile"', 'class="ss-tile" tabindex="-1" data-ss-clone' }}</ul>
+        </div>
+      </div>
+    {%- else -%}
+      <div class="page-width">
+        <ul class="shop-styles__grid list-unstyled" role="list">{{ tiles }}</ul>
+      </div>
+    {%- endif -%}
+  {%- endif -%}
+
+  <div hidden>{{ posts }}</div>
+
+  {%- if layout == 'grid' and section.settings.button_label != blank -%}
+    <div class="page-width shop-styles__more">
+      <a class="button button--secondary" href="{{ section.settings.button_link | default: '/pages/shop-the-look' }}">{{ section.settings.button_label | escape }}</a>
+    </div>
+  {%- endif -%}
 
   <dialog class="ss-dialog" data-ss-dialog aria-label="Shop this look">
     <div class="ss-dialog__frame" data-ss-slot></div>
@@ -167,22 +214,27 @@
 
 {% schema %}
 {
-  "name": "Shop Styles (LTK grid)",
+  "name": "Shop Styles",
   "tag": "section",
   "class": "section section--shop-styles",
   "disabled_on": { "groups": ["header", "footer"] },
   "settings": [
     { "type": "paragraph", "content": "A grid of looks like LIKEtoKNOW.it. Each look can be a photo or a try-on video; clicking one opens it in a pop-up where every piece can be added to the cart. The full look page (/pages/looks/…) still exists and is linked from the pop-up. Manage looks under Content → Metaobjects → Look." },
     { "type": "text", "id": "heading", "label": "Heading", "default": "Shop Styles" },
+    { "type": "select", "id": "layout", "label": "Layout", "default": "carousel", "options": [
+      { "value": "carousel", "label": "Auto-scrolling carousel (no buttons)" },
+      { "value": "grid", "label": "Grid" } ] },
+    { "type": "range", "id": "carousel_count", "min": 4, "max": 20, "step": 1, "default": 10, "label": "Carousel: number of images", "info": "Looks first, then the Extra photo blocks below." },
+    { "type": "range", "id": "scroll_seconds", "min": 20, "max": 120, "step": 5, "unit": "s", "default": 50, "label": "Carousel: seconds per full loop", "info": "Higher = slower." },
     { "type": "checkbox", "id": "show_filters", "label": "Show filter pills", "default": true, "info": "Appears once at least one look has a try-on video." },
-    { "type": "range", "id": "max_looks", "min": 4, "max": 24, "step": 1, "default": 12, "label": "Looks to show" },
-    { "type": "range", "id": "columns", "min": 2, "max": 5, "step": 1, "default": 4, "label": "Columns (desktop)" },
+    { "type": "range", "id": "max_looks", "min": 4, "max": 24, "step": 1, "default": 12, "label": "Grid: looks to show" },
+    { "type": "range", "id": "columns", "min": 2, "max": 5, "step": 1, "default": 4, "label": "Grid: columns (desktop)" },
     { "type": "checkbox", "id": "show_samples", "label": "Show sample looks until real looks exist", "default": true, "info": "Bundled photos so a brand-new store's grid isn't empty. Hidden automatically once any Look entry is published." },
     { "type": "header", "content": "Looks without linked pieces" },
     { "type": "text", "id": "empty_text", "label": "Message", "default": "Love this look? Call or stop in and we'll pull it in your size." },
     { "type": "text", "id": "empty_label", "label": "Button label", "default": "Ask about this look" },
     { "type": "url", "id": "empty_link", "label": "Button link" },
-    { "type": "header", "content": "Button under the grid" },
+    { "type": "header", "content": "Button under the grid (grid layout only)" },
     { "type": "text", "id": "button_label", "label": "Label (optional)", "default": "See all looks" },
     { "type": "url", "id": "button_link", "label": "Link" },
     { "type": "header", "content": "Layout" },
@@ -190,6 +242,13 @@
     { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 48, "label": "Top padding" },
     { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 48, "label": "Bottom padding" }
   ],
-  "presets": [ { "name": "Shop Styles (LTK grid)" } ]
+  "blocks": [
+    { "type": "photo", "name": "Extra photo", "settings": [
+      { "type": "image_picker", "id": "image", "label": "Photo" },
+      { "type": "text", "id": "title", "label": "Caption (optional)" },
+      { "type": "url", "id": "link", "label": "Link", "info": "Defaults to the Shop the Look page." } ] }
+  ],
+  "max_blocks": 20,
+  "presets": [ { "name": "Shop Styles" } ]
 }
 {% endschema %}

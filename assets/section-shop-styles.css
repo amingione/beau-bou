@@ -360,3 +360,57 @@
   color: inherit;
   text-underline-offset: 0.3em;
 }
+
+/* ---------- Carousel layout: continuous, button-free marquee ---------- */
+.shop-styles--carousel .shop-styles__head { justify-content: center; }
+
+.ss-marquee {
+  overflow: hidden;
+  width: 100%;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+}
+
+.ss-marquee__rail {
+  display: flex;
+  width: max-content;
+  animation: ss-marquee var(--ss-speed, 50s) linear infinite;
+}
+
+.ss-marquee:hover .ss-marquee__rail,
+.ss-marquee:focus-within .ss-marquee__rail,
+.shop-styles:has(.ss-dialog[open]) .ss-marquee__rail {
+  animation-play-state: paused;
+}
+
+.ss-marquee__track {
+  display: flex;
+  gap: 1.6rem;
+  padding: 0 0.8rem;
+  margin: 0;
+}
+
+.ss-marquee .shop-styles__item {
+  flex: 0 0 auto;
+  width: 22rem;
+  margin: 0;
+}
+
+@media screen and (min-width: 750px) {
+  .ss-marquee .shop-styles__item { width: 28rem; }
+}
+
+.ss-marquee .ss-tile__media { aspect-ratio: 3 / 4; }
+.ss-marquee .ss-tile__img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 25%; }
+
+@keyframes ss-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* Reduce motion: no animation — a swipeable row instead, with the duplicate copy removed. */
+@media (prefers-reduced-motion: reduce) {
+  .ss-marquee { overflow-x: auto; -webkit-mask-image: none; mask-image: none; }
+  .ss-marquee__rail { animation: none; }
+  .ss-marquee__track[data-ss-clone] { display: none; }
+}

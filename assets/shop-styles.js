@@ -25,7 +25,7 @@ if (!customElements.get('shop-styles')) {
     }
 
     get tiles() {
-      return Array.from(this.querySelectorAll('.shop-styles__item:not([hidden]) [data-ss-open]'));
+      return Array.from(this.querySelectorAll('.shop-styles__item:not([hidden]) [data-ss-open]:not([data-ss-clone])'));
     }
 
     onClick(event) {
