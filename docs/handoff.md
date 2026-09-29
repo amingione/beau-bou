@@ -61,7 +61,7 @@ Verified in the boutique draft: Shop All shows twelve products, New Arrivals and
 
 Store facts (from Google Business Profile + Facebook, verified 2026-09-02):
 
-- 264-A W Marion Ave, Punta Gorda, FL 33950 · (941) 369-1628 · beyoutifulboutiquebymichele@gmail.com
+- 264 W Marion Ave, Punta Gorda, FL 33950 · (941) 369-1628 · beyoutifulboutiquebymichele@gmail.com
 - Hours (open 7 days since 2026-09-25): Mon 11–4 · Tue–Fri 10–5 · Sat 10–4 · Sun 11–3 · In-store pickup offered
 - Tagline: "Unique Boutique with affordable prices…from swimwear to formal wear. Size XXS to 2X. (Updated 2026-09-29: was "swimsuits to gowns … 3X".)"
 - Faith line: "Accept yourself as you were designed by God"

@@ -161,7 +161,7 @@ def main() -> None:
         made.append(card(name, (1200, 1380), label, sub, bg=bg, ink=ink, badge=badge))
 
     # Storefront / About
-    made.append(card("storefront-marion-ave", (1200, 1500), "264-A W Marion Ave", "Historic downtown Punta Gorda", bg=PAPER, badge=BADGE_BLACK, eyebrow="Visit our store"))
+    made.append(card("storefront-marion-ave", (1200, 1500), "264 W Marion Ave", "Historic downtown Punta Gorda", bg=PAPER, badge=BADGE_BLACK, eyebrow="Visit our store"))
     made.append(card("michele-portrait", (1200, 1500), "Michele", "Owner · stylist · your biggest fan", bg=LINEN, badge=BADGE_BLACK, eyebrow="Meet"))
     made.append(card("shop-the-look-poster", (1200, 1500), "Try-on Thursdays", "Live at 7PM on Facebook", bg=PEACOCK, ink=PAPER, badge=BADGE_WHITE, eyebrow="Shop the look"))
 

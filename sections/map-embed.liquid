@@ -17,7 +17,7 @@
 {%- endstyle -%}
 
 {%- liquid
-  assign q = section.settings.query | default: '264-A W Marion Ave, Punta Gorda, FL 33950' | url_encode
+  assign q = section.settings.query | default: '264 W Marion Ave, Punta Gorda, FL 33950' | url_encode
   assign src = 'https://www.google.com/maps?q=' | append: q | append: '&z=' | append: section.settings.zoom | append: '&output=embed'
 -%}
 
@@ -39,7 +39,7 @@
   "class": "section",
   "disabled_on": { "groups": ["header", "footer"] },
   "settings": [
-    { "type": "text", "id": "query", "default": "Be-YOU-tiful Boutique by Michele, 264-A W Marion Ave, Punta Gorda, FL 33950", "label": "Place / address", "info": "No API key needed — uses the free Google Maps embed." },
+    { "type": "text", "id": "query", "default": "Be-YOU-tiful Boutique by Michele, 264 W Marion Ave, Punta Gorda, FL 33950", "label": "Place / address", "info": "No API key needed — uses the free Google Maps embed." },
     { "type": "range", "id": "zoom", "min": 12, "max": 19, "step": 1, "default": 16, "label": "Zoom" },
     { "type": "select", "id": "ratio", "default": "21 / 9", "label": "Shape", "options": [ { "value": "21 / 9", "label": "Wide" }, { "value": "16 / 9", "label": "16:9" }, { "value": "4 / 3", "label": "4:3" } ] },
     { "type": "text", "id": "caption", "default": "Open in Google Maps · Free street parking on Marion Ave", "label": "Caption link" },

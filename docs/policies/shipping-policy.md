@@ -5,7 +5,7 @@ Per Michele's signed Website Decisions, Q7: **"Both"** — free in-store pickup 
 ---
 
 ## In-store pickup
-Choose **Pickup** at checkout — there's no charge. We'll let you know when your order is ready to pick up at the boutique, 264-A W Marion Ave, Punta Gorda, FL 33950. We're open 7 days a week.
+Choose **Pickup** at checkout — there's no charge. We'll let you know when your order is ready to pick up at the boutique, 264 W Marion Ave, Punta Gorda, FL 33950. We're open 7 days a week.
 
 ## Shipping
 We ship within the United States. Shipping rates are shown at checkout, and you'll receive a tracking link by email as soon as your order ships.

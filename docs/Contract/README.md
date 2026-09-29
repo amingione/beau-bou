@@ -24,7 +24,7 @@ $1,000 flat ($500 deposit · $500 at launch). Launch target **October 15, 2026**
 | 14 | About page story | "Will write and send" | Waiting on Michele |
 
 ## Meeting sheet (not filled in)
-- Address: confirmed 2026-09-28 — **264-A W Marion Ave, Punta Gorda, FL 33950**. Made consistent across theme, pages and policy text (store contact details in Settings → Store details still need it — admin only).
+- Address: **264 W Marion Ave, Punta Gorda, FL 33950** (corrected 2026-09-29 — no "-A"; replaces the 2026-09-28 "264-A"). Made consistent across theme, pages and policy text (store contact details in Settings → Store details still need it — admin only).
 - Name for About/agreement, Aundrea's role, Shopify signup email — blank.
 
 ## Other notes on the packet (not website scope)

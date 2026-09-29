@@ -13,7 +13,7 @@ We accept returns and exchanges within **7 days** of purchase (or of delivery, f
 - Bring your receipt or order confirmation.
 - Items must be unworn and unwashed.
 
-Bring your return to the boutique at 264-A W Marion Ave in downtown Punta Gorda — we're open 7 days a week — or email us to arrange a return by mail. Return shipping is the customer's responsibility unless the item arrived damaged or incorrect.
+Bring your return to the boutique at 264 W Marion Ave in downtown Punta Gorda — we're open 7 days a week — or email us to arrange a return by mail. Return shipping is the customer's responsibility unless the item arrived damaged or incorrect.
 
 ## Final sale
 **Clearance items are final sale** and can't be returned or exchanged.

@@ -10,6 +10,6 @@ Be-YOU-tiful Boutique by Michele ("we") operates this store on Shopify. This pol
 
 **Your choices.** Email us to see, correct, or delete the personal information we hold about you. Florida residents and others may have additional rights under applicable law; we honor them.
 
-**Contact.** Be-YOU-tiful Boutique by Michele, 264-A W Marion Ave, Punta Gorda, FL 33950 · (941) 369-1628 · beyoutifulboutiquebymichele@gmail.com
+**Contact.** Be-YOU-tiful Boutique by Michele, 264 W Marion Ave, Punta Gorda, FL 33950 · (941) 369-1628 · beyoutifulboutiquebymichele@gmail.com
 
 Last updated: {{ launch date }}
