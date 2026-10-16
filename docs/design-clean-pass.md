@@ -21,7 +21,8 @@ branding critically and spots templated or AI-looking design.)
 **Logo**
 - New files in Shopify → Content → Files: `beyoutiful-lockup-black-trim.png` and `beyoutiful-lockup-white-trim.png`. These are Michele's real peacock lockup, tight-cropped (see `docs/client-portal/brand/README.md`).
 - Header: logo centered on its own row (`top-center`) at 220px desktop / 136px mobile. That is about 4× the previous visible size, with the peacock included.
-- Hero: same lockup at 600px, centered in the photo's white space. No overlay, frame or glow. One button.
+- Hero (desktop): same lockup at 600px, centered in the photo's white space. No overlay, frame or glow. One button.
+- Hero (phones/tablets, under 990px): the cover photo is a wide collage, and no narrow crop clears both the window's peacock decal and the mannequins. Below 990px the logo stands alone on white (72vw, max 440px) with the button. The photo's Files focal point (~92% x, on the mannequins) is written inline by `image_tag`, which is why a plain `object-position` override did nothing.
 - Footer: white knockout of the same lockup leads the teal footer, above one short line of copy.
 
 **Navigation** (Shopify → Content → Menus; store data, not theme files)
@@ -41,6 +42,12 @@ branding critically and spots templated or AI-looking design.)
 **Global** (`config/settings_data.json`, `assets/beau-bou.css`)
 - Frames: `--bb-hairline` is now `rgba(43,43,43,.14)` and the inset is `0`. Every framed element (look pages, size guide, map) calms down together.
 - Display tracking 30 → 14, nav tracking 12 → 10. Hover lift on cards off.
+
+## Where it's staged
+
+- Preview theme **`clean-pass preview 2026-10-16`** (`#193257603436`), a duplicate of live `beau-bou/main` with these files applied. Open it from Online Store → Themes → … → Preview.
+- Git branch `clean-pass-2026-10-16`. Merging it to `main` deploys to the live theme through the GitHub sync.
+- Menus and the two logo files are store data and are **already live**. On the live theme today, the header `logo` setting still points at the old wordmark file, so the live header changes only after the merge.
 
 ## Rollback
 

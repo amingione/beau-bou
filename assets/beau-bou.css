@@ -327,8 +327,9 @@ body {
   }
 }
 
-/* Hero: the logo sits in the photo's white center, no glow */
-.hero-logo__logo {
+/* Hero: the logo sits in the photo's white center, no glow.
+   Doubled class beats section-hero-logo.css, which loads after this file. */
+.hero-logo .hero-logo__logo {
   filter: none;
 }
 
@@ -347,4 +348,28 @@ body {
 /* Visit section: same whisper line as everything else, no inner gap */
 .visit-store__frame.bb-frame {
   padding: 0;
+}
+
+/* Phones + tablets: the cover photo is a wide desktop collage (storefront | white center |
+   mannequins). No narrow crop clears both the window decal and the mannequins, so below
+   990px the logo stands alone on white with its button. Desktop keeps the photo. */
+@media screen and (max-width: 989px) {
+  .hero-logo:not(.hero-logo--content-below) .hero-logo__image,
+  .hero-logo:not(.hero-logo--content-below) .hero-logo__overlay {
+    display: none;
+  }
+
+  .hero-logo:not(.hero-logo--content-below) .hero-logo__media {
+    min-height: 0;
+    background: #ffffff;
+  }
+
+  .hero-logo:not(.hero-logo--content-below) .hero-logo__content {
+    padding: 4.4rem 2rem 4.8rem;
+    gap: 2.4rem;
+  }
+
+  .hero-logo .hero-logo__logo {
+    width: min(var(--logo-width, 480px), 72vw, 440px);
+  }
 }
