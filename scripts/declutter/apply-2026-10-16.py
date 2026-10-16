@@ -90,10 +90,10 @@ hero.update(
 
 # One category grid instead of two stacked sections
 tiles = s["tiles_1"]
-tiles["blocks"].update(s["tiles_2"]["blocks"])
+if "tiles_2" in s:  # already merged on a rerun
+    tiles["blocks"].update(s.pop("tiles_2")["blocks"])
 tiles["block_order"] = ["dresses", "tops", "jackets", "bottoms", "jewelry-accessories", "handbags"]
 tiles["settings"].update({"title": "Shop by Category", "image_ratio": "1 / 1.15", "padding_top": 36, "padding_bottom": 36})
-del s["tiles_2"]
 
 # Product rows: one row, no per-card buttons
 for key in ("whats_new", "sale"):

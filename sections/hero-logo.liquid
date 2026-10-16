@@ -49,17 +49,26 @@
 -%}
 <div class="hero-logo__media{{ frame_class }}">
     {%- if bb_image != blank -%}
-      {{
-        bb_image
-        | image_url: width: 3200
-        | image_tag:
-          loading: 'eager',
-          fetchpriority: 'high',
-          widths: '750, 1100, 1500, 1920, 2400, 3200',
-          sizes: '100vw',
-          class: 'hero-logo__image',
-          alt: hero_alt
-      }}
+      <picture>
+        {%- unless section.settings.content_below_image -%}
+          {%- comment -%}
+            Below 990px the cover photo is hidden (assets/beau-bou.css) and the logo stands alone,
+            so phones get a 1x1 placeholder instead of downloading the eager, high-priority photo.
+          {%- endcomment -%}
+          <source media="(max-width: 989px)" srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+        {%- endunless -%}
+        {{
+          bb_image
+          | image_url: width: 3200
+          | image_tag:
+            loading: 'eager',
+            fetchpriority: 'high',
+            widths: '750, 1100, 1500, 1920, 2400, 3200',
+            sizes: '100vw',
+            class: 'hero-logo__image',
+            alt: hero_alt
+        }}
+      </picture>
     {%- else -%}
       <div class="hero-logo__placeholder">{{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}</div>
     {%- endif -%}
