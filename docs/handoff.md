@@ -4,7 +4,7 @@
 
 **Scope confirmed by Amber:** Michele owns products, prices, variants, photos and inventory. Our work is the reusable boutique templates, app configuration, navigation and collection structure. Catalog entry is not a prerequisite for completing that setup. On September 21, Amber explicitly authorized a separate fictional catalog for testing; the details below do not replace Michele’s responsibility for real merchandise.
 
-**Correct store:** `v0m0hb-x3` / `shopbeyoutifulboutique.com`. **Update 2026-09-25:** `shopify theme list -s v0m0hb-x3` shows `be-you-tiful-1-2-0` (`192212107628`) as **[live]** and Horizon unpublished, but `https://shopbeyoutifulboutique.com` still redirects to `/password`, so nothing is public. (Earlier notes below that say "draft" or "Horizon live" predate this.) Do not modify the old `kw59hc-k1` development store.
+**Correct store:** `v0m0hb-x3` (served at `shopbe-you-tifulboutique.myshopify.com`). **Correction 2026-10-16:** `shopbeyoutifulboutique.com` is attached to a different store, `xapm2f-fr` (old image-less theme copy), not to `v0m0hb-x3`. Move the domain before launch; see [design-clean-pass.md](design-clean-pass.md). The live theme is now `beau-bou/main` (`192420839788`), synced from GitHub `main`. **Update 2026-09-25:** `shopify theme list -s v0m0hb-x3` shows `be-you-tiful-1-2-0` (`192212107628`) as **[live]** and Horizon unpublished, but `https://shopbeyoutifulboutique.com` still redirects to `/password`, so nothing is public. (Earlier notes below that say "draft" or "Horizon live" predate this.) Do not modify the old `kw59hc-k1` development store.
 
 ### Adding a product
 
@@ -76,7 +76,7 @@ Store facts (from Google Business Profile + Facebook, verified 2026-09-02):
 - [ ] Settings → Payments: Shopify Payments; enable Shop Pay; consider Sezzle/Afterpay (reference offers Sezzle)
 - [ ] Settings → Policies: generate Refund, Privacy, Terms, Shipping (theme footer links to these)
 - [ ] Settings → Customer accounts: **New customer accounts** on (header account icon)
-- [ ] Domain: verify the configured `shopbeyoutifulboutique.com` domain
+- [ ] Domain: move `shopbeyoutifulboutique.com` from store `xapm2f-fr` to `v0m0hb-x3` (Settings → Domains), then verify
 
 ## 2. Theme install
 

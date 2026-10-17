@@ -9,8 +9,8 @@
  */
 {
   "current": {
-    "logo": "shopify://shop_images/be-you-tiful-boutique-by-michelle-logo-black_f95b8033-7518-45f3-ae1c-992188660a90.png",
-    "logo_width": 100,
+    "logo": "shopify://shop_images/beyoutiful-lockup-black-trim.png",
+    "logo_width": 220,
     "favicon": "shopify://shop_images/3.png",
     "type_header_font": "playfair_display_n4",
     "heading_scale": 100,
@@ -21,7 +21,7 @@
     "spacing_grid_horizontal": 24,
     "spacing_grid_vertical": 32,
     "animations_reveal_on_scroll": true,
-    "animations_hover_elements": "vertical-lift",
+    "animations_hover_elements": "none",
     "buttons_border_thickness": 0,
     "buttons_border_opacity": 100,
     "buttons_radius": 2,
@@ -107,10 +107,10 @@
     "badge_corner_radius": 2,
     "sale_badge_color_scheme": "scheme-1",
     "sold_out_badge_color_scheme": "scheme-3",
-    "brand_headline": "Be-YOU-tiful Boutique by Michele",
-    "brand_description": "<p>Unique boutique with affordable prices — from swimwear to formal wear, women's sizes XXS to 2X plus kids and baby. Accept yourself as you were designed by God.</p>",
-    "brand_image": "shopify://shop_images/black-logo.png",
-    "brand_image_width": 100,
+    "brand_headline": "",
+    "brand_description": "<p>Swimwear to formal wear. Women's XXS to 2X, plus kids and baby. Downtown Punta Gorda.</p>",
+    "brand_image": "shopify://shop_images/beyoutiful-lockup-white-trim.png",
+    "brand_image_width": 220,
     "social_facebook_link": "https://www.facebook.com/MicheleMonksEnsmingerMansfield",
     "social_instagram_link": "https://instagram.com/michelensmginer",
     "social_youtube_link": "",
@@ -131,8 +131,8 @@
     "cart_color_scheme": "scheme-1",
     "customer_account_menu": "main-menu",
     "type_accent_font": "playfair_display_i4",
-    "nav_letter_spacing": 12,
-    "display_letter_spacing": 30,
+    "nav_letter_spacing": 10,
+    "display_letter_spacing": 14,
     "sections": {
       "main-password-header": {
         "type": "main-password-header",

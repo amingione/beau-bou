@@ -1,7 +1,8 @@
 /* =========================================================
    Beau Bou — theme overrides layered on Dawn's base.css
-   Look: Smith + Co. (shopsmithco.com) — white ground, Poppins body,
-   wide-tracked serif display labels, hairline black frames, flat gray buttons.
+   Look: Smith + Co. (shopsmithco.com) — light ground, Poppins body,
+   tracked serif display labels, flat gray buttons. Logo-forward, low clutter
+   (2026-10-16 pass: frames softened to a whisper, tracking reduced; see docs/design-clean-pass.md).
    Brand: Be-YOU-tiful Boutique by Michele — black/white logo, peacock motif.
    Tokens come from layout/theme.liquid (--font-accent-*, --nav-letter-spacing,
    --display-letter-spacing) so Michele can tune them in the theme editor.
@@ -9,8 +10,8 @@
 
 :root {
   --bb-ink: #2b2b2b;
-  --bb-hairline: 1px solid #1a1a1a;
-  --bb-frame-inset: 0.6rem;
+  --bb-hairline: 1px solid rgba(43, 43, 43, 0.14);
+  --bb-frame-inset: 0px; /* keep the unit: section-main-look.css adds this to 1rem inside calc() */
   --bb-gray-button: #6a6a6a;
 }
 
@@ -298,5 +299,78 @@ body {
 
   .bb-frame:hover img {
     transform: scale(1.02);
+  }
+}
+
+/* =========================================================
+   2026-10-16 — logo-forward, low-clutter pass
+   ========================================================= */
+
+/* Header logo: the full peacock lockup, sized to be read, not decorated with */
+.header__heading-logo-wrapper {
+  max-width: 220px;
+}
+
+.header--top-center .header__heading-link {
+  padding: 0.4rem 0.75rem;
+}
+
+.header--top-center .header__inline-menu .list-menu--inline {
+  flex-wrap: nowrap;
+  justify-content: center;
+  column-gap: 0.4rem;
+}
+
+@media screen and (max-width: 989px) {
+  .header__heading-logo-wrapper {
+    max-width: 136px;
+  }
+}
+
+/* Hero: the logo sits in the photo's white center, no glow.
+   Doubled class beats section-hero-logo.css, which loads after this file. */
+.hero-logo .hero-logo__logo {
+  filter: none;
+}
+
+/* Category tiles: photo + quiet caption, no box.
+   Two-class selectors: section-category-tiles.css loads after this file. */
+.category-tiles__frame.bb-frame {
+  border: 0;
+  padding: 0;
+  background: transparent;
+}
+
+.category-tiles__link .category-tiles__caption {
+  font-size: clamp(1.4rem, 1.3vw, 1.7rem);
+  padding: 1.4rem 0.4rem 0;
+}
+
+/* Visit section: same whisper line as everything else, no inner gap */
+.visit-store__frame.bb-frame {
+  padding: 0;
+}
+
+/* Phones + tablets: the cover photo is a wide desktop collage (storefront | white center |
+   mannequins). No narrow crop clears both the window decal and the mannequins, so below
+   990px the logo stands alone on white with its button. Desktop keeps the photo. */
+@media screen and (max-width: 989px) {
+  .hero-logo:not(.hero-logo--content-below) .hero-logo__image,
+  .hero-logo:not(.hero-logo--content-below) .hero-logo__overlay {
+    display: none;
+  }
+
+  .hero-logo:not(.hero-logo--content-below) .hero-logo__media {
+    min-height: 0;
+    background: #ffffff;
+  }
+
+  .hero-logo:not(.hero-logo--content-below) .hero-logo__content {
+    padding: 4.4rem 2rem 4.8rem;
+    gap: 2.4rem;
+  }
+
+  .hero-logo .hero-logo__logo {
+    width: min(var(--logo-width, 480px), 72vw, 440px);
   }
 }

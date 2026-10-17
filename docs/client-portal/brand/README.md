@@ -1,5 +1,24 @@
 # Brand assets — Be-YOU-tiful Boutique by Michele
 
+## Live logos (use these) — updated 2026-10-16
+
+The site uses Michele's real logo (peacock + "Be-YOU-tiful Boutique by Michele" lockup), not the traces below.
+
+| File | Where it's live | Shopify Files name |
+| --- | --- | --- |
+| `beyoutiful-lockup-black-trim.png` (1416×859, transparent) | Theme settings → Logo (header, 220px desktop / 136px mobile) and the homepage hero (600px) | `beyoutiful-lockup-black-trim.png` |
+| `beyoutiful-lockup-white-trim.png` (1416×859, transparent) | Footer brand block on the teal band (Theme settings → Brand information → Image) | `beyoutiful-lockup-white-trim.png` |
+| `png-source/beyoutiful-lockup-black-source.png` | Original from Michele's logo folder (1800×1200, padded). Re-export from here. | `black-logo.png` |
+
+The trims are the source lockup cropped to its artwork plus a 2% margin, so the theme's width setting
+equals the logo's visible width. The white file is a pixel-exact knockout of the black lockup (same
+composition). `png-source/beyoutiful-lockup-white-source.png` is a different arrangement
+(peacock on the right, black outline) and is not used on the site.
+
+Regenerate: `python3 scripts/declutter/trim-logo.py` (see docs/design-clean-pass.md).
+
+## Legacy traces (do not use as the logo)
+
 Vectorized 2026-09-02 from the only available source: the 480px Facebook page avatar
 (`source-facebook-avatar-480.png`). Pipeline: 4× cubic upscale → threshold → speck cleanup →
 potrace (optimized curves) → hand-wrapped SVG with a tight viewBox.

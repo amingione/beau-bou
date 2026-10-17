@@ -34,9 +34,16 @@
             "heading": "Store hours",
             "subtext": "<p><em><strong>Open 7 Days a Week</strong></em><br/><br/><strong>Monday: </strong>11AM – 4PM<br/><strong>Tuesday</strong>: 10AM – 5PM<br/><strong>Wednesday: </strong>10AM – 5PM<br/><strong>Thursday:</strong> 10AM – 5PM<br/><strong>Friday:</strong> 10AM – 5PM<br/><strong>Saturday:</strong> 10AM – 4PM<br/><strong>Sunday:</strong> 11AM – 3PM</p>"
           }
+        },
+        "brand": {
+          "type": "brand_information",
+          "settings": {
+            "show_social": false
+          }
         }
       },
       "block_order": [
+        "brand",
         "help",
         "get-in-touch",
         "hours"
