@@ -70,3 +70,14 @@ serves a third store, `xapm2f-fr`, running an old image-less copy of the theme (
 placeholder art, default Home/Catalog/Contact menu, old "264-A" address and "XXS–3X"). The real build is at
 `shopbe-you-tifulboutique.myshopify.com`. Before launch, either move the domain to `v0m0hb-x3` or transfer that
 store's ownership to Michele and remove the domain from `xapm2f-fr`. Check what Michele has been looking at.
+
+## Update 2026-10-18: storefront hero restored
+
+Amber didn't want the storefront photo taken out of the hero. It's back, with the peacock logo bigger *on* the storefront:
+
+- Desktop: `beyoutiful-storefront-hero-desktop.webp` (1672×941). Phones (≤749px): `beyoutiful-storefront-hero-mobile-1080.webp` (1080×1080). Both are in Shopify Files with alt text, and both have the holographic logo already in the artwork.
+- The hero section has a new **Phone image** setting (`image_mobile`), served through a `<picture>` source, so phones get the square artwork instead of a crop of the wide one.
+- `content_below_image` is on: the artwork shows uncropped and edge to edge, and the Shop What's New button sits under it. The overlaid black logo, heading, tagline and accent are cleared, since the logo is in the image.
+- Removed the rule that hid the photo below 990px and showed a logo on white.
+- Re-apply: `python3 scripts/declutter/apply-storefront-hero-2026-10-18.py` (idempotent).
+- The desktop artwork is 1672px wide, so on large or retina screens it's slightly soft. A 2400px+ export would sharpen it.

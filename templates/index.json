@@ -13,11 +13,11 @@
       "type": "hero-logo",
       "custom_css": [],
       "settings": {
-        "content_below_image": false,
-        "image": "shopify://shop_images/Be-YOU-tiful_Boutique_by_Michele.png",
-        "logo": "shopify://shop_images/beyoutiful-lockup-black-trim.png",
+        "content_below_image": true,
+        "image": "shopify://shop_images/beyoutiful-storefront-hero-desktop.webp",
+        "logo": "",
         "logo_width": 600,
-        "heading": "Be-YOU-tiful Boutique by Michele",
+        "heading": "",
         "tagline": "",
         "accent": "",
         "button_label": "Shop What's New",
@@ -29,7 +29,8 @@
         "full_width": true,
         "color_scheme": "scheme-1",
         "padding_top": 0,
-        "padding_bottom": 0
+        "padding_bottom": 0,
+        "image_mobile": "shopify://shop_images/beyoutiful-storefront-hero-mobile-1080.webp"
       }
     },
     "shop_styles": {
