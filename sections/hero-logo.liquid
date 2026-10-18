@@ -11,6 +11,12 @@
     assign bb_fname = bb_image | remove: 'shopify://shop_images/'
     assign bb_image = images[bb_fname]
   endif
+
+  assign bb_image_mobile = section.settings.image_mobile
+  if bb_image_mobile != blank and bb_image_mobile.src == blank
+    assign bb_fname = bb_image_mobile | remove: 'shopify://shop_images/'
+    assign bb_image_mobile = images[bb_fname]
+  endif
 -%}
 {{ 'section-hero-logo.css' | asset_url | stylesheet_tag }}
 
@@ -50,13 +56,16 @@
 <div class="hero-logo__media{{ frame_class }}">
     {%- if bb_image != blank -%}
       <picture>
-        {%- unless section.settings.content_below_image -%}
-          {%- comment -%}
-            Below 990px the cover photo is hidden (assets/beau-bou.css) and the logo stands alone,
-            so phones get a 1x1 placeholder instead of downloading the eager, high-priority photo.
-          {%- endcomment -%}
-          <source media="(max-width: 989px)" srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
-        {%- endunless -%}
+        {%- if bb_image_mobile != blank -%}
+          {%- comment -%} Art direction: phones get their own (square) cover instead of a crop of the wide one. {%- endcomment -%}
+          <source
+            media="(max-width: 749px)"
+            srcset="{{ bb_image_mobile | image_url: width: 540 }} 540w, {{ bb_image_mobile | image_url: width: 750 }} 750w, {{ bb_image_mobile | image_url: width: 1080 }} 1080w"
+            sizes="100vw"
+            width="{{ bb_image_mobile.width }}"
+            height="{{ bb_image_mobile.height }}"
+          >
+        {%- endif -%}
         {{
           bb_image
           | image_url: width: 3200
@@ -112,6 +121,7 @@
   "settings": [
     { "type": "checkbox", "id": "content_below_image", "label": "Show content below the cover image", "default": false },
     { "type": "image_picker", "id": "image", "label": "Background image", "info": "Wide storefront or rack shot. 2400×1000 or larger." },
+    { "type": "image_picker", "id": "image_mobile", "label": "Phone image (optional)", "info": "Square cover for phones, 1080×1080. Leave blank to use the background image." },
     { "type": "image_picker", "id": "logo", "label": "Logo overlay", "info": "Transparent PNG/SVG. Leave blank to show the heading instead." },
     { "type": "range", "id": "logo_width", "min": 160, "max": 800, "step": 20, "unit": "px", "default": 480, "label": "Logo width (desktop)" },
     { "type": "text", "id": "heading", "default": "Be-YOU-tiful Boutique", "label": "Heading (fallback when no logo)" },
