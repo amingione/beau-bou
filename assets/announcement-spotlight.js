@@ -15,6 +15,14 @@ if (!customElements.get('announcement-spotlight')) {
       this.paused = reduce || this.interval === 0;
       this.hold = false;
 
+      // After a sign-up posts, the page reloads on slide 1; open the slide holding the
+      // thank-you / error message instead, and stop rotating so it stays readable.
+      const posted = this.slides.findIndex((slide) => slide.querySelector('.spot__form-msg'));
+      if (posted > -1) {
+        this.index = posted;
+        this.paused = true;
+      }
+
       this.addEventListener('click', (event) => {
         const dot = event.target.closest('[data-spot-go]');
         if (dot) {
