@@ -56,62 +56,17 @@
         "badge_color": "#e60023"
       },
       "blocks": {
-        "photo_1": {
+        "tropical_second_fit": {
           "type": "photo",
           "settings": {
-            "image": "shopify://shop_images/try-on-19.jpg",
+            "image": "shopify://shop_images/beyoutiful-tryon-tropical-bell-sleeve-shift-dress-b.webp",
             "title": "",
-            "link": "/pages/shop-the-look"
-          }
-        },
-        "photo_2": {
-          "type": "photo",
-          "settings": {
-            "image": "shopify://shop_images/try-on-45.jpg",
-            "title": "",
-            "link": "/pages/shop-the-look"
-          }
-        },
-        "photo_3": {
-          "type": "photo",
-          "settings": {
-            "image": "shopify://shop_images/try-on-46.jpg",
-            "title": "",
-            "link": "/pages/shop-the-look"
-          }
-        },
-        "photo_4": {
-          "type": "photo",
-          "settings": {
-            "image": "shopify://shop_images/try-on-44.jpg",
-            "title": "",
-            "link": "/pages/shop-the-look"
-          }
-        },
-        "photo_5": {
-          "type": "photo",
-          "settings": {
-            "image": "shopify://shop_images/try-on-35.jpg",
-            "title": "",
-            "link": "/pages/shop-the-look"
-          }
-        },
-        "photo_6": {
-          "type": "photo",
-          "settings": {
-            "image": "shopify://shop_images/try-on-27.jpg",
-            "title": "",
-            "link": "/pages/shop-the-look"
+            "link": "/pages/looks/tropical-bell-sleeve-dress"
           }
         }
       },
       "block_order": [
-        "photo_1",
-        "photo_2",
-        "photo_3",
-        "photo_4",
-        "photo_5",
-        "photo_6"
+        "tropical_second_fit"
       ]
     },
     "whats_new": {
