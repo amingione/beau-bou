@@ -1,0 +1,207 @@
+{%- comment -%}
+  Announcements — Figma "Fashion Website Landing Page", node 1:612.
+  Text on the left (heading, short copy, optional email sign-up, dots, link), picture on the right.
+  Each block is one announcement: the mailing list, a brand shout-out, an event. With more than one,
+  they rotate together (text and picture), pause on hover/focus, and have a pause button.
+  Docs: docs/landing-sections.md
+{%- endcomment -%}
+{{ 'section-announcement-spotlight.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'announcement-spotlight.js' | asset_url }}" defer="defer"></script>
+
+{%- liquid
+  assign slide_count = section.blocks.size
+  assign autoplay = section.settings.autoplay_seconds
+  if slide_count < 2
+    assign autoplay = 0
+  endif
+-%}
+
+{%- style -%}
+  #Spotlight-{{ section.id }} {
+    --spot-height: {{ section.settings.height }}px;
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  @media screen and (min-width: 750px) {
+    #Spotlight-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<announcement-spotlight
+  id="Spotlight-{{ section.id }}"
+  class="spot color-{{ section.settings.color_scheme }} gradient"
+  data-interval="{{ autoplay }}"
+  {% if slide_count > 1 %}role="region" aria-roledescription="carousel"{% endif %}
+  aria-label="{{ section.settings.label | default: 'Announcements' | escape }}"
+>
+  <div class="spot__stage">
+    {%- for block in section.blocks -%}
+      {%- liquid
+        assign img = block.settings.image
+        if img != blank and img.src == blank
+          assign fname = img | remove: 'shopify://shop_images/'
+          assign img = images[fname]
+        endif
+        assign heading_tag = 'h2'
+        assign form_id = 'SpotSignup-' | append: block.id
+      -%}
+      <div
+        class="spot__slide{% if forloop.first %} is-active{% endif %}"
+        id="Spotlight-{{ section.id }}-{{ forloop.index }}"
+        {% if slide_count > 1 %}role="group" aria-roledescription="slide" aria-label="{{ forloop.index }} of {{ slide_count }}"{% endif %}
+        {% unless forloop.first %}aria-hidden="true" inert{% endunless %}
+        {{ block.shopify_attributes }}
+      >
+        <div class="spot__text">
+          {%- if block.settings.eyebrow != blank -%}
+            <p class="spot__eyebrow">{{ block.settings.eyebrow | escape }}</p>
+          {%- endif -%}
+          {%- if block.settings.heading != blank -%}
+            <{{ heading_tag }} class="spot__heading">{{ block.settings.heading | escape }}</{{ heading_tag }}>
+          {%- elsif request.design_mode -%}
+            <p class="spot__hint">Add a heading for this announcement.</p>
+          {%- endif -%}
+          {%- if block.settings.text != blank -%}
+            <div class="spot__body rte">{{ block.settings.text }}</div>
+          {%- endif -%}
+
+          {%- if block.settings.show_signup -%}
+            {%- form 'customer', id: form_id, class: 'spot__form' -%}
+              <input type="hidden" name="contact[tags]" value="newsletter">
+              {%- if form.posted_successfully? -%}
+                <p class="spot__form-msg" role="status">{{ block.settings.signup_success | default: "You're on the list. Thank you!" | escape }}</p>
+              {%- else -%}
+                <div class="spot__field">
+                  <label class="visually-hidden" for="SpotEmail-{{ block.id }}">Email address</label>
+                  <input
+                    id="SpotEmail-{{ block.id }}"
+                    class="spot__input"
+                    type="email"
+                    name="contact[email]"
+                    autocomplete="email"
+                    autocorrect="off"
+                    autocapitalize="off"
+                    placeholder="Email address"
+                    required
+                    {% if form.errors %}aria-invalid="true" aria-describedby="SpotError-{{ block.id }}"{% endif %}
+                  >
+                  <button type="submit" class="spot__submit">{{ block.settings.signup_button | default: 'Join' | escape }}</button>
+                </div>
+                {%- if form.errors -%}
+                  <p class="spot__form-msg spot__form-msg--error" id="SpotError-{{ block.id }}" role="alert">
+                    {{ form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email }}
+                  </p>
+                {%- endif -%}
+              {%- endif -%}
+            {%- endform -%}
+          {%- endif -%}
+
+          {%- if slide_count > 1 -%}
+            <div class="spot__controls">
+              <div class="spot__dots">
+                {%- for dot in section.blocks -%}
+                  <button
+                    type="button"
+                    class="spot__dot"
+                    data-spot-go="{{ forloop.index0 }}"
+                    aria-controls="Spotlight-{{ section.id }}-{{ forloop.index }}"
+                    aria-label="Show announcement {{ forloop.index }} of {{ slide_count }}"
+                    aria-current="{% if forloop.index0 == 0 %}true{% else %}false{% endif %}"
+                  ></button>
+                {%- endfor -%}
+              </div>
+              {%- if autoplay > 0 -%}
+                <button type="button" class="spot__toggle" data-spot-toggle aria-label="Pause announcements">
+                  <svg class="spot__icon-pause" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true" focusable="false"><path d="M4 2h3v12H4zM9 2h3v12H9z" fill="currentColor"/></svg>
+                  <svg class="spot__icon-play" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true" focusable="false"><path d="M4 2l10 6-10 6z" fill="currentColor"/></svg>
+                </button>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+
+          {%- if block.settings.link_label != blank and block.settings.link != blank -%}
+            <a class="spot__link" href="{{ block.settings.link }}">{{ block.settings.link_label | escape }}</a>
+          {%- endif -%}
+        </div>
+
+        <div
+          class="spot__media{% if block.settings.show_whole_image %} spot__media--whole{% endif %}"
+          style="--spot-media-bg: {{ block.settings.media_bg }};"
+        >
+          {%- if img != blank -%}
+            {%- liquid
+              assign alt = img.alt
+              if alt == blank
+                assign alt = block.settings.heading
+              endif
+              assign loading = 'lazy'
+              if forloop.first and section.index < 3
+                assign loading = 'eager'
+              endif
+            -%}
+            {{
+              img
+              | image_url: width: 1600
+              | image_tag:
+                loading: loading,
+                widths: '375, 550, 750, 1100, 1400, 1600',
+                sizes: '(min-width: 750px) 50vw, 100vw',
+                class: 'spot__img',
+                alt: alt
+            }}
+          {%- else -%}
+            {{ 'lifestyle-1' | placeholder_svg_tag: 'spot__img spot__img--placeholder' }}
+          {%- endif -%}
+        </div>
+      </div>
+    {%- endfor -%}
+
+    {%- if slide_count == 0 and request.design_mode -%}
+      <p class="spot__hint page-width">Add an <b>Announcement</b> block: your mailing list, a brand you carry, or an event.</p>
+    {%- endif -%}
+  </div>
+</announcement-spotlight>
+
+{% schema %}
+{
+  "name": "Announcements",
+  "tag": "section",
+  "class": "section section--spotlight",
+  "disabled_on": { "groups": ["header", "footer"] },
+  "settings": [
+    { "type": "paragraph", "content": "Text on the left, picture on the right. Add one block per announcement: the mailing list, a brand you carry, an event. Two or more rotate on their own." },
+    { "type": "text", "id": "label", "label": "Name for screen readers", "default": "Announcements" },
+    { "type": "range", "id": "autoplay_seconds", "min": 0, "max": 12, "step": 1, "unit": "s", "default": 7, "label": "Seconds per announcement", "info": "0 = don't rotate. Never rotates for visitors who turn off motion." },
+    { "type": "range", "id": "height", "min": 320, "max": 720, "step": 20, "unit": "px", "default": 480, "label": "Height on desktop" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-2" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 0, "label": "Top padding" },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 0, "label": "Bottom padding" }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Announcement",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Picture" },
+        { "type": "checkbox", "id": "show_whole_image", "label": "Show the whole picture", "default": false, "info": "Turn on for graphics with words in them, so nothing gets cropped." },
+        { "type": "color", "id": "media_bg", "label": "Background behind the picture", "default": "#f1f1f1", "info": "Shows around a whole picture that doesn't fill the space." },
+        { "type": "text", "id": "eyebrow", "label": "Small line above the heading" },
+        { "type": "text", "id": "heading", "label": "Heading", "info": "A brand name, the mailing list, an event." },
+        { "type": "richtext", "id": "text", "label": "Text" },
+        { "type": "header", "content": "Email sign-up" },
+        { "type": "checkbox", "id": "show_signup", "label": "Show an email sign-up", "default": false, "info": "Adds the address to Customers with email marketing on." },
+        { "type": "text", "id": "signup_button", "label": "Button label", "default": "Join the list" },
+        { "type": "text", "id": "signup_success", "label": "Thank-you message", "default": "You're on the list. Thank you!" },
+        { "type": "header", "content": "Link" },
+        { "type": "text", "id": "link_label", "label": "Link label", "info": "e.g. Shop the brand" },
+        { "type": "url", "id": "link", "label": "Link" }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [ { "name": "Announcements", "blocks": [ { "type": "slide" } ] } ]
+}
+{% endschema %}

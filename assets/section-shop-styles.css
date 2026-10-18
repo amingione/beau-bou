@@ -1,4 +1,9 @@
 /* Shop Styles — LTK-style look grid + pop-up post (sections/shop-styles.liquid) */
+/* custom elements are inline by default; block lets the section's color scheme paint behind it */
+shop-styles {
+  display: block;
+}
+
 .shop-styles__head {
   display: flex;
   flex-wrap: wrap;
