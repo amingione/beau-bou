@@ -62,7 +62,8 @@
   line-height: normal;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  color: rgba(38, 38, 38, 0.4);
+  /* Figma has 0.4 (2.4:1); 0.64 is the lightest that passes WCAG AA for small text (4.7:1) */
+  color: rgba(38, 38, 38, 0.64);
 }
 
 .bb-drop-card__media {
@@ -95,6 +96,9 @@
 .bb-drop-card__overlay-bg {
   position: absolute;
   inset: 0;
+  /* native 266x63 when there's room; follows the wrapper when max-width narrows it */
+  width: 100%;
+  height: 100%;
 }
 
 .bb-drop-card__overlay-title {
@@ -154,7 +158,8 @@
   left: 2rem;
   padding: 0.5rem 1rem;
   border-radius: 10rem;
-  background: #ac7a00;
+  /* Figma #ac7a00 gives white text 3.8:1; #9a6c00 is the nearest gold that passes AA (4.65:1) */
+  background: #9a6c00;
   color: #ffffff;
   font-family: var(--font-body-family);
   font-weight: 700;
@@ -176,7 +181,8 @@
   justify-content: flex-start;
   padding: 1.8rem 2rem 1.3rem;
   border-radius: var(--bb-card-media-radius);
-  background: rgba(61, 61, 61, 0.4);
+  /* Figma has 0.4; 0.72 keeps white text at 4.7:1 even over a white part of the photo */
+  background: rgba(61, 61, 61, 0.72);
   -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
   color: #ffffff;
