@@ -77,12 +77,29 @@ s["shop_styles"]["settings"].update(
 )
 
 # ---------- Collections carousel (Figma 1:135) ----------
-# Pictures reuse the old category grid's photos; collections without one show just the name.
-tile_images = {
-    k: b["settings"].get("image", "")
-    for k, b in s.get("tiles_1", {}).get("blocks", {}).items()
-}
-handles = ["dresses", "tops", "bottoms", "jackets", "handbags", "jewelry-accessories", "swimsuits", "kids", "baby-toddler"]
+# Category photos from photos-in/categories (2026-10-18), uploaded to Files as beyoutiful-category-*.webp.
+# Shoes, Hats, Drinkware, Jumpsuits, Toys and Little Girls were created as collections that day.
+# Swimsuits and Baby & Toddler have no photo yet, so their tiles show just the name. Gowns stays out (contract).
+IMG = "shopify://shop_images/beyoutiful-category-{}.webp"
+tiles = [
+    ("dresses", "dresses"),
+    ("tops", "tops"),
+    ("bottoms", "bottoms"),
+    ("jumpsuits", "jumpers"),
+    ("jackets", "jackets"),
+    ("shoes", "shoes"),
+    ("handbags", "bags"),
+    ("hats", "hats"),
+    ("jewelry-accessories", "jewelry"),
+    ("drinkware", "drinkware"),
+    ("swimsuits", None),
+    ("kids", "kids-toys"),
+    ("little-girls", "little-girls"),
+    ("toys", "kids-toys-alt"),
+    ("baby-toddler", None),
+]
+handles = [h for h, _ in tiles]
+tile_images = {h: (IMG.format(f) if f else "") for h, f in tiles}
 s["collections"] = {
     "type": "collection-carousel",
     "blocks": {

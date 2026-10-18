@@ -48,11 +48,36 @@ Same section and same Looks as before (Content → Metaobjects → Look). Only t
 
 ## Collections carousel
 
-One block per collection. With a block's picture blank, the tile uses the collection's own picture. With
-neither, it shows just the name on charcoal (Swimsuits, Kids and Baby & Toddler today), not a placeholder
-drawing. Names sit on a 42% dark scrim, which keeps the white text at 3:1+ even over a white photo
-(large-text AA). There is no Shoes collection in the store yet. Add one in Products → Collections, then
-add a block here.
+One block per collection. A block's picture wins; with it blank the tile uses the collection's own picture;
+with neither it shows just the name on charcoal (no placeholder drawing). Names sit on a 42% dark scrim, so
+white text stays at 3:1+ even over a white photo (large-text AA).
+
+Category photos (2026-10-18) come from `photos-in/categories` on Amber's Mac, converted to 1600px WebP and
+uploaded to Files as `beyoutiful-category-*.webp` with alt text. Each one is also set as its collection's image,
+so the /collections page matches.
+
+| Tile | Collection | Photo |
+| --- | --- | --- |
+| Dresses | `dresses` | dresses |
+| Tops | `tops` | tops (denim top) |
+| Bottoms | `bottoms` | bottoms (white pants outfit) |
+| Jumpsuits | `jumpsuits` (new) | jumpers |
+| Jackets | `jackets` | jackets |
+| Shoes | `shoes` (new) | shoes |
+| Handbags | `handbags` | bags |
+| Hats | `hats` (new) | hats (straw sun hat) |
+| Jewelry + Accessories | `jewelry-accessories` | jewelry |
+| Drinkware | `drinkware` (new) | drinkware |
+| Swimsuits | `swimsuits` | none yet |
+| Kids | `kids` | kids-toys (plush) |
+| Little Girls | `little-girls` (new) | little-girls |
+| Toys | `toys` (new) | kids-toys-alt (beach set) |
+| Baby & Toddler | `baby-toddler` | none yet |
+
+The six new collections are manual, published to the Online Store, and empty until products are added.
+Pants, shorts and shirts photos weren't given their own collections: pants and shorts belong under Bottoms,
+shirts under Tops. Those photos, plus `bottoms-alt`, `hat` (caps) and `gowns`, are converted but unused.
+Gowns stays out per Michele's contract.
 
 ## Re-apply the homepage setup
 

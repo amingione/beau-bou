@@ -407,7 +407,7 @@
           "type": "collection",
           "settings": {
             "collection": "dresses",
-            "image": "shopify://shop_images/beyoutiful-pink-navy-floral-collared-dress-modeled.webp",
+            "image": "shopify://shop_images/beyoutiful-category-dresses.webp",
             "label": "",
             "link": ""
           }
@@ -416,7 +416,7 @@
           "type": "collection",
           "settings": {
             "collection": "tops",
-            "image": "shopify://shop_images/beyoutiful-blue-fringe-hem-top-and-sandal-display.webp",
+            "image": "shopify://shop_images/beyoutiful-category-tops.webp",
             "label": "",
             "link": ""
           }
@@ -425,7 +425,16 @@
           "type": "collection",
           "settings": {
             "collection": "bottoms",
-            "image": "shopify://shop_images/beyoutiful-dark-wash-denim-shorts.webp",
+            "image": "shopify://shop_images/beyoutiful-category-bottoms.webp",
+            "label": "",
+            "link": ""
+          }
+        },
+        "jumpsuits": {
+          "type": "collection",
+          "settings": {
+            "collection": "jumpsuits",
+            "image": "shopify://shop_images/beyoutiful-category-jumpers.webp",
             "label": "",
             "link": ""
           }
@@ -434,7 +443,16 @@
           "type": "collection",
           "settings": {
             "collection": "jackets",
-            "image": "shopify://shop_images/beyoutiful-long-denim-button-front-vest.webp",
+            "image": "shopify://shop_images/beyoutiful-category-jackets.webp",
+            "label": "",
+            "link": ""
+          }
+        },
+        "shoes": {
+          "type": "collection",
+          "settings": {
+            "collection": "shoes",
+            "image": "shopify://shop_images/beyoutiful-category-shoes.webp",
             "label": "",
             "link": ""
           }
@@ -443,7 +461,16 @@
           "type": "collection",
           "settings": {
             "collection": "handbags",
-            "image": "shopify://shop_images/beyoutiful-floral-crossbody-bag-display.webp",
+            "image": "shopify://shop_images/beyoutiful-category-bags.webp",
+            "label": "",
+            "link": ""
+          }
+        },
+        "hats": {
+          "type": "collection",
+          "settings": {
+            "collection": "hats",
+            "image": "shopify://shop_images/beyoutiful-category-hats.webp",
             "label": "",
             "link": ""
           }
@@ -452,7 +479,16 @@
           "type": "collection",
           "settings": {
             "collection": "jewelry-accessories",
-            "image": "shopify://shop_images/beyoutiful-rings-and-bracelets-jewelry-counter.webp",
+            "image": "shopify://shop_images/beyoutiful-category-jewelry.webp",
+            "label": "",
+            "link": ""
+          }
+        },
+        "drinkware": {
+          "type": "collection",
+          "settings": {
+            "collection": "drinkware",
+            "image": "shopify://shop_images/beyoutiful-category-drinkware.webp",
             "label": "",
             "link": ""
           }
@@ -470,7 +506,25 @@
           "type": "collection",
           "settings": {
             "collection": "kids",
-            "image": "",
+            "image": "shopify://shop_images/beyoutiful-category-kids-toys.webp",
+            "label": "",
+            "link": ""
+          }
+        },
+        "little-girls": {
+          "type": "collection",
+          "settings": {
+            "collection": "little-girls",
+            "image": "shopify://shop_images/beyoutiful-category-little-girls.webp",
+            "label": "",
+            "link": ""
+          }
+        },
+        "toys": {
+          "type": "collection",
+          "settings": {
+            "collection": "toys",
+            "image": "shopify://shop_images/beyoutiful-category-kids-toys-alt.webp",
             "label": "",
             "link": ""
           }
@@ -489,11 +543,17 @@
         "dresses",
         "tops",
         "bottoms",
+        "jumpsuits",
         "jackets",
+        "shoes",
         "handbags",
+        "hats",
         "jewelry-accessories",
+        "drinkware",
         "swimsuits",
         "kids",
+        "little-girls",
+        "toys",
         "baby-toddler"
       ],
       "settings": {
