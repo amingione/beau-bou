@@ -17,7 +17,9 @@ Amber didn't want the old runway cutouts or raw selfie try-ons on the site. Her 
   the tropical dress (`…-shift-dress-b.webp`), linking to that dress's look page. Run
   `python3 scripts/declutter/apply-tryons-2026-10-18.py` to re-apply.
 - **Not linked yet:** the new Looks have no **Pieces** or **Goes with** products, because the real
-  products aren't in the store. Until they are, each look page shows the template's empty state.
+  products aren't in the store. Until they are, each look page shows the template's empty state:
+  "We Sold Out! / When it's gone, it's GONE!" with the "Limited Summer Collection" badge. Amber chose to keep
+  that wording (2026-10-18).
   Link the pieces under Content → Metaobjects → Look once the products exist.
 
 ## Shop Styles grid + pop-up — 2026-09-28
