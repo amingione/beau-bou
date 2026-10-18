@@ -1,0 +1,76 @@
+/* Swipeable row + prev/next buttons (assets/bb-scroller.js) */
+bb-scroller {
+  display: block;
+  position: relative;
+}
+
+.bb-scroller__track {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.bb-scroller__track::-webkit-scrollbar {
+  display: none;
+}
+
+.bb-scroller__track > * {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+}
+
+.bb-scroller__track:focus-visible {
+  outline: 2px solid rgb(var(--color-foreground));
+  outline-offset: 4px;
+}
+
+.bb-scroller__buttons {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.bb-scroller__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+  height: 4rem;
+  padding: 0;
+  border: 1px solid rgba(var(--color-foreground), 0.3);
+  border-radius: 50%;
+  background: rgb(var(--color-background));
+  color: rgb(var(--color-foreground));
+  cursor: pointer;
+  transition: border-color 0.2s ease, opacity 0.2s ease;
+}
+
+.bb-scroller__button:hover:not(:disabled) {
+  border-color: rgb(var(--color-foreground));
+}
+
+.bb-scroller__button:focus-visible {
+  outline: 2px solid rgb(var(--color-foreground));
+  outline-offset: 2px;
+}
+
+.bb-scroller__button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+bb-scroller:not([data-scrollable]) .bb-scroller__buttons {
+  display: none;
+}
+
+@media screen and (max-width: 749px) {
+  /* phones swipe; the buttons only add clutter there */
+  .bb-scroller__buttons {
+    display: none;
+  }
+}

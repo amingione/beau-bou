@@ -7,6 +7,12 @@
 {%- endcomment -%}
 {{ 'section-shop-styles.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'shop-styles.js' | asset_url }}" defer="defer"></script>
+{%- if section.settings.layout == 'highlights' -%}
+  {%- comment -%} Highlights layout: Figma "Fashion Website Landing Page", node 1:159 {%- endcomment -%}
+  {{ 'component-bb-scroller.css' | asset_url | stylesheet_tag }}
+  {{ 'section-shop-styles-highlights.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'bb-scroller.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
 
 {%- liquid
   assign looks = shop.metaobjects.look.values
@@ -39,6 +45,8 @@
   #ShopStyles-{{ section.id }} {
     --ss-columns: {{ section.settings.columns }};
     --ss-speed: {{ section.settings.scroll_seconds }}s;
+    --ss-badge-bg: {{ section.settings.badge_color }};
+    --ss-eye: url("{{ 'icon-quick-view.svg' | asset_url }}");
     padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
     padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
   }
@@ -76,6 +84,54 @@
         assign n_pieces = look.pieces.value.size
       endif
     -%}
+    {%- if layout == 'highlights' -%}
+      {%- liquid
+        assign from_price = 0
+        assign has_price = false
+        for piece in look.pieces.value
+          if piece.available == false
+            continue
+          endif
+          if has_price == false or piece.price_min < from_price
+            assign from_price = piece.price_min
+            assign has_price = true
+          endif
+        endfor
+      -%}
+      <li class="shop-styles__item ss-hl__item" data-ss-kind="{{ kind }}">
+        <a
+          class="ss-tile ss-hl-card"
+          href="{{ look.system.url }}"
+          data-ss-open="{{ i }}"
+          aria-haspopup="dialog"
+          aria-label="Quick view: {{ title | escape }}{% if kind == 'video' %}, try-on video{% endif %}{% if n_pieces > 0 %}, {{ n_pieces }} {% if n_pieces == 1 %}piece{% else %}pieces{% endif %}{% endif %}"
+        >
+          <span class="ss-hl-card__media">
+            {%- if poster != blank -%}
+              {{ poster | image_url: width: 800 | image_tag: loading: 'lazy', widths: '300, 450, 600, 800', sizes: '(min-width: 990px) 340px, (min-width: 750px) 40vw, 72vw', class: 'ss-hl-card__img', alt: title }}
+            {%- endif -%}
+            {%- if section.settings.badge_label != blank -%}
+              <span class="ss-hl-card__badge" aria-hidden="true">{{ section.settings.badge_label | escape }}</span>
+            {%- endif -%}
+            {%- if kind == 'video' -%}
+              <span class="ss-tile__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5l12 7-12 7z"/></svg></span>
+            {%- endif -%}
+          </span>
+          <span class="ss-hl-card__info">
+            <span class="ss-hl-card__text">
+              <span class="ss-hl-card__title">{{ title | escape }}</span>
+              {%- if n_pieces > 0 -%}
+                <span class="ss-hl-card__meta">
+                  {{- n_pieces }} {% if n_pieces == 1 %}piece{% else %}pieces{% endif -%}
+                  {%- if has_price %} · from {{ from_price | money }}{% endif -%}
+                </span>
+              {%- endif -%}
+            </span>
+            <span class="ss-hl-card__quick" aria-hidden="true">Quick view<span class="ss-hl-card__eye"></span></span>
+          </span>
+        </a>
+      </li>
+    {%- else -%}
     <li class="shop-styles__item" data-ss-kind="{{ kind }}">
       <a
         class="ss-tile"
@@ -99,6 +155,7 @@
         <span class="ss-tile__caption">{{ title | escape }}</span>
       </a>
     </li>
+    {%- endif -%}
     {%- capture post -%}
       <template data-ss-post="{{ i }}">
         {% render 'shop-styles-post', look: look, index: i, total: shown, empty_text: section.settings.empty_text, empty_label: section.settings.empty_label, empty_link: section.settings.empty_link %}
@@ -109,7 +166,7 @@
   {%- assign count = i -%}
 
   {%- comment -%} Carousel: top up to the target count with the section's extra photos, then bundled samples. {%- endcomment -%}
-  {%- if layout == 'carousel' -%}
+  {%- if layout == 'carousel' or layout == 'highlights' -%}
     {%- for block in photo_blocks -%}
       {%- if count >= max -%}{%- break -%}{%- endif -%}
       {%- liquid
@@ -121,6 +178,22 @@
       -%}
       {%- if bimg == blank -%}{%- continue -%}{%- endif -%}
       {%- assign count = count | plus: 1 -%}
+      {%- if layout == 'highlights' -%}
+        <li class="shop-styles__item ss-hl__item" data-ss-kind="photo" {{ block.shopify_attributes }}>
+          <a class="ss-tile ss-hl-card" href="{{ block.settings.link | default: section.settings.button_link | default: '/pages/shop-the-look' }}">
+            <span class="ss-hl-card__media">
+              {{ bimg | image_url: width: 800 | image_tag: loading: 'lazy', widths: '300, 450, 600, 800', sizes: '(min-width: 990px) 340px, (min-width: 750px) 40vw, 72vw', class: 'ss-hl-card__img', alt: block.settings.title | default: 'Outfit styled at the boutique' }}
+              {%- if section.settings.badge_label != blank -%}
+                <span class="ss-hl-card__badge" aria-hidden="true">{{ section.settings.badge_label | escape }}</span>
+              {%- endif -%}
+            </span>
+            {%- if block.settings.title != blank -%}
+              <span class="ss-hl-card__info"><span class="ss-hl-card__text"><span class="ss-hl-card__title">{{ block.settings.title | escape }}</span></span></span>
+            {%- endif -%}
+          </a>
+        </li>
+        {%- continue -%}
+      {%- endif -%}
       <li class="shop-styles__item" data-ss-kind="photo" {{ block.shopify_attributes }}>
         <a class="ss-tile" href="{{ block.settings.link | default: section.settings.button_link | default: '/pages/shop-the-look' }}">
           <span class="ss-tile__media">
@@ -155,6 +228,7 @@
 {%- endcapture -%}
 
 <shop-styles id="ShopStyles-{{ section.id }}" class="shop-styles shop-styles--{{ layout }} color-{{ section.settings.color_scheme }} gradient">
+  {%- if layout != 'highlights' -%}
   <div class="page-width">
     <div class="shop-styles__head">
       {%- if section.settings.heading != blank -%}
@@ -172,8 +246,42 @@
       <p class="shop-styles__hint">Create <b>Look</b> entries under Content → Metaobjects → Look, or add <b>Extra photo</b> blocks to this section.</p>
     {%- endif -%}
   </div>
+  {%- endif -%}
 
-  {%- if count > 0 -%}
+  {%- if layout == 'highlights' -%}
+    {%- comment -%}
+      Highlights (Figma node 1:159): intro + button on the left, a swipeable row of look cards on the
+      right. Each card opens the same shop-this-look pop-up as the other layouts.
+    {%- endcomment -%}
+    <div class="page-width ss-hl">
+      <div class="ss-hl__intro">
+        {%- if section.settings.heading != blank -%}
+          <h2 class="ss-hl__heading">{{ section.settings.heading | escape }}</h2>
+        {%- endif -%}
+        {%- if section.settings.intro != blank -%}
+          <div class="ss-hl__text rte">{{ section.settings.intro }}</div>
+        {%- endif -%}
+        {%- if section.settings.button_label != blank -%}
+          <a class="ss-hl__button" href="{{ section.settings.button_link | default: '/pages/shop-the-look' }}">{{ section.settings.button_label | escape }}</a>
+        {%- endif -%}
+        {%- if count == 0 and request.design_mode -%}
+          <p class="shop-styles__hint">Create <b>Look</b> entries under Content → Metaobjects → Look, or add <b>Extra photo</b> blocks to this section.</p>
+        {%- endif -%}
+      </div>
+      {%- if count > 0 -%}
+        <bb-scroller class="ss-hl__rail">
+          <ul
+            class="bb-scroller__track ss-hl__track"
+            role="list"
+            tabindex="0"
+            aria-label="{{ section.settings.heading | default: 'Looks' | escape }}"
+            data-scroller-track
+          >{{ tiles }}</ul>
+          {% render 'bb-scroller-buttons', label: 'looks' %}
+        </bb-scroller>
+      {%- endif -%}
+    </div>
+  {%- elsif count > 0 -%}
     {%- if layout == 'carousel' -%}
       {%- comment -%}
         Continuous, button-free marquee. The list renders twice; the copy is hidden from assistive tech
@@ -223,18 +331,23 @@
     { "type": "text", "id": "heading", "label": "Heading", "default": "Shop Styles" },
     { "type": "select", "id": "layout", "label": "Layout", "default": "carousel", "options": [
       { "value": "carousel", "label": "Auto-scrolling carousel (no buttons)" },
-      { "value": "grid", "label": "Grid" } ] },
+      { "value": "grid", "label": "Grid" },
+      { "value": "highlights", "label": "Highlights: intro left, swipeable looks right" } ] },
     { "type": "range", "id": "carousel_count", "min": 4, "max": 20, "step": 1, "default": 10, "label": "Carousel: number of images", "info": "Looks first, then the Extra photo blocks below." },
     { "type": "range", "id": "scroll_seconds", "min": 20, "max": 120, "step": 5, "unit": "s", "default": 50, "label": "Carousel: seconds per full loop", "info": "Higher = slower." },
     { "type": "checkbox", "id": "show_filters", "label": "Show filter pills", "default": true, "info": "Appears once at least one look has a try-on video." },
-    { "type": "range", "id": "max_looks", "min": 4, "max": 24, "step": 1, "default": 12, "label": "Grid: looks to show" },
+    { "type": "range", "id": "max_looks", "min": 4, "max": 24, "step": 1, "default": 12, "label": "Grid and highlights: looks to show" },
     { "type": "range", "id": "columns", "min": 2, "max": 5, "step": 1, "default": 4, "label": "Grid: columns (desktop)" },
     { "type": "checkbox", "id": "show_samples", "label": "Show sample looks until real looks exist", "default": true, "info": "Bundled photos so a brand-new store's grid isn't empty. Hidden automatically once any Look entry is published." },
     { "type": "header", "content": "Looks without linked pieces" },
     { "type": "text", "id": "empty_text", "label": "Message", "default": "Love this look? Call or stop in and we'll pull it in your size." },
     { "type": "text", "id": "empty_label", "label": "Button label", "default": "Ask about this look" },
     { "type": "url", "id": "empty_link", "label": "Button link" },
-    { "type": "header", "content": "Button under the grid (grid layout only)" },
+    { "type": "header", "content": "Highlights layout" },
+    { "type": "richtext", "id": "intro", "label": "Intro text", "info": "Shown under the heading, left of the looks." },
+    { "type": "text", "id": "badge_label", "label": "Label on each look", "default": "Shop the look", "info": "Leave blank for no label." },
+    { "type": "color", "id": "badge_color", "label": "Label color", "default": "#e60023", "info": "White text sits on this color; keep it dark enough to read." },
+    { "type": "header", "content": "Button (grid and highlights layouts)" },
     { "type": "text", "id": "button_label", "label": "Label (optional)", "default": "See all looks" },
     { "type": "url", "id": "button_link", "label": "Link" },
     { "type": "header", "content": "Layout" },

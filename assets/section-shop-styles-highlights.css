@@ -1,0 +1,246 @@
+/*
+  Shop Styles → Highlights layout (sections/shop-styles.liquid, layout "highlights")
+  From Figma "Fashion Website Landing Page", node 1:159: intro + outline button on the left,
+  340px look cards with a "shop the look" label on the right, title / price / Quick view under each.
+  Text sizes are a step up from Figma's 9–10px so they stay readable; fonts are the theme's.
+*/
+.ss-hl {
+  --ss-card-w: 34rem;
+  display: grid;
+  grid-template-columns: minmax(0, 28.8rem) minmax(0, 1fr);
+  align-items: center;
+  gap: 4rem;
+}
+
+/* ---------- Intro ---------- */
+.ss-hl__heading {
+  margin: 0;
+  font-family: var(--font-heading-family);
+  font-weight: 700;
+  font-size: 2.9rem;
+  line-height: 1.32;
+  letter-spacing: 0;
+  color: rgb(var(--color-foreground));
+}
+
+.ss-hl__text {
+  margin-top: 0.8rem;
+  font-family: var(--font-body-family);
+  font-size: 1.46rem;
+  line-height: 1.75;
+  color: rgb(var(--color-foreground));
+}
+
+.ss-hl__text > :first-child { margin-top: 0; }
+.ss-hl__text > :last-child { margin-bottom: 0; }
+
+.ss-hl__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 28.8rem;
+  min-height: 6.5rem;
+  margin-top: 5rem;
+  padding: 0 2rem;
+  border: 1px solid rgb(var(--color-foreground));
+  font-family: var(--font-body-family);
+  font-size: 1.47rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: rgb(var(--color-foreground));
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.ss-hl__button:hover {
+  background: rgb(var(--color-foreground));
+  color: rgb(var(--color-background));
+}
+
+.ss-hl__button:focus-visible {
+  outline: 2px solid rgb(var(--color-foreground));
+  outline-offset: 3px;
+}
+
+/* ---------- Row of looks ---------- */
+.ss-hl__rail {
+  min-width: 0;
+}
+
+.ss-hl__track {
+  gap: 2rem;
+  padding-bottom: 0.4rem; /* room for the focus ring */
+}
+
+.ss-hl .shop-styles__item {
+  width: var(--ss-card-w);
+  margin: 0;
+}
+
+.ss-hl-card {
+  display: block;
+  color: rgb(var(--color-foreground));
+  text-decoration: none;
+}
+
+.ss-hl-card__media {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: rgba(var(--color-foreground), 0.05);
+}
+
+.ss-hl-card__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .ss-hl-card:hover .ss-hl-card__img {
+    transform: scale(1.03);
+  }
+}
+
+.ss-hl-card:focus-visible {
+  outline: none;
+}
+
+.ss-hl-card:focus-visible .ss-hl-card__media {
+  outline: 2px solid rgb(var(--color-foreground));
+  outline-offset: 3px;
+}
+
+/* Figma: 20px red tag, 10.5px bold white text, 2px corners */
+.ss-hl-card__badge {
+  position: absolute;
+  top: 1.2rem;
+  left: 1rem;
+  padding: 0 1rem;
+  border-radius: 0.2rem;
+  background: var(--ss-badge-bg, #e60023);
+  color: #fff;
+  font-family: var(--font-body-family);
+  font-weight: 700;
+  font-size: 1.1rem;
+  line-height: 2.2rem;
+  white-space: nowrap;
+}
+
+.ss-hl-card__info {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.2rem;
+  padding-top: 1rem;
+}
+
+.ss-hl-card__text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  min-width: 0;
+}
+
+.ss-hl-card__title {
+  font-family: var(--font-body-family);
+  font-size: 1.2rem;
+  line-height: 1.4;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #333;
+}
+
+.ss-hl-card__meta {
+  font-family: var(--font-body-family);
+  font-size: 1.2rem;
+  line-height: 1.2;
+  color: #616161;
+}
+
+.ss-hl-card__quick {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-body-family);
+  font-size: 1.1rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #333;
+}
+
+/* The Figma eye-and-magnifier icon (assets/icon-quick-view.svg), tinted with the text color */
+.ss-hl-card__eye {
+  display: inline-block;
+  width: 2.8rem;
+  height: 2.8rem;
+  background: currentColor;
+  -webkit-mask: var(--ss-eye) center / contain no-repeat;
+  mask: var(--ss-eye) center / contain no-repeat;
+}
+
+.ss-hl-card:hover .ss-hl-card__quick {
+  text-decoration: underline;
+  text-underline-offset: 0.3rem;
+}
+
+/* Prev/next sit on the picture edges, halfway down */
+.ss-hl__rail .bb-scroller__buttons {
+  position: absolute;
+  top: calc(var(--ss-card-w) * 0.625 - 2rem);
+  left: -2rem;
+  right: -2rem;
+  justify-content: space-between;
+  pointer-events: none;
+}
+
+.ss-hl__rail .bb-scroller__button {
+  pointer-events: auto;
+  box-shadow: 0 0.2rem 0.8rem rgba(0, 0, 0, 0.12);
+}
+
+.ss-hl__rail .bb-scroller__button:disabled {
+  visibility: hidden;
+}
+
+/* ---------- Tablet / phone: intro on top, row under it ---------- */
+@media screen and (max-width: 989px) {
+  .ss-hl {
+    --ss-card-w: min(40vw, 34rem);
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2.8rem;
+  }
+
+  .ss-hl__intro {
+    max-width: 56rem;
+  }
+
+  .ss-hl__button {
+    margin-top: 2.4rem;
+    min-height: 5.2rem;
+  }
+
+  .ss-hl__rail .bb-scroller__buttons {
+    left: 0.8rem;
+    right: 0.8rem;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .ss-hl {
+    --ss-card-w: 72vw;
+  }
+
+  .ss-hl__heading {
+    font-size: 2.4rem;
+  }
+
+  .ss-hl__track {
+    gap: 1.4rem;
+  }
+}

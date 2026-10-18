@@ -1,0 +1,304 @@
+/*
+  Announcements (sections/announcement-spotlight.liquid)
+  From Figma "Fashion Website Landing Page", node 1:612: a 50/50 split, text left, picture right,
+  dots and an underlined link under the text. Theme fonts replace the Figma Inter.
+*/
+.spot {
+  display: block;
+  position: relative;
+}
+
+/* Every slide sits in the same grid cell, so the stage is as tall as the tallest one */
+.spot__stage {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.spot__slide {
+  grid-area: 1 / 1;
+  display: grid;
+  /* minmax(0, …) so a large picture can't stretch the columns past the screen */
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.6s ease, visibility 0s linear 0.6s;
+}
+
+.spot__slide.is-active {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.6s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spot__slide,
+  .spot__slide.is-active {
+    transition: none;
+  }
+}
+
+/* ---------- Text column ---------- */
+.spot__text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--spot-height, 48rem);
+  padding: 3.7rem 3.6rem;
+  text-align: center;
+}
+
+.spot__eyebrow {
+  margin: 0 0 1rem;
+  font-family: var(--font-body-family);
+  font-size: 1.2rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(var(--color-foreground), 0.75);
+}
+
+.spot__heading {
+  margin: 0;
+  max-width: 54rem;
+  font-family: var(--font-heading-family);
+  font-weight: 700;
+  font-size: 2.9rem;
+  line-height: 1.32;
+  color: rgb(var(--color-foreground));
+}
+
+.spot__body {
+  max-width: 46rem;
+  margin-top: 1.6rem;
+  font-family: var(--font-body-family);
+  font-size: 1.5rem;
+  line-height: 1.75;
+  color: rgb(var(--color-foreground));
+}
+
+.spot__body > :first-child {
+  margin-top: 0;
+}
+
+.spot__body > :last-child {
+  margin-bottom: 0;
+}
+
+/* ---------- Email sign-up ---------- */
+.spot__form {
+  width: 100%;
+  max-width: 42rem;
+  margin-top: 2.4rem;
+}
+
+.spot__field {
+  display: flex;
+  width: 100%;
+}
+
+.spot__input {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 4.6rem;
+  padding: 0 1.4rem;
+  border: 1px solid rgba(var(--color-foreground), 0.6);
+  border-right: 0;
+  border-radius: 0;
+  background: rgb(var(--color-background));
+  color: rgb(var(--color-foreground));
+  font-family: var(--font-body-family);
+  font-size: 1.5rem;
+}
+
+.spot__input::placeholder {
+  color: rgba(var(--color-foreground), 0.65);
+}
+
+.spot__input:focus-visible {
+  outline: 2px solid rgb(var(--color-foreground));
+  outline-offset: 0;
+}
+
+.spot__submit {
+  flex: 0 0 auto;
+  height: 4.6rem;
+  padding: 0 2rem;
+  border: 1px solid rgb(var(--color-foreground));
+  border-radius: 0;
+  background: rgb(var(--color-foreground));
+  color: rgb(var(--color-background));
+  font-family: var(--font-body-family);
+  font-size: 1.3rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.spot__submit:hover {
+  opacity: 0.88;
+}
+
+.spot__submit:focus-visible {
+  outline: 2px solid rgb(var(--color-foreground));
+  outline-offset: 2px;
+}
+
+.spot__form-msg {
+  margin: 1rem 0 0;
+  font-size: 1.4rem;
+  color: rgb(var(--color-foreground));
+}
+
+.spot__form-msg--error {
+  color: #b3261e;
+}
+
+/* ---------- Dots + pause ---------- */
+.spot__controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  margin-top: 3.2rem;
+}
+
+.spot__dots {
+  display: flex;
+}
+
+/* 24px hit area around Figma's 12px dot */
+.spot__dot {
+  position: relative;
+  width: 2.4rem;
+  height: 2.4rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.spot__dot::before {
+  content: '';
+  position: absolute;
+  inset: 0.6rem;
+  border-radius: 50%;
+  background: rgb(var(--color-foreground));
+  opacity: 0.4;
+  transition: opacity 0.2s ease;
+}
+
+.spot__dot[aria-current='true']::before,
+.spot__dot:hover::before {
+  opacity: 1;
+}
+
+.spot__dot:focus-visible,
+.spot__toggle:focus-visible,
+.spot__link:focus-visible {
+  outline: 2px solid rgb(var(--color-foreground));
+  outline-offset: 2px;
+}
+
+.spot__toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  margin-left: 0.4rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: rgba(var(--color-foreground), 0.75);
+  cursor: pointer;
+}
+
+.spot__toggle .spot__icon-play,
+.spot__toggle.is-paused .spot__icon-pause {
+  display: none;
+}
+
+.spot__toggle.is-paused .spot__icon-play {
+  display: block;
+}
+
+/* ---------- Link ---------- */
+.spot__link {
+  margin-top: 2.4rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid currentColor;
+  font-family: var(--font-body-family);
+  font-weight: 700;
+  font-size: 1.42rem;
+  line-height: 1.75;
+  letter-spacing: 0.03em;
+  color: rgb(var(--color-foreground));
+  text-decoration: none;
+}
+
+.spot__link:hover {
+  opacity: 0.75;
+}
+
+.spot__hint {
+  margin: 0;
+  font-size: 1.4rem;
+  color: rgba(var(--color-foreground), 0.75);
+}
+
+/* ---------- Picture column ---------- */
+.spot__media {
+  position: relative;
+  min-height: var(--spot-height, 48rem);
+  overflow: hidden;
+  background: var(--spot-media-bg, #f1f1f1);
+}
+
+.spot__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.spot__media--whole .spot__img {
+  object-fit: contain;
+}
+
+.spot__img--placeholder {
+  fill: rgba(var(--color-foreground), 0.35);
+  background: rgba(var(--color-foreground), 0.04);
+}
+
+/* ---------- Phones: picture first, text under it ---------- */
+@media screen and (max-width: 749px) {
+  .spot__slide {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .spot__media {
+    order: -1;
+    min-height: 0;
+    aspect-ratio: 4 / 3;
+  }
+
+  /* a whole picture keeps its own shape instead of a crop */
+  .spot__media--whole {
+    aspect-ratio: auto;
+  }
+
+  .spot__media--whole .spot__img {
+    position: static;
+    height: auto;
+  }
+
+  .spot__text {
+    min-height: 0;
+    padding: 3.2rem 2rem 3.6rem;
+  }
+
+  .spot__heading {
+    font-size: 2.4rem;
+  }
+}

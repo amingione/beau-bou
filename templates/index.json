@@ -36,21 +36,24 @@
     "shop_styles": {
       "type": "shop-styles",
       "settings": {
-        "heading": "Shop Styles",
+        "heading": "Shop Our Highlights",
         "show_filters": true,
-        "max_looks": 12,
+        "max_looks": 10,
         "columns": 4,
         "empty_text": "Love this look? Call or stop in and we'll pull it in your size.",
         "empty_label": "Ask about this look",
         "empty_link": "",
-        "button_label": "",
+        "button_label": "Shop the pieces",
         "button_link": "/pages/shop-the-look",
-        "color_scheme": "scheme-1",
-        "padding_top": 48,
-        "padding_bottom": 48,
-        "layout": "carousel",
+        "color_scheme": "scheme-2",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "layout": "highlights",
         "carousel_count": 10,
-        "scroll_seconds": 50
+        "scroll_seconds": 50,
+        "intro": "<p>Try-on looks styled right here in the boutique. Tap one to shop every piece, plus a few that pair with it.</p>",
+        "badge_label": "Shop the look",
+        "badge_color": "#e60023"
       },
       "blocks": {
         "photo_1": {
@@ -214,7 +217,8 @@
         "padding_top": 36,
         "padding_bottom": 36,
         "tile_style": "card"
-      }
+      },
+      "disabled": true
     },
     "shop_the_look_banner": {
       "type": "image-with-text",
@@ -363,16 +367,157 @@
         "padding_top": 36,
         "padding_bottom": 48
       }
+    },
+    "announcements": {
+      "type": "announcement-spotlight",
+      "blocks": {
+        "join_list": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/beyoutiful-join-the-list-announcement.webp",
+            "show_whole_image": true,
+            "media_bg": "#e6e6e6",
+            "eyebrow": "",
+            "heading": "Join the list",
+            "text": "<p>Be the first to know when new pieces land at the boutique.</p>",
+            "show_signup": true,
+            "signup_button": "Join the list",
+            "signup_success": "You're on the list. Thank you!",
+            "link_label": "Shop new arrivals",
+            "link": "/collections/new-arrivals"
+          }
+        }
+      },
+      "block_order": [
+        "join_list"
+      ],
+      "settings": {
+        "label": "Announcements",
+        "autoplay_seconds": 7,
+        "height": 520,
+        "color_scheme": "scheme-2",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "collections": {
+      "type": "collection-carousel",
+      "blocks": {
+        "dresses": {
+          "type": "collection",
+          "settings": {
+            "collection": "dresses",
+            "image": "shopify://shop_images/beyoutiful-pink-navy-floral-collared-dress-modeled.webp",
+            "label": "",
+            "link": ""
+          }
+        },
+        "tops": {
+          "type": "collection",
+          "settings": {
+            "collection": "tops",
+            "image": "shopify://shop_images/beyoutiful-blue-fringe-hem-top-and-sandal-display.webp",
+            "label": "",
+            "link": ""
+          }
+        },
+        "bottoms": {
+          "type": "collection",
+          "settings": {
+            "collection": "bottoms",
+            "image": "shopify://shop_images/beyoutiful-dark-wash-denim-shorts.webp",
+            "label": "",
+            "link": ""
+          }
+        },
+        "jackets": {
+          "type": "collection",
+          "settings": {
+            "collection": "jackets",
+            "image": "shopify://shop_images/beyoutiful-long-denim-button-front-vest.webp",
+            "label": "",
+            "link": ""
+          }
+        },
+        "handbags": {
+          "type": "collection",
+          "settings": {
+            "collection": "handbags",
+            "image": "shopify://shop_images/beyoutiful-floral-crossbody-bag-display.webp",
+            "label": "",
+            "link": ""
+          }
+        },
+        "jewelry-accessories": {
+          "type": "collection",
+          "settings": {
+            "collection": "jewelry-accessories",
+            "image": "shopify://shop_images/beyoutiful-rings-and-bracelets-jewelry-counter.webp",
+            "label": "",
+            "link": ""
+          }
+        },
+        "swimsuits": {
+          "type": "collection",
+          "settings": {
+            "collection": "swimsuits",
+            "image": "",
+            "label": "",
+            "link": ""
+          }
+        },
+        "kids": {
+          "type": "collection",
+          "settings": {
+            "collection": "kids",
+            "image": "",
+            "label": "",
+            "link": ""
+          }
+        },
+        "baby-toddler": {
+          "type": "collection",
+          "settings": {
+            "collection": "baby-toddler",
+            "image": "",
+            "label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "dresses",
+        "tops",
+        "bottoms",
+        "jackets",
+        "handbags",
+        "jewelry-accessories",
+        "swimsuits",
+        "kids",
+        "baby-toddler"
+      ],
+      "settings": {
+        "heading": "Collections",
+        "tile_style": "square",
+        "card_button_label": "Shop now",
+        "button_label": "Shop all",
+        "button_link": "/collections",
+        "color_scheme": "scheme-1",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
     }
   },
   "order": [
     "hero",
+    "announcements",
     "shop_styles",
-    "tiles_1",
+    "collections",
     "whats_new",
     "brand",
     "sale",
     "visit",
+    "tiles_1",
     "shop_the_look_banner"
   ]
 }

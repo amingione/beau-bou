@@ -1,0 +1,12 @@
+{%- comment -%}
+  Prev/next buttons for <bb-scroller> (assets/bb-scroller.js).
+  Params: label (string) — what the row holds, for the button names, e.g. "looks".
+{%- endcomment -%}
+<div class="bb-scroller__buttons">
+  <button type="button" class="bb-scroller__button" data-scroller-prev aria-label="Previous {{ label | default: 'items' | escape }}" disabled>
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 5l-7 7 7 7"/></svg>
+  </button>
+  <button type="button" class="bb-scroller__button" data-scroller-next aria-label="More {{ label | default: 'items' | escape }}">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 5l7 7-7 7"/></svg>
+  </button>
+</div>
