@@ -31,3 +31,25 @@ On phones with 2 columns the card scales down: smaller radius, compact panel, su
 
 `python3 scripts/declutter/apply-figma-cards-2026-10-18.py` sets the homepage tiles and the /collections page to
 the new cards (idempotent).
+
+## Product cards (added 2026-10-18, redone same day)
+
+Amber tried Card A on the product grids and turned it down. She sent a minimal reference instead, and the
+product card now follows it: `snippets/card-product-boutique.liquid` + `assets/component-bb-product-card.css`.
+The collection-list and category cards above are unchanged (`component-bb-cards.css` is back to its main version).
+
+- **Look:** light-gray photo tile (`#f5f5f5`), portrait 4:5 by default (or the grid's square/adapt ratio),
+  no card box and no rounded corners. Small square tag top-left: **SOLD OUT**, or for a markdown **SALE** (tagged `sale`) / **CLEARANCE** (everything else, via `snippets/markdown-badge-label.liquid`, same as the product page), white on warm brown
+  `#6e4f45` (8:1 contrast; override with `--bb-pcard-tag-bg`). Name below in the heading serif (Playfair,
+  2 lines max), price in Poppins, the old price struck through in `#767676` when on sale. Hover: second photo
+  if the section allows it, otherwise a slight zoom (skipped for reduced motion), and the name underlines.
+- **Switch:** Theme settings → Product cards → **Product card style** (`product_card_style`): Theme default /
+  Boutique (minimal). Set to Boutique. `layout/theme.liquid` loads `component-bb-product-card.css` only when it's on.
+- **Where it shows:** `snippets/card-product.liquid` hands off to the boutique card in every grid **without
+  quick add**: collection pages, search, the homepage product rows, related products. Look pages
+  (`main-look`, `shop-the-look`) sell pieces in place with quick add on, so they keep the default card with
+  its add-to-cart. Horizontal cards on the product page also keep the default card.
+- **Collection pages:** quick add is off (`templates/collection.json`): tap the card to open the product.
+- **Kept from the default card:** the `<product-component>` wrapper (product view analytics still fire),
+  the store's "show currency codes" setting, "From" for products whose variants vary in price, and
+  screen-reader labels for sale and regular price, and star ratings when the section's "Show product rating" is on and a reviews app fills `reviews.rating`.

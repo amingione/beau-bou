@@ -566,6 +566,60 @@
         "padding_top": 60,
         "padding_bottom": 60
       }
+    },
+    "brands": {
+      "type": "brand-logos",
+      "blocks": {
+        "samuel_dong": {
+          "type": "brand",
+          "settings": {
+            "name": "Samuel Dong",
+            "logo": "",
+            "collection": "samuel-dong",
+            "link": ""
+          }
+        },
+        "frank_lyman": {
+          "type": "brand",
+          "settings": {
+            "name": "Frank Lyman",
+            "logo": "",
+            "collection": "frank-lyman",
+            "link": ""
+          }
+        },
+        "dolcezza": {
+          "type": "brand",
+          "settings": {
+            "name": "Dolcezza",
+            "logo": "",
+            "collection": "dolcezza",
+            "link": ""
+          }
+        },
+        "silver": {
+          "type": "brand",
+          "settings": {
+            "name": "Silver",
+            "logo": "",
+            "collection": "",
+            "link": "/collections/vendors?q=Silver"
+          }
+        }
+      },
+      "block_order": [
+        "samuel_dong",
+        "frank_lyman",
+        "dolcezza",
+        "silver"
+      ],
+      "settings": {
+        "heading": "Shop the brands we carry",
+        "black_logos": true,
+        "color_scheme": "scheme-2",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
     }
   },
   "order": [
@@ -573,6 +627,7 @@
     "announcements",
     "shop_styles",
     "collections",
+    "brands",
     "whats_new",
     "brand",
     "sale",

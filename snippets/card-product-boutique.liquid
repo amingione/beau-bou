@@ -1,0 +1,149 @@
+{%- comment -%}
+  Boutique product card: minimal editorial card (Amber's reference, 2026-10-18).
+  Light-gray photo tile, small SALE / SOLD OUT tag top-left, serif name and price underneath, no box.
+  The whole card links to the product.
+
+  Rendered by snippets/card-product.liquid when Theme settings → Product cards → Product card style is
+  "Boutique" and the grid has no quick-add button (look pages, which sell pieces in place, keep the
+  default card). Styles: assets/component-bb-product-card.css (loaded in layout/theme.liquid when enabled).
+
+  Accepts the params card-product passes on: card_product, media_aspect_ratio, show_secondary_image,
+  show_vendor, show_rating, lazy_load, section_id, placeholder_image, product_view_context.
+{%- endcomment -%}
+{%- if card_product and card_product != empty -%}
+  {%- liquid
+    assign ratio = '4 / 5'
+    if media_aspect_ratio == 'square'
+      assign ratio = '1 / 1'
+    elsif media_aspect_ratio == 'adapt' and card_product.featured_media
+      assign ratio = card_product.featured_media.aspect_ratio
+    endif
+
+    assign on_sale = false
+    if card_product.compare_at_price > card_product.price and card_product.available
+      assign on_sale = true
+    endif
+
+    assign loading = 'lazy'
+    if lazy_load == false
+      assign loading = 'eager'
+    endif
+
+    assign second = null
+    if show_secondary_image and card_product.media[1] != null
+      assign second = card_product.media[1]
+    endif
+
+    # same currency display as snippets/price.liquid
+    if settings.currency_code_enabled
+      assign price_now = card_product.price | money_with_currency
+      assign price_was = card_product.compare_at_price | money_with_currency
+    else
+      assign price_now = card_product.price | money
+      assign price_was = card_product.compare_at_price | money
+    endif
+
+    assign img_sizes = '(min-width: 990px) calc((100vw - 13rem) / 4), (min-width: 750px) calc((100vw - 10rem) / 3), calc(100vw / 2)'
+  -%}
+  {%- comment -%} same wrapper as the default card, so product:view impressions still fire {%- endcomment -%}
+  <product-component view-event-payload="{{ card_product | standard_event_data: 'view', context: product_view_context | escape }}">
+    <div class="card-wrapper product-card-wrapper bb-pcard-wrapper">
+      <a
+        href="{{ card_product.url }}"
+        id="CardLink-{{ section_id }}-{{ card_product.id }}"
+        class="bb-pcard{% if second %} bb-pcard--hover{% endif %}"
+      >
+        <div class="bb-pcard__media" style="--bb-pcard-ratio: {{ ratio }};">
+          {%- if card_product.featured_media -%}
+            {{
+              card_product.featured_media
+              | image_url: width: 900
+              | image_tag:
+                loading: loading,
+                widths: '300, 450, 600, 750, 900',
+                sizes: img_sizes,
+                class: 'bb-pcard__img',
+                alt: card_product.featured_media.alt | default: card_product.title
+            }}
+            {%- if second -%}
+              {{
+                second
+                | image_url: width: 900
+                | image_tag: loading: 'lazy', widths: '300, 450, 600, 750, 900', sizes: img_sizes, class: 'bb-pcard__img bb-pcard__img--second', alt: ''
+              }}
+            {%- endif -%}
+          {%- else -%}
+            {{ placeholder_image | default: 'product-apparel-2' | placeholder_svg_tag: 'placeholder-svg' }}
+          {%- endif -%}
+
+          {%- if card_product.available == false -%}
+            <span class="bb-pcard__tag">{{ 'products.product.sold_out' | t }}</span>
+          {%- elsif on_sale -%}
+            {%- comment -%} "Sale" only for products tagged sale; other markdowns read "Clearance" (docs/collections.md) {%- endcomment -%}
+            <span class="bb-pcard__tag">{%- render 'markdown-badge-label', product: card_product -%}</span>
+          {%- endif -%}
+        </div>
+
+        <div class="bb-pcard__info">
+          {%- if show_vendor and card_product.vendor != blank -%}
+            <p class="bb-pcard__vendor">{{ card_product.vendor | escape }}</p>
+          {%- endif -%}
+          <h3 class="bb-pcard__title">{{ card_product.title | escape }}</h3>
+          {%- assign rating = card_product.metafields.reviews.rating.value -%}
+          {%- if show_rating and rating != blank -%}
+            {%- liquid
+              assign rating_decimal = 0
+              assign decimal = rating.rating | modulo: 1
+              if decimal >= 0.3 and decimal <= 0.7
+                assign rating_decimal = 0.5
+              elsif decimal > 0.7
+                assign rating_decimal = 1
+              endif
+            -%}
+            <div class="bb-pcard__rating">
+              <span
+                class="rating"
+                role="img"
+                aria-label="{{ 'accessibility.star_reviews_info' | t: rating_value: rating, rating_max: rating.scale_max }}"
+              >
+                <span
+                  aria-hidden="true"
+                  class="rating-star"
+                  style="--rating: {{ rating.rating | floor }}; --rating-max: {{ rating.scale_max }}; --rating-decimal: {{ rating_decimal }};"
+                ></span>
+              </span>
+              <span class="bb-pcard__rating-count">
+                <span aria-hidden="true">({{ card_product.metafields.reviews.rating_count }})</span>
+                <span class="visually-hidden">{{ card_product.metafields.reviews.rating_count }} {{ 'accessibility.total_reviews' | t }}</span>
+              </span>
+            </div>
+          {%- endif -%}
+          <p class="bb-pcard__price">
+            {%- if card_product.price_varies %}From {% endif -%}
+            {%- if on_sale -%}
+              <span class="visually-hidden">Sale price</span>
+              <span class="bb-pcard__now">{{ price_now }}</span>
+              <span class="visually-hidden">Regular price</span>
+              <s class="bb-pcard__was">{{ price_was }}</s>
+            {%- else -%}
+              {{ price_now }}
+            {%- endif -%}
+          </p>
+        </div>
+      </a>
+    </div>
+  </product-component>
+{%- else -%}
+  {%- comment -%} theme-editor placeholder card {%- endcomment -%}
+  <div class="card-wrapper product-card-wrapper bb-pcard-wrapper">
+    <div class="bb-pcard">
+      <div class="bb-pcard__media" style="--bb-pcard-ratio: 4 / 5;">
+        {{ placeholder_image | default: 'product-apparel-2' | placeholder_svg_tag: 'placeholder-svg' }}
+      </div>
+      <div class="bb-pcard__info">
+        <h3 class="bb-pcard__title">{{ 'onboarding.product_title' | t }}</h3>
+        <p class="bb-pcard__price">{{ 1999 | money }}</p>
+      </div>
+    </div>
+  </div>
+{%- endif -%}
