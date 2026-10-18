@@ -95,7 +95,7 @@ Store facts (from Google Business Profile + Facebook, verified 2026-09-02):
 ## 3. Content Michele owns
 
 - [ ] Products: title, price, compare-at (for the Clearance badge; tag `sale` only for sale events), **Product type** (drives category collections), sizes as variants XXS–2X, 2+ photos each
-- [ ] About page copy (her story, faith line)
+- [x] About page copy (her story, faith line): Michele's story is in `templates/page.about.json` → Our story (2026-10-18; see `docs/pages/about.md`)
 - [ ] Contact page live (`page.contact` template)
 - [ ] Mailing list: the footer form collects subscribers; review current Shopify Messaging pricing before sending campaigns
 

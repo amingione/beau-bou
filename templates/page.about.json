@@ -21,7 +21,7 @@
         "caption": {
           "type": "caption",
           "settings": {
-            "caption": "The shop",
+            "caption": "Our story",
             "text_style": "caption-with-letter-spacing",
             "text_size": "small"
           }
@@ -29,14 +29,14 @@
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "Find your next favorite on Marion Ave",
+            "heading": "Love and kindness, always",
             "heading_size": "h1"
           }
         },
         "text": {
           "type": "text",
           "settings": {
-            "text": "<p>Explore colorful dresses, tops, bottoms, jewelry, handbags, and gifts. Visit the boutique to see the selection in person, try on a new look, and find the finishing touches.</p><p>Have a style or size in mind? Contact us before your visit and ask about current availability.</p>",
+            "text": "<p>Be-YOU-tiful Boutique by Michele was created on a girls' trip to South Carolina, visiting my daughter in the Air Force during the COVID shutdown. Five great friends, stuck in a house for five days.</p><p>I was lost. I felt like I had no purpose. I opened up to my friends about how I was feeling on that trip, and something amazing happened: they all came together and designed the store's logo, its name and the idea for the boutique.</p><p>This boutique's purpose is to uplift women of all sizes and to create a safe and loving atmosphere. Over the last 7 years the store has changed in size and location, but one thing remains: love and kindness.</p><p>I'm always looking for amazing outfits that make every customer feel special, in quality clothing that lasts. You'll find basics and standout pieces in sizes XXS to 2X, designed to make YOU feel Be-YOU-tiful!</p><p><em>— Michele</em></p>",
             "text_style": "body"
           }
         },
