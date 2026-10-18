@@ -38,13 +38,18 @@
     "geo": { "@type": "GeoCoordinates", "latitude": {{ bb_geo[0] | strip | json }}, "longitude": {{ bb_geo[1] | strip | json }} },
     {%- endif %}
     "openingHours": [
+      {%- assign bb_first = true -%}
       {%- for line in bb_hours -%}
         {%- assign l = line | strip -%}
-        {%- if l != blank -%}{% unless forloop.first %},{% endunless %}{{ l | json }}{%- endif -%}
+        {%- if l != blank -%}{% unless bb_first %},{% endunless %}{{ l | json }}{%- assign bb_first = false -%}{%- endif -%}
       {%- endfor -%}
     ],
     "areaServed": [
-      {%- for a in bb_areas -%}{% unless forloop.first %},{% endunless %}{{ a | strip | json }}{%- endfor -%}
+      {%- assign bb_first = true -%}
+      {%- for a in bb_areas -%}
+        {%- assign area = a | strip -%}
+        {%- if area != blank -%}{% unless bb_first %},{% endunless %}{{ area | json }}{%- assign bb_first = false -%}{%- endif -%}
+      {%- endfor -%}
     ],
     "sameAs": [
       {%- assign bb_first = true -%}
