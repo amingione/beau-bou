@@ -244,3 +244,21 @@
     gap: 1.4rem;
   }
 }
+
+/* Facebook reel tile (block "Facebook reel"): 9:16, as tall as the 4:5 look cards */
+.ss-hl .ss-hl__item--reel {
+  width: calc(var(--ss-card-w) * 0.703125);
+}
+
+.ss-hl-card__media--reel {
+  aspect-ratio: 9 / 16;
+  background: #000;
+}
+
+.ss-hl-card__media--reel iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}

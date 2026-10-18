@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
 """Homepage: "Shop the brands we carry" logo grid (2026-10-18), after the Collections carousel.
 
-Brands from Michele's contract: Samuel Dong, Frank Lyman, Dolcezza, Silver. The first three have
-collections; Silver links to Shopify's vendor page. Logos show as wordmarks until files are uploaded
-(Theme editor → Brand logos → each Brand → Logo). Keeps Shopify's comment header. Idempotent.
+Brands from Michele's contract: Samuel Dong, Frank Lyman, Dolcezza, Silver (Silver Jeans Co.). The first
+three have collections; Silver links to Shopify's vendor page. Each uses its official logo, recolored black. Keeps Shopify's comment header. Idempotent.
 
 Run from the repo root:  python3 scripts/declutter/apply-brands-2026-10-18.py
 """
@@ -23,10 +22,12 @@ data = json.loads(text[len(header):])
 s = data["sections"]
 
 brands = [
-    ("samuel_dong", "Samuel Dong", "samuel-dong", ""),
-    ("frank_lyman", "Frank Lyman", "frank-lyman", ""),
-    ("dolcezza", "Dolcezza", "dolcezza", ""),
-    ("silver", "Silver", "", "/collections/vendors?q=Silver"),
+    # key, name, collection, link, logo (official logos from each brand's site, recolored black;
+    # uploaded to Content → Files 2026-10-18, sources in photos-in/brand-logos/source)
+    ("samuel_dong", "Samuel Dong", "samuel-dong", "", "beyoutiful-brand-samuel-dong.png"),
+    ("frank_lyman", "Frank Lyman", "frank-lyman", "", "beyoutiful-brand-frank-lyman.png"),
+    ("dolcezza", "Dolcezza", "dolcezza", "", "beyoutiful-brand-dolcezza.png"),
+    ("silver", "Silver Jeans Co.", "", "/collections/vendors?q=Silver%20Jeans", "beyoutiful-brand-silver-jeans.png"),
 ]
 existing = s.get("brands", {}).get("blocks", {})
 s["brands"] = {
@@ -36,13 +37,13 @@ s["brands"] = {
             "type": "brand",
             "settings": {
                 "name": name,
-                # keep a logo someone already uploaded in the editor
-                "logo": existing.get(key, {}).get("settings", {}).get("logo", ""),
+                # a logo picked in the editor wins over the default file
+                "logo": existing.get(key, {}).get("settings", {}).get("logo") or f"shopify://shop_images/{logo}",
                 "collection": handle,
                 "link": link,
             },
         }
-        for key, name, handle, link in brands
+        for key, name, handle, link, logo in brands
     },
     "block_order": [b[0] for b in brands],
     "settings": {

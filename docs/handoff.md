@@ -21,6 +21,8 @@ Open **Content → Metaobjects → Look**, choose an outfit, and select **every 
 
 ### Test catalog — September 21, 2026
 
+**2026-10-18: all 18 TEST products archived** (gone from the storefront; delete them in Products → Archived when ready).
+
 Imported **18 test products / 55 variants / 18 images** into `v0m0hb-x3` using [client-test-products.csv](store/client-test-products.csv). Source photos came from the local boutique assets and remain untouched. Titles begin `TEST —`, handles begin `test-`, SKUs begin `BB-TEST-`, and all products have `test-product`, `sample`, and `new` tags. Descriptions explicitly identify fictional prices, sizes and copy. Prices range from $16 to $78; three products have compare-at prices and the `sale` tag.
 
 Eleven clothing products have S/M/L/XL variants; sandals have test sizes 6–10; the handbag and jewelry use One Size. Six supporting products were added after Amber clarified that a look must break down the complete outfit. Their isolated photos are AI-generated test illustrations based on visible pieces in the local outfit photos, not verified retail photography. Local assets are `docs/images/placeholders/test-*.png`; details and mapping are in [looks.md](looks.md). Inventory is untracked for cart testing. Products are Active and published to Online Store only. This is store-level catalog data, shared across themes; the store remains password protected and the boutique theme remains a draft.
@@ -62,7 +64,7 @@ Verified in the boutique draft: Shop All shows twelve products, New Arrivals and
 Store facts (from Google Business Profile + Facebook, verified 2026-09-02):
 
 - 264 W Marion Ave, Punta Gorda, FL 33950 · (941) 369-1628 · beyoutifulboutiquebymichele@gmail.com
-- Hours (open 7 days since 2026-09-25): Mon 11–4 · Tue–Fri 10–5 · Sat 10–4 · Sun 11–3 · In-store pickup offered
+- Hours (open 7 days since 2026-09-25): Mon 11–4 · Tue–Fri 10–5 · Sat 10–4 · Sun 10–3 · In-store pickup offered
 - Tagline: "Unique Boutique with affordable prices…from swimwear to formal wear. Size XXS to 2X. (Updated 2026-09-29: was "swimsuits to gowns … 3X".)"
 - Faith line: "Accept yourself as you were designed by God"
 - Facebook: facebook.com/MicheleMonksEnsmingerMansfield (2.1K followers, 16 reviews, 100% recommend)
