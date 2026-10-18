@@ -31,3 +31,20 @@ On phones with 2 columns the card scales down: smaller radius, compact panel, su
 
 `python3 scripts/declutter/apply-figma-cards-2026-10-18.py` sets the homepage tiles and the /collections page to
 the new cards (idempotent).
+
+## Product cards (added 2026-10-18)
+
+Amber wanted the cards on the **product** grids too, not only the collection list and category tiles.
+Card A (37:391) now has a product version: `snippets/card-product-boutique.liquid`.
+
+- **Switch:** Theme settings → Product cards → **Product card style** (`product_card_style`): Theme default /
+  Boutique. Set to Boutique. `layout/theme.liquid` loads `component-bb-cards.css` when it's on.
+- **Where it shows:** `snippets/card-product.liquid` hands off to the boutique card in every grid **without
+  quick add**: collection pages, search, the homepage product rows, related products. Look pages
+  (`main-look`, `shop-the-look`) sell pieces in place with quick add on, so they keep the default card with
+  its add-to-cart. Horizontal cards on the product page also keep the default card.
+- **Collection pages:** quick add was turned off (`templates/collection.json`), per Amber: tap the card to
+  open the product.
+- **Card:** right-aligned name (2 lines max) and price above a rounded photo in the grid's own ratio
+  (portrait by default), second photo on hover when the section allows it. The Figma dark banner shows
+  only for **Sale** ("Was $X") or **Sold out**, and the price line carries the same information for screen readers.

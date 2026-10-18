@@ -504,6 +504,17 @@
         "label": "t:settings_schema.cards.settings.style.label"
       },
       {
+        "type": "select",
+        "id": "product_card_style",
+        "label": "Product card style",
+        "options": [
+          { "value": "default", "label": "Theme default" },
+          { "value": "boutique", "label": "Boutique (Figma card)" }
+        ],
+        "default": "default",
+        "info": "Boutique: name and price above a rounded photo, Sale / Sold out banner, whole card links to the product. Used in grids without quick add; look pages keep add-to-cart."
+      },
+      {
         "type": "range",
         "id": "card_image_padding",
         "min": 0,

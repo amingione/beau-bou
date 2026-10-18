@@ -204,7 +204,8 @@
           "shadow": "#f1f1f1"
         }
       }
-    }
+    },
+    "product_card_style": "boutique"
   },
   "presets": {
     "Be-YOU-tiful": {
