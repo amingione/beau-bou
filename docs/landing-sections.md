@@ -10,11 +10,12 @@ replace the Figma Inter.
 | 1:612 "Name of brand goes here" | **Announcements**: text left, picture right, rotating | `sections/announcement-spotlight.liquid`, `assets/section-announcement-spotlight.css`, `assets/announcement-spotlight.js` |
 | 1:159 "Shop our highlights" | **Shop Styles → Highlights layout**: intro + button left, try-on looks right | `sections/shop-styles.liquid` (layout `highlights`), `assets/section-shop-styles-highlights.css`, `assets/icon-quick-view.svg` |
 | 1:135 "Collections" | **Collections carousel**: gray band, square tiles, one button | `sections/collection-carousel.liquid`, `assets/section-collection-carousel.css` |
+| Amber's reference image | **Brand logos**: big serif heading over a 6-across grid of black logos | `sections/brand-logos.liquid`, `assets/section-brand-logos.css` |
 
 Both swipeable rows share `assets/bb-scroller.js` + `assets/component-bb-scroller.css` +
 `snippets/bb-scroller-buttons.liquid` (prev/next buttons that disable at the ends, hidden on phones).
 
-Homepage order: hero → Announcements → Shop Our Highlights → Collections → Shop What's New → teal band →
+Homepage order: hero → Announcements → Shop Our Highlights → Collections → Brand logos → Shop What's New → teal band →
 Clearance → Visit Our Store. The old Shop by Category grid (`tiles_1`) is hidden, not deleted. Turn it back
 on in the theme editor if wanted. The Collections carousel can also use the category card instead of squares.
 
@@ -79,10 +80,22 @@ Pants, shorts and shirts photos weren't given their own collections: pants and s
 shirts under Tops. Those photos, plus `bottoms-alt`, `hat` (caps) and `gowns`, are converted but unused.
 Gowns stays out per Michele's contract.
 
+## Brand logos
+
+One **Brand** block per brand: name, logo, brand collection, optional link. Without a logo the brand name
+shows as a spaced serif wordmark, so the row never looks broken. "Show logos in black" (on) turns colored
+logos solid black so the set matches. 6 across on desktop, 3 on tablets, 2 on phones. Each tile links to
+the brand collection, or to the link field (e.g. `/collections/vendors?q=Silver`).
+
+Seeded with Samuel Dong, Frank Lyman, Dolcezza and Silver. **No logo files yet**: upload them in
+Content → Files (transparent PNG or SVG), then pick each one in its Brand block. Logos aren't pulled off
+the web; they come from Michele or the brands.
+
 ## Re-apply the homepage setup
 
 ```bash
 python3 scripts/declutter/apply-landing-sections-2026-10-18.py   # idempotent; keeps Shopify's comment header
+python3 scripts/declutter/apply-brands-2026-10-18.py             # adds Brand logos after Collections; keeps uploaded logos
 ```
 
 ## Gotcha found on the way

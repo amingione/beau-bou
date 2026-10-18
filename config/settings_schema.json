@@ -509,10 +509,10 @@
         "label": "Product card style",
         "options": [
           { "value": "default", "label": "Theme default" },
-          { "value": "boutique", "label": "Boutique (Figma card)" }
+          { "value": "boutique", "label": "Boutique (minimal)" }
         ],
         "default": "default",
-        "info": "Boutique: name and price above a rounded photo, Sale / Sold out banner, whole card links to the product. Used in grids without quick add; look pages keep add-to-cart."
+        "info": "Boutique: light-gray photo tile, small Sale / Sold out tag, name and price underneath; the whole card links to the product. Used in grids without quick add; look pages keep add-to-cart."
       },
       {
         "type": "range",

@@ -1,14 +1,14 @@
 {%- comment -%}
-  Boutique product card: Figma "10 Product Cards", node 37:391 (Card A), adapted for products.
-  White rounded card with the product name and price above a rounded photo; the Figma dark banner
-  appears on the photo only when the product is on sale or sold out. The whole card links to the product.
+  Boutique product card: minimal editorial card (Amber's reference, 2026-10-18).
+  Light-gray photo tile, small SALE / SOLD OUT tag top-left, serif name and price underneath, no box.
+  The whole card links to the product.
 
   Rendered by snippets/card-product.liquid when Theme settings → Product cards → Product card style is
   "Boutique" and the grid has no quick-add button (look pages, which sell pieces in place, keep the
-  default card). Styles: assets/component-bb-cards.css (loaded in layout/theme.liquid when enabled).
+  default card). Styles: assets/component-bb-product-card.css (loaded in layout/theme.liquid when enabled).
 
-  Accepts the same params card-product passes on: card_product, media_aspect_ratio, show_secondary_image,
-  show_vendor, lazy_load, section_id, placeholder_image.
+  Accepts the params card-product passes on: card_product, media_aspect_ratio, show_secondary_image,
+  show_vendor, lazy_load, section_id, placeholder_image, product_view_context.
 {%- endcomment -%}
 {%- if card_product and card_product != empty -%}
   {%- liquid
@@ -33,95 +33,86 @@
     if show_secondary_image and card_product.media[1] != null
       assign second = card_product.media[1]
     endif
-  -%}
-  <div class="card-wrapper product-card-wrapper bb-product-card-wrapper">
-    <a
-      href="{{ card_product.url }}"
-      id="CardLink-{{ section_id }}-{{ card_product.id }}"
-      class="bb-drop-card bb-product-card{% if second %} bb-product-card--hover{% endif %}"
-      style="--bb-product-ratio: {{ ratio }};"
-    >
-      <div class="bb-drop-card__info">
-        {%- if show_vendor and card_product.vendor != blank -%}
-          <p class="bb-drop-card__eyebrow">{{ card_product.vendor | escape }}</p>
-        {%- endif -%}
-        <h3 class="bb-drop-card__title bb-product-card__title">{{ card_product.title | escape }}</h3>
-        <p class="bb-product-card__price">
-          {%- if on_sale -%}
-            <span class="visually-hidden">Sale price</span>
-            {%- if card_product.price_varies %}From {% endif -%}
-            <span class="bb-product-card__now">{{ card_product.price | money }}</span>
-            <span class="visually-hidden">Regular price</span>
-            <s class="bb-product-card__was">{{ card_product.compare_at_price | money }}</s>
-          {%- else -%}
-            {%- if card_product.price_varies %}From {% endif -%}
-            {{ card_product.price | money }}
-          {%- endif -%}
-        </p>
-      </div>
 
-      <div class="bb-drop-card__media bb-product-card__media">
-        {%- if card_product.featured_media -%}
-          {{
-            card_product.featured_media
-            | image_url: width: 900
-            | image_tag:
-              loading: loading,
-              widths: '300, 450, 600, 750, 900',
-              sizes: '(min-width: 990px) calc((100vw - 13rem) / 4), (min-width: 750px) calc((100vw - 10rem) / 3), calc(100vw / 2)',
-              class: 'bb-product-card__img',
-              alt: card_product.featured_media.alt | default: card_product.title
-          }}
-          {%- if second -%}
+    # same currency display as snippets/price.liquid
+    if settings.currency_code_enabled
+      assign price_now = card_product.price | money_with_currency
+      assign price_was = card_product.compare_at_price | money_with_currency
+    else
+      assign price_now = card_product.price | money
+      assign price_was = card_product.compare_at_price | money
+    endif
+
+    assign img_sizes = '(min-width: 990px) calc((100vw - 13rem) / 4), (min-width: 750px) calc((100vw - 10rem) / 3), calc(100vw / 2)'
+  -%}
+  {%- comment -%} same wrapper as the default card, so product:view impressions still fire {%- endcomment -%}
+  <product-component view-event-payload="{{ card_product | standard_event_data: 'view', context: product_view_context | escape }}">
+    <div class="card-wrapper product-card-wrapper bb-pcard-wrapper">
+      <a
+        href="{{ card_product.url }}"
+        id="CardLink-{{ section_id }}-{{ card_product.id }}"
+        class="bb-pcard{% if second %} bb-pcard--hover{% endif %}"
+      >
+        <div class="bb-pcard__media" style="--bb-pcard-ratio: {{ ratio }};">
+          {%- if card_product.featured_media -%}
             {{
-              second
+              card_product.featured_media
               | image_url: width: 900
               | image_tag:
-                loading: 'lazy',
+                loading: loading,
                 widths: '300, 450, 600, 750, 900',
-                sizes: '(min-width: 990px) calc((100vw - 13rem) / 4), (min-width: 750px) calc((100vw - 10rem) / 3), calc(100vw / 2)',
-                class: 'bb-product-card__img bb-product-card__img--second',
-                alt: ''
+                sizes: img_sizes,
+                class: 'bb-pcard__img',
+                alt: card_product.featured_media.alt | default: card_product.title
             }}
-          {%- endif -%}
-        {%- else -%}
-          {{ placeholder_image | default: 'product-apparel-2' | placeholder_svg_tag: 'placeholder-svg' }}
-        {%- endif -%}
-
-        {%- liquid
-          assign banner_title = ''
-          assign banner_text = ''
-          if card_product.available == false
-            assign banner_title = 'Sold out'
-          elsif on_sale
-            assign banner_title = 'Sale'
-            assign banner_text = 'was'
-          endif
-        -%}
-        {%- if banner_title != blank -%}
-          {%- comment -%} the Figma Rectangle 8 asset; the same text is in the price line for screen readers {%- endcomment -%}
-          <div class="bb-drop-card__overlay" aria-hidden="true">
-            <img class="bb-drop-card__overlay-bg" src="{{ 'card-drop-overlay.svg' | asset_url }}" width="266" height="63" alt="" loading="lazy">
-            <p class="bb-drop-card__overlay-title">{{ banner_title }}</p>
-            {%- if banner_text != blank -%}
-              <p class="bb-drop-card__overlay-text">Was {{ card_product.compare_at_price | money }}</p>
+            {%- if second -%}
+              {{
+                second
+                | image_url: width: 900
+                | image_tag: loading: 'lazy', widths: '300, 450, 600, 750, 900', sizes: img_sizes, class: 'bb-pcard__img bb-pcard__img--second', alt: ''
+              }}
             {%- endif -%}
-          </div>
-        {%- endif -%}
-      </div>
-      {%- if card_product.available == false -%}<span class="visually-hidden">Sold out</span>{%- endif -%}
-    </a>
-  </div>
+          {%- else -%}
+            {{ placeholder_image | default: 'product-apparel-2' | placeholder_svg_tag: 'placeholder-svg' }}
+          {%- endif -%}
+
+          {%- if card_product.available == false -%}
+            <span class="bb-pcard__tag">Sold out</span>
+          {%- elsif on_sale -%}
+            <span class="bb-pcard__tag">Sale</span>
+          {%- endif -%}
+        </div>
+
+        <div class="bb-pcard__info">
+          {%- if show_vendor and card_product.vendor != blank -%}
+            <p class="bb-pcard__vendor">{{ card_product.vendor | escape }}</p>
+          {%- endif -%}
+          <h3 class="bb-pcard__title">{{ card_product.title | escape }}</h3>
+          <p class="bb-pcard__price">
+            {%- if card_product.price_varies %}From {% endif -%}
+            {%- if on_sale -%}
+              <span class="visually-hidden">Sale price</span>
+              <span class="bb-pcard__now">{{ price_now }}</span>
+              <span class="visually-hidden">Regular price</span>
+              <s class="bb-pcard__was">{{ price_was }}</s>
+            {%- else -%}
+              {{ price_now }}
+            {%- endif -%}
+          </p>
+        </div>
+      </a>
+    </div>
+  </product-component>
 {%- else -%}
   {%- comment -%} theme-editor placeholder card {%- endcomment -%}
-  <div class="card-wrapper product-card-wrapper bb-product-card-wrapper">
-    <div class="bb-drop-card bb-product-card" style="--bb-product-ratio: 4 / 5;">
-      <div class="bb-drop-card__info">
-        <h3 class="bb-drop-card__title bb-product-card__title">{{ 'onboarding.product_title' | t }}</h3>
-        <p class="bb-product-card__price">{{ 1999 | money }}</p>
-      </div>
-      <div class="bb-drop-card__media bb-product-card__media">
+  <div class="card-wrapper product-card-wrapper bb-pcard-wrapper">
+    <div class="bb-pcard">
+      <div class="bb-pcard__media" style="--bb-pcard-ratio: 4 / 5;">
         {{ placeholder_image | default: 'product-apparel-2' | placeholder_svg_tag: 'placeholder-svg' }}
+      </div>
+      <div class="bb-pcard__info">
+        <h3 class="bb-pcard__title">{{ 'onboarding.product_title' | t }}</h3>
+        <p class="bb-pcard__price">{{ 1999 | money }}</p>
       </div>
     </div>
   </div>
