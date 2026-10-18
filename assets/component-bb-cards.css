@@ -311,3 +311,37 @@
   margin: 0 0 3rem;
   font-size: clamp(2rem, 3.2vw, 3.6rem);
 }
+
+/* Collection card in a two-up phone grid (all-collections page, or a 2-column card grid):
+   compact so titles wrap on words instead of mid-word */
+.bb-drop-card__title {
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: manual;
+}
+
+@media screen and (max-width: 749px) {
+  .collection-list .bb-drop-card,
+  .bb-card-grid--mobile-2 .bb-drop-card {
+    --bb-card-radius: 2.4rem;
+    --bb-card-media-radius: 1.8rem;
+    gap: 0.8rem;
+    padding: 1.8rem 0.6rem 0.6rem;
+  }
+
+  .collection-list .bb-drop-card__info,
+  .bb-card-grid--mobile-2 .bb-drop-card__info {
+    padding: 0 0.8rem;
+    gap: 0.4rem;
+  }
+
+  .collection-list .bb-drop-card__title,
+  .bb-card-grid--mobile-2 .bb-drop-card__title {
+    font-size: 1.6rem;
+  }
+
+  .collection-list .bb-drop-card__eyebrow,
+  .bb-card-grid--mobile-2 .bb-drop-card__eyebrow {
+    font-size: 1rem;
+  }
+}
