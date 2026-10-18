@@ -94,6 +94,19 @@
   overflow: hidden;
 }
 
+.bb-pcard__rating {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.3rem;
+  font-size: 1.2rem;
+  color: #616161;
+}
+
+.bb-pcard__rating .rating {
+  margin: 0;
+}
+
 .bb-pcard__price {
   margin: 0.3rem 0 0;
   font-family: var(--font-body-family);

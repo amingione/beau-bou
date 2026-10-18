@@ -8,7 +8,7 @@
   default card). Styles: assets/component-bb-product-card.css (loaded in layout/theme.liquid when enabled).
 
   Accepts the params card-product passes on: card_product, media_aspect_ratio, show_secondary_image,
-  show_vendor, lazy_load, section_id, placeholder_image, product_view_context.
+  show_vendor, show_rating, lazy_load, section_id, placeholder_image, product_view_context.
 {%- endcomment -%}
 {%- if card_product and card_product != empty -%}
   {%- liquid
@@ -77,9 +77,10 @@
           {%- endif -%}
 
           {%- if card_product.available == false -%}
-            <span class="bb-pcard__tag">Sold out</span>
+            <span class="bb-pcard__tag">{{ 'products.product.sold_out' | t }}</span>
           {%- elsif on_sale -%}
-            <span class="bb-pcard__tag">Sale</span>
+            {%- comment -%} "Sale" only for products tagged sale; other markdowns read "Clearance" (docs/collections.md) {%- endcomment -%}
+            <span class="bb-pcard__tag">{%- render 'markdown-badge-label', product: card_product -%}</span>
           {%- endif -%}
         </div>
 
@@ -88,6 +89,35 @@
             <p class="bb-pcard__vendor">{{ card_product.vendor | escape }}</p>
           {%- endif -%}
           <h3 class="bb-pcard__title">{{ card_product.title | escape }}</h3>
+          {%- assign rating = card_product.metafields.reviews.rating.value -%}
+          {%- if show_rating and rating != blank -%}
+            {%- liquid
+              assign rating_decimal = 0
+              assign decimal = rating.rating | modulo: 1
+              if decimal >= 0.3 and decimal <= 0.7
+                assign rating_decimal = 0.5
+              elsif decimal > 0.7
+                assign rating_decimal = 1
+              endif
+            -%}
+            <div class="bb-pcard__rating">
+              <span
+                class="rating"
+                role="img"
+                aria-label="{{ 'accessibility.star_reviews_info' | t: rating_value: rating, rating_max: rating.scale_max }}"
+              >
+                <span
+                  aria-hidden="true"
+                  class="rating-star"
+                  style="--rating: {{ rating.rating | floor }}; --rating-max: {{ rating.scale_max }}; --rating-decimal: {{ rating_decimal }};"
+                ></span>
+              </span>
+              <span class="bb-pcard__rating-count">
+                <span aria-hidden="true">({{ card_product.metafields.reviews.rating_count }})</span>
+                <span class="visually-hidden">{{ card_product.metafields.reviews.rating_count }} {{ 'accessibility.total_reviews' | t }}</span>
+              </span>
+            </div>
+          {%- endif -%}
           <p class="bb-pcard__price">
             {%- if card_product.price_varies %}From {% endif -%}
             {%- if on_sale -%}

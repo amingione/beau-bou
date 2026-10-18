@@ -39,7 +39,7 @@ product card now follows it: `snippets/card-product-boutique.liquid` + `assets/c
 The collection-list and category cards above are unchanged (`component-bb-cards.css` is back to its main version).
 
 - **Look:** light-gray photo tile (`#f5f5f5`), portrait 4:5 by default (or the grid's square/adapt ratio),
-  no card box and no rounded corners. Small square **SALE** or **SOLD OUT** tag top-left, white on warm brown
+  no card box and no rounded corners. Small square tag top-left: **SOLD OUT**, or for a markdown **SALE** (tagged `sale`) / **CLEARANCE** (everything else, via `snippets/markdown-badge-label.liquid`, same as the product page), white on warm brown
   `#6e4f45` (8:1 contrast; override with `--bb-pcard-tag-bg`). Name below in the heading serif (Playfair,
   2 lines max), price in Poppins, the old price struck through in `#767676` when on sale. Hover: second photo
   if the section allows it, otherwise a slight zoom (skipped for reduced motion), and the name underlines.
@@ -52,4 +52,4 @@ The collection-list and category cards above are unchanged (`component-bb-cards.
 - **Collection pages:** quick add is off (`templates/collection.json`): tap the card to open the product.
 - **Kept from the default card:** the `<product-component>` wrapper (product view analytics still fire),
   the store's "show currency codes" setting, "From" for products whose variants vary in price, and
-  screen-reader labels for sale and regular price.
+  screen-reader labels for sale and regular price, and star ratings when the section's "Show product rating" is on and a reviews app fills `reviews.rating`.
