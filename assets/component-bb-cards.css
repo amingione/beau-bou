@@ -100,12 +100,14 @@
 .bb-drop-card__overlay-title {
   position: absolute;
   left: 1.3rem;
-  top: 0.65rem;
+  top: 0.9rem;
   right: 0.8rem;
   margin: 0;
   font-family: var(--font-body-family);
-  font-size: 2.4rem;
+  /* Figma uses condensed Abel at 24px; Poppins is wider, so 18px fits the same ~23-character line */
+  font-size: 1.8rem;
   line-height: 1.2;
+  letter-spacing: -0.01em;
   color: #fcd986;
   white-space: nowrap;
   overflow: hidden;
