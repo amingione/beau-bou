@@ -4,7 +4,7 @@
 
 **Scope confirmed by Amber:** Michele owns products, prices, variants, photos and inventory. Our work is the reusable boutique templates, app configuration, navigation and collection structure. Catalog entry is not a prerequisite for completing that setup. On September 21, Amber explicitly authorized a separate fictional catalog for testing; the details below do not replace Michele’s responsibility for real merchandise.
 
-**Correct store:** `v0m0hb-x3` (served at `shopbe-you-tifulboutique.myshopify.com`). **Correction 2026-10-16:** `shopbeyoutifulboutique.com` is attached to a different store, `xapm2f-fr` (old image-less theme copy), not to `v0m0hb-x3`. Move the domain before launch; see [design-clean-pass.md](design-clean-pass.md). The live theme is now `beau-bou/main` (`192420839788`), synced from GitHub `main`. **Update 2026-09-25:** `shopify theme list -s v0m0hb-x3` shows `be-you-tiful-1-2-0` (`192212107628`) as **[live]** and Horizon unpublished, but `https://shopbeyoutifulboutique.com` still redirects to `/password`, so nothing is public. (Earlier notes below that say "draft" or "Horizon live" predate this.) Do not modify the old `kw59hc-k1` development store.
+**Stores (confirmed by Amber 2026-10-18):** `v0m0hb-x3` (`shopbe-you-tifulboutique.myshopify.com`) is **Amber's test store**, used to preview the theme and app before handing them to Michele. Its published theme is `beau-bou/main` (`192420839788`), synced from GitHub `main`. **`xapm2f-fr` is Michele's own store**, and `shopbeyoutifulboutique.com` is connected there, correctly. Michele's store still runs an older theme copy (`be-you-tiful-boutique-theme-1-2-0`); the finished theme goes there at handoff. (A 2026-10-16 note claiming the domain needed to move to `v0m0hb-x3` was wrong and has been removed.) **Update 2026-09-25:** `shopify theme list -s v0m0hb-x3` shows `be-you-tiful-1-2-0` (`192212107628`) as **[live]** and Horizon unpublished, but `https://shopbeyoutifulboutique.com` still redirects to `/password`, so nothing is public. (Earlier notes below that say "draft" or "Horizon live" predate this.) Do not modify the old `kw59hc-k1` development store.
 
 ### Adding a product
 
@@ -76,7 +76,8 @@ Store facts (from Google Business Profile + Facebook, verified 2026-09-02):
 - [ ] Settings → Payments: Shopify Payments; enable Shop Pay; consider Sezzle/Afterpay (reference offers Sezzle)
 - [ ] Settings → Policies: generate Refund, Privacy, Terms, Shipping (theme footer links to these)
 - [ ] Settings → Customer accounts: **New customer accounts** on (header account icon)
-- [ ] Domain: move `shopbeyoutifulboutique.com` from store `xapm2f-fr` to `v0m0hb-x3` (Settings → Domains), then verify
+- [x] Domain: `shopbeyoutifulboutique.com` is connected to Michele's store `xapm2f-fr` (correct; nothing to move)
+- [ ] Handoff: install the finished theme (and the app, if used) on Michele's store `xapm2f-fr`
 
 ## 2. Theme install
 
@@ -113,7 +114,7 @@ Store facts (from Google Business Profile + Facebook, verified 2026-09-02):
 
 ## Launch preparation — 2026-09-20
 
-- [VERIFIED] New client store: `v0m0hb-x3`; domain: `shopbeyoutifulboutique.com`. Store was private, with Horizon as its only installed theme at inspection. The custom v1.1 theme remains in development store `kw59hc-k1`.
+- [VERIFIED] Test store: `v0m0hb-x3` (Amber's, for previewing before handoff). Michele's own store is `xapm2f-fr`, with domain `shopbeyoutifulboutique.com` (corrected 2026-10-18). Store was private, with Horizon as its only installed theme at inspection. The custom v1.1 theme remains in development store `kw59hc-k1`.
 - [DECIDED] Amber requested completion today and supplied LIKEtoKNOW.it references for the page reached from a homepage banner. References are in `docs/images/inspo- banner routed page/`. The homepage now links to `/pages/shop-the-look`, retaining the shoppable outfit/video section.
 - [VERIFIED] Restored 75 missing local theme files from the September 18 Shopify export, preserving four locally differing templates. Rebuilt the empty theme settings schema from official Shopify Dawn v16.0.0 and restored the three boutique-specific styling controls.
 - [VERIFIED] Prepared `be-you-tiful-1.2.0.zip`; final Shopify Theme Check returned zero errors and nine warnings in upstream Dawn code. Browser rendering and mobile interactions remain untested until import.

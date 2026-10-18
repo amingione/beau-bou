@@ -63,13 +63,11 @@ python3 scripts/declutter/apply-2026-10-16.py   # idempotent JSON edits (keeps S
 python3 scripts/declutter/trim-logo.py docs/client-portal/brand/png-source/beyoutiful-lockup-black-source.png docs/client-portal/brand/beyoutiful-lockup
 ```
 
-## Domain warning (found 2026-10-16)
+## Stores (corrected 2026-10-18)
 
-`shopbeyoutifulboutique.com` is **not** attached to the store that holds this build (`v0m0hb-x3`). It
-serves a third store, `xapm2f-fr`, running an old image-less copy of the theme ("be-you-tiful-boutique-theme-1-2-0":
-placeholder art, default Home/Catalog/Contact menu, old "264-A" address and "XXS–3X"). The real build is at
-`shopbe-you-tifulboutique.myshopify.com`. Before launch, either move the domain to `v0m0hb-x3` or transfer that
-store's ownership to Michele and remove the domain from `xapm2f-fr`. Check what Michele has been looking at.
+- `v0m0hb-x3` (`shopbe-you-tifulboutique.myshopify.com`) is **Amber's test store**. Everything in this pass was built and previewed there.
+- `xapm2f-fr` is **Michele's own store**, and `shopbeyoutifulboutique.com` is connected to it, correctly. It still runs an older theme copy until handoff.
+- An earlier version of this section said the domain had to move to `v0m0hb-x3`. That was wrong. Nothing needs to move; at handoff, the finished theme goes to `xapm2f-fr`.
 
 ## Update 2026-10-18: storefront hero restored
 
