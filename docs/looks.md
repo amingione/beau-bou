@@ -2,6 +2,16 @@
 
 Last updated: 2026-09-28
 
+## New pieces — 2026-10-18 (later)
+
+From `photos-in/new peices` (Amber's edits, boutique-background versions): 6 more Active Looks:
+`abstract-print-jacket-navy-maxi`, `cutwork-jeans`, `orange-pink-printed-maxi`,
+`pink-print-tee-charcoal-pants`, `red-ruffle-top-jeans`, `red-ruffle-top-white-lace-pants`
+(files `beyoutiful-tryon-*.webp`). Highlights now shows up to 14 looks
+(`scripts/declutter/apply-new-pieces-2026-10-18.py`). The baby books photo is the Baby & Toddler collection
+image (`beyoutiful-category-baby-toddler.webp`). The product-only shots (lace pants on hangers, puzzle,
+sandals) and the studio versions stay in the folder for the real products.
+
 ## Try-on photos swapped — 2026-10-18
 
 Amber didn't want the old runway cutouts or raw selfie try-ons on the site. Her polished try-ons

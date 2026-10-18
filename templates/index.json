@@ -38,7 +38,7 @@
       "settings": {
         "heading": "Shop Our Highlights",
         "show_filters": true,
-        "max_looks": 10,
+        "max_looks": 14,
         "columns": 4,
         "empty_text": "Love this look? Call or stop in and we'll pull it in your size.",
         "empty_label": "Ask about this look",
@@ -49,7 +49,7 @@
         "padding_top": 60,
         "padding_bottom": 60,
         "layout": "highlights",
-        "carousel_count": 10,
+        "carousel_count": 16,
         "scroll_seconds": 50,
         "intro": "<p>Try-on looks styled right here in the boutique. Tap one to shop every piece, plus a few that pair with it.</p>",
         "badge_label": "Shop the look",
@@ -496,7 +496,7 @@
           "type": "collection",
           "settings": {
             "collection": "baby-toddler",
-            "image": "",
+            "image": "shopify://shop_images/beyoutiful-category-baby-toddler.webp",
             "label": "",
             "link": ""
           }
