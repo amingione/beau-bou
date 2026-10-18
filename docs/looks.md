@@ -2,6 +2,26 @@
 
 Last updated: 2026-09-28
 
+## Try-on photos swapped — 2026-10-18
+
+Amber didn't want the old runway cutouts or raw selfie try-ons on the site. Her polished try-ons
+(`photos-in/looks-haul`: blurred background, 9:16) replace them.
+
+- **Store (test store `v0m0hb-x3`):** 7 new Look entries, each with its own image, all **Active**:
+  `abstract-print-moto-jacket`, `black-floral-ruched-maxi`, `striped-patchwork-tank-dress`,
+  `navy-botanical-jumpsuit`, `tropical-bell-sleeve-dress`, `coral-puff-sleeve-mini`, `white-lace-fit-flare`.
+  Files are `beyoutiful-tryon-*.webp` in Content → Files, with alt text. The 4 older Looks
+  (`orange-floral-dress`, `navy-white-maxi`, `blue-ruffle-blouse`, `blue-green-dress`) are set to
+  **Draft**: hidden, not deleted.
+- **Theme:** Highlights' Extra photo blocks (6 raw `try-on-*.jpg`) are replaced by one: the second fit of
+  the tropical dress (`…-shift-dress-b.webp`), linking to that dress's look page. Run
+  `python3 scripts/declutter/apply-tryons-2026-10-18.py` to re-apply.
+- **Not linked yet:** the new Looks have no **Pieces** or **Goes with** products, because the real
+  products aren't in the store. Until they are, each look page shows the template's empty state:
+  "We Sold Out! / When it's gone, it's GONE!" with the "Limited Summer Collection" badge. Amber chose to keep
+  that wording (2026-10-18).
+  Link the pieces under Content → Metaobjects → Look once the products exist.
+
 ## Shop Styles grid + pop-up — 2026-09-28
 
 Amber picked **Option D** from the design canvas: keep the live header and hero, and replace the homepage runway slideshow with a LIKEtoKNOW.it-style grid.
