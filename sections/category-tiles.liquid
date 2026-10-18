@@ -1,4 +1,8 @@
 {{ 'section-category-tiles.css' | asset_url | stylesheet_tag }}
+{%- assign card_style = section.settings.tile_style | default: 'classic' -%}
+{%- if card_style == 'card' -%}
+  {{ 'component-bb-cards.css' | asset_url | stylesheet_tag }}
+{%- endif -%}
 
 {%- style -%}
   .section-{{ section.id }}-padding {
@@ -15,6 +19,7 @@
 
   #Tiles-{{ section.id }} {
     --tiles-columns: {{ section.settings.columns_desktop }};
+    --bb-card-columns: {{ section.settings.columns_desktop }};
     --tile-ratio: {{ section.settings.image_ratio }};
   }
 {%- endstyle -%}
@@ -26,7 +31,7 @@
     </div>
   {%- endif -%}
 
-  <ul class="category-tiles__grid category-tiles__grid--mobile-{{ section.settings.columns_mobile }}" role="list">
+  <ul class="{% if card_style == 'card' %}bb-card-grid bb-card-grid--mobile-{{ section.settings.columns_mobile }}{% else %}category-tiles__grid category-tiles__grid--mobile-{{ section.settings.columns_mobile }}{% endif %}" role="list">
     {%- for block in section.blocks -%}
       {%- liquid
         assign collection = block.settings.collection
@@ -39,6 +44,20 @@
         assign caption = block.settings.caption | default: collection.title
         assign link = block.settings.link | default: collection.url
       -%}
+      {%- if card_style == 'card' -%}
+        <li {{ block.shopify_attributes }}>
+          {%- render 'card-category',
+            image: image,
+            title: caption,
+            link: link,
+            tag: block.settings.tag,
+            subtitle: block.settings.subtitle,
+            button_label: block.settings.button_label,
+            index: forloop.index
+          -%}
+        </li>
+        {%- continue -%}
+      {%- endif -%}
       <li class="category-tiles__item" {{ block.shopify_attributes }}>
         <a href="{{ link | default: '#' }}" class="category-tiles__link">
           <div class="category-tiles__frame bb-frame">
@@ -76,6 +95,11 @@
   "disabled_on": { "groups": ["header", "footer"] },
   "settings": [
     { "type": "text", "id": "title", "label": "Heading" },
+    { "type": "select", "id": "tile_style", "default": "classic", "label": "Tile style",
+      "options": [
+        { "value": "classic", "label": "Classic: photo with caption" },
+        { "value": "card", "label": "Card: rounded photo with frosted label and button" }
+      ] },
     { "type": "range", "id": "columns_desktop", "min": 2, "max": 4, "step": 1, "default": 3, "label": "Columns on desktop" },
     { "type": "select", "id": "columns_mobile", "default": "1", "label": "Columns on mobile",
       "options": [ { "value": "1", "label": "1" }, { "value": "2", "label": "2" } ] },
@@ -99,7 +123,11 @@
         { "type": "collection", "id": "collection", "label": "Collection", "info": "Image, caption and link fall back to this collection." },
         { "type": "image_picker", "id": "image", "label": "Image override" },
         { "type": "text", "id": "caption", "label": "Caption override" },
-        { "type": "url", "id": "link", "label": "Link override" }
+        { "type": "url", "id": "link", "label": "Link override" },
+        { "type": "header", "content": "Card style only" },
+        { "type": "text", "id": "tag", "label": "Tag", "info": "Small gold pill, e.g. Clearance. Leave blank to hide." },
+        { "type": "text", "id": "subtitle", "label": "Subtitle", "info": "Small line under the name. Leave blank to hide." },
+        { "type": "text", "id": "button_label", "label": "Button label", "placeholder": "Shop now" }
       ]
     }
   ],

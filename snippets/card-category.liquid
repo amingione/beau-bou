@@ -1,0 +1,53 @@
+{%- comment -%}
+  Category card: Figma "10 Product Cards", node 37:211 (photo, tag pill, frosted panel, pill button).
+  Styles: assets/component-bb-cards.css (load it in the calling section).
+
+  Accepts:
+  - image: image object (required for a photo; placeholder otherwise)
+  - title: string (shown uppercase in the panel)
+  - link: url
+  - tag: string, optional (e.g. "Clearance"), shown as the gold pill
+  - subtitle: string, optional (small line under the title)
+  - button_label: string, optional (defaults to "Shop now")
+  - sizes: sizes attribute for the image, optional
+  - index: number for the placeholder illustration, optional
+
+  Usage:
+  {% render 'card-category', image: image, title: caption, link: link, tag: block.settings.tag %}
+{%- endcomment -%}
+{%- liquid
+  assign button_text = button_label | default: 'Shop now'
+  assign image_sizes = sizes | default: '(min-width: 990px) calc((100vw - 10rem) / 3), (min-width: 750px) calc((100vw - 8rem) / 2), 100vw'
+  assign placeholder_index = index | default: 1
+-%}
+<a href="{{ link | default: '#' }}" class="bb-category-card">
+  <div class="bb-category-card__media">
+    {%- if image != blank -%}
+      {{
+        image
+        | image_url: width: 1200
+        | image_tag:
+          loading: 'lazy',
+          widths: '360, 540, 720, 900, 1200',
+          sizes: image_sizes,
+          alt: title
+      }}
+    {%- else -%}
+      {{ 'collection-' | append: placeholder_index | placeholder_svg_tag: 'placeholder-svg' }}
+    {%- endif -%}
+  </div>
+
+  {%- if tag != blank -%}
+    <span class="bb-category-card__tag">{{ tag | escape }}</span>
+  {%- endif -%}
+
+  <div class="bb-category-card__panel">
+    {%- if title != blank -%}
+      <h3 class="bb-category-card__title">{{ title | escape }}</h3>
+    {%- endif -%}
+    {%- if subtitle != blank -%}
+      <p class="bb-category-card__subtitle">{{ subtitle | escape }}</p>
+    {%- endif -%}
+    <span class="bb-category-card__button">{{ button_text | escape }}</span>
+  </div>
+</a>

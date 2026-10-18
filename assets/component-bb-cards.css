@@ -1,0 +1,313 @@
+/* =========================================================
+   Boutique cards, from Figma "10 Product Cards" (file a8D9PKsYgZQSIIEq4gTD8d)
+   .bb-drop-card     node 37:391  collection card (title, eyebrow, image, overlay strip)
+   .bb-category-card node 37:211  category card (photo, tag pill, frosted panel, pill button)
+   Type uses the theme fonts (Playfair / Poppins) instead of the Figma community fonts.
+   ========================================================= */
+
+.bb-drop-card,
+.bb-category-card {
+  --bb-card-radius: 4.2rem;
+  --bb-card-media-radius: 3.2rem;
+  --bb-card-shadow: 0 6rem 10rem rgba(72, 72, 72, 0.16);
+  display: block;
+  position: relative;
+  text-decoration: none;
+  color: inherit;
+  border-radius: var(--bb-card-radius);
+  box-shadow: var(--bb-card-shadow);
+  overflow: hidden;
+}
+
+.bb-drop-card:focus-visible,
+.bb-category-card:focus-visible {
+  outline: 2px solid rgb(var(--color-foreground));
+  outline-offset: 4px;
+}
+
+/* ---------- Card A: collection / drop (37:391) ---------- */
+.bb-drop-card {
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1rem;
+  padding: 3rem 1rem 1rem;
+}
+
+.bb-drop-card__info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.8rem;
+  width: 100%;
+  padding: 0 2rem;
+  text-align: right;
+}
+
+.bb-drop-card__title {
+  margin: 0;
+  font-family: var(--font-heading-family);
+  font-weight: 700;
+  font-size: 2.4rem;
+  line-height: 1.2;
+  color: #262626;
+  letter-spacing: 0;
+}
+
+.bb-drop-card__eyebrow {
+  margin: 0;
+  font-family: var(--font-body-family);
+  font-size: 1.1rem;
+  line-height: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: rgba(38, 38, 38, 0.4);
+}
+
+.bb-drop-card__media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 330 / 213;
+  border-radius: var(--bb-card-media-radius);
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.bb-drop-card__media > img,
+.bb-drop-card__media > .placeholder-svg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Overlay strip: the Figma Rectangle 8 asset (266x63) at its own size, 11px in, 10px up */
+.bb-drop-card__overlay {
+  position: absolute;
+  left: 1.1rem;
+  bottom: 1rem;
+  width: 266px;
+  height: 63px;
+  max-width: calc(100% - 2.2rem);
+}
+
+.bb-drop-card__overlay-bg {
+  position: absolute;
+  inset: 0;
+}
+
+.bb-drop-card__overlay-title {
+  position: absolute;
+  left: 1.3rem;
+  top: 0.65rem;
+  right: 0.8rem;
+  margin: 0;
+  font-family: var(--font-body-family);
+  font-size: 2.4rem;
+  line-height: 1.2;
+  color: #fcd986;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bb-drop-card__overlay-text {
+  position: absolute;
+  left: 3.2rem;
+  top: 3.6rem;
+  right: 0.8rem;
+  margin: 0;
+  font-family: var(--font-body-family);
+  font-size: 1.2rem;
+  line-height: normal;
+  letter-spacing: 0.13em;
+  color: #ffffff;
+  text-shadow: 0 0.4rem 0.9rem rgba(0, 0, 0, 0.25);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ---------- Card B: category (37:211) ---------- */
+.bb-category-card {
+  background: #ffffff;
+  aspect-ratio: 330 / 500;
+}
+
+.bb-category-card__media,
+.bb-category-card__media > img,
+.bb-category-card__media > .placeholder-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.bb-category-card__tag {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  padding: 0.5rem 1rem;
+  border-radius: 10rem;
+  background: #ac7a00;
+  color: #ffffff;
+  font-family: var(--font-body-family);
+  font-weight: 700;
+  font-size: 1.2rem;
+  line-height: normal;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.bb-category-card__panel {
+  position: absolute;
+  left: 1rem;
+  right: 1rem;
+  bottom: 1.4rem;
+  min-height: 14.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 1.8rem 2rem 1.3rem;
+  border-radius: var(--bb-card-media-radius);
+  background: rgba(61, 61, 61, 0.4);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  color: #ffffff;
+  text-align: center;
+}
+
+.bb-category-card__title {
+  margin: 0;
+  font-family: var(--font-heading-family);
+  font-size: 2.4rem;
+  line-height: 1;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.bb-category-card__subtitle {
+  margin: 1.9rem 0 0;
+  font-family: var(--font-body-family);
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1;
+  letter-spacing: 0.17em;
+  color: #ffffff;
+}
+
+.bb-category-card__button {
+  margin-top: auto;
+  display: inline-block;
+  min-width: 15.9rem;
+  padding: 1rem 2rem;
+  border-radius: 8rem;
+  background: #efefef;
+  color: rgba(27, 31, 38, 0.72);
+  font-family: var(--font-heading-family);
+  font-size: 1.4rem;
+  line-height: normal;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: background-color 0.2s ease;
+}
+
+.bb-category-card:hover .bb-category-card__button {
+  background: #ffffff;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .bb-category-card__media > img,
+  .bb-drop-card__media > img {
+    transition: transform 0.6s ease;
+  }
+
+  .bb-category-card:hover .bb-category-card__media > img,
+  .bb-drop-card:hover .bb-drop-card__media > img {
+    transform: scale(1.03);
+  }
+}
+
+/* ---------- Grids that hold the cards ---------- */
+.bb-card-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(var(--bb-card-columns, 3), minmax(0, 1fr));
+  gap: 4rem 3.2rem;
+}
+
+/* room for the deep Figma shadow so cards don't clip each other */
+.bb-card-grid > li {
+  padding-bottom: 2rem;
+}
+
+@media screen and (max-width: 989px) {
+  .bb-card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 3.2rem 2rem;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .bb-card-grid {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 38rem;
+    margin: 0 auto;
+  }
+
+  .bb-card-grid--mobile-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: none;
+    gap: 2rem 1.2rem;
+  }
+
+  /* two-up on phones: scale the category card down so the panel still fits */
+  .bb-card-grid--mobile-2 .bb-category-card {
+    --bb-card-radius: 2.4rem;
+    --bb-card-media-radius: 1.8rem;
+  }
+
+  .bb-card-grid--mobile-2 .bb-category-card__panel {
+    left: 0.6rem;
+    right: 0.6rem;
+    bottom: 0.6rem;
+    min-height: 0;
+    padding: 1.2rem 0.8rem 1rem;
+  }
+
+  .bb-card-grid--mobile-2 .bb-category-card__title {
+    font-size: 1.5rem;
+    letter-spacing: 0.1em;
+  }
+
+  .bb-card-grid--mobile-2 .bb-category-card__subtitle {
+    display: none;
+  }
+
+  .bb-card-grid--mobile-2 .bb-category-card__button {
+    margin-top: 1rem;
+    min-width: 0;
+    padding: 0.7rem 1.4rem;
+    font-size: 1.1rem;
+  }
+
+  .bb-card-grid--mobile-2 .bb-category-card__tag {
+    top: 1rem;
+    left: 1rem;
+    font-size: 1rem;
+  }
+}
+
+/* Section heading for the Collection cards section */
+.bb-cards__title {
+  text-align: center;
+  margin: 0 0 3rem;
+  font-size: clamp(2rem, 3.2vw, 3.6rem);
+}

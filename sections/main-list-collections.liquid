@@ -1,5 +1,8 @@
 {{ 'component-card.css' | asset_url | stylesheet_tag }}
 {{ 'section-collection-list.css' | asset_url | stylesheet_tag }}
+{%- if section.settings.card_style == 'drop' -%}
+  {{ 'component-bb-cards.css' | asset_url | stylesheet_tag }}
+{%- endif -%}
 
 <div class="page-width">
   <h1 class="title title--primary inline-richtext{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
@@ -36,11 +39,15 @@
             style="--animation-order: {{ forloop.index }};"
           {% endif %}
         >
-          {% render 'card-collection',
-            card_collection: collection,
-            media_aspect_ratio: section.settings.image_ratio,
-            columns: 3
-          %}
+          {%- if section.settings.card_style == 'drop' -%}
+            {% render 'card-collection-drop', card_collection: collection, index: forloop.index %}
+          {%- else -%}
+            {% render 'card-collection',
+              card_collection: collection,
+              media_aspect_ratio: section.settings.image_ratio,
+              columns: 3
+            %}
+          {%- endif -%}
         </li>
       {%- endfor -%}
     </ul>
@@ -57,6 +64,16 @@
       "id": "title",
       "label": "t:sections.main-list-collections.settings.title.label",
       "default": "t:sections.main-list-collections.settings.title.default"
+    },
+    {
+      "type": "select",
+      "id": "card_style",
+      "default": "default",
+      "label": "Card style",
+      "options": [
+        { "value": "default", "label": "Standard" },
+        { "value": "drop", "label": "Boutique card (title, item count, rounded photo)" }
+      ]
     },
     {
       "type": "select",
