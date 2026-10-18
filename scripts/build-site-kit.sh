@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Build the complete Be-YOU-tiful site kit: theme zip + store Files + products CSV + looks + policies.
+# Build the complete Be-YOU-tiful site kit: theme zip + store Files + collection images list + looks + policies.
 # Usage: bash scripts/build-site-kit.sh      → dist/Be-YOU-tiful-Boutique-site-kit.zip
 # Needs: Shopify CLI (npx), curl, zip. Docs: scripts/site-kit/README.md
 set -euo pipefail
@@ -10,7 +10,7 @@ KIT="$OUT/Be-YOU-tiful-Boutique-site-kit"
 NAME="Be-YOU-tiful-Boutique-site-kit.zip"
 
 rm -rf "$KIT" "$OUT/$NAME"
-mkdir -p "$KIT"/{1-theme,2-store-files,3-products,4-looks,5-policies}
+mkdir -p "$KIT"/{1-theme,2-store-files,3-collection-images,4-looks,5-policies}
 
 echo "→ Packaging theme"
 ( cd "$ROOT" && npx -y @shopify/cli@3 theme package --path . >/dev/null )
@@ -25,8 +25,9 @@ done
 cp "$ROOT/docs/client-portal/brand/png/favicon-512.png" "$KIT/2-store-files/beyoutiful-favicon-512.png"
 
 echo "→ Products, looks, policies"
-cp "$ROOT/docs/store/client-test-products.csv" "$KIT/3-products/products.csv"
-cp "$ROOT/docs/looks/looks.json" "$KIT/4-looks/looks.json"
+# TEST products were archived 2026-10-18; collection images and looks come from the image export manifests
+cp "$ROOT/scripts/site-kit/collection-images.csv" "$KIT/3-collection-images/"
+cp "$ROOT/scripts/site-kit/looks.csv" "$KIT/4-looks/"
 cp "$ROOT/docs/policies/PASTE-INTO-SHOPIFY.md" "$KIT/5-policies/"
 cp "$ROOT/scripts/site-kit/README.md" "$KIT/README.md"
 

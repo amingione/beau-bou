@@ -1519,8 +1519,38 @@
         "id": "bb_meta_description",
         "label": "Default description",
         "info": "Aim for 120–155 characters.",
-        "default": "Women's clothing, swim, dresses, jewelry and handbags in sizes XXS to 2X. Shop online or visit Be-YOU-tiful Boutique at 264 W Marion Ave, Punta Gorda, FL."
-      }
+        "default": "Women's clothing, swim, dresses, gowns and jewelry in sizes XXS to 2X. Shop online or visit Be-YOU-tiful Boutique at 264 W Marion Ave, Punta Gorda, FL."
+      },
+      {
+        "type": "image_picker",
+        "id": "bb_share_image",
+        "label": "Default share image",
+        "info": "Shown when a link is shared on Facebook, Messages, etc. and the page has no image of its own. 1200 × 630 works best."
+      },
+      {
+        "type": "header",
+        "content": "Store details for Google"
+      },
+      {
+        "type": "paragraph",
+        "content": "Tells Google the boutique's address, hours and profiles (structured data on the homepage, About, Visit Us and Contact). Keep these the same as the Google Business Profile."
+      },
+      { "type": "text", "id": "bb_store_name", "label": "Business name", "default": "Be-YOU-tiful Boutique by Michele" },
+      { "type": "text", "id": "bb_store_street", "label": "Street address", "default": "264 W Marion Ave" },
+      { "type": "text", "id": "bb_store_city", "label": "City", "default": "Punta Gorda" },
+      { "type": "text", "id": "bb_store_region", "label": "State", "default": "FL" },
+      { "type": "text", "id": "bb_store_zip", "label": "ZIP code", "default": "33950" },
+      { "type": "text", "id": "bb_store_phone", "label": "Phone", "default": "+1-941-369-1628" },
+      { "type": "text", "id": "bb_store_geo", "label": "Map pin (latitude, longitude)", "default": "26.93458, -82.05233" },
+      {
+        "type": "textarea",
+        "id": "bb_store_hours",
+        "label": "Hours, one line per day range",
+        "info": "Format: Mo 11:00-16:00. Days: Mo Tu We Th Fr Sa Su; ranges like Tu-Fr.",
+        "default": "Mo 11:00-16:00\nTu-Fr 10:00-17:00\nSa 10:00-16:00\nSu 10:00-15:00"
+      },
+      { "type": "url", "id": "bb_google_profile", "label": "Google Business Profile link", "info": "Shown as \"Reviews on Google\" in Visit Our Store." },
+      { "type": "text", "id": "bb_store_area", "label": "Areas served", "default": "Punta Gorda, Port Charlotte, North Port, Englewood, Fort Myers, Cape Coral", "info": "Comma separated." }
     ]
   }
 ]

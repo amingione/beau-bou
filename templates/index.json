@@ -38,7 +38,7 @@
       "settings": {
         "heading": "Shop Our Highlights",
         "show_filters": true,
-        "max_looks": 10,
+        "max_looks": 14,
         "columns": 4,
         "empty_text": "Love this look? Call or stop in and we'll pull it in your size.",
         "empty_label": "Ask about this look",
@@ -49,13 +49,20 @@
         "padding_top": 60,
         "padding_bottom": 60,
         "layout": "highlights",
-        "carousel_count": 10,
+        "carousel_count": 16,
         "scroll_seconds": 50,
         "intro": "<p>Try-on looks styled right here in the boutique. Tap one to shop every piece, plus a few that pair with it.</p>",
         "badge_label": "Shop the look",
         "badge_color": "#e60023"
       },
       "blocks": {
+        "fb_reel": {
+          "type": "reel",
+          "settings": {
+            "url": "https://www.facebook.com/reel/1547811980446538/",
+            "title": ""
+          }
+        },
         "tropical_second_fit": {
           "type": "photo",
           "settings": {
@@ -66,6 +73,7 @@
         }
       },
       "block_order": [
+        "fb_reel",
         "tropical_second_fit"
       ]
     },
@@ -297,7 +305,7 @@
           "type": "hours",
           "settings": {
             "days": "Sunday",
-            "hours": "11AM – 3PM"
+            "hours": "10AM – 3PM"
           }
         }
       },
@@ -488,7 +496,7 @@
           "type": "collection",
           "settings": {
             "collection": "baby-toddler",
-            "image": "",
+            "image": "shopify://shop_images/beyoutiful-category-baby-toddler.webp",
             "label": "",
             "link": ""
           }
@@ -529,7 +537,7 @@
           "type": "brand",
           "settings": {
             "name": "Samuel Dong",
-            "logo": "",
+            "logo": "shopify://shop_images/beyoutiful-brand-samuel-dong.png",
             "collection": "samuel-dong",
             "link": ""
           }
@@ -538,7 +546,7 @@
           "type": "brand",
           "settings": {
             "name": "Frank Lyman",
-            "logo": "",
+            "logo": "shopify://shop_images/beyoutiful-brand-frank-lyman.png",
             "collection": "frank-lyman",
             "link": ""
           }
@@ -547,7 +555,7 @@
           "type": "brand",
           "settings": {
             "name": "Dolcezza",
-            "logo": "",
+            "logo": "shopify://shop_images/beyoutiful-brand-dolcezza.png",
             "collection": "dolcezza",
             "link": ""
           }
@@ -555,10 +563,10 @@
         "silver": {
           "type": "brand",
           "settings": {
-            "name": "Silver",
-            "logo": "",
+            "name": "Silver Jeans Co.",
+            "logo": "shopify://shop_images/beyoutiful-brand-silver-jeans.png",
             "collection": "",
-            "link": "/collections/vendors?q=Silver"
+            "link": "/collections/vendors?q=Silver%20Jeans"
           }
         }
       },
@@ -579,14 +587,14 @@
   },
   "order": [
     "hero",
-    "announcements",
+    "whats_new",
     "shop_styles",
     "collections",
     "brands",
-    "whats_new",
     "brand",
     "sale",
     "visit",
+    "announcements",
     "tiles_1",
     "shop_the_look_banner"
   ]

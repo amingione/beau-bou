@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Homepage "Shop Our Highlights": Amber's polished try-ons (2026-10-18).
+"""Homepage "Shop Our Highlights": Amber's polished try-ons and her Facebook reel (2026-10-18).
 
 The looks themselves are Look metaobjects in the store (7 new ones made from photos-in/looks-haul, the
 4 older runway-cutout Looks set to Draft). This script only swaps the section's Extra photo blocks:
@@ -24,6 +24,11 @@ data = json.loads(text[len(header):])
 sec = data["sections"]["shop_styles"]
 
 sec["blocks"] = {
+    # Amber's Facebook reel (2026-10-18): first tile in the row
+    "fb_reel": {
+        "type": "reel",
+        "settings": {"url": "https://www.facebook.com/reel/1547811980446538/", "title": ""},
+    },
     "tropical_second_fit": {
         "type": "photo",
         "settings": {
@@ -33,7 +38,7 @@ sec["blocks"] = {
         },
     }
 }
-sec["block_order"] = ["tropical_second_fit"]
+sec["block_order"] = ["fb_reel", "tropical_second_fit"]
 
 (ROOT / REL).write_text(header + json.dumps(data, indent=2, ensure_ascii=False) + "\n")
 print("shop_styles extra photos:", sec["block_order"])

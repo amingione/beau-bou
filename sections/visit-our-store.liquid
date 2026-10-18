@@ -87,6 +87,10 @@
         {%- if section.settings.phone != blank -%}
           <a class="visit-store__link bb-display" href="tel:{{ phone_digits }}">{{ section.settings.phone | escape }}</a>
         {%- endif -%}
+        {%- assign google_url = section.settings.google_link | default: settings.bb_google_profile -%}
+        {%- if google_url != blank and section.settings.google_label != blank -%}
+          <a class="visit-store__link bb-display" href="{{ google_url }}" target="_blank" rel="noopener">{{ section.settings.google_label | escape }}</a>
+        {%- endif -%}
       </div>
 
       {%- if section.settings.note != blank -%}
@@ -113,6 +117,8 @@
     { "type": "checkbox", "id": "show_directions", "default": true, "label": "Show directions link" },
     { "type": "text", "id": "directions_label", "default": "Get Directions", "label": "Directions label" },
     { "type": "url", "id": "directions_link", "label": "Directions link override", "info": "Leave blank to auto-build a Google Maps link from the address." },
+    { "type": "text", "id": "google_label", "default": "Reviews on Google", "label": "Google profile link label", "info": "Leave blank to hide." },
+    { "type": "url", "id": "google_link", "label": "Google profile link override", "info": "Defaults to Theme settings → Store details for Google." },
     { "type": "text", "id": "note", "default": "In-store pickup available", "label": "Note (accent font)" },
     { "type": "color_scheme", "id": "color_scheme", "default": "scheme-1", "label": "Color scheme" },
     { "type": "header", "content": "Section padding" },
@@ -137,7 +143,7 @@
         { "type": "hours", "settings": { "days": "Monday", "hours": "11AM – 4PM" } },
         { "type": "hours", "settings": { "days": "Tuesday – Friday", "hours": "10AM – 5PM" } },
         { "type": "hours", "settings": { "days": "Saturday", "hours": "10AM – 4PM" } },
-        { "type": "hours", "settings": { "days": "Sunday", "hours": "11AM – 3PM" } }
+        { "type": "hours", "settings": { "days": "Sunday", "hours": "10AM – 3PM" } }
       ]
     }
   ]

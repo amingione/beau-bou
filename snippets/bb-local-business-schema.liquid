@@ -1,0 +1,68 @@
+{%- comment -%}
+  ClothingStore structured data (schema.org) so Google can show the boutique's address, hours, phone and
+  profiles. Values come from Theme settings → Search & social listing → Store details for Google.
+  Rendered from layout/theme.liquid on the homepage, About, Visit Us and Contact. Docs: docs/seo.md
+{%- endcomment -%}
+{%- liquid
+  assign bb_store_logo = settings.logo
+  if bb_store_logo != blank and bb_store_logo.src == blank
+    assign bb_fname = bb_store_logo | remove: 'shopify://shop_images/'
+    assign bb_store_logo = images[bb_fname]
+  endif
+  assign bb_geo = settings.bb_store_geo | split: ','
+  assign bb_hours = settings.bb_store_hours | newline_to_br | split: '<br />'
+  assign bb_areas = settings.bb_store_area | split: ','
+-%}
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ClothingStore",
+    "@id": {{ request.origin | append: '/#store' | json }},
+    "name": {{ settings.bb_store_name | default: shop.name | json }},
+    "url": {{ request.origin | json }},
+    {%- if bb_store_logo != blank %}
+    "logo": {{ bb_store_logo | image_url: width: 600 | prepend: 'https:' | json }},
+    "image": {{ bb_store_logo | image_url: width: 1200 | prepend: 'https:' | json }},
+    {%- endif %}
+    "telephone": {{ settings.bb_store_phone | json }},
+    "priceRange": "$$",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": {{ settings.bb_store_street | json }},
+      "addressLocality": {{ settings.bb_store_city | json }},
+      "addressRegion": {{ settings.bb_store_region | json }},
+      "postalCode": {{ settings.bb_store_zip | json }},
+      "addressCountry": "US"
+    },
+    {%- if bb_geo.size == 2 %}
+    "geo": { "@type": "GeoCoordinates", "latitude": {{ bb_geo[0] | strip | json }}, "longitude": {{ bb_geo[1] | strip | json }} },
+    {%- endif %}
+    "openingHours": [
+      {%- assign bb_first = true -%}
+      {%- for line in bb_hours -%}
+        {%- assign l = line | strip -%}
+        {%- if l != blank -%}{% unless bb_first %},{% endunless %}{{ l | json }}{%- assign bb_first = false -%}{%- endif -%}
+      {%- endfor -%}
+    ],
+    "areaServed": [
+      {%- assign bb_first = true -%}
+      {%- for a in bb_areas -%}
+        {%- assign area = a | strip -%}
+        {%- if area != blank -%}{% unless bb_first %},{% endunless %}{{ area | json }}{%- assign bb_first = false -%}{%- endif -%}
+      {%- endfor -%}
+    ],
+    "sameAs": [
+      {%- assign bb_first = true -%}
+      {%- for link in (1..5) -%}
+        {%- case forloop.index -%}
+          {%- when 1 -%}{%- assign u = settings.social_facebook_link -%}
+          {%- when 2 -%}{%- assign u = settings.social_instagram_link -%}
+          {%- when 3 -%}{%- assign u = settings.social_tiktok_link -%}
+          {%- when 4 -%}{%- assign u = settings.bb_google_profile -%}
+          {%- when 5 -%}{%- assign u = settings.social_pinterest_link -%}
+        {%- endcase -%}
+        {%- if u != blank -%}{% unless bb_first %},{% endunless %}{{ u | json }}{%- assign bb_first = false -%}{%- endif -%}
+      {%- endfor -%}
+    ]
+  }
+</script>

@@ -15,8 +15,9 @@ replace the Figma Inter.
 Both swipeable rows share `assets/bb-scroller.js` + `assets/component-bb-scroller.css` +
 `snippets/bb-scroller-buttons.liquid` (prev/next buttons that disable at the ends, hidden on phones).
 
-Homepage order: hero → Announcements → Shop Our Highlights → Collections → Brand logos → Shop What's New → teal band →
-Clearance → Visit Our Store. The old Shop by Category grid (`tiles_1`) is hidden, not deleted. Turn it back
+Homepage order (Amber, 2026-10-18): hero → Shop What's New → Shop Our Highlights → Collections → Brand logos →
+teal band → Clearance → Visit Our Store → Announcements (just above the footer). Re-apply with
+`python3 scripts/declutter/apply-home-order-2026-10-18.py`. The old Shop by Category grid (`tiles_1`) is hidden, not deleted. Turn it back
 on in the theme editor if wanted. The Collections carousel can also use the category card instead of squares.
 
 ## Announcements
@@ -80,6 +81,12 @@ Pants, shorts and shirts photos weren't given their own collections: pants and s
 shirts under Tops. Those photos, plus `bottoms-alt`, `hat` (caps) and `gowns`, are converted but unused.
 Gowns stays out per Michele's contract.
 
+## Facebook reel in Shop Our Highlights
+
+Block **Facebook reel** (Shop Styles section): paste a reel link or its whole Embed code. In the Highlights
+layout it's the first tile, 9:16, the same height as the look cards. Seeded with Michele's reel
+`facebook.com/reel/1547811980446538`.
+
 ## Brand logos
 
 One **Brand** block per brand: name, logo, brand collection, optional link. Without a logo the brand name
@@ -87,9 +94,9 @@ shows as a spaced serif wordmark, so the row never looks broken. "Show logos in 
 logos solid black so the set matches. 6 across on desktop, 3 on tablets, 2 on phones. Each tile links to
 the brand collection, or to the link field (e.g. `/collections/vendors?q=Silver`).
 
-Seeded with Samuel Dong, Frank Lyman, Dolcezza and Silver. **No logo files yet**: upload them in
-Content → Files (transparent PNG or SVG), then pick each one in its Brand block. Logos aren't pulled off
-the web; they come from Michele or the brands.
+Samuel Dong, Frank Lyman, Dolcezza and Silver Jeans Co., each with its official logo (from the brand's own
+site, recolored black, transparent PNG: `beyoutiful-brand-*.png` in Content → Files; sources in
+`photos-in/brand-logos/source` on Amber's Mac).
 
 ## Re-apply the homepage setup
 

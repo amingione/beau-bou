@@ -1,6 +1,6 @@
 # Paste these into Shopify — Settings → Policies
 
-> **2026-09-29 — address fix still needed in admin.** The live **Refund policy** and **Shipping policy** still say "264-A W Marion Ave". In Settings → Policies, change it to **264 W Marion Ave** in both (one spot each). The API connection can't edit policies.
+> **2026-10-18:** Amber confirmed the address is **264 W Marion Ave** (no "-A") and Sunday hours are **10–3**. The live Refund and Shipping policies still say "264-A"; paste the versions below into Settings → Policies.
 
 The Shopify API connection can't write policies (`write_legal_policies` scope missing), so these are pasted by hand.
 Admin → **Settings → Policies** → open each policy → select all existing text → paste → **Save**.
@@ -44,7 +44,7 @@ Note: the version currently live also makes swimwear + jewelry final sale and gi
 ## 3. Shipping policy
 ```
 In-store pickup
-Choose Pickup at checkout — there's no charge. We'll let you know when your order is ready to pick up at the boutique, 264 W Marion Ave, Punta Gorda, FL 33950. We're open 7 days a week: Monday 11–4, Tuesday–Friday 10–5, Saturday 10–4, Sunday 11–3.
+Choose Pickup at checkout — there's no charge. We'll let you know when your order is ready to pick up at the boutique, 264 W Marion Ave, Punta Gorda, FL 33950. We're open 7 days a week: Monday 11–4, Tuesday–Friday 10–5, Saturday 10–4, Sunday 10–3.
 
 Shipping
 We ship within the United States. Shipping rates are shown at checkout, and you'll receive a tracking link by email as soon as your order ships.

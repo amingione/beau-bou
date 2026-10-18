@@ -272,7 +272,36 @@
           <p class="shop-styles__hint">Create <b>Look</b> entries under Content → Metaobjects → Look, or add <b>Extra photo</b> blocks to this section.</p>
         {%- endif -%}
       </div>
-      {%- if count > 0 -%}
+      {%- comment -%} Facebook reels (block "Facebook reel") lead the row, same height as the photos {%- endcomment -%}
+      {%- capture reel_tiles -%}
+        {%- for block in section.blocks -%}
+          {%- if block.type != 'reel' -%}{%- continue -%}{%- endif -%}
+          {%- liquid
+            assign reel = block.settings.url | strip
+            if reel contains 'plugins/video.php'
+              assign reel = reel | split: 'href=' | last | split: '&' | first | url_decode
+            endif
+          -%}
+          {%- if reel == blank -%}{%- continue -%}{%- endif -%}
+          <li class="shop-styles__item ss-hl__item ss-hl__item--reel" data-ss-kind="video" {{ block.shopify_attributes }}>
+            <div class="ss-hl-card">
+              <span class="ss-hl-card__media ss-hl-card__media--reel">
+                <iframe
+                  src="https://www.facebook.com/plugins/video.php?href={{ reel | url_encode }}&show_text=false&width=300&t=0"
+                  title="{{ block.settings.title | default: 'Try-on video from the boutique' | escape }}"
+                  loading="lazy"
+                  allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                  allowfullscreen
+                ></iframe>
+              </span>
+              {%- if block.settings.title != blank -%}
+                <span class="ss-hl-card__info"><span class="ss-hl-card__text"><span class="ss-hl-card__title">{{ block.settings.title | escape }}</span></span></span>
+              {%- endif -%}
+            </div>
+          </li>
+        {%- endfor -%}
+      {%- endcapture -%}
+      {%- if count > 0 or reel_tiles != blank -%}
         <bb-scroller class="ss-hl__rail">
           <ul
             class="bb-scroller__track ss-hl__track"
@@ -280,7 +309,7 @@
             tabindex="0"
             aria-label="{{ section.settings.heading | default: 'Looks' | escape }}"
             data-scroller-track
-          >{{ tiles }}</ul>
+          >{{ reel_tiles }}{{ tiles }}</ul>
           {% render 'bb-scroller-buttons', label: 'looks' %}
         </bb-scroller>
       {%- endif -%}
@@ -363,7 +392,11 @@
     { "type": "photo", "name": "Extra photo", "settings": [
       { "type": "image_picker", "id": "image", "label": "Photo" },
       { "type": "text", "id": "title", "label": "Caption (optional)" },
-      { "type": "url", "id": "link", "label": "Link", "info": "Defaults to the Shop the Look page." } ] }
+      { "type": "url", "id": "link", "label": "Link", "info": "Defaults to the Shop the Look page." } ] },
+    { "type": "reel", "name": "Facebook reel", "settings": [
+      { "type": "paragraph", "content": "Highlights layout: shows first in the row, same height as the looks." },
+      { "type": "text", "id": "url", "label": "Facebook reel link", "info": "Paste the reel's link (facebook.com/reel/…) or its whole Embed code." },
+      { "type": "text", "id": "title", "label": "Caption (optional)" } ] }
   ],
   "max_blocks": 20,
   "presets": [ { "name": "Shop Styles" } ]

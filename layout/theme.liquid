@@ -26,7 +26,9 @@
       {{ page_title }}
       {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
       {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
-      {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+      {%- comment -%} add the brand once, unless the title already names it (docs/seo.md) {%- endcomment -%}
+      {%- assign bb_title_lc = page_title | downcase -%}
+      {%- unless bb_title_lc contains 'be-you-tiful' %} &ndash; Be-YOU-tiful Boutique{% endunless -%}
     </title>
 
     {%- liquid
@@ -37,6 +39,9 @@
     {% endif %}
 
     {% render 'meta-tags' %}
+    {%- if request.page_type == 'index' or page.handle == 'about' or page.handle == 'visit-us' or page.handle == 'contact' -%}
+      {% render 'bb-local-business-schema' %}
+    {%- endif -%}
 
     <script type="module">
       import * as StandardEvents from 'https://cdn.shopify.com/storefront/standard-events.js';

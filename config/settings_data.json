@@ -205,7 +205,10 @@
         }
       }
     },
-    "product_card_style": "boutique"
+    "product_card_style": "boutique",
+    "bb_google_profile": "https://www.google.com/maps/place/?q=place_id:ChIJ7WEWM0NX24gRLOCl6mRk0PA",
+    "bb_share_image": "shopify://shop_images/beyoutiful-storefront-hero-desktop.webp",
+    "bb_meta_description": "Women's boutique in downtown Punta Gorda, FL: swimsuits, dresses, gowns, tops, bottoms and jewelry in sizes XXS to 2X. Shop online or pick up in store."
   },
   "presets": {
     "Be-YOU-tiful": {
