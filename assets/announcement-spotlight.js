@@ -11,8 +11,11 @@ if (!customElements.get('announcement-spotlight')) {
       if (this.slides.length < 2) return;
       this.index = 0;
       this.interval = (parseInt(this.dataset.interval, 10) || 0) * 1000;
-      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      this.paused = reduce || this.interval === 0;
+      // checked live, so turning on reduced motion mid-visit stops rotation too
+      this.reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      this.paused = this.reduceMotion.matches || this.interval === 0;
+      this.onMotionChange = () => this.restart();
+      this.reduceMotion.addEventListener?.('change', this.onMotionChange);
       this.hold = false;
 
       // After a sign-up posts, the page reloads on slide 1; open the slide holding the
@@ -59,6 +62,7 @@ if (!customElements.get('announcement-spotlight')) {
 
     disconnectedCallback() {
       this.stop();
+      this.reduceMotion?.removeEventListener?.('change', this.onMotionChange);
       if (this.onBlockSelect) document.removeEventListener('shopify:block:select', this.onBlockSelect);
     }
 
@@ -96,8 +100,11 @@ if (!customElements.get('announcement-spotlight')) {
 
     restart() {
       this.stop();
-      if (this.paused || this.hold || !this.interval) return;
-      this.timer = setInterval(() => this.go(this.index + 1), this.interval);
+      if (this.paused || this.hold || !this.interval || this.reduceMotion.matches) return;
+      this.timer = setInterval(() => {
+        if (this.reduceMotion.matches) return this.stop();
+        this.go(this.index + 1);
+      }, this.interval);
     }
   }
   customElements.define('announcement-spotlight', AnnouncementSpotlight);

@@ -88,14 +88,17 @@
       {%- liquid
         assign from_price = 0
         assign has_price = false
+        # lowest price a shopper can actually buy: available variants only
         for piece in look.pieces.value
-          if piece.available == false
-            continue
-          endif
-          if has_price == false or piece.price_min < from_price
-            assign from_price = piece.price_min
-            assign has_price = true
-          endif
+          for variant in piece.variants
+            if variant.available == false
+              continue
+            endif
+            if has_price == false or variant.price < from_price
+              assign from_price = variant.price
+              assign has_price = true
+            endif
+          endfor
         endfor
       -%}
       <li class="shop-styles__item ss-hl__item" data-ss-kind="{{ kind }}">
@@ -178,11 +181,12 @@
       -%}
       {%- if bimg == blank -%}{%- continue -%}{%- endif -%}
       {%- assign count = count | plus: 1 -%}
+      {%- assign balt = block.settings.title | default: bimg.alt | default: 'Outfit styled at the boutique' -%}
       {%- if layout == 'highlights' -%}
         <li class="shop-styles__item ss-hl__item" data-ss-kind="photo" {{ block.shopify_attributes }}>
           <a class="ss-tile ss-hl-card" href="{{ block.settings.link | default: section.settings.button_link | default: '/pages/shop-the-look' }}">
             <span class="ss-hl-card__media">
-              {{ bimg | image_url: width: 800 | image_tag: loading: 'lazy', widths: '300, 450, 600, 800', sizes: '(min-width: 990px) 340px, (min-width: 750px) 40vw, 72vw', class: 'ss-hl-card__img', alt: block.settings.title | default: 'Outfit styled at the boutique' }}
+              {{ bimg | image_url: width: 800 | image_tag: loading: 'lazy', widths: '300, 450, 600, 800', sizes: '(min-width: 990px) 340px, (min-width: 750px) 40vw, 72vw', class: 'ss-hl-card__img', alt: balt }}
               {%- if section.settings.badge_label != blank -%}
                 <span class="ss-hl-card__badge" aria-hidden="true">{{ section.settings.badge_label | escape }}</span>
               {%- endif -%}
@@ -197,7 +201,7 @@
       <li class="shop-styles__item" data-ss-kind="photo" {{ block.shopify_attributes }}>
         <a class="ss-tile" href="{{ block.settings.link | default: section.settings.button_link | default: '/pages/shop-the-look' }}">
           <span class="ss-tile__media">
-            {{ bimg | image_url: width: 800 | image_tag: loading: 'lazy', widths: '300, 450, 600, 800', sizes: '(min-width: 990px) 24vw, 46vw', class: 'ss-tile__img', alt: block.settings.title | default: 'Outfit from the boutique' }}
+            {{ bimg | image_url: width: 800 | image_tag: loading: 'lazy', widths: '300, 450, 600, 800', sizes: '(min-width: 990px) 24vw, 46vw', class: 'ss-tile__img', alt: balt }}
           </span>
           {%- if block.settings.title != blank -%}<span class="ss-tile__caption">{{ block.settings.title | escape }}</span>{%- endif -%}
         </a>

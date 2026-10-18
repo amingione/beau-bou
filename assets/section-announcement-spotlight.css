@@ -35,6 +35,11 @@
   .spot__slide.is-active {
     transition: none;
   }
+
+  /* nothing rotates with reduced motion on, so there's nothing to pause */
+  .spot__toggle {
+    display: none;
+  }
 }
 
 /* ---------- Text column ---------- */
