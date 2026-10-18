@@ -1,0 +1,93 @@
+{{ 'component-bb-cards.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  #CollectionCards-{{ section.id }} {
+    --bb-card-columns: {{ section.settings.columns_desktop }};
+  }
+{%- endstyle -%}
+
+<div class="color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">
+  <div class="page-width" id="CollectionCards-{{ section.id }}">
+    {%- if section.settings.title != blank -%}
+      <h2 class="bb-cards__title bb-display">
+        {{- section.settings.title | escape -}}
+      </h2>
+    {%- endif -%}
+
+    <ul class="bb-card-grid" role="list">
+      {%- for block in section.blocks -%}
+        {%- liquid
+          assign card_image = block.settings.image
+          if card_image != blank and card_image.src == blank
+            assign card_fname = card_image | remove: 'shopify://shop_images/'
+            assign card_image = images[card_fname]
+          endif
+        -%}
+        <li {{ block.shopify_attributes }}>
+          {%- render 'card-collection-drop',
+            card_collection: block.settings.collection,
+            title: block.settings.heading,
+            eyebrow: block.settings.eyebrow,
+            image: card_image,
+            link: block.settings.link,
+            overlay_title: block.settings.overlay_title,
+            overlay_text: block.settings.overlay_text,
+            index: forloop.index
+          -%}
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Collection cards",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": { "groups": ["header", "footer"] },
+  "settings": [
+    { "type": "text", "id": "title", "label": "Heading" },
+    { "type": "range", "id": "columns_desktop", "min": 2, "max": 4, "step": 1, "default": 3, "label": "Columns on desktop" },
+    { "type": "color_scheme", "id": "color_scheme", "default": "scheme-1", "label": "Color scheme" },
+    { "type": "header", "content": "Section padding" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 36, "label": "Top" },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 36, "label": "Bottom" }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Collection card",
+      "settings": [
+        { "type": "collection", "id": "collection", "label": "Collection", "info": "Title, photo, link and item count come from this collection." },
+        { "type": "text", "id": "heading", "label": "Title override" },
+        { "type": "text", "id": "eyebrow", "label": "Small line override", "info": "Defaults to the item count, or Coming soon when the collection is empty." },
+        { "type": "image_picker", "id": "image", "label": "Photo override" },
+        { "type": "url", "id": "link", "label": "Link override" },
+        { "type": "header", "content": "Photo banner (optional)" },
+        { "type": "text", "id": "overlay_title", "label": "Banner headline", "info": "e.g. a new collection name. Leave blank for no banner." },
+        { "type": "text", "id": "overlay_text", "label": "Banner small line", "info": "e.g. a drop date and time." }
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [
+    {
+      "name": "Collection cards",
+      "blocks": [ { "type": "card" }, { "type": "card" }, { "type": "card" } ]
+    }
+  ]
+}
+{% endschema %}

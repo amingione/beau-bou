@@ -1,0 +1,81 @@
+{%- comment -%}
+  Collection card: Figma "10 Product Cards", node 37:391 (title + eyebrow over a rounded image,
+  with an optional dark overlay strip carrying a gold headline and a small line).
+  Styles: assets/component-bb-cards.css (load it in the calling section).
+
+  Accepts:
+  - card_collection: collection object, optional (fills title, eyebrow, image and link)
+  - title / eyebrow / image / link: overrides, optional
+  - overlay_title / overlay_text: optional; the overlay strip shows only when overlay_title is set
+  - sizes: sizes attribute for the image, optional
+  - index: number for the placeholder illustration, optional
+
+  Eyebrow default is honest data: "Coming soon" for an empty collection, otherwise the item count.
+
+  Usage:
+  {% render 'card-collection-drop', card_collection: collection %}
+{%- endcomment -%}
+{%- liquid
+  assign card_title = title | default: card_collection.title
+  assign card_link = link | default: card_collection.url
+  assign card_image = image | default: card_collection.featured_image
+
+  assign card_eyebrow = eyebrow
+  if card_eyebrow == blank and card_collection != blank
+    if card_collection.all_products_count == 0
+      assign card_eyebrow = 'Coming soon'
+    elsif card_collection.all_products_count == 1
+      assign card_eyebrow = '1 style'
+    else
+      assign card_eyebrow = card_collection.all_products_count | append: ' styles'
+    endif
+  endif
+
+  assign image_sizes = sizes | default: '(min-width: 990px) calc((100vw - 10rem) / 3), (min-width: 750px) calc((100vw - 8rem) / 2), 100vw'
+  # Shopify ships placeholder drawings collection-1..6 only, so cycle through them
+  assign placeholder_index = index | default: 1 | minus: 1 | modulo: 6 | plus: 1
+-%}
+<a href="{{ card_link | default: '#' }}" class="bb-drop-card">
+  <div class="bb-drop-card__info">
+    {%- if card_title != blank -%}
+      <h3 class="bb-drop-card__title">{{ card_title | escape }}</h3>
+    {%- endif -%}
+    {%- if card_eyebrow != blank -%}
+      <p class="bb-drop-card__eyebrow">{{ card_eyebrow | escape }}</p>
+    {%- endif -%}
+  </div>
+
+  <div class="bb-drop-card__media">
+    {%- if card_image != blank -%}
+      {{
+        card_image
+        | image_url: width: 1200
+        | image_tag:
+          loading: 'lazy',
+          widths: '360, 540, 720, 900, 1200',
+          sizes: image_sizes,
+          alt: card_title
+      }}
+    {%- else -%}
+      {{ 'collection-' | append: placeholder_index | placeholder_svg_tag: 'placeholder-svg' }}
+    {%- endif -%}
+
+    {%- if overlay_title != blank -%}
+      <div class="bb-drop-card__overlay">
+        <img
+          class="bb-drop-card__overlay-bg"
+          src="{{ 'card-drop-overlay.svg' | asset_url }}"
+          width="266"
+          height="63"
+          alt=""
+          aria-hidden="true"
+          loading="lazy"
+        >
+        <p class="bb-drop-card__overlay-title">{{ overlay_title | escape }}</p>
+        {%- if overlay_text != blank -%}
+          <p class="bb-drop-card__overlay-text">{{ overlay_text | escape }}</p>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  </div>
+</a>
