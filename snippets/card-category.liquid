@@ -18,7 +18,8 @@
 {%- liquid
   assign button_text = button_label | default: 'Shop now'
   assign image_sizes = sizes | default: '(min-width: 990px) calc((100vw - 10rem) / 3), (min-width: 750px) calc((100vw - 8rem) / 2), 100vw'
-  assign placeholder_index = index | default: 1
+  # Shopify ships placeholder drawings collection-1..6 only, so cycle through them
+  assign placeholder_index = index | default: 1 | minus: 1 | modulo: 6 | plus: 1
 -%}
 <a href="{{ link | default: '#' }}" class="bb-category-card">
   <div class="bb-category-card__media">
