@@ -15,7 +15,7 @@ replace the Figma Inter.
 Both swipeable rows share `assets/bb-scroller.js` + `assets/component-bb-scroller.css` +
 `snippets/bb-scroller-buttons.liquid` (prev/next buttons that disable at the ends, hidden on phones).
 
-Homepage order (Amber, 2026-10-18): hero → Shop What's New → Shop Our Highlights → Collections → Brand logos →
+Homepage order (Amber, 2026-10-19; she set it in Michele's store and said it makes more sense): hero → Collections → Shop What's New → Shop Our Highlights → Brand logos →
 teal band → Clearance → Visit Our Store → Announcements (just above the footer). Re-apply with
 `python3 scripts/declutter/apply-home-order-2026-10-18.py`. The old Shop by Category grid (`tiles_1`) is hidden, not deleted. Turn it back
 on in the theme editor if wanted. The Collections carousel can also use the category card instead of squares.

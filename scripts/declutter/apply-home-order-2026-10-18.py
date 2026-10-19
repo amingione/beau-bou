@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-"""Homepage order (Amber, 2026-10-18): Shop What's New right under the hero with the logo,
-Announcements last, just above the footer. Hidden sections keep their place at the end.
+"""Homepage order (Amber, 2026-10-19, set by her in Michele's theme editor): Collections right under
+the hero, then Shop What's New and Shop Our Highlights; Announcements last, just above the footer. Hidden sections keep their place at the end.
 Keeps Shopify's comment header. Idempotent.
 
   python3 scripts/declutter/apply-home-order-2026-10-18.py
@@ -18,7 +18,7 @@ m = re.match(r"(\s*/\*.*?\*/\s*)", text, flags=re.S)
 header = m.group(1) if m else ""
 data = json.loads(text[len(header):])
 
-WANT = ["hero", "whats_new", "shop_styles", "collections", "brands", "brand", "sale", "visit", "announcements"]
+WANT = ["hero", "collections", "whats_new", "shop_styles", "brands", "brand", "sale", "visit", "announcements"]
 order = [k for k in WANT if k in data["sections"]]
 order += [k for k in data["order"] if k not in order]  # anything else (hidden sections) after
 data["order"] = order
