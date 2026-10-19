@@ -4,7 +4,7 @@
 
 **Scope confirmed by Amber:** Michele owns products, prices, variants, photos and inventory. Our work is the reusable boutique templates, app configuration, navigation and collection structure. Catalog entry is not a prerequisite for completing that setup. On September 21, Amber explicitly authorized a separate fictional catalog for testing; the details below do not replace Michele’s responsibility for real merchandise.
 
-**Stores (confirmed by Amber 2026-10-18):** `v0m0hb-x3` (`shopbe-you-tifulboutique.myshopify.com`) is **Amber's test store**, used to preview the theme and app before handing them to Michele. Its published theme is `beau-bou/main` (`192420839788`), synced from GitHub `main` (Amber published it 2026-10-18; before that the live theme was `clean-pass preview 2026-10-16`, `193257603436`). **`xapm2f-fr` is Michele's own store**, and `shopbeyoutifulboutique.com` is connected there, correctly. Michele's store still runs an older theme copy (`be-you-tiful-boutique-theme-1-2-0`); the finished theme goes there at handoff. (A 2026-10-16 note claiming the domain needed to move to `v0m0hb-x3` was wrong and has been removed.) **Update 2026-09-25:** `shopify theme list -s v0m0hb-x3` shows `be-you-tiful-1-2-0` (`192212107628`) as **[live]** and Horizon unpublished, but `https://shopbeyoutifulboutique.com` still redirects to `/password`, so nothing is public. (Earlier notes below that say "draft" or "Horizon live" predate this.) Do not modify the old `kw59hc-k1` development store.
+**Stores (confirmed by Amber 2026-10-18):** `v0m0hb-x3` (`shopbe-you-tifulboutique.myshopify.com`) is **Amber's test store**, used to preview the theme and app before handing them to Michele. Its published theme is `beau-bou/main` (`192420839788`), synced from GitHub `main` (Amber published it 2026-10-18; before that the live theme was `clean-pass preview 2026-10-16`, `193257603436`). **`xapm2f-fr` is Michele's own store**, and `shopbeyoutifulboutique.com` is connected there, correctly. **Since 2026-10-19 Michele's store runs the finished theme** (`be-you-tiful-boutique-theme`, uploaded zip) as its live theme; see "Michele's store (xapm2f-fr) setup status" below. Don't reinstall or re-publish it; later theme changes go through this repo. (A 2026-10-16 note claiming the domain needed to move to `v0m0hb-x3` was wrong and has been removed.) **Update 2026-09-25:** `shopify theme list -s v0m0hb-x3` shows `be-you-tiful-1-2-0` (`192212107628`) as **[live]** and Horizon unpublished, but `https://shopbeyoutifulboutique.com` still redirects to `/password`, so nothing is public. (Earlier notes below that say "draft" or "Horizon live" predate this.) Do not modify the old `kw59hc-k1` development store.
 
 ### Adding a product
 
@@ -86,23 +86,23 @@ Still Michele's/Amber's to do: finish Shopify Payments setup (Shop Pay, pay-in-4
 ## 1. Store setup (Michele or Amber, ~30 min)
 
 - [ ] Shopify store created on Michele's email; Amber added as **collaborator** (Settings → Users)
-- [ ] Settings → Store details: name, address above, phone, timezone America/New_York, USD
-- [ ] Settings → Shipping & delivery: **Local pickup** enabled for the Marion Ave location (hours above)
+- [x] Settings → Store details: name, address above, phone, timezone America/New_York, USD *(done in xapm2f-fr 2026-10-19)*
+- [x] Settings → Shipping & delivery: **Local pickup** enabled for the Marion Ave location (hours above) *(done in xapm2f-fr 2026-10-19)*
 - [ ] Settings → Payments: Shopify Payments; enable Shop Pay; consider Sezzle/Afterpay (reference offers Sezzle)
-- [ ] Settings → Policies: generate Refund, Privacy, Terms, Shipping (theme footer links to these)
+- [x] Settings → Policies: generate Refund, Privacy, Terms, Shipping (theme footer links to these) *(done in xapm2f-fr 2026-10-19)*
 - [ ] Settings → Customer accounts: **New customer accounts** on (header account icon)
 - [x] Domain: `shopbeyoutifulboutique.com` is connected to Michele's store `xapm2f-fr` (correct; nothing to move)
-- [ ] Handoff: install the finished theme (and the app, if used) on Michele's store `xapm2f-fr`
+- [x] Handoff: install the finished theme (and the app, if used) on Michele's store `xapm2f-fr` *(done in xapm2f-fr 2026-10-19)*
 
 ## 2. Theme install
 
-- [ ] `npm run push:client` (after setting the store handle in `shopify.theme.toml`) **or** `npm run package` → upload zip in Online Store → Themes **or** the no-login API path in `docs/store/README.md` (zip → Files → `themeCreate`). After any zip import, diff the theme's file list against the zip — Shopify drops files that fail validation without telling you.
+- [x] *(done 2026-10-19: zip uploaded to xapm2f-fr and published; the app is not installed there)* `npm run push:client` (after setting the store handle in `shopify.theme.toml`) **or** `npm run package` → upload zip in Online Store → Themes **or** the no-login API path in `docs/store/README.md` (zip → Files → `themeCreate`). After any zip import, diff the theme's file list against the zip — Shopify drops files that fail validation without telling you.
 - [ ] Theme settings → Logo: upload transparent PNG (≥ 600px wide); Favicon: the circle logo
 - [ ] Theme settings → Social: Facebook URL; add Instagram when she has one
-- [ ] Create collections + menus exactly as `docs/collections.md` (already scripted once on the dev store — see `docs/store/README.md`; current new-store menus use `main-menu` / `footer`)
-- [ ] Upload the image set to Files first (`docs/images/`), same filenames — templates already point at `shopify://shop_images/beyoutiful-*`
-- [ ] Pages: about, visit-us, questions, size-guide, shop-the-look, contact with the matching template suffixes
-- [ ] Policies from `docs/policies/` (Settings → Policies)
+- [ ] *(menus done 2026-10-19; New Arrivals, Dresses, Sale, Clearance, Jumpsuits collections still missing in xapm2f-fr)* Create collections + menus exactly as `docs/collections.md` (already scripted once on the dev store — see `docs/store/README.md`; current new-store menus use `main-menu` / `footer`)
+- [x] Upload the image set to Files first (`docs/images/`), same filenames — templates already point at `shopify://shop_images/beyoutiful-*` *(done in xapm2f-fr 2026-10-19)*
+- [x] Pages: about, visit-us, questions, size-guide, shop-the-look, contact with the matching template suffixes *(done in xapm2f-fr 2026-10-19)*
+- [x] Policies from `docs/policies/` (Settings → Policies) *(done in xapm2f-fr 2026-10-19)*
 - [ ] Homepage: open editor, assign photos to **Hero**, six **Category tiles**, **Visit our store** (pull from Facebook album with Michele's permission — screenshots are not print quality; ask for originals)
 - [ ] Announcement bar copy confirmed with Michele (current: pickup + XXS–2X)
 - [ ] Preview on phone: nav drawer, search, cart drawer, checkout
@@ -116,7 +116,7 @@ Still Michele's/Amber's to do: finish Shopify Payments setup (Shop Pay, pay-in-4
 
 ## 4. Launch
 
-- [ ] Publish theme
+- [x] Publish theme *(done in xapm2f-fr 2026-10-19)*
 - [ ] Remove password page
 - [ ] Google Business Profile → add website URL; Facebook page → Shop button → website
 - [ ] Submit sitemap in Search Console (`/sitemap.xml`)
