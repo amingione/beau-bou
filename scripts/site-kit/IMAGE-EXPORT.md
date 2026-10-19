@@ -28,9 +28,18 @@ collections. They show their products' photos once products are added.
 
 ## 3-looks → Content → Metaobjects → Look
 
-For each row in `looks.csv`: **Add entry** → Title, Image (pick the file named in `image_file`), Status
+**First, the definition.** The theme reads metaobjects of type **`look`** (singular). In Settings → Custom data →
+Metaobjects → Add definition, name it **Look**; the type under the name must read `Type: look`. A definition named
+"Looks" gets type `looks`, and the theme ignores it (Highlights then falls back to the bundled sample photos).
+Fields, with these labels: Title (single line text), Image (Image file), Pieces (list of products), Goes with (list
+of products), Caption (multi-line text), Video (Video file). Turn on Active-draft status and Publish entries as web
+pages.
+
+Then, for each row in `looks.csv`: **Add entry** → Title, Image (pick the file named in `image_file`), Status
 **Active**. Pieces and Goes with stay empty until Michele's products are in the store; the look page shows the
 sold-out message until then.
+
+Done on Michele's store (xapm2f-fr) on 2026-10-19: Look definition plus all 13 entries.
 
 ## Not images (moved separately)
 
