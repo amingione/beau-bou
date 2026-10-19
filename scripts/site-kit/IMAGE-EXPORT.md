@@ -39,7 +39,13 @@ Then, for each row in `looks.csv`: **Add entry** → Title, Image (pick the file
 **Active**. Pieces and Goes with stay empty until Michele's products are in the store; the look page shows the
 sold-out message until then.
 
-Done on Michele's store (xapm2f-fr) on 2026-10-19: Look definition plus all 13 entries.
+**Create the definition before uploading the theme.** Shopify drops `templates/metaobject/look.json` from a theme
+zip when the `look` type doesn't exist yet, and every look page then 404s. If that happened, re-add the template in
+Online Store → Edit code → templates → New file `metaobject/look.json` (copy it from this repo, swapping in the
+store's own collection and links).
+
+Done on Michele's store (xapm2f-fr) on 2026-10-19: Look definition plus all 13 entries, and the look page template
+re-added after the upload dropped it.
 
 ## Not images (moved separately)
 
