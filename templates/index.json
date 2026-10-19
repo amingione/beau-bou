@@ -587,9 +587,9 @@
   },
   "order": [
     "hero",
+    "collections",
     "whats_new",
     "shop_styles",
-    "collections",
     "brands",
     "brand",
     "sale",
