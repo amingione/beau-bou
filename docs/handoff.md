@@ -70,6 +70,19 @@ Store facts (from Google Business Profile + Facebook, verified 2026-09-02):
 - Facebook: facebook.com/MicheleMonksEnsmingerMansfield (2.1K followers, 16 reviews, 100% recommend)
 - Logo: black circle, white serif "Be-YOU-tiful Boutique", script "by Michele", white peacock. Get the original from Michele (Canva/printer file) — the FB avatar is 480px and too small for the hero.
 
+## Michele's store (xapm2f-fr) setup status — 2026-10-19
+
+Done in her admin (Claude, via Chrome, Amber's request):
+- Theme `be-you-tiful-boutique-theme` (uploaded zip) is the live theme. All 52 site files are in Content → Files.
+- Look definition **Look** (type `look`) plus 13 Active entries. An empty "Looks" (type `looks`) definition Amber made first is still there; delete it when convenient.
+- Pages (all Visible, with search listings): About (`about`), Visit Us (`visit-us`), Questions (`faq`), Size Guide (`size-guide`), Shop the Look (`shop-the-look`), Shipping & Returns (default), Contact (`contact`).
+- Shipping & Returns page, Refund policy and Shipping policy use the approved wording from `docs/policies/PASTE-INTO-SHOPIFY.md` (no USPS-only, 1–2 day, free-shipping-threshold, swimwear/jewelry final-sale or store-credit claims; Michele never confirmed those). **The test store's Shipping & Returns page still has those unconfirmed lines.**
+- Main menu: Shop (her 15 collections + Shop All) · Brands (Samuel Dong, Frank Lyman, Dolcezza, Silver Jeans Co. via `/collections/vendors?q=`) · Shop the Look · About · Visit Us · Contact. Footer: About, Visit Us, Contact, Shipping & Returns, Size Guide, Questions, Your Privacy Choices.
+- Location renamed "Be-YOU-tiful Boutique" with 264 W Marion Ave, Punta Gorda FL 33950 and (941) 369-1628; Pickup in store on.
+- Preferences: homepage title and meta description set.
+
+Still Michele's/Amber's to do: finish Shopify Payments setup (Shop Pay, pay-in-4); register for Florida sales tax (Shopify flags it now that the location is in FL); create New Arrivals, Dresses, Sale, Clearance and Jumpsuits collections if wanted (her store has Formal Wear instead of Gowns); remove the password page at launch.
+
 ## 1. Store setup (Michele or Amber, ~30 min)
 
 - [ ] Shopify store created on Michele's email; Amber added as **collaborator** (Settings → Users)
