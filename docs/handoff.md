@@ -1,3 +1,12 @@
+## October 29 live catalog/discount update
+
+- Added 80 internal boutique SKUs, resolved eight repeated-SKU variants, and filled 71 missing shipping weights with approved estimates. All 266 draft variants now have unique SKUs and nonzero weights. Estimated weights are tagged `weight-estimate-review` and must be weighed before launch.
+- [Full current SKU/weight export](store/launch-catalog-2026-10-29.csv), [repair audit](store/catalog-repairs-2026-10-29.csv), [remaining weight checks](store/launch-catalog-issues-2026-10-29.csv).
+- Live welcome discount now targets the 155-product regular-price eligibility collection. 20%, $100 minimum, email subscribers, one use/customer and combination settings verified unchanged.
+- Eligibility is a maintained snapshot. Remove products before markdowns; refresh via the app's `sync:newsletter --apply` script before selling changed/new products. Any product with a discounted variant is excluded in full. Automatic refresh and checkout acceptance tests are NOT complete.
+- EPOS V4 continues to return 401 despite matching configured credentials. Outbound inventory/order/customer handlers and a documented Love Loyalty external-POS bridge remain unimplemented. See the app repo `docs/EPOSNOW_SYNC.md` for the exact access blocker and unsent vendor question draft.
+- These catalog and discount changes are LIVE. Local app/theme source has not been pushed or deployed by this follow-up. No products were activated and the storefront password remains a launch gate.
+
 # Launch readiness update — October 29, 2026
 
 Current authorization: Shopify owns the curated catalog; EPOS inventory must sync both ways. Keep the storefront password until all pilot and checkout gates pass. Love Loyalty owns rewards; no separate rewards engine or points reset. Newsletter offer: one-time 20% off regular-priced items, $100 minimum, once per customer.
@@ -14,9 +23,9 @@ Current authorization: Shopify owns the curated catalog; EPOS inventory must syn
 
 App work and technical evidence are recorded in the existing `beau-bou-app/docs/EPOSNOW_SYNC.md`. The old import is retired in local code; replacement supports previews/mapping approvals and held webhook receipts only. Product/inventory/customer/order writes and rewards integration are not complete. EPOS V4 reads returned 401 using both local and production credentials. The production app’s expired Shopify token was successfully renewed through its existing refresh flow; authenticated owner-store reads now work.
 
-Live audit: 155 draft products / 266 draft variants, 7 archived variants, zero active products. 80 draft variants lack SKUs; 71 lack shipping weights. Duplicate SKU values: `09CF8` (2), `S18006` (4), `S18007` (2). Review the actionable rows in [launch catalog issues](store/launch-catalog-issues-2026-10-29.csv). All draft variants are inventory tracked, have product media, and have positive prices; quantities and accuracy are not yet reconciled with EPOS or physical stock.
+Current owner catalog: 155 draft products / 266 draft variants, 7 archived variants, zero active products. SKU and missing-weight repairs are complete as recorded above; 71 weights are estimates requiring physical checks. All draft variants are inventory tracked, have product media, and have positive prices; quantities are not yet reconciled with EPOS or physical stock.
 
-The current live newsletter discount applies to the entire order and does not exclude markdowns. It already has subscriber eligibility, one use per customer, a $100 minimum, and no combinations. Amber confirmed retaining the minimum. The discount was inspected but not changed; regular-price enforcement and checkout tests remain outstanding. The app also needs the locally added `read_locations` scope granted before location-name reads.
+The live newsletter discount is restricted to the regular-price eligibility collection. Subscriber eligibility, one use per customer, $100 minimum, and no combinations are preserved. Collection maintenance and checkout tests remain required; see the limitations above. The app still needs the locally added `read_locations` scope granted before location-name reads.
 
 Remaining checks: full owner catalog and opening physical stock, active EPOS API device/location, Love Loyalty rules and supported EPOS bridge, Faire inventory ownership, actual newsletter discount/automation and mixed-cart repeat-use tests, payment/shipping/pickup/tax/notification settings, Look product links, mobile/desktop checkout, refunds/restocks, failure recovery, and a reconciled trading day.
 
