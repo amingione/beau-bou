@@ -14,68 +14,179 @@
       "custom_css": [],
       "settings": {
         "content_below_image": true,
-        "image": "shopify://shop_images/beyoutiful-storefront-hero-desktop.webp",
-        "logo": "",
-        "logo_width": 600,
+        "image": "shopify://shop_images/homepage-be-you-tiful-boutique.png",
+        "logo_width": 560,
         "heading": "",
         "tagline": "",
         "accent": "",
-        "button_label": "Shop What's New",
+        "button_label": "",
         "button_link": "shopify://collections/new-arrivals",
-        "content_position": "center",
-        "min_height": 50,
-        "overlay_opacity": 0,
+        "content_position": "bottom",
+        "min_height": 40,
+        "overlay_opacity": 25,
         "show_frame": false,
         "full_width": true,
         "color_scheme": "scheme-1",
         "padding_top": 0,
-        "padding_bottom": 0,
-        "image_mobile": "shopify://shop_images/beyoutiful-storefront-hero-mobile-1080.webp"
+        "padding_bottom": 0
       }
     },
-    "shop_styles": {
-      "type": "shop-styles",
-      "settings": {
-        "heading": "Shop Our Highlights",
-        "show_filters": true,
-        "max_looks": 14,
-        "columns": 4,
-        "empty_text": "Love this look? Call or stop in and we'll pull it in your size.",
-        "empty_label": "Ask about this look",
-        "empty_link": "",
-        "button_label": "Shop the pieces",
-        "button_link": "/pages/shop-the-look",
-        "color_scheme": "scheme-2",
-        "padding_top": 60,
-        "padding_bottom": 60,
-        "layout": "highlights",
-        "carousel_count": 16,
-        "scroll_seconds": 50,
-        "intro": "<p>Try-on looks styled right here in the boutique. Tap one to shop every piece, plus a few that pair with it.</p>",
-        "badge_label": "Shop the look",
-        "badge_color": "#e60023"
-      },
+    "collections": {
+      "type": "collection-carousel",
       "blocks": {
-        "fb_reel": {
-          "type": "reel",
+        "dresses": {
+          "type": "collection",
           "settings": {
-            "url": "https://www.facebook.com/reel/1547811980446538/",
-            "title": ""
+            "collection": "dresses",
+            "image": "shopify://shop_images/dresses.png",
+            "label": "Dresses",
+            "link": ""
           }
         },
-        "tropical_second_fit": {
-          "type": "photo",
+        "collection_T7tk8f": {
+          "type": "collection",
           "settings": {
-            "image": "shopify://shop_images/beyoutiful-tryon-tropical-bell-sleeve-shift-dress-b.webp",
-            "title": "",
-            "link": "/pages/looks/tropical-bell-sleeve-dress"
+            "collection": "formal-wear",
+            "image": "shopify://shop_images/a0bc0129eb9d97c048be27db4e99acd97f96bf1aaea7da6057843a88fab96996_66ea1f5f-dcad-4dd5-a75f-f25e043df9a2.jpg",
+            "label": "",
+            "link": ""
+          }
+        },
+        "tops": {
+          "type": "collection",
+          "settings": {
+            "collection": "tops",
+            "image": "shopify://shop_images/shirts.png",
+            "label": "",
+            "link": ""
+          }
+        },
+        "bottoms": {
+          "type": "collection",
+          "settings": {
+            "collection": "bottoms",
+            "image": "shopify://shop_images/shorts.png",
+            "label": "",
+            "link": ""
+          }
+        },
+        "jackets": {
+          "type": "collection",
+          "settings": {
+            "collection": "jackets",
+            "image": "shopify://shop_images/55869fac35bfe653557113e51cfb8b8165bdfe3d9692ee44e31b5c58661acb1b_dd4f99e3-6f25-4012-97df-d235f1ec60ab.jpg",
+            "label": "",
+            "link": ""
+          }
+        },
+        "shoes": {
+          "type": "collection",
+          "settings": {
+            "collection": "shoes",
+            "image": "shopify://shop_images/beyoutiful-category-shoes.jpg",
+            "label": "Foot Wear",
+            "link": ""
+          }
+        },
+        "handbags": {
+          "type": "collection",
+          "settings": {
+            "collection": "handbags",
+            "image": "shopify://shop_images/703a8bf4c663706b6c0af1687966465f28da426432b3eca67a57f06b01bee090_54767004-bb82-46f4-b0d6-3f654599faae.jpg",
+            "label": "",
+            "link": ""
+          }
+        },
+        "hats": {
+          "type": "collection",
+          "settings": {
+            "collection": "hats",
+            "image": "shopify://shop_images/beyoutiful-category-hats.jpg",
+            "label": "",
+            "link": ""
+          }
+        },
+        "jewelry-accessories": {
+          "type": "collection",
+          "settings": {
+            "collection": "jewelry-accessories",
+            "image": "shopify://shop_images/beyoutiful-rings-and-bracelets-jewelry-counter.jpg",
+            "label": "Jewelry & Accessories",
+            "link": ""
+          }
+        },
+        "drinkware": {
+          "type": "collection",
+          "settings": {
+            "collection": "drinkware",
+            "image": "shopify://shop_images/beyoutiful-category-drinkware.jpg",
+            "label": "",
+            "link": ""
+          }
+        },
+        "kids": {
+          "type": "collection",
+          "settings": {
+            "collection": "kids",
+            "image": "shopify://shop_images/f91c8eb3941d70c866ffcb9a74cf67ffad95f3edccda2187c6f49e9717341fa3.jpg",
+            "label": "",
+            "link": ""
+          }
+        },
+        "little-girls": {
+          "type": "collection",
+          "settings": {
+            "collection": "little-girls",
+            "image": "shopify://shop_images/4d967b71c2a201e4d948cc3d494c2feb57a4608319d8af09ddbfdbb615e04070_6efa4fdb-b27b-4d26-91aa-edb65a4da8cc.jpg",
+            "label": "Lttle Girls",
+            "link": ""
+          }
+        },
+        "toys": {
+          "type": "collection",
+          "settings": {
+            "collection": "toys",
+            "image": "shopify://shop_images/beyoutiful-category-kids-toys-alt.jpg",
+            "label": "",
+            "link": ""
+          }
+        },
+        "baby-toddler": {
+          "type": "collection",
+          "settings": {
+            "collection": "baby-toddler",
+            "image": "shopify://shop_images/1f62712e94be2cc0a0f2df1f2d018644129c383870223de9d17390c1312f847f_f6fe9c9b-d2ba-4787-9810-099dda694bb4.jpg",
+            "label": "Baby & Toddler",
+            "link": ""
           }
         }
       },
       "block_order": [
-        "fb_reel",
-        "tropical_second_fit"
-      ]
+        "dresses",
+        "collection_T7tk8f",
+        "tops",
+        "bottoms",
+        "jackets",
+        "shoes",
+        "handbags",
+        "hats",
+        "jewelry-accessories",
+        "drinkware",
+        "kids",
+        "little-girls",
+        "toys",
+        "baby-toddler"
+      ],
+      "settings": {
+        "heading": "",
+        "tile_style": "square",
+        "card_button_label": "Shop now",
+        "button_label": "Shop all",
+        "button_link": "/collections",
+        "color_scheme": "scheme-1",
+        "padding_top": 28,
+        "padding_bottom": 8
+      }
     },
     "whats_new": {
       "type": "featured-collection",
@@ -105,136 +216,154 @@
         "padding_bottom": 24
       }
     },
-    "tiles_1": {
-      "type": "category-tiles",
+    "shop_styles": {
+      "type": "shop-styles",
       "blocks": {
-        "dresses": {
-          "type": "tile",
+        "fb_reel": {
+          "type": "reel",
           "settings": {
-            "collection": "dresses",
-            "image": "shopify://shop_images/beyoutiful-pink-navy-floral-collared-dress-modeled.webp",
-            "caption": "Dresses",
-            "link": "/collections/dresses"
+            "url": "https://www.facebook.com/reel/1547811980446538/",
+            "title": ""
           }
         },
-        "jackets": {
-          "type": "tile",
+        "tropical_second_fit": {
+          "type": "photo",
           "settings": {
-            "collection": "jackets",
-            "image": "shopify://shop_images/beyoutiful-long-denim-button-front-vest.webp",
-            "caption": "Jackets",
-            "link": "/collections/jackets"
-          }
-        },
-        "tops": {
-          "type": "tile",
-          "settings": {
-            "collection": "tops",
-            "image": "shopify://shop_images/beyoutiful-blue-fringe-hem-top-and-sandal-display.webp",
-            "caption": "Tops",
-            "link": "/collections/tops"
-          }
-        },
-        "bottoms": {
-          "type": "tile",
-          "settings": {
-            "collection": "bottoms",
-            "image": "shopify://shop_images/beyoutiful-dark-wash-denim-shorts.webp",
-            "caption": "Bottoms",
-            "link": "/collections/bottoms"
-          }
-        },
-        "jewelry-accessories": {
-          "type": "tile",
-          "settings": {
-            "collection": "jewelry-accessories",
-            "image": "shopify://shop_images/beyoutiful-rings-and-bracelets-jewelry-counter.webp",
-            "caption": "Jewelry + Accessories",
-            "link": "/collections/jewelry-accessories"
-          }
-        },
-        "handbags": {
-          "type": "tile",
-          "settings": {
-            "collection": "handbags",
-            "image": "shopify://shop_images/beyoutiful-floral-crossbody-bag-display.webp",
-            "caption": "Handbags",
-            "link": "/collections/handbags"
+            "image": "shopify://shop_images/beyoutiful-tryon-tropical-bell-sleeve-shift-dress-b.jpg",
+            "title": "",
+            "link": "/pages/look/tropical-bell-sleeve-dress"
           }
         }
       },
       "block_order": [
-        "dresses",
-        "tops",
-        "jackets",
-        "bottoms",
-        "jewelry-accessories",
-        "handbags"
+        "fb_reel",
+        "tropical_second_fit"
       ],
       "settings": {
-        "title": "Shop by Category",
-        "columns_desktop": 3,
-        "columns_mobile": "2",
-        "image_ratio": "1 / 1.15",
-        "color_scheme": "scheme-1",
-        "padding_top": 36,
-        "padding_bottom": 36,
-        "tile_style": "card"
-      },
-      "disabled": true
-    },
-    "shop_the_look_banner": {
-      "type": "image-with-text",
-      "blocks": {
-        "heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "See it. Style it. Make it yours.",
-            "heading_size": "h1"
-          }
-        },
-        "text": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Discover outfit inspiration from the boutique, then explore the pieces that bring the look together.</p>",
-            "text_style": "body"
-          }
-        },
-        "button": {
-          "type": "button",
-          "settings": {
-            "button_label": "Shop the Look",
-            "button_link": "/pages/shop-the-look",
-            "button_style_secondary": false
-          }
-        }
-      },
-      "block_order": [
-        "heading",
-        "text",
-        "button"
-      ],
-      "settings": {
-        "image": "shopify://shop_images/beyoutiful-blue-ruffle-trim-blouse-jeans.webp",
-        "height": "adapt",
-        "desktop_image_width": "medium",
-        "layout": "image_first",
-        "image_behavior": "none",
-        "content_layout": "no-overlap",
-        "desktop_content_position": "middle",
-        "desktop_content_alignment": "left",
-        "mobile_content_alignment": "left",
-        "section_color_scheme": "scheme-1",
+        "heading": "Shop Our Highlights",
+        "layout": "highlights",
+        "carousel_count": 15,
+        "scroll_seconds": 40,
+        "show_filters": true,
+        "max_looks": 14,
+        "columns": 4,
+        "show_samples": false,
+        "empty_text": "Love this look? Call or stop in and we'll pull it in your size.",
+        "empty_label": "Ask about this look",
+        "empty_link": "",
+        "intro": "<p>Try-on looks styled right here in the boutique. Tap one to shop every piece, plus a few that pair with it.</p>",
+        "badge_label": "Shop the look",
+        "badge_color": "#e60023",
+        "button_label": "Shop the pieces",
+        "button_link": "/pages/shop-the-look",
         "color_scheme": "scheme-2",
-        "padding_top": 36,
-        "padding_bottom": 36
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "1792427955edd86f32": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_5cf7510_9nJ3xK": {
+          "type": "ai_gen_block_5cf7510",
+          "settings": {
+            "image": "shopify://shop_images/4ADDB023-5C60-4618-8B4B-1CE258513754.png",
+            "eyebrow": "NEW AT THE BOUTIQUE",
+            "heading": "The Mixologie Perfume Bar",
+            "description": "<p><em><strong>Meet Mixologie</strong></em><em>—a custom fragrance experience now live at the boutique.</em>&nbsp;</p><p>These <em>alcohol-free</em>, <em>long-lasting</em> fragrance oils are designed to be <strong>mixed</strong>, <strong>matched</strong>, and <strong>layered</strong> directly on your skin. Combine notes of <em>warm vanilla</em>, <em>fresh florals</em>, or <em>coastal breezes</em> to create a signature scent that is completely, uniquely<strong> yours</strong>.</p>",
+            "link_label": "Discover the feature",
+            "link_url": "",
+            "desktop_width_percent": 100,
+            "image_max_height": 700,
+            "mobile_image_max_height": 260,
+            "heading_size": 60,
+            "background_color": "#F1F1F1",
+            "text_color": "#2B2B2B"
+          },
+          "blocks": {}
+        }
       },
-      "disabled": true
+      "block_order": [
+        "ai_gen_block_5cf7510_9nJ3xK"
+      ],
+      "settings": {}
+    },
+    "brands": {
+      "type": "brand-logos",
+      "blocks": {
+        "brand_xJgARf": {
+          "type": "brand",
+          "settings": {
+            "name": "COCO + CARMEN",
+            "logo": "shopify://shop_images/coco_carmen.png",
+            "collection": "coco-carmen",
+            "link": ""
+          }
+        },
+        "brand_himX6m": {
+          "type": "brand",
+          "settings": {
+            "name": "CLARA SUNWOO",
+            "logo": "shopify://shop_images/clara_sunwoo.png",
+            "collection": "clara-sunwoo",
+            "link": ""
+          }
+        },
+        "samuel_dong": {
+          "type": "brand",
+          "settings": {
+            "name": "Samuel Dong",
+            "logo": "shopify://shop_images/beyoutiful-brand-samuel-dong.png",
+            "collection": "samuel-dong",
+            "link": ""
+          }
+        },
+        "frank_lyman": {
+          "type": "brand",
+          "settings": {
+            "name": "Frank Lyman",
+            "logo": "shopify://shop_images/beyoutiful-brand-frank-lyman.png",
+            "collection": "frank-lyman",
+            "link": ""
+          }
+        },
+        "dolcezza": {
+          "type": "brand",
+          "settings": {
+            "name": "Dolcezza",
+            "logo": "shopify://shop_images/beyoutiful-brand-dolcezza.png",
+            "collection": "dolcezza",
+            "link": ""
+          }
+        },
+        "silver": {
+          "type": "brand",
+          "settings": {
+            "name": "Silver Jeans Co.",
+            "logo": "shopify://shop_images/beyoutiful-brand-silver-jeans.png",
+            "collection": "",
+            "link": "/collections/vendors?q=Silver%20Jeans"
+          }
+        }
+      },
+      "block_order": [
+        "brand_xJgARf",
+        "brand_himX6m",
+        "samuel_dong",
+        "frank_lyman",
+        "dolcezza",
+        "silver"
+      ],
+      "settings": {
+        "heading": "Shop the brands we carry",
+        "black_logos": true,
+        "color_scheme": "scheme-2",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
     },
     "brand": {
       "type": "brand-strip",
-      "blocks": {},
-      "block_order": [],
       "settings": {
         "show_ribbon": false,
         "ribbon_items": "Swimwear to formal wear | Sizes XXS – 2X | Women, kids & baby | Downtown Punta Gorda",
@@ -325,6 +454,8 @@
         "show_directions": true,
         "directions_label": "Get Directions",
         "directions_link": "",
+        "google_label": "Reviews on Google",
+        "google_link": "",
         "note": "Visit us in downtown Punta Gorda – 7 Days a Week",
         "color_scheme": "scheme-1",
         "padding_top": 36,
@@ -337,7 +468,7 @@
         "join_list": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/beyoutiful-join-the-list-announcement.webp",
+            "image": "shopify://shop_images/be-you-tiful-boutique-beach-blue.jpg",
             "show_whole_image": true,
             "media_bg": "#e6e6e6",
             "eyebrow": "",
@@ -363,225 +494,141 @@
         "padding_bottom": 0
       }
     },
-    "collections": {
-      "type": "collection-carousel",
+    "tiles_1": {
+      "type": "category-tiles",
       "blocks": {
         "dresses": {
-          "type": "collection",
+          "type": "tile",
           "settings": {
             "collection": "dresses",
-            "image": "shopify://shop_images/beyoutiful-category-dresses.webp",
-            "label": "",
-            "link": ""
+            "caption": "Dresses",
+            "link": "/collections/dresses",
+            "tag": "",
+            "subtitle": "",
+            "button_label": ""
           }
         },
         "tops": {
-          "type": "collection",
+          "type": "tile",
           "settings": {
             "collection": "tops",
-            "image": "shopify://shop_images/beyoutiful-category-tops.webp",
-            "label": "",
-            "link": ""
-          }
-        },
-        "bottoms": {
-          "type": "collection",
-          "settings": {
-            "collection": "bottoms",
-            "image": "shopify://shop_images/beyoutiful-category-bottoms.webp",
-            "label": "",
-            "link": ""
-          }
-        },
-        "jumpsuits": {
-          "type": "collection",
-          "settings": {
-            "collection": "jumpsuits",
-            "image": "shopify://shop_images/beyoutiful-category-jumpers.webp",
-            "label": "",
-            "link": ""
+            "caption": "Tops",
+            "link": "/collections/tops",
+            "tag": "",
+            "subtitle": "",
+            "button_label": ""
           }
         },
         "jackets": {
-          "type": "collection",
+          "type": "tile",
           "settings": {
             "collection": "jackets",
-            "image": "shopify://shop_images/beyoutiful-category-jackets.webp",
-            "label": "",
-            "link": ""
+            "caption": "Jackets",
+            "link": "/collections/jackets",
+            "tag": "",
+            "subtitle": "",
+            "button_label": ""
           }
         },
-        "shoes": {
-          "type": "collection",
+        "bottoms": {
+          "type": "tile",
           "settings": {
-            "collection": "shoes",
-            "image": "shopify://shop_images/beyoutiful-category-shoes.webp",
-            "label": "",
-            "link": ""
-          }
-        },
-        "handbags": {
-          "type": "collection",
-          "settings": {
-            "collection": "handbags",
-            "image": "shopify://shop_images/beyoutiful-category-bags.webp",
-            "label": "",
-            "link": ""
-          }
-        },
-        "hats": {
-          "type": "collection",
-          "settings": {
-            "collection": "hats",
-            "image": "shopify://shop_images/beyoutiful-category-hats.webp",
-            "label": "",
-            "link": ""
+            "collection": "bottoms",
+            "caption": "Bottoms",
+            "link": "/collections/bottoms",
+            "tag": "",
+            "subtitle": "",
+            "button_label": ""
           }
         },
         "jewelry-accessories": {
-          "type": "collection",
+          "type": "tile",
           "settings": {
             "collection": "jewelry-accessories",
-            "image": "shopify://shop_images/beyoutiful-category-jewelry.webp",
-            "label": "",
-            "link": ""
+            "caption": "Jewelry + Accessories",
+            "link": "/collections/jewelry-accessories",
+            "tag": "",
+            "subtitle": "",
+            "button_label": ""
           }
         },
-        "drinkware": {
-          "type": "collection",
+        "handbags": {
+          "type": "tile",
           "settings": {
-            "collection": "drinkware",
-            "image": "shopify://shop_images/beyoutiful-category-drinkware.webp",
-            "label": "",
-            "link": ""
-          }
-        },
-        "swimsuits": {
-          "type": "collection",
-          "settings": {
-            "collection": "swimsuits",
-            "image": "",
-            "label": "",
-            "link": ""
-          }
-        },
-        "kids": {
-          "type": "collection",
-          "settings": {
-            "collection": "kids",
-            "image": "shopify://shop_images/beyoutiful-category-kids-toys.webp",
-            "label": "",
-            "link": ""
-          }
-        },
-        "little-girls": {
-          "type": "collection",
-          "settings": {
-            "collection": "little-girls",
-            "image": "shopify://shop_images/beyoutiful-category-little-girls.webp",
-            "label": "",
-            "link": ""
-          }
-        },
-        "toys": {
-          "type": "collection",
-          "settings": {
-            "collection": "toys",
-            "image": "shopify://shop_images/beyoutiful-category-kids-toys-alt.webp",
-            "label": "",
-            "link": ""
-          }
-        },
-        "baby-toddler": {
-          "type": "collection",
-          "settings": {
-            "collection": "baby-toddler",
-            "image": "shopify://shop_images/beyoutiful-category-baby-toddler.webp",
-            "label": "",
-            "link": ""
+            "collection": "handbags",
+            "caption": "Handbags",
+            "link": "/collections/handbags",
+            "tag": "",
+            "subtitle": "",
+            "button_label": ""
           }
         }
       },
       "block_order": [
         "dresses",
         "tops",
-        "bottoms",
-        "jumpsuits",
         "jackets",
-        "shoes",
-        "handbags",
-        "hats",
+        "bottoms",
         "jewelry-accessories",
-        "drinkware",
-        "swimsuits",
-        "kids",
-        "little-girls",
-        "toys",
-        "baby-toddler"
+        "handbags"
       ],
+      "disabled": true,
       "settings": {
-        "heading": "Collections",
-        "tile_style": "square",
-        "card_button_label": "Shop now",
-        "button_label": "Shop all",
-        "button_link": "/collections",
+        "title": "Shop by Category",
+        "tile_style": "card",
+        "columns_desktop": 3,
+        "columns_mobile": "2",
+        "image_ratio": "1 / 1.15",
         "color_scheme": "scheme-1",
-        "padding_top": 60,
-        "padding_bottom": 60
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     },
-    "brands": {
-      "type": "brand-logos",
+    "shop_the_look_banner": {
+      "type": "image-with-text",
       "blocks": {
-        "samuel_dong": {
-          "type": "brand",
+        "heading": {
+          "type": "heading",
           "settings": {
-            "name": "Samuel Dong",
-            "logo": "shopify://shop_images/beyoutiful-brand-samuel-dong.png",
-            "collection": "samuel-dong",
-            "link": ""
+            "heading": "See it. Style it. Make it yours.",
+            "heading_size": "h1"
           }
         },
-        "frank_lyman": {
-          "type": "brand",
+        "text": {
+          "type": "text",
           "settings": {
-            "name": "Frank Lyman",
-            "logo": "shopify://shop_images/beyoutiful-brand-frank-lyman.png",
-            "collection": "frank-lyman",
-            "link": ""
+            "text": "<p>Discover outfit inspiration from the boutique, then explore the pieces that bring the look together.</p>",
+            "text_style": "body"
           }
         },
-        "dolcezza": {
-          "type": "brand",
+        "button": {
+          "type": "button",
           "settings": {
-            "name": "Dolcezza",
-            "logo": "shopify://shop_images/beyoutiful-brand-dolcezza.png",
-            "collection": "dolcezza",
-            "link": ""
-          }
-        },
-        "silver": {
-          "type": "brand",
-          "settings": {
-            "name": "Silver Jeans Co.",
-            "logo": "shopify://shop_images/beyoutiful-brand-silver-jeans.png",
-            "collection": "",
-            "link": "/collections/vendors?q=Silver%20Jeans"
+            "button_label": "Shop the Look",
+            "button_link": "/pages/shop-the-look",
+            "button_style_secondary": false
           }
         }
       },
       "block_order": [
-        "samuel_dong",
-        "frank_lyman",
-        "dolcezza",
-        "silver"
+        "heading",
+        "text",
+        "button"
       ],
+      "disabled": true,
       "settings": {
-        "heading": "Shop the brands we carry",
-        "black_logos": true,
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "scheme-1",
         "color_scheme": "scheme-2",
-        "padding_top": 60,
-        "padding_bottom": 60
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     }
   },
@@ -590,6 +637,7 @@
     "collections",
     "whats_new",
     "shop_styles",
+    "1792427955edd86f32",
     "brands",
     "brand",
     "sale",

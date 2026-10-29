@@ -2,9 +2,9 @@
 # Fill in the store handles; never commit theme passwords (use `shopify auth login`).
 
 [environments.dev]
-store = "kw59hc-k1"            # Amber's build store — preview only
+store = "v0m0hb-x3"            # Boutique test store — never FAS
 ignore = ["docs/*", "scripts/*", "README.md"]
 
 [environments.client]
-store = "v0m0hb-x3"
+store = "xapm2f-fr"
 ignore = ["docs/*", "scripts/*", "README.md"]

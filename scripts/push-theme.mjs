@@ -1,0 +1,13 @@
+import { readFileSync } from 'node:fs';
+import { spawnSync } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
+const root = fileURLToPath(new URL('../', import.meta.url));
+const target = process.argv[2];
+const targets = { dev: 'v0m0hb-x3', client: 'xapm2f-fr' };
+if (!targets[target] || process.argv.length !== 3) throw new Error('Use push:dev or push:client without target overrides.');
+const config = readFileSync(new URL('../shopify.theme.toml', import.meta.url), 'utf8');
+const section = config.split(`[environments.${target}]`)[1]?.split('[environments.')[0];
+if (!section?.includes(`store = "${targets[target]}"`)) throw new Error('Store target differs from the approved boutique environment.');
+const result = spawnSync('shopify', ['theme', 'push', '--store', `${targets[target]}.myshopify.com`, '--unpublished'], { cwd: root, stdio: 'inherit' });
+if (result.error) throw result.error;
+process.exitCode = result.status ?? 1;

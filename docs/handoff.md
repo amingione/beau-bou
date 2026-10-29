@@ -1,3 +1,29 @@
+# Launch readiness update — October 29, 2026
+
+Current authorization: Shopify owns the curated catalog; EPOS inventory must sync both ways. Keep the storefront password until all pilot and checkout gates pass. Love Loyalty owns rewards; no separate rewards engine or points reset. Newsletter offer: one-time 20% off regular-priced items, $100 minimum, once per customer.
+
+## Local changes (not published)
+
+- CLI environment `client` now targets `xapm2f-fr`; `dev` targets boutique test store `v0m0hb-x3`. FAS is excluded.
+- `npm run push:client` / `push:dev` use a fixed-target wrapper and create unpublished themes only. Direct CLI calls can bypass this wrapper; always verify the store.
+- Homepage Look URL corrected to `/pages/look/…`; test-product fallback removed in favor of `/collections/all`; Look collection reconciled to the owner’s live `new-arrivals`.
+- Announcement wording now states the regular-price-only, one-time email signup offer. This copy does NOT configure or enforce a checkout discount.
+- Theme check passes with 11 pre-existing warnings. Owner live JSON settings and the Mixologie editorial spotlight block have been reconciled into the local repo; no theme was pushed.
+
+## Current blockers / owner session
+
+App work and technical evidence are recorded in the existing `beau-bou-app/docs/EPOSNOW_SYNC.md`. The old import is retired in local code; replacement supports previews/mapping approvals and held webhook receipts only. Product/inventory/customer/order writes and rewards integration are not complete. EPOS V4 reads returned 401 using both local and production credentials. The production app’s expired Shopify token was successfully renewed through its existing refresh flow; authenticated owner-store reads now work.
+
+Live audit: 155 draft products / 266 draft variants, 7 archived variants, zero active products. 80 draft variants lack SKUs; 71 lack shipping weights. Duplicate SKU values: `09CF8` (2), `S18006` (4), `S18007` (2). Review the actionable rows in [launch catalog issues](store/launch-catalog-issues-2026-10-29.csv). All draft variants are inventory tracked, have product media, and have positive prices; quantities and accuracy are not yet reconciled with EPOS or physical stock.
+
+The current live newsletter discount applies to the entire order and does not exclude markdowns. It already has subscriber eligibility, one use per customer, a $100 minimum, and no combinations. Amber confirmed retaining the minimum. The discount was inspected but not changed; regular-price enforcement and checkout tests remain outstanding. The app also needs the locally added `read_locations` scope granted before location-name reads.
+
+Remaining checks: full owner catalog and opening physical stock, active EPOS API device/location, Love Loyalty rules and supported EPOS bridge, Faire inventory ownership, actual newsletter discount/automation and mixed-cart repeat-use tests, payment/shipping/pickup/tax/notification settings, Look product links, mobile/desktop checkout, refunds/restocks, failure recovery, and a reconciled trading day.
+
+The owner screenshot confirms be-you-tiful, Love Loyalty, and Faire installed. Older installation and test-catalog notes below are historical, not proof of current account settings.
+
+---
+
 # Client handoff checklist — Be-YOU-tiful Boutique by Michele
 
 ## Current owner workflow — September 21, 2026

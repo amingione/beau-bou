@@ -44,6 +44,7 @@
     "inputs_shadow_vertical_offset": 4,
     "inputs_shadow_blur": 5,
     "card_style": "standard",
+    "product_card_style": "boutique",
     "card_image_padding": 0,
     "card_text_alignment": "left",
     "card_color_scheme": "scheme-1",
@@ -110,7 +111,7 @@
     "brand_headline": "",
     "brand_description": "<p>Swimwear to formal wear. Women's XXS to 2X, plus kids and baby. Downtown Punta Gorda.</p>",
     "brand_image": "shopify://shop_images/beyoutiful-lockup-white-trim.png",
-    "brand_image_width": 220,
+    "brand_image_width": 135,
     "social_facebook_link": "https://www.facebook.com/MicheleMonksEnsmingerMansfield",
     "social_instagram_link": "https://instagram.com/michelensmginer",
     "social_youtube_link": "",
@@ -133,6 +134,9 @@
     "type_accent_font": "playfair_display_i4",
     "nav_letter_spacing": 10,
     "display_letter_spacing": 14,
+    "bb_meta_description": "Women's boutique in downtown Punta Gorda, FL: swimsuits, dresses, gowns, tops, bottoms and jewelry in sizes XXS to 2X. Shop online or pick up in store.",
+    "bb_share_image": "shopify://shop_images/beyoutiful-storefront-hero-desktop.webp",
+    "bb_google_profile": "https://www.google.com/maps/place/?q=place_id:ChIJ7WEWM0NX24gRLOCl6mRk0PA",
     "sections": {
       "main-password-header": {
         "type": "main-password-header",
@@ -168,16 +172,16 @@
           "button": "#f1f1f1",
           "button_label": "#3a4543",
           "secondary_button_label": "#424a49",
-          "shadow": "#313131"
+          "shadow": "#000000"
         }
       },
       "scheme-3": {
         "settings": {
-          "background": "#5B93A0",
+          "background": "#5b93a0",
           "background_gradient": "",
-          "text": "#FFFFFF",
-          "button": "#eae7e3",
-          "button_label": "#5B93A0",
+          "text": "#ffffff",
+          "button": "#FFFFFF",
+          "button_label": "#5b93a0",
           "secondary_button_label": "#f1f1f1",
           "shadow": "#42484a"
         }
@@ -195,20 +199,16 @@
       },
       "scheme-5": {
         "settings": {
-          "background": "#3f494a",
+          "background": "#E7E7E7",
           "background_gradient": "",
-          "text": "#f1f1f1",
-          "button": "#ffffff",
-          "button_label": "#3f4e53",
-          "secondary_button_label": "#ede3e0",
-          "shadow": "#f1f1f1"
+          "text": "#000000",
+          "button": "#5B93A0",
+          "button_label": "#FFFFFF",
+          "secondary_button_label": "#5B93A0",
+          "shadow": "#000000"
         }
       }
-    },
-    "product_card_style": "boutique",
-    "bb_google_profile": "https://www.google.com/maps/place/?q=place_id:ChIJ7WEWM0NX24gRLOCl6mRk0PA",
-    "bb_share_image": "shopify://shop_images/beyoutiful-storefront-hero-desktop.webp",
-    "bb_meta_description": "Women's boutique in downtown Punta Gorda, FL: swimsuits, dresses, gowns, tops, bottoms and jewelry in sizes XXS to 2X. Shop online or pick up in store."
+    }
   },
   "presets": {
     "Be-YOU-tiful": {
