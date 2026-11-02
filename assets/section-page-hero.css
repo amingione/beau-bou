@@ -46,6 +46,8 @@
 
 .page-hero__media {
   aspect-ratio: 4 / 5;
+  width: min(100%, 42rem);
+  margin-inline: auto;
   overflow: hidden;
 }
 

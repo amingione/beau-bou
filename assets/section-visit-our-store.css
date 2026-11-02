@@ -15,6 +15,13 @@
   background: rgba(var(--color-foreground), 0.04);
 }
 
+@media screen and (min-width: 990px) {
+  .visit-store__media {
+    width: min(100%, 48rem);
+    justify-self: center;
+  }
+}
+
 .visit-store__image,
 .visit-store__media .placeholder-svg {
   width: 100%;

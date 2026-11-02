@@ -13,9 +13,12 @@ page body.
 ## Family album and store tour
 
 The photo source folder is `~/LocalStorm/Workspace/In Progress/Be-YOU-tiful Boutique/photos-in/about-page/`.
-Eight family and lifestyle photos form a collage on desktop and a horizontally scrollable album on mobile. The
-separate tour has eight stops in two chapters around the review strip, moving from the storefront and windows
-through clothing, fragrance, accessories and gifts. Captions and alt text describe what is visible without
+Eight family and lifestyle photos form a compact, sideways-scrolling lookbook rail at every screen width. The
+separate store tour has eight stops in two matching horizontal rails around the review strip, moving from the
+storefront and windows through clothing, fragrance, accessories and gifts. Photos remain fully visible inside
+bounded cards, with on-page previous/next controls and keyboard navigation. The story lead, page hero and
+storefront visit photos are also size-limited so they do not dominate the page. Captions and alt text describe
+what is visible without
 assigning family relationships to the people pictured. The closing album note thanks customers for their visits,
 stories and trust.
 
@@ -35,6 +38,10 @@ punctuation and paragraph breaks only. Her words, facts and first-person voice a
 
 ## Keep in mind
 
+- On November 2, an older Shopify theme-editor session showed pending removal of the About, Visit Us and
+  homepage templates. Its pending state was saved as a **draft only** rollout named
+  `Recovery - unsaved boutique editor 2026-11-02`, with a note not to launch it. The refreshed editor showed a
+  disabled Save button, and all three active templates remained intact. Do not launch that recovery rollout.
 - "Over the last 7 years" will go stale. Update it each year, or change it to "Since 2020" if Michele prefers.
 - The Shopify page body (Online Store → Pages → About) held older short text at the October 18 review. This
   custom template does not display it. Check the body before switching to Default or reusing it for a search

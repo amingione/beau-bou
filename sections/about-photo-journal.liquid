@@ -58,11 +58,7 @@
                   assign photo_alt = 'A moment at Be-YOU-tiful Boutique'
                 endif
               endif
-              if journal_mode == 'tour'
-                assign photo_sizes = '(min-width: 990px) 50vw, (min-width: 750px) 55vw, 100vw'
-              else
-                assign photo_sizes = '(min-width: 990px) 50vw, (min-width: 750px) 48vw, 82vw'
-              endif
+              assign photo_sizes = '(min-width: 990px) 330px, (min-width: 750px) 280px, 78vw'
               assign step_index = photo_index | plus: section.settings.step_start | minus: 1
               assign step_number = step_index | prepend: '0' | slice: -2, 2
             -%}
@@ -106,12 +102,24 @@
         {%- endfor -%}
       {%- endcapture -%}
 
+      {%- if photo_count > 1 -%}
+        <div class="about-journal__controls" role="group" aria-label="{{ section.settings.heading | default: 'Photo album' | escape }} navigation">
+          <span class="about-journal__control-label">Scroll the photos</span>
+          <button type="button" class="about-journal__control" data-journal-direction="previous" aria-controls="AboutJournalPhotos-{{ section.id }}" aria-label="Previous photos">
+            <span aria-hidden="true">←</span>
+          </button>
+          <button type="button" class="about-journal__control" data-journal-direction="next" aria-controls="AboutJournalPhotos-{{ section.id }}" aria-label="Next photos">
+            <span aria-hidden="true">→</span>
+          </button>
+        </div>
+      {%- endif -%}
+
       {%- if journal_mode == 'tour' -%}
-        <ol class="about-journal__photos about-journal__photos--tour" aria-label="{{ section.settings.heading | default: 'A tour of the boutique' | escape }}">
+        <ol id="AboutJournalPhotos-{{ section.id }}" class="about-journal__photos about-journal__photos--tour" tabindex="0" aria-label="{{ section.settings.heading | default: 'A tour of the boutique' | escape }}">
           {{ photo_items }}
         </ol>
       {%- else -%}
-        <ul class="about-journal__photos about-journal__photos--album" tabindex="0" aria-label="{{ section.settings.heading | default: 'Boutique photo album' | escape }}">
+        <ul id="AboutJournalPhotos-{{ section.id }}" class="about-journal__photos about-journal__photos--album" tabindex="0" aria-label="{{ section.settings.heading | default: 'Boutique photo album' | escape }}">
           {{ photo_items }}
         </ul>
       {%- endif -%}
@@ -122,6 +130,41 @@
     </div>
   </div>
 {%- endif -%}
+
+<script>
+  (function () {
+    if (window.beauBouAboutJournalControls) return;
+    window.beauBouAboutJournalControls = true;
+
+    function move(rail, direction) {
+      var item = rail.querySelector('.about-journal__item');
+      if (!item) return;
+      var gap = parseFloat(window.getComputedStyle(rail).gap) || 0;
+      var distance = item.getBoundingClientRect().width + gap;
+      rail.scrollBy({
+        left: distance * direction,
+        behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
+      });
+    }
+
+    document.addEventListener('click', function (event) {
+      if (!(event.target instanceof Element)) return;
+      var button = event.target.closest('[data-journal-direction]');
+      if (!button) return;
+      var rail = document.getElementById(button.getAttribute('aria-controls'));
+      if (rail) move(rail, button.dataset.journalDirection === 'next' ? 1 : -1);
+    });
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+      if (!(event.target instanceof Element)) return;
+      var rail = event.target.closest('.about-journal__photos');
+      if (!rail) return;
+      event.preventDefault();
+      move(rail, event.key === 'ArrowRight' ? 1 : -1);
+    });
+  })();
+</script>
 
 {% schema %}
 {
