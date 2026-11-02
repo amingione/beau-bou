@@ -14,6 +14,20 @@
       assign photo_count = photo_count | plus: 1
     endif
   endfor
+
+  assign display_photo_count = photo_count
+  if request.design_mode and section.blocks.size > photo_count
+    assign display_photo_count = section.blocks.size
+  endif
+  assign spread_count = display_photo_count | plus: 1 | divided_by: 2
+  if journal_mode == 'album'
+    assign navigation_count = spread_count
+    assign navigation_item = 'spread'
+  else
+    assign navigation_count = display_photo_count
+    assign navigation_item = 'stop'
+  endif
+  assign navigation_count_label = navigation_count | prepend: '0' | slice: -2, 2
 -%}
 
 {%- if photo_count > 0 or request.design_mode -%}
@@ -50,6 +64,9 @@
           {%- if photo != blank or request.design_mode -%}
             {%- assign photo_index = photo_index | plus: 1 -%}
             {%- liquid
+              assign pair_position = photo_index | modulo: 2
+              assign spread_index = photo_index | plus: 1 | divided_by: 2
+              assign spread_number = spread_index | prepend: '0' | slice: -2, 2
               assign photo_alt = block.settings.alt | default: photo.alt | default: block.settings.caption
               if photo_alt == blank
                 if journal_mode == 'tour'
@@ -58,12 +75,16 @@
                   assign photo_alt = 'A moment at Be-YOU-tiful Boutique'
                 endif
               endif
-              assign photo_sizes = '(min-width: 990px) 330px, (min-width: 750px) 280px, 78vw'
+              if journal_mode == 'album'
+                assign photo_sizes = '(min-width: 990px) 255px, (min-width: 750px) 235px, 40vw'
+              else
+                assign photo_sizes = '(min-width: 990px) 310px, (min-width: 750px) 300px, 46vw'
+              endif
               assign step_index = photo_index | plus: section.settings.step_start | minus: 1
               assign step_number = step_index | prepend: '0' | slice: -2, 2
             -%}
-            <li class="about-journal__item" {{ block.shopify_attributes }}>
-              <figure class="about-journal__figure">
+            {%- capture photo_figure -%}
+              <figure class="about-journal__figure" {% if journal_mode == 'album' %}{{ block.shopify_attributes }}{% endif %}>
                 <div class="about-journal__media">
                   {%- if photo != blank -%}
                     {{
@@ -80,11 +101,36 @@
                     {{ 'image' | placeholder_svg_tag: 'about-journal__placeholder' }}
                   {%- endif -%}
                 </div>
-                {%- if journal_mode == 'album' and block.settings.caption != blank -%}
-                  <figcaption class="about-journal__caption">{{ block.settings.caption | escape }}</figcaption>
+                {%- if journal_mode == 'album' -%}
+                  {%- if block.settings.caption != blank or block.settings.note != blank -%}
+                    <figcaption class="about-journal__photo-caption">
+                      {%- if block.settings.caption != blank -%}
+                        <span class="about-journal__caption">{{ block.settings.caption | escape }}</span>
+                      {%- endif -%}
+                      {%- if block.settings.note != blank -%}
+                        <span class="about-journal__album-note">{{ block.settings.note | escape | newline_to_br }}</span>
+                      {%- endif -%}
+                    </figcaption>
+                  {%- endif -%}
                 {%- endif -%}
               </figure>
-              {%- if journal_mode == 'tour' -%}
+            {%- endcapture -%}
+            {%- if journal_mode == 'album' -%}
+              {%- if pair_position == 1 -%}
+                {%- assign first_photo_figure = photo_figure -%}
+                {%- assign first_spread_number = spread_number -%}
+              {%- else -%}
+                <li class="about-journal__item about-journal__item--album">
+                  <div class="about-journal__folio" aria-hidden="true">
+                    <span>People &amp; moments</span>
+                    <span>{{ first_spread_number }} / {{ navigation_count_label }}</span>
+                  </div>
+                  <div class="about-journal__spread">{{ first_photo_figure }}{{ photo_figure }}</div>
+                </li>
+              {%- endif -%}
+            {%- else -%}
+              <li class="about-journal__item about-journal__item--tour" {{ block.shopify_attributes }}>
+                {{ photo_figure }}
                 <div class="about-journal__detail">
                   <span class="about-journal__step" aria-hidden="true">{{ step_number }}</span>
                   {%- if block.settings.caption != blank -%}
@@ -94,21 +140,29 @@
                     <p class="about-journal__note">{{ block.settings.note | escape | newline_to_br }}</p>
                   {%- endif -%}
                 </div>
-              {%- elsif block.settings.note != blank -%}
-                <p class="about-journal__album-note">{{ block.settings.note | escape | newline_to_br }}</p>
-              {%- endif -%}
-            </li>
+              </li>
+            {%- endif -%}
           {%- endif -%}
         {%- endfor -%}
+        {%- if journal_mode == 'album' and pair_position == 1 -%}
+          <li class="about-journal__item about-journal__item--album">
+            <div class="about-journal__folio" aria-hidden="true">
+              <span>People &amp; moments</span>
+              <span>{{ first_spread_number }} / {{ navigation_count_label }}</span>
+            </div>
+            <div class="about-journal__spread">{{ first_photo_figure }}</div>
+          </li>
+        {%- endif -%}
       {%- endcapture -%}
 
-      {%- if photo_count > 1 -%}
+      {%- if navigation_count > 1 -%}
         <div class="about-journal__controls" role="group" aria-label="{{ section.settings.heading | default: 'Photo album' | escape }} navigation">
-          <span class="about-journal__control-label">Scroll the photos</span>
-          <button type="button" class="about-journal__control" data-journal-direction="previous" aria-controls="AboutJournalPhotos-{{ section.id }}" aria-label="Previous photos">
+          <span class="about-journal__control-label">Browse the lookbook</span>
+          <span class="about-journal__position" data-journal-position-for="AboutJournalPhotos-{{ section.id }}" aria-live="polite">01 / {{ navigation_count_label }}</span>
+          <button type="button" class="about-journal__control" data-journal-direction="previous" aria-controls="AboutJournalPhotos-{{ section.id }}" aria-label="Previous {{ navigation_item }}">
             <span aria-hidden="true">←</span>
           </button>
-          <button type="button" class="about-journal__control" data-journal-direction="next" aria-controls="AboutJournalPhotos-{{ section.id }}" aria-label="Next photos">
+          <button type="button" class="about-journal__control" data-journal-direction="next" aria-controls="AboutJournalPhotos-{{ section.id }}" aria-label="Next {{ navigation_item }}">
             <span aria-hidden="true">→</span>
           </button>
         </div>
@@ -136,6 +190,21 @@
     if (window.beauBouAboutJournalControls) return;
     window.beauBouAboutJournalControls = true;
 
+    function updatePosition(rail) {
+      var items = rail.querySelectorAll('.about-journal__item');
+      if (!items.length) return;
+      var gap = parseFloat(window.getComputedStyle(rail).gap) || 0;
+      var distance = items[0].getBoundingClientRect().width + gap;
+      var index = Math.round(rail.scrollLeft / distance);
+      if (rail.scrollLeft + rail.clientWidth >= rail.scrollWidth - 2) index = items.length - 1;
+      index = Math.max(0, Math.min(items.length - 1, index));
+      var position = document.querySelector('[data-journal-position-for="' + rail.id + '"]');
+      if (position) {
+        var label = String(index + 1).padStart(2, '0') + ' / ' + String(items.length).padStart(2, '0');
+        if (position.textContent !== label) position.textContent = label;
+      }
+    }
+
     function move(rail, direction) {
       var item = rail.querySelector('.about-journal__item');
       if (!item) return;
@@ -155,6 +224,12 @@
       if (rail) move(rail, button.dataset.journalDirection === 'next' ? 1 : -1);
     });
 
+    document.addEventListener('scroll', function (event) {
+      if (event.target instanceof Element && event.target.matches('.about-journal__photos')) {
+        updatePosition(event.target);
+      }
+    }, true);
+
     document.addEventListener('keydown', function (event) {
       if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
       if (!(event.target instanceof Element)) return;
@@ -163,6 +238,17 @@
       event.preventDefault();
       move(rail, event.key === 'ArrowRight' ? 1 : -1);
     });
+
+    function initializePositions() {
+      document.querySelectorAll('.about-journal__photos').forEach(updatePosition);
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initializePositions, { once: true });
+    } else {
+      initializePositions();
+    }
+    document.addEventListener('shopify:section:load', initializePositions);
   })();
 </script>
 
