@@ -1,0 +1,168 @@
+{{ 'section-about-photo-journal.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign journal_mode = section.settings.mode | default: 'album'
+  assign photo_count = 0
+
+  for block in section.blocks
+    assign photo = block.settings.image
+    if photo != blank and photo.src == blank
+      assign filename = photo | remove: 'shopify://shop_images/'
+      assign photo = images[filename]
+    endif
+    if photo != blank
+      assign photo_count = photo_count | plus: 1
+    endif
+  endfor
+-%}
+
+{%- if photo_count > 0 or request.design_mode -%}
+  <div class="about-journal about-journal--{{ journal_mode }} color-{{ section.settings.color_scheme }} gradient">
+    <div class="page-width about-journal__inner">
+      {%- if section.settings.eyebrow != blank or section.settings.heading != blank or section.settings.intro != blank -%}
+        <header class="about-journal__header">
+          {%- if section.settings.eyebrow != blank -%}
+            <p class="about-journal__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+          {%- endif -%}
+          {%- if section.settings.heading != blank -%}
+            <h2 class="about-journal__heading">{{ section.settings.heading | escape }}</h2>
+          {%- endif -%}
+          {%- if section.settings.intro != blank -%}
+            <div class="about-journal__intro rte">{{ section.settings.intro }}</div>
+          {%- endif -%}
+        </header>
+      {%- endif -%}
+
+      {%- if photo_count == 0 and request.design_mode -%}
+        <p class="about-journal__hint">Add a Photo block and choose an image to start this section.</p>
+      {%- endif -%}
+
+      {%- capture photo_items -%}
+        {%- assign photo_index = 0 -%}
+        {%- for block in section.blocks -%}
+          {%- liquid
+            assign photo = block.settings.image
+            if photo != blank and photo.src == blank
+              assign filename = photo | remove: 'shopify://shop_images/'
+              assign photo = images[filename]
+            endif
+          -%}
+          {%- if photo != blank or request.design_mode -%}
+            {%- assign photo_index = photo_index | plus: 1 -%}
+            {%- liquid
+              assign photo_alt = block.settings.alt | default: photo.alt | default: block.settings.caption
+              if photo_alt == blank
+                if journal_mode == 'tour'
+                  assign photo_alt = 'Inside Be-YOU-tiful Boutique'
+                else
+                  assign photo_alt = 'A moment at Be-YOU-tiful Boutique'
+                endif
+              endif
+              if journal_mode == 'tour'
+                assign photo_sizes = '(min-width: 990px) 50vw, (min-width: 750px) 55vw, 100vw'
+              else
+                assign photo_sizes = '(min-width: 990px) 50vw, (min-width: 750px) 48vw, 82vw'
+              endif
+              assign step_index = photo_index | plus: section.settings.step_start | minus: 1
+              assign step_number = step_index | prepend: '0' | slice: -2, 2
+            -%}
+            <li class="about-journal__item" {{ block.shopify_attributes }}>
+              <figure class="about-journal__figure">
+                <div class="about-journal__media">
+                  {%- if photo != blank -%}
+                    {{
+                      photo
+                      | image_url: width: 1800
+                      | image_tag:
+                        loading: 'lazy',
+                        widths: '360, 540, 750, 990, 1300, 1600, 1800',
+                        sizes: photo_sizes,
+                        class: 'about-journal__image',
+                        alt: photo_alt
+                    }}
+                  {%- else -%}
+                    {{ 'image' | placeholder_svg_tag: 'about-journal__placeholder' }}
+                  {%- endif -%}
+                </div>
+                {%- if journal_mode == 'album' and block.settings.caption != blank -%}
+                  <figcaption class="about-journal__caption">{{ block.settings.caption | escape }}</figcaption>
+                {%- endif -%}
+              </figure>
+              {%- if journal_mode == 'tour' -%}
+                <div class="about-journal__detail">
+                  <span class="about-journal__step" aria-hidden="true">{{ step_number }}</span>
+                  {%- if block.settings.caption != blank -%}
+                    <h3 class="about-journal__caption">{{ block.settings.caption | escape }}</h3>
+                  {%- endif -%}
+                  {%- if block.settings.note != blank -%}
+                    <p class="about-journal__note">{{ block.settings.note | escape | newline_to_br }}</p>
+                  {%- endif -%}
+                </div>
+              {%- elsif block.settings.note != blank -%}
+                <p class="about-journal__album-note">{{ block.settings.note | escape | newline_to_br }}</p>
+              {%- endif -%}
+            </li>
+          {%- endif -%}
+        {%- endfor -%}
+      {%- endcapture -%}
+
+      {%- if journal_mode == 'tour' -%}
+        <ol class="about-journal__photos about-journal__photos--tour" aria-label="{{ section.settings.heading | default: 'A tour of the boutique' | escape }}">
+          {{ photo_items }}
+        </ol>
+      {%- else -%}
+        <ul class="about-journal__photos about-journal__photos--album" tabindex="0" aria-label="{{ section.settings.heading | default: 'Boutique photo album' | escape }}">
+          {{ photo_items }}
+        </ul>
+      {%- endif -%}
+
+      {%- if section.settings.closing_note != blank -%}
+        <p class="about-journal__closing">{{ section.settings.closing_note | escape | newline_to_br }}</p>
+      {%- endif -%}
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "About photo journal",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": { "groups": ["header", "footer"] },
+  "settings": [
+    {
+      "type": "select",
+      "id": "mode",
+      "label": "Presentation",
+      "options": [
+        { "value": "album", "label": "Family and lifestyle album" },
+        { "value": "tour", "label": "Store tour" }
+      ],
+      "default": "album"
+    },
+    { "type": "text", "id": "eyebrow", "label": "Small heading" },
+    { "type": "text", "id": "heading", "label": "Heading" },
+    { "type": "richtext", "id": "intro", "label": "Introduction" },
+    { "type": "textarea", "id": "closing_note", "label": "Closing note" },
+    { "type": "range", "id": "step_start", "label": "First tour stop number", "min": 1, "max": 20, "step": 1, "default": 1 },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" }
+  ],
+  "blocks": [
+    {
+      "type": "photo",
+      "name": "Photo",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "caption", "label": "Caption or tour stop" },
+        { "type": "text", "id": "alt", "label": "Image description for accessibility" },
+        { "type": "textarea", "id": "note", "label": "Short note" }
+      ]
+    }
+  ],
+  "max_blocks": 20,
+  "presets": [
+    { "name": "About photo album", "settings": { "mode": "album" } },
+    { "name": "About store tour", "settings": { "mode": "tour" } }
+  ]
+}
+{% endschema %}

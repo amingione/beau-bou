@@ -1,13 +1,28 @@
 # About page
 
-The November 2 owner theme editor is the source for the current layout in `templates/page.about.json`.
-It uses two custom editor blocks: **Our story** (`blocks/ai_gen_block_de2e383.liquid`) and **Kind words**
-(`blocks/ai_gen_block_f9eedc1.liquid`). The page order is hero → story → promise → Facebook review strip →
-store visit/hours → Kind words. The hero and promise retain Michele's faith line, "Accept yourself as you were
-designed by God." The story block carries her first-person copy, photos, pull quote and attribution; the Kind
-words block is a separate Google review carousel with three excerpts from the owner editor. The Facebook strip
-and Google carousel are distinct sections. The active owner-theme files were saved and read back on November 2;
-the local template remains separate from Shopify's page body.
+The November 2 owner theme editor supplied the story layout in `templates/page.about.json`. It uses two custom
+editor blocks: **Our story** (`blocks/ai_gen_block_de2e383.liquid`) and **Kind words**
+(`blocks/ai_gen_block_f9eedc1.liquid`). The page order is hero → story → family and lifestyle album → promise →
+store tour arrival → Facebook review strip → store tour discoveries → store visit/hours → Kind words. The hero
+and promise retain Michele's faith line, "Accept yourself as you were designed by God." The story block carries
+her first-person copy, photos, pull quote and attribution; the Kind words block is a separate Google review
+carousel with three excerpts from the owner editor. The Facebook strip and Google carousel remain distinct.
+The active theme was saved and read back on November 2; the local template remains separate from Shopify's
+page body.
+
+## Family album and store tour
+
+The photo source folder is `~/LocalStorm/Workspace/In Progress/Be-YOU-tiful Boutique/photos-in/about-page/`.
+Eight family and lifestyle photos form a collage on desktop and a horizontally scrollable album on mobile. The
+separate tour has eight stops in two chapters around the review strip, moving from the storefront and windows
+through clothing, fragrance, accessories and gifts. Captions and alt text describe what is visible without
+assigning family relationships to the people pictured. The closing album note thanks customers for their visits,
+stories and trust.
+
+The theme section is `sections/about-photo-journal.liquid`, with styles in
+`assets/section-about-photo-journal.css`. Its photo blocks are editable in Shopify. Fourteen selected photos were
+uploaded to Shopify Files for this page; two existing store photos were reused. Duplicate source photos and four
+short product clips were not placed in the page. No source photos were removed or changed.
 
 ## Source
 

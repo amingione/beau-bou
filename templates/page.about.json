@@ -55,6 +55,85 @@
       ],
       "settings": {}
     },
+    "people_album": {
+      "type": "about-photo-journal",
+      "blocks": {
+        "hug": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/beyoutiful-about-people-9776.jpg",
+            "alt": "Two women embracing indoors"
+          }
+        },
+        "baby": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/beyoutiful-about-people-12722.jpg",
+            "alt": "Woman cuddling a sleeping baby"
+          }
+        },
+        "seaside": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/beyoutiful-about-people-2164.jpg",
+            "alt": "Two women smiling together by the sea"
+          }
+        },
+        "outdoors": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/beyoutiful-about-people-2330.jpg",
+            "alt": "Two women smiling together outdoors"
+          }
+        },
+        "city": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/beyoutiful-about-people-2707.jpg",
+            "alt": "Four people smiling together on a city street"
+          }
+        },
+        "holiday": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/beyoutiful-about-people-9750.jpg",
+            "alt": "Two women smiling together near holiday decorations"
+          }
+        },
+        "fireside": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/beyoutiful-about-people-9692.jpg",
+            "alt": "Two people posing together near a brick fireplace"
+          }
+        },
+        "evening": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/beyoutiful-about-people-8215.jpg",
+            "alt": "Two people dressed for an evening out"
+          }
+        }
+      },
+      "block_order": [
+        "hug",
+        "baby",
+        "seaside",
+        "outdoors",
+        "city",
+        "holiday",
+        "fireside",
+        "evening"
+      ],
+      "settings": {
+        "mode": "album",
+        "eyebrow": "The people behind the place",
+        "heading": "Made with love, kept close",
+        "intro": "<p>Moments away from the racks remind us what matters here: connection, care, and room to be yourself.</p>",
+        "closing_note": "To everyone who has walked in, brought a friend, shared a story, or trusted us with a special occasion: thank you. You make this boutique feel like home.",
+        "color_scheme": "scheme-1"
+      }
+    },
     "promise": {
       "type": "brand-strip",
       "blocks": {
@@ -107,6 +186,61 @@
         "padding_bottom": 56
       }
     },
+    "tour_arrival": {
+      "type": "about-photo-journal",
+      "blocks": {
+        "outside": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/beyoutiful-about-tour-storefront.jpg",
+            "alt": "Be-YOU-tiful Boutique storefront under a striped awning at dusk",
+            "caption": "Find us on Marion Avenue",
+            "note": "A place to stop in, browse, and feel welcome."
+          }
+        },
+        "window": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/beyoutiful-about-tour-window.jpg",
+            "alt": "Be-YOU-tiful Boutique window display and sign",
+            "caption": "A first look through the window",
+            "note": "Color, pattern, and something new to catch your eye."
+          }
+        },
+        "floor": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/beyoutiful-about-tour-interior.jpg",
+            "alt": "Clothing racks and displays inside the boutique",
+            "caption": "Room to explore",
+            "note": "Walk the racks and take your time."
+          }
+        },
+        "dress": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/16182.jpg",
+            "alt": "Colorful dress displayed on a mannequin inside the boutique",
+            "caption": "Styles with personality",
+            "note": "Try on pieces that feel like you."
+          }
+        }
+      },
+      "block_order": [
+        "outside",
+        "window",
+        "floor",
+        "dress"
+      ],
+      "settings": {
+        "mode": "tour",
+        "eyebrow": "Take a look around",
+        "heading": "Come on in",
+        "intro": "<p>From the windows on Marion Avenue to the first rack inside, this is the place Michele has filled with the things she loves.</p>",
+        "step_start": 1,
+        "color_scheme": "scheme-2"
+      }
+    },
     "reviews": {
       "type": "review-strip",
       "blocks": {
@@ -148,6 +282,61 @@
         "color_scheme": "scheme-2",
         "padding_top": 48,
         "padding_bottom": 48
+      }
+    },
+    "tour_discover": {
+      "type": "about-photo-journal",
+      "blocks": {
+        "denim": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/16184.jpg",
+            "alt": "Denim outfit displayed on a mannequin inside the boutique",
+            "caption": "Everyday pieces, special details",
+            "note": "From denim to the finishing touches."
+          }
+        },
+        "fragrance": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/beyoutiful-about-tour-mixologie.jpg",
+            "alt": "Mixologie fragrance station inside the boutique",
+            "caption": "A fragrance of your own",
+            "note": "Explore the Mixologie perfume bar."
+          }
+        },
+        "accessories": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/beyoutiful-about-tour-accessories.jpg",
+            "alt": "Colorful accessories and jewelry displayed on shelves",
+            "caption": "The finishing touches",
+            "note": "Jewelry and accessories to make a look your own."
+          }
+        },
+        "gifts": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/beyoutiful-about-tour-gifts.jpg",
+            "alt": "Small gifts and accessories displayed on a boutique shelf",
+            "caption": "Little finds to take home",
+            "note": "Gifts and small details worth discovering."
+          }
+        }
+      },
+      "block_order": [
+        "denim",
+        "fragrance",
+        "accessories",
+        "gifts"
+      ],
+      "settings": {
+        "mode": "tour",
+        "eyebrow": "Inside the boutique",
+        "heading": "The details make it ours",
+        "intro": "<p>Clothes, accessories, scents, and small finds share the same space. Michele looks for pieces she is excited to show you and takes time to help you find what feels right.</p>",
+        "step_start": 5,
+        "color_scheme": "scheme-1"
       }
     },
     "visit": {
@@ -230,8 +419,11 @@
   "order": [
     "hero",
     "1793334881273e2254",
+    "people_album",
     "promise",
+    "tour_arrival",
     "reviews",
+    "tour_discover",
     "visit",
     "17933396489e71d206"
   ]

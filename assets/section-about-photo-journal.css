@@ -1,0 +1,240 @@
+.about-journal {
+  color: rgb(var(--color-foreground));
+}
+
+.about-journal__inner {
+  padding-top: clamp(4.8rem, 7vw, 9rem);
+  padding-bottom: clamp(4.8rem, 7vw, 9rem);
+}
+
+.about-journal__header {
+  max-width: 70rem;
+  margin: 0 auto clamp(2.8rem, 5vw, 5.6rem);
+  text-align: center;
+}
+
+.about-journal__eyebrow {
+  margin: 0 0 1.2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.about-journal__heading {
+  margin: 0;
+  font-family: var(--font-heading-family);
+  font-size: clamp(3.2rem, 4.5vw, 5.4rem);
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.about-journal__intro {
+  max-width: 60ch;
+  margin: 1.6rem auto 0;
+  font-size: 1.5rem;
+  line-height: 1.7;
+}
+
+.about-journal__intro > :first-child {
+  margin-top: 0;
+}
+
+.about-journal__intro > :last-child {
+  margin-bottom: 0;
+}
+
+.about-journal__photos {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.about-journal__item,
+.about-journal__figure {
+  min-width: 0;
+  margin: 0;
+}
+
+.about-journal__media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: rgba(var(--color-foreground), 0.045);
+}
+
+.about-journal__image,
+.about-journal__placeholder {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.about-journal__placeholder {
+  aspect-ratio: 4 / 5;
+}
+
+.about-journal__caption {
+  margin: 1rem 0 0;
+  font-family: var(--font-heading-family);
+  font-size: 1.7rem;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.about-journal__album-note,
+.about-journal__note {
+  margin: 0.8rem 0 0;
+  font-size: 1.4rem;
+  line-height: 1.65;
+}
+
+.about-journal__closing {
+  max-width: 62ch;
+  margin: clamp(3.6rem, 6vw, 6rem) auto 0;
+  font-family: var(--font-heading-family);
+  font-size: clamp(2rem, 2.5vw, 2.8rem);
+  font-style: italic;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.about-journal__hint {
+  text-align: center;
+}
+
+/* Different card widths make the album read like a collection of real moments. */
+.about-journal__photos--album {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: clamp(1.4rem, 2.2vw, 2.8rem);
+  max-width: 112rem;
+  margin-inline: auto;
+  align-items: start;
+}
+
+.about-journal__photos--album > .about-journal__item {
+  grid-column: span 6;
+}
+
+.about-journal__photos--album > .about-journal__item:nth-child(4n + 1) {
+  grid-column: span 7;
+}
+
+.about-journal__photos--album > .about-journal__item:nth-child(4n + 2) {
+  grid-column: span 5;
+}
+
+.about-journal__photos--album > .about-journal__item:nth-child(4n + 3) {
+  grid-column: span 5;
+}
+
+.about-journal__photos--album > .about-journal__item:nth-child(4n + 4) {
+  grid-column: span 7;
+}
+
+/* Tour stops stay in source order and alternate sides only on wider screens. */
+.about-journal__photos--tour {
+  max-width: 112rem;
+  margin-inline: auto;
+}
+
+.about-journal__photos--tour > .about-journal__item {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  align-items: center;
+  gap: clamp(2.4rem, 5vw, 7.2rem);
+  padding-block: clamp(2.8rem, 5vw, 6.4rem);
+  border-top: 1px solid rgba(var(--color-foreground), 0.18);
+}
+
+.about-journal__photos--tour > .about-journal__item:nth-child(even) {
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+}
+
+.about-journal__photos--tour > .about-journal__item:nth-child(even) .about-journal__figure {
+  order: 2;
+}
+
+.about-journal__photos--tour .about-journal__image {
+  max-height: 65rem;
+  object-fit: contain;
+}
+
+.about-journal__detail {
+  max-width: 42rem;
+}
+
+.about-journal__step {
+  display: block;
+  font-family: var(--font-heading-family);
+  font-size: 1.6rem;
+  letter-spacing: 0.08em;
+}
+
+.about-journal__detail .about-journal__caption {
+  margin-top: 1.2rem;
+  font-size: clamp(2.4rem, 3vw, 3.6rem);
+}
+
+@media screen and (max-width: 989px) {
+  .about-journal__photos--album > .about-journal__item,
+  .about-journal__photos--album > .about-journal__item:nth-child(n) {
+    grid-column: span 6;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .about-journal__inner {
+    padding-top: 4.8rem;
+    padding-bottom: 4.8rem;
+  }
+
+  .about-journal__header {
+    margin-bottom: 2.8rem;
+  }
+
+  .about-journal__photos--album {
+    display: flex;
+    gap: 1.2rem;
+    overflow-x: auto;
+    padding-right: 18%;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .about-journal__photos--album > .about-journal__item,
+  .about-journal__photos--album > .about-journal__item:nth-child(n) {
+    flex: 0 0 82%;
+    scroll-snap-align: start;
+  }
+
+  .about-journal__photos--album:focus-visible {
+    outline: 2px solid rgb(var(--color-foreground));
+    outline-offset: 0.3rem;
+  }
+
+  .about-journal__photos--tour > .about-journal__item,
+  .about-journal__photos--tour > .about-journal__item:nth-child(even) {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.8rem;
+    padding-block: 2.8rem;
+  }
+
+  .about-journal__photos--tour > .about-journal__item:nth-child(even) .about-journal__figure {
+    order: 0;
+  }
+
+  .about-journal__detail {
+    max-width: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-journal__photos--album {
+    scroll-behavior: auto;
+  }
+}
