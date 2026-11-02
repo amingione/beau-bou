@@ -218,27 +218,6 @@
     },
     "shop_styles": {
       "type": "shop-styles",
-      "blocks": {
-        "fb_reel": {
-          "type": "reel",
-          "settings": {
-            "url": "https://www.facebook.com/reel/1547811980446538/",
-            "title": ""
-          }
-        },
-        "tropical_second_fit": {
-          "type": "photo",
-          "settings": {
-            "image": "shopify://shop_images/beyoutiful-tryon-tropical-bell-sleeve-shift-dress-b.jpg",
-            "title": "",
-            "link": "/pages/look/tropical-bell-sleeve-dress"
-          }
-        }
-      },
-      "block_order": [
-        "fb_reel",
-        "tropical_second_fit"
-      ],
       "settings": {
         "heading": "Shop Our Highlights",
         "layout": "highlights",
@@ -248,13 +227,13 @@
         "max_looks": 14,
         "columns": 4,
         "show_samples": false,
-        "empty_text": "Love this look? Call or stop in and we'll pull it in your size.",
+        "empty_text": "Call or stop in to ask about availability and sizing.",
         "empty_label": "Ask about this look",
         "empty_link": "",
-        "intro": "<p>Try-on looks styled right here in the boutique. Tap one to shop every piece, plus a few that pair with it.</p>",
+        "intro": "<p>Outfits styled right here in the boutique. Tap a look to explore the pieces and ask us about availability.</p>",
         "badge_label": "Shop the look",
         "badge_color": "#e60023",
-        "button_label": "Shop the pieces",
+        "button_label": "Explore the looks",
         "button_link": "/pages/shop-the-look",
         "color_scheme": "scheme-2",
         "padding_top": 60,

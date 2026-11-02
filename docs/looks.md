@@ -1,6 +1,35 @@
 # Looks — hero slideshows + shop-this-look pages
 
-Last updated: 2026-09-28
+Last updated: 2026-11-02
+
+## Michele's owner store — new looks, 2026-11-02
+
+The active owner store is `xapm2f-fr` (theme `157452402844`). Amber supplied 35 outfit photos under
+`~/LocalStorm/Workspace/In Progress/Be-YOU-tiful Boutique/photos-in/looks-haul/Final Images/`.
+Seven clear outfit presentations use one full-length hero each; the other angles remain in the source
+folder for product identification. The 13 previous Look entries are **Draft** and their Files are
+retained for recovery. The seven entries below are **Active**. The homepage's old Facebook reel and
+tropical Extra photo block were removed from the Shop Styles section.
+
+| Active Look handle | Hero source within `Final Images/` | Visible pieces and exact catalog matches |
+| --- | --- | --- |
+| `white-top-black-drawstring-pants` | `black pants-white shirt/IMG_7763.jpeg` | Fitted white seamed top; black wide-leg drawstring pants; black double-buckle sandals; **Cork Sling Bag** in alternate views (`gid://shopify/Product/9321226371228`, Draft). The top, pants, and sandals have no confirmed catalog match. |
+| `embroidered-bird-kimono-black-pants` | `black pants-white shirt/IMG_7767.JPG` | Black fringed kimono with floral embroidery and a blue bird on the back; the same white top and black pants; black sandals. No confirmed catalog match. The catalog's `Denim Flower Jacket: Black` is a different garment. |
+| `heart-tee-rivir-stud-jeans` | `blue jeans w jewels-white heart shirt/IMG_7754.JPG` | White tee with a pink heart; **Rivir Stud Jeans** (`gid://shopify/Product/9298882953372`, Draft); blue wedge sandals and blue accessories. The tee, sandals, and accessories have no confirmed catalog match. |
+| `colorful-pants-duo` | `colorful pants-duo/IMG_7789.JPG` | Left: cropped white floral-embroidered jacket, peach pants, blue sandals. Right: longer white zip jacket with colorful patches, aqua pants, pink sandals. None has a confirmed catalog match. |
+| `jellyfish-print-off-shoulder-dress` | `jellyfish dress/IMG_7784.JPG` | White off-shoulder jellyfish-print dress and tan wedge sandals. Neither has a confirmed catalog match. |
+| `blue-white-floral-palazzo-pants-duo` | `blue floral pants - white shirt/IMG_7778.JPG` | Both women wear **Blue/White Plazzo Pant** (`gid://shopify/Product/9298888392860`, Draft). One wears a loose white flutter-sleeve top; the other a fitted side-ruched white top. Neither top or the jewelry has a confirmed catalog match. |
+| `pink-top-floral-tulle-skirt` | `floral skirt-pink shirt/IMG_7770.JPG` | Dusty-pink glitter-dot side-tie top, layered pastel floral tulle skirt, floral wedges, pink earrings. None has a confirmed catalog match. |
+
+The three confirmed product associations are stored in the Looks' `pieces` fields. All three products
+are Draft, have no Online Store publication date or URL, and are **not yet purchasable**. The theme
+counts and renders only published product references, so visitors see the photo, a description of
+the pieces, and an availability inquiry. When products are activated and published, their cards can
+appear without rematching the Look. Do not link visually similar catalog garments as substitutes.
+
+The live Look definition has `title`, `image`, `pieces`, `goes_with`, `caption`, and `video` only. Its
+Online Store URL is `/pages/look/<handle>`; use `look.system.url` in Liquid. The older test-store
+seed manifest and instructions below are historical and must not be run against the owner store.
 
 ## New pieces — 2026-10-18 (later)
 

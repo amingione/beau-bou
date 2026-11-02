@@ -17,10 +17,13 @@
   assign photo = look.image.value
   assign video = look.video.value
   assign pieces = look.pieces.value
+  assign caption = look.caption.value
   assign piece_count = 0
-  if pieces != blank
-    assign piece_count = pieces.size
-  endif
+  for piece in pieces
+    if piece != blank and piece.url != blank and piece.published_at != blank
+      assign piece_count = piece_count | plus: 1
+    endif
+  endfor
 -%}
 <article class="ss-post" aria-label="{{ title | escape }}">
   <div class="ss-post__media">
@@ -47,11 +50,15 @@
     </header>
 
     <h2 class="ss-post__title">{{ title | escape }}</h2>
-    <p class="ss-post__rule"><span>Shop the pic</span></p>
+    {%- if caption != blank -%}
+      <p class="ss-post__caption">{{ caption | escape | newline_to_br }}</p>
+    {%- endif -%}
+    <p class="ss-post__rule"><span>{% if piece_count > 0 %}Shop the pic{% else %}Ask about this look{% endif %}</span></p>
 
     {%- if piece_count > 0 -%}
       <ul class="ss-post__pieces list-unstyled" role="list">
         {%- for p in pieces -%}
+          {%- if p == blank or p.url == blank or p.published_at == blank -%}{%- continue -%}{%- endif -%}
           {%- assign v = p.selected_or_first_available_variant -%}
           <li class="ss-piece" data-ss-piece>
             <a class="ss-piece__thumb" href="{{ p.url }}" tabindex="-1" aria-hidden="true">

@@ -36,6 +36,18 @@
   assign video = look.video.value
   assign pieces = look.pieces.value
   assign goes_with = look.goes_with.value
+  assign piece_count = 0
+  for piece in pieces
+    if piece != blank and piece.url != blank and piece.published_at != blank
+      assign piece_count = piece_count | plus: 1
+    endif
+  endfor
+  assign goes_with_count = 0
+  for piece in goes_with
+    if piece != blank and piece.url != blank and piece.published_at != blank
+      assign goes_with_count = goes_with_count | plus: 1
+    endif
+  endfor
   assign caption = look.caption.value
   assign media_pref = section.settings.media
   if media_pref == 'cutout' and cutout != blank
@@ -74,7 +86,7 @@
           <p class="look-page__styled-by bb-accent">{{ section.settings.byline | escape }}</p>
         {%- endif -%}
         {%- if caption != blank -%}
-          <div class="look-page__caption rte">{{ caption | newline_to_br }}</div>
+          <div class="look-page__caption rte">{{ caption | escape | newline_to_br }}</div>
         {%- endif -%}
         {%- if section.settings.show_share -%}
           <div class="look-page__share">
@@ -97,14 +109,15 @@
       <header class="look-page__head">
         <h1 class="look-page__title bb-display">{{ title | escape }}</h1>
         <p class="look-page__sub">{{ section.settings.pieces_heading | default: 'Shop this look' | escape }}</p>
-        {%- if pieces != blank and pieces.size > 0 -%}
-          <p class="look-page__piece-count">{{ pieces.size }} {% if pieces.size == 1 %}piece{% else %}pieces{% endif %} in this look · Shop each item below</p>
+        {%- if piece_count > 0 -%}
+          <p class="look-page__piece-count">{{ piece_count }} {% if piece_count == 1 %}piece{% else %}pieces{% endif %} in this look · Shop each item below</p>
         {%- endif -%}
       </header>
 
-      {%- if pieces != blank and pieces.size > 0 -%}
+      {%- if piece_count > 0 -%}
         <ul class="look-page__products look-page__products--{{ section.settings.columns }}" role="list">
           {%- for p in pieces -%}
+            {%- if p == blank or p.url == blank or p.published_at == blank -%}{%- continue -%}{%- endif -%}
             {%- liquid
               assign lazy = true
               if forloop.index <= 2
@@ -132,13 +145,14 @@
         </div>
       {%- endif -%}
 
-      {%- if goes_with != blank and goes_with.size > 0 -%}
+      {%- if goes_with_count > 0 -%}
         <h2 class="look-page__goes-heading bb-display">{{ section.settings.goes_with_heading | default: 'Goes with it' | escape }}</h2>
         {%- if section.settings.goes_with_sub != blank -%}
           <p class="look-page__goes-sub bb-accent">{{ section.settings.goes_with_sub | escape }}</p>
         {%- endif -%}
         <ul class="look-page__products look-page__products--{{ section.settings.columns }} look-page__products--goes" role="list">
           {%- for p in goes_with -%}
+            {%- if p == blank or p.url == blank or p.published_at == blank -%}{%- continue -%}{%- endif -%}
             <li class="look-page__product">
               {% render 'card-product',
                 card_product: p,

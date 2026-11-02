@@ -80,9 +80,11 @@
         assign kind = 'video'
       endif
       assign n_pieces = 0
-      if look.pieces.value != blank
-        assign n_pieces = look.pieces.value.size
-      endif
+      for piece in look.pieces.value
+        if piece != blank and piece.url != blank and piece.published_at != blank
+          assign n_pieces = n_pieces | plus: 1
+        endif
+      endfor
     -%}
     {%- if layout == 'highlights' -%}
       {%- liquid
@@ -90,6 +92,9 @@
         assign has_price = false
         # lowest price a shopper can actually buy: available variants only
         for piece in look.pieces.value
+          if piece == blank or piece.url == blank or piece.published_at == blank
+            continue
+          endif
           for variant in piece.variants
             if variant.available == false
               continue
