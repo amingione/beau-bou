@@ -218,6 +218,18 @@
     },
     "shop_styles": {
       "type": "shop-styles",
+      "blocks": {
+        "fb_reel": {
+          "type": "reel",
+          "settings": {
+            "url": "https://www.facebook.com/reel/1547811980446538/",
+            "title": ""
+          }
+        }
+      },
+      "block_order": [
+        "fb_reel"
+      ],
       "settings": {
         "heading": "Shop Our Highlights",
         "layout": "highlights",

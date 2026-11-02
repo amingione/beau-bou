@@ -11,7 +11,7 @@
   "current": {
     "logo": "shopify://shop_images/beyoutiful-lockup-black-trim.png",
     "logo_width": 220,
-    "favicon": "shopify://shop_images/3.png",
+    "favicon": "shopify://shop_images/beyoutiful-favicon-512.png",
     "type_header_font": "playfair_display_n4",
     "heading_scale": 100,
     "type_body_font": "poppins_n4",
@@ -135,7 +135,7 @@
     "nav_letter_spacing": 10,
     "display_letter_spacing": 14,
     "bb_meta_description": "Women's boutique in downtown Punta Gorda, FL: swimsuits, dresses, gowns, tops, bottoms and jewelry in sizes XXS to 2X. Shop online or pick up in store.",
-    "bb_share_image": "shopify://shop_images/beyoutiful-storefront-hero-desktop.webp",
+    "bb_share_image": "shopify://shop_images/beyoutiful-storefront-hero-desktop.jpg",
     "bb_google_profile": "https://www.google.com/maps/place/?q=place_id:ChIJ7WEWM0NX24gRLOCl6mRk0PA",
     "bb_store_hours": "Mo-Fr 10:00-17:00\nSa 10:00-16:00\nSu 11:00-15:00",
     "sections": {

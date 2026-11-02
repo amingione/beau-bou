@@ -8,8 +8,8 @@ The active owner store is `xapm2f-fr` (theme `157452402844`). Amber supplied 35 
 `~/LocalStorm/Workspace/In Progress/Be-YOU-tiful Boutique/photos-in/looks-haul/Final Images/`.
 Seven clear outfit presentations use one full-length hero each; the other angles remain in the source
 folder for product identification. The 13 previous Look entries are **Draft** and their Files are
-retained for recovery. The seven entries below are **Active**. The homepage's old Facebook reel and
-tropical Extra photo block were removed from the Shop Styles section.
+retained for recovery. The seven entries below are **Active**. The homepage retains its Facebook
+reel after the outfit photos; the old tropical Extra photo block was removed from Shop Styles.
 
 | Active Look handle | Hero source within `Final Images/` | Visible pieces and exact catalog matches |
 | --- | --- | --- |

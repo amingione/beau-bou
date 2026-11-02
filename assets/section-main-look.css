@@ -62,6 +62,15 @@
   object-position: center top;
 }
 
+/* Keep the whole outfit visible; the boutique photos are taller than a 4:5 crop. */
+.look-page__photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: auto;
+  object-fit: contain;
+}
+
 .look-page__frame--runway {
   background:
     radial-gradient(ellipse at 50% 100%, rgba(var(--color-foreground), 0.1), transparent 60%),

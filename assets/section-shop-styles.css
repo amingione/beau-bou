@@ -373,6 +373,25 @@ shop-styles {
   text-underline-offset: 0.3em;
 }
 
+@media screen and (max-width: 749px) {
+  /* A full-height portrait otherwise puts the Close button below the fold. */
+  .ss-post__media { min-height: 0; height: min(42dvh, 36rem); }
+  .ss-post__photo,
+  .ss-post__video,
+  .ss-post__media video { max-height: 100%; object-fit: contain; }
+  /* Place the look controls over the photo, clear of the description. */
+  .ss-dialog__nav {
+    top: calc(min(42dvh, 36rem) / 2);
+    bottom: auto;
+    margin-top: -2.2rem;
+    width: 4.4rem;
+    height: 4.4rem;
+    z-index: 1;
+  }
+  .ss-dialog__nav--prev { left: 1.2rem; }
+  .ss-dialog__nav--next { right: 1.2rem; }
+}
+
 /* ---------- Carousel layout: continuous, button-free marquee ---------- */
 .shop-styles--carousel .shop-styles__head { justify-content: center; }
 

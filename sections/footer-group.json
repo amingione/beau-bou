@@ -31,7 +31,7 @@
           "type": "text",
           "settings": {
             "heading": "Get in touch",
-            "subtext": "<p>Questions?&nbsp;</p><p>Let us know <a href=\"https://www.google.com/maps/dir/?api=1&amp;destination=264+W+Marion+Ave%2C+Punta+Gorda%2C+FL+33950\" target=\"_blank\" title=\"Get Directions\">in store</a> <strong>or </strong><a href=\"/pages/contact\" title=\"/pages/contact\">contact us&nbsp;</a></p><p><em><strong>Open 7 Days a Week</strong></em></p>"
+            "subtext": "<p>Questions?&nbsp;</p><p>Let us know <a href=\"https://www.google.com/maps/dir/?api=1&amp;destination=264+W+Marion+Ave%2C+Punta+Gorda%2C+FL+33950\" target=\"_blank\" title=\"Get Directions\">in store</a> <strong>or </strong><a href=\"/pages/contact\" title=\"/pages/contact\">contact us&nbsp;</a></p><p>264 W Marion Ave, Punta Gorda, FL 33950<br><a href=\"mailto:beyoutifulboutiquebymichele@gmail.com\">Email</a> · <a href=\"tel:+19413691628\">(941) 369-1628</a></p><p><em><strong>Open 7 Days a Week</strong></em></p>"
           }
         },
         "hours": {
@@ -50,8 +50,8 @@
       ],
       "settings": {
         "color_scheme": "scheme-3",
-        "newsletter_enable": false,
-        "newsletter_heading": "",
+        "newsletter_enable": true,
+        "newsletter_heading": "Join our mailing list",
         "enable_follow_on_shop": true,
         "show_social": true,
         "enable_country_selector": false,

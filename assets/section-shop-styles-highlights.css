@@ -236,6 +236,18 @@
     --ss-card-w: 72vw;
   }
 
+  .ss-hl-card__media:not(.ss-hl-card__media--reel) {
+    aspect-ratio: 9 / 16;
+  }
+
+  .ss-hl-card__img {
+    object-fit: contain;
+  }
+
+  .ss-hl__rail .bb-scroller__buttons {
+    top: calc(var(--ss-card-w) * 0.888889 - 2rem);
+  }
+
   .ss-hl__heading {
     font-size: 2.4rem;
   }
@@ -245,7 +257,7 @@
   }
 }
 
-/* Facebook reel tile (block "Facebook reel"): 9:16, as tall as the 4:5 look cards */
+/* Facebook reel tile (block "Facebook reel"): 9:16, as tall as the 4:5 desktop cards */
 .ss-hl .ss-hl__item--reel {
   width: calc(var(--ss-card-w) * 0.703125);
 }

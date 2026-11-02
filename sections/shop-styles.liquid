@@ -277,7 +277,7 @@
           <p class="shop-styles__hint">Create <b>Look</b> entries under Content → Metaobjects → Look, or add <b>Extra photo</b> blocks to this section.</p>
         {%- endif -%}
       </div>
-      {%- comment -%} Facebook reels (block "Facebook reel") lead the row, same height as the photos {%- endcomment -%}
+      {%- comment -%} Keep the Facebook reel after the outfit photos so the looks appear first on phones. {%- endcomment -%}
       {%- capture reel_tiles -%}
         {%- for block in section.blocks -%}
           {%- if block.type != 'reel' -%}{%- continue -%}{%- endif -%}
@@ -314,7 +314,7 @@
             tabindex="0"
             aria-label="{{ section.settings.heading | default: 'Looks' | escape }}"
             data-scroller-track
-          >{{ reel_tiles }}{{ tiles }}</ul>
+          >{{ tiles }}{{ reel_tiles }}</ul>
           {% render 'bb-scroller-buttons', label: 'looks' %}
         </bb-scroller>
       {%- endif -%}
