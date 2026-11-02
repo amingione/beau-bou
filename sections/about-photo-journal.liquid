@@ -19,12 +19,10 @@
   if request.design_mode and section.blocks.size > photo_count
     assign display_photo_count = section.blocks.size
   endif
-  assign spread_count = display_photo_count | plus: 1 | divided_by: 2
+  assign navigation_count = display_photo_count
   if journal_mode == 'album'
-    assign navigation_count = spread_count
-    assign navigation_item = 'spread'
+    assign navigation_item = 'photo'
   else
-    assign navigation_count = display_photo_count
     assign navigation_item = 'stop'
   endif
   assign navigation_count_label = navigation_count | prepend: '0' | slice: -2, 2
@@ -64,9 +62,6 @@
           {%- if photo != blank or request.design_mode -%}
             {%- assign photo_index = photo_index | plus: 1 -%}
             {%- liquid
-              assign pair_position = photo_index | modulo: 2
-              assign spread_index = photo_index | plus: 1 | divided_by: 2
-              assign spread_number = spread_index | prepend: '0' | slice: -2, 2
               assign photo_alt = block.settings.alt | default: photo.alt | default: block.settings.caption
               if photo_alt == blank
                 if journal_mode == 'tour'
@@ -76,15 +71,15 @@
                 endif
               endif
               if journal_mode == 'album'
-                assign photo_sizes = '(min-width: 990px) 255px, (min-width: 750px) 235px, 40vw'
+                assign photo_sizes = '(min-width: 990px) 25vw, (min-width: 750px) 33vw, 48vw'
               else
-                assign photo_sizes = '(min-width: 990px) 310px, (min-width: 750px) 300px, 46vw'
+                assign photo_sizes = '(min-width: 990px) 31vw, (min-width: 750px) 48vw, 84vw'
               endif
               assign step_index = photo_index | plus: section.settings.step_start | minus: 1
               assign step_number = step_index | prepend: '0' | slice: -2, 2
             -%}
             {%- capture photo_figure -%}
-              <figure class="about-journal__figure" {% if journal_mode == 'album' %}{{ block.shopify_attributes }}{% endif %}>
+              <figure class="about-journal__figure">
                 <div class="about-journal__media">
                   {%- if photo != blank -%}
                     {{
@@ -116,18 +111,9 @@
               </figure>
             {%- endcapture -%}
             {%- if journal_mode == 'album' -%}
-              {%- if pair_position == 1 -%}
-                {%- assign first_photo_figure = photo_figure -%}
-                {%- assign first_spread_number = spread_number -%}
-              {%- else -%}
-                <li class="about-journal__item about-journal__item--album">
-                  <div class="about-journal__folio" aria-hidden="true">
-                    <span>People &amp; moments</span>
-                    <span>{{ first_spread_number }} / {{ navigation_count_label }}</span>
-                  </div>
-                  <div class="about-journal__spread">{{ first_photo_figure }}{{ photo_figure }}</div>
-                </li>
-              {%- endif -%}
+              <li class="about-journal__item about-journal__item--album" {{ block.shopify_attributes }}>
+                {{ photo_figure }}
+              </li>
             {%- else -%}
               <li class="about-journal__item about-journal__item--tour" {{ block.shopify_attributes }}>
                 {{ photo_figure }}
@@ -144,15 +130,6 @@
             {%- endif -%}
           {%- endif -%}
         {%- endfor -%}
-        {%- if journal_mode == 'album' and pair_position == 1 -%}
-          <li class="about-journal__item about-journal__item--album">
-            <div class="about-journal__folio" aria-hidden="true">
-              <span>People &amp; moments</span>
-              <span>{{ first_spread_number }} / {{ navigation_count_label }}</span>
-            </div>
-            <div class="about-journal__spread">{{ first_photo_figure }}</div>
-          </li>
-        {%- endif -%}
       {%- endcapture -%}
 
       {%- if navigation_count > 1 -%}
@@ -196,11 +173,13 @@
       var gap = parseFloat(window.getComputedStyle(rail).gap) || 0;
       var distance = items[0].getBoundingClientRect().width + gap;
       var index = Math.round(rail.scrollLeft / distance);
-      if (rail.scrollLeft + rail.clientWidth >= rail.scrollWidth - 2) index = items.length - 1;
       index = Math.max(0, Math.min(items.length - 1, index));
+      var visibleCount = Math.max(1, Math.floor((rail.clientWidth + gap) / distance));
       var position = document.querySelector('[data-journal-position-for="' + rail.id + '"]');
       if (position) {
-        var label = String(index + 1).padStart(2, '0') + ' / ' + String(items.length).padStart(2, '0');
+        var first = String(index + 1).padStart(2, '0');
+        var last = String(Math.min(items.length, index + visibleCount)).padStart(2, '0');
+        var label = first + (visibleCount > 1 ? '–' + last : '') + ' / ' + String(items.length).padStart(2, '0');
         if (position.textContent !== label) position.textContent = label;
       }
     }
@@ -249,6 +228,7 @@
       initializePositions();
     }
     document.addEventListener('shopify:section:load', initializePositions);
+    window.addEventListener('resize', initializePositions);
   })();
 </script>
 

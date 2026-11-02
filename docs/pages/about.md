@@ -13,12 +13,12 @@ page body.
 ## Family album and store tour
 
 The photo source folder is `~/LocalStorm/Workspace/In Progress/Be-YOU-tiful Boutique/photos-in/about-page/`.
-Eight family and lifestyle photos form four paired, asymmetric photo spreads on a warm paper canvas. The separate
-store tour has eight stops in two chapters around the review strip; each stop pairs a photo with its number,
-title and note. All three chapters scroll sideways on desktop, tablet and mobile, with a preview of the next
-spread, previous/next controls, keyboard navigation and a page count. Photos remain fully visible at a bounded
-height. The story lead, page hero and storefront visit photos are also size-limited so they do not dominate the
-page. Captions and alt text describe what is visible without assigning family relationships to the people
+Eight family and lifestyle photos form a compact, edge-to-edge lookbook rail with narrow gutters. The separate
+store tour has eight stops in two chapters around the review strip; each photo carries its number, title and
+note in a bottom overlay. All three chapters scroll sideways on desktop, tablet and mobile, with a preview of
+the next photo, previous/next controls, keyboard navigation and a visible-photo count. Tile heights are bounded
+at each screen size so the images do not dominate the page. The story lead, page hero and storefront visit photos
+are also size-limited. Alt text describes what is visible without assigning family relationships to the people
 pictured. The closing album note thanks customers for their visits, stories and trust.
 
 The theme section is `sections/about-photo-journal.liquid`, with styles in
