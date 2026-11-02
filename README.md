@@ -9,9 +9,9 @@ Shopify Online Store 2.0 theme for **Be-YOU-tiful Boutique by Michele** (Punta G
 ```bash
 npm i -g @shopify/cli          # once
 shopify auth login             # once per machine
-npm run dev                    # hot-reload preview on the dev store (kw59hc-k1)
+npm run dev                    # hot-reload preview on Amber's boutique test store (v0m0hb-x3)
 npm run check                  # theme-check (gate is "error"; 11 upstream Dawn warnings are known)
-npm run push:client            # upload as UNPUBLISHED theme to Michele's store (set handle in shopify.theme.toml)
+npm run push:client            # upload an UNPUBLISHED theme to Michele's store (xapm2f-fr)
 npm run package                # zip for manual upload: Online Store → Themes → Add theme → Upload zip
 ```
 
@@ -27,13 +27,13 @@ Zsh shortcuts: `source scripts/aliases.zsh` → `bb-dev`, `bb-check`, `bb-push`,
 | `assets/beau-bou.css` | All global overrides (nav, buttons, cards, badges, facets, footer) + `.bb-display` / `.bb-accent` / `.bb-frame` utilities |
 | `sections/header.liquid` + `snippets/header-inline-search.liquid` | Always-visible desktop search field (setting `show_inline_search`) |
 | `sections/hero-logo.liquid` | Framed hero image with centered logo overlay + tagline + accent line + CTA |
-| `sections/hero-looks.liquid` + `snippets/hero-looks-stage.liquid` + `assets/hero-looks.js` + `snippets/look-card.liquid` | **Hero looks** (`runway` section, beneath the cover hero): holographic peacock centered between two outfit slideshows; 5s interval, fade. Every outfit links to its `/looks/<handle>` shop-this-look page. Reads `look` metaobjects; manual blocks as fallback. **Open conflict:** the committed `runway` presentation still renders prev/play/next controls and the heading "The boutique edit", while Amber's Sept 20 direction is no controls and no copy — resolve before showing Michele. See [`docs/looks.md`](docs/looks.md) |
-| `sections/shop-styles.liquid` + `snippets/shop-styles-post.liquid` + `assets/shop-styles.js` | **Shop Styles** (homepage, under the hero): LTK-style masonry grid of looks — photo or try-on video. Clicking opens a pop-up post with every piece priced and addable to the cart (drawer refresh); the `/looks/<handle>` page stays and is linked. Replaces the `runway` slideshow on the homepage. See [`docs/looks.md`](docs/looks.md) |
+| `sections/hero-looks.liquid` + `snippets/hero-looks-stage.liquid` + `assets/hero-looks.js` + `snippets/look-card.liquid` | Legacy runway experiment retained in source; it is not in the current homepage template. See [`docs/looks.md`](docs/looks.md) before reusing it. |
+| `sections/shop-styles.liquid` + `snippets/shop-styles-post.liquid` + `assets/shop-styles.js` | **Shop Styles** homepage grid of looks — photo or try-on video. Clicking opens a post with featured pieces and cart actions; the individual Look page remains available. See [`docs/looks.md`](docs/looks.md) |
 | `templates/metaobject/look.json` + `sections/main-look.liquid` | LTK-style **shop this look** page per outfit: photo/video left, pieces + goes-with grids right, share, more looks |
 | `sections/category-tiles.liquid` | Hairline-framed collection tiles with wide-tracked serif captions (the Smith + Co. signature) |
 | `sections/brand-strip.liquid` | Peacock-scheme statement band with scrolling ribbon (XXS–2X, swimwear to formal wear) and value cards |
 | `sections/visit-our-store.liquid` | Framed storefront photo + address, hours rows, Get Directions (auto Google Maps link), phone |
-| `templates/index.json` | Homepage wired: cover hero → Shop Styles grid → What's New slider → 2×3 category tiles → brand strip → Sale slider → Visit |
+| `templates/index.json` | Homepage settings and section order: cover hero → collections → What's New → Shop Styles → brands → promise → sale → visit |
 | `templates/collection.json` | Vertical (sidebar) filters, 4-col portrait grid, quick-add, 24/page |
 | `sections/header-group.json`, `footer-group.json` | Announcement copy; footer = mailing list, Help menu, Get in touch, Store hours, social, payment icons |
 
@@ -57,8 +57,8 @@ scripts/      aliases.zsh, cutouts.py (rembg runway cutouts), looks/seed-looks.t
 
 Dawn is MIT-licensed by Shopify (see `LICENSE.md`). Custom work © LaunchWell Brands, delivered to the client under the project agreement.
 
-## Build state (2026-09-25)
+## Current store and theme (2026-11-02)
 
-Design approved by Michele. Stores: **`xapm2f-fr` is Michele's own store** and has her domain, shopbeyoutifulboutique.com (correctly connected). **`v0m0hb-x3` is Amber's test store** (shopbe-you-tifulboutique.myshopify.com), used to preview the theme and app before handing them to Michele. On the test store, the published theme is `beau-bou/main` (`192420839788`), synced from this repo's `main` branch through Shopify's GitHub integration (Amber published it 2026-10-18), so merging to `main` updates the live test theme; the storefront is password protected. Michele's store still runs an older theme copy (`be-you-tiful-boutique-theme-1-2-0`) until the finished theme is handed over. Built: hero, seven try-on Looks, automated collections (Shop menu follows Michele's brief, Gowns included), About / Visit Us / Contact / Shipping & Returns / Questions / Size Guide pages, on-page SEO (`docs/seo.md`). The 18 `TEST —` products were archived 2026-10-18 (delete them in admin when ready). Address: 264 W Marion Ave (no "-A"). Store is open 7 days: Mon 11–4 · Tue–Fri 10–5 · Sat 10–4 · Sun 10–3.
+**`xapm2f-fr` is Michele's store** at shopbeyoutifulboutique.com. Its published theme is `be-you-tiful-boutique-theme` (ID `157452402844`). **`v0m0hb-x3` is Amber's boutique test store**; `kw59hc-k1` is an older development store and is not the current target. The owner theme was installed on October 19. This repo is the source for theme changes; a local commit does not update Michele's published theme. Preview and target any later upload deliberately.
 
-Remaining to launch (Oct 15 target): site review → edits, Epos + Faire product sync, rewards program (Epos REST API + Shopify Admin API + Zapier webhook), test custom features. **SEO work is not in scope** (client declined). See `docs/handoff.md`, `docs/store/README.md`, `docs/policies/`, and `docs/meeting/` for the Sept 25 meeting packet.
+The November 2 owner editor shows an About page with Michele's story and a separate Kind words block. The current store details are 264 W Marion Ave, Punta Gorda, FL 33950 · (941) 369-1628 · beyoutifulboutiquebymichele@gmail.com. Amber confirmed hours on November 2: **Mon–Fri 10–5 · Sat 10–4 · Sun 11–3**. Keep the About, Contact, Visit Us, homepage, footer, structured data, and pickup/shipping copy aligned. See [`docs/pages/about.md`](docs/pages/about.md), [`docs/seo.md`](docs/seo.md), and [`docs/handoff.md`](docs/handoff.md) for the content and launch checks.

@@ -1,5 +1,7 @@
 # Clean pass — logo-forward, easy to navigate (2026-10-16)
 
+> Historical October 16 design and rollout record. Its references to the theme that was live “today” and an owner-store handoff pending publication are superseded. Michele's published theme is `be-you-tiful-boutique-theme` on `xapm2f-fr`; see [handoff.md](handoff.md) for the November 2 state.
+
 Michele's feedback: logos should be more prominent where they're placed, the site has to be easy to
 navigate, and it has to be clean. She hates busy. (Background in radio-station marketing, so she reads
 branding critically and spots templated or AI-looking design.)

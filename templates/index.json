@@ -92,7 +92,7 @@
           "type": "collection",
           "settings": {
             "collection": "handbags",
-            "image": "shopify://shop_images/703a8bf4c663706b6c0af1687966465f28da426432b3eca67a57f06b01bee090_54767004-bb82-46f4-b0d6-3f654599faae.jpg",
+            "image": "shopify://shop_images/6a5ae5918e8cd3b6726dbf34f852bec544fb69eaf9689d50c409d6442c6396a3.jpg",
             "label": "",
             "link": ""
           }
@@ -277,8 +277,8 @@
             "image_max_height": 700,
             "mobile_image_max_height": 260,
             "heading_size": 60,
-            "background_color": "#F1F1F1",
-            "text_color": "#2B2B2B"
+            "background_color": "#f1f1f1",
+            "text_color": "#2b2b2b"
           },
           "blocks": {}
         }
@@ -409,17 +409,10 @@
     "visit": {
       "type": "visit-our-store",
       "blocks": {
-        "h1": {
-          "type": "hours",
-          "settings": {
-            "days": "Monday",
-            "hours": "11AM – 4PM"
-          }
-        },
         "hours_3BkLJc": {
           "type": "hours",
           "settings": {
-            "days": "Tuesday – Friday",
+            "days": "Monday – Friday",
             "hours": "10AM – 5PM"
           }
         },
@@ -434,12 +427,11 @@
           "type": "hours",
           "settings": {
             "days": "Sunday",
-            "hours": "10AM – 3PM"
+            "hours": "11AM – 3PM"
           }
         }
       },
       "block_order": [
-        "h1",
         "hours_3BkLJc",
         "h2",
         "h3"

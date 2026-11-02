@@ -1,5 +1,7 @@
 # LAUNCH PROMPT — Be-YOU-tiful Boutique by Michele (beau-bou)
 
+> **Historical September 2026 planning prompt. Do not execute as current instructions.** It predates Michele's owner store launch setup and contains obsolete store ownership, filesystem paths, hours, page state and app assumptions. Use `README.md`, `docs/handoff.md`, `docs/pages/about.md`, and the current repo configuration for present work. Michele's store is `xapm2f-fr`; Amber's boutique test store is `v0m0hb-x3`. Amber confirmed Mon–Fri 10–5, Sat 10–4, Sun 11–3 on 2026-11-02.
+
 You are working in `~/LocalStorm/Workspace/DevProjects/GitHub/beau-bou` (Shopify OS 2.0 theme, Dawn 16 fork). Deadline: **the completed site is handed to the owner tomorrow.** The bar is not "done", it is "blown away": sparkling head to toe, every button real, every form working, every product field ready for a boutique catalog, and a rewards program that costs the client nothing to run.
 
 Be terse in logs: accuracy over ceremony. Explain the why of logic and the how of implementation. No pleasantries.

@@ -1,5 +1,7 @@
 # Signed contract + Michele's handwritten decisions
 
+> This transcribes the September 21 signed packet and retains dated setup notes. Current November 2 store hours are **Mon–Fri 10–5 · Sat 10–4 · Sun 11–3**; the address is **264 W Marion Ave, Punta Gorda, FL 33950**. See [handoff.md](../handoff.md) for the current owner-store state. The older hours and “still in admin” notes below are historical.
+
 Photos of the signed packet (iPhone HEIC, taken 2026-09-21). This file transcribes every handwritten answer and records what was done on the site. The `docs/` folder does **not** sync to the Shopify theme.
 
 ## Proposal (signed)

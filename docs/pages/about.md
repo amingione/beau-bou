@@ -1,8 +1,13 @@
 # About page
 
-Live in `templates/page.about.json`, section **story** (image with text): caption "Our story", heading
-"Love and kindness, always", Michele's story, signed "— Michele", Visit Us button. The hero above it keeps
-her faith line ("Accept yourself as you were designed by God").
+The November 2 owner theme editor is the source for the current layout in `templates/page.about.json`.
+It uses two custom editor blocks: **Our story** (`blocks/ai_gen_block_de2e383.liquid`) and **Kind words**
+(`blocks/ai_gen_block_f9eedc1.liquid`). The page order is hero → story → promise → Facebook review strip →
+store visit/hours → Kind words. The hero and promise retain Michele's faith line, "Accept yourself as you were
+designed by God." The story block carries her first-person copy, photos, pull quote and attribution; the Kind
+words block is a separate Google review carousel with three excerpts from the owner editor. The Facebook strip
+and Google carousel are distinct sections. The active owner-theme files were saved and read back on November 2;
+the local template remains separate from Shopify's page body.
 
 ## Source
 
@@ -16,11 +21,13 @@ punctuation and paragraph breaks only. Her words, facts and first-person voice a
 ## Keep in mind
 
 - "Over the last 7 years" will go stale. Update it each year, or change it to "Since 2020" if Michele prefers.
-- The Shopify page body (Online Store → Pages → About) still holds the older short text. This theme's About
-  template doesn't display it, so it only matters if the page is ever switched to the Default template.
-  Paste the story there too when the store moves to Michele's account.
+- The Shopify page body (Online Store → Pages → About) held older short text at the October 18 review. This
+  custom template does not display it. Check the body before switching to Default or reusing it for a search
+  listing; update it in Michele's store only after checking the current admin value.
+- The Kind words excerpts and names came from the owner editor. Check their provenance and the current Google
+  review link as a follow-up; the carousel is already on Michele's active theme.
 
-## Reviews (section **reviews**)
+## Facebook reviews (section **reviews**)
 
 Three of the 16 Facebook recommendations (100% recommend), picked and sent by Amber on 2026-10-18 from
 facebook.com/MicheleMonksEnsmingerMansfield. Each one shows the reviewer's first name, the same as the old

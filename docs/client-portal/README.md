@@ -1,10 +1,12 @@
 # Client portal — Assembly (LaunchWell workspace)
 
+> **Historical Assembly snapshot (September 2026).** Do not use its old address or hours as current website copy. Amber confirmed **264 W Marion Ave, Punta Gorda, FL 33950** and **Mon–Fri 10–5 · Sat 10–4 · Sun 11–3** on November 2. The present Assembly CRM fields have not been rechecked; verify them before editing or reusing them.
+
 Built 2026-09-02 in the Assembly desktop app. Michele's contact showed **Active** at 12:36 PM Sep 2 (it was Inactive at 11:00 AM) — verify whether an invite/magic link went out — Amber reviews, then invites from CRM → Michele Mansfield → ⋯ → Share magic link.
 
 ## What exists in Assembly
 
-**CRM → Company:** Be-YOU-tiful Boutique by Michele · Contact: Michele Mansfield · beyoutifulboutiquebymichele@gmail.com (last name inferred from the Facebook URL — confirm). Custom fields: Phone number (941) 369-1628 · Address 264-A W Marion Ave, Punta Gorda, FL 33950 · Store hours Mon 11–4 · Tue–Fri 10–5 · Sat 10–4 · Sun 11–3 (open 7 days as of 2026-09-25).
+**CRM → Company (last observed September 2026):** Be-YOU-tiful Boutique by Michele · Contact: Michele Mansfield · beyoutifulboutiquebymichele@gmail.com (last name inferred from the Facebook URL — confirm). Custom fields then showed Phone number (941) 369-1628 · Address 264-A W Marion Ave, Punta Gorda, FL 33950 · Store hours Mon 11–4 · Tue–Fri 10–5 · Sat 10–4 · Sun 11–3. These are an observation of the old record, not current operating details.
 
 **Client Studio → Project:** *Be-YOU-tiful Boutique Shopify Website* · Phase: Client review · Launch target: Oct 15, 2026 · Progress 40% · Service: Custom Website Design & Development (In progress) · LaunchWell workflow applied.
 
@@ -45,7 +47,7 @@ Regenerate PDFs: `python3 -c "from playwright.sync_api import sync_playwright; .
 ## Open items for Amber
 
 1. Both contacts (Michele Mansfield, Aundrea Pedigo) are already **Active** — they have portal access.
-2. Michele's reply on the Logo files request: *"wrong address but right logo image"*. Address on file is 264-A W Marion Ave; Facebook shows 264 West Marion Ave. Confirmed 2026-09-28: **264-A W Marion Ave** (update CRM → Custom fields → Address and the Facebook page if it still says 264 West).
+2. Michele's reply on the Logo files request was *"wrong address but right logo image"*. The address was recorded as 264-A W Marion Ave on September 28, then corrected to **264 W Marion Ave**. Check the current CRM field before updating it; also check the public Facebook address if it still differs.
 3. Confirm surname "Mansfield" (inferred from the Facebook URL).
 4. Text or email them `Be-YOU-tiful_Portal_Guide.pdf` with the portal link; optionally upload it to Files as well.
 5. Mobile PDF/screens and the proposal are not yet in the Content vault — upload when convenient.

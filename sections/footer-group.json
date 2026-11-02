@@ -14,6 +14,12 @@
     "footer": {
       "type": "footer",
       "blocks": {
+        "brand": {
+          "type": "brand_information",
+          "settings": {
+            "show_social": false
+          }
+        },
         "help": {
           "type": "link_list",
           "settings": {
@@ -25,20 +31,14 @@
           "type": "text",
           "settings": {
             "heading": "Get in touch",
-            "subtext": "<p>Any questions?<br/>Let us know in store at<br/><strong>264 W Marion Ave, Punta Gorda, FL 33950</strong></p><p><a href=\"mailto:beyoutifulboutiquebymichele@gmail.com\" title=\"mailto:beyoutifulboutiquebymichele@gmail.com\"><strong>Email</strong></a><br/><strong>Phone</strong>: (941) 369-1628</p>"
+            "subtext": "<p>Questions?&nbsp;</p><p>Let us know <a href=\"https://www.google.com/maps/dir/?api=1&amp;destination=264+W+Marion+Ave%2C+Punta+Gorda%2C+FL+33950\" target=\"_blank\" title=\"Get Directions\">in store</a> <strong>or </strong><a href=\"/pages/contact\" title=\"/pages/contact\">contact us&nbsp;</a></p><p><em><strong>Open 7 Days a Week</strong></em></p>"
           }
         },
         "hours": {
           "type": "text",
           "settings": {
             "heading": "Store hours",
-            "subtext": "<p><em><strong>Open 7 Days a Week</strong></em><br/><br/><strong>Monday: </strong>11AM – 4PM<br/><strong>Tuesday</strong>: 10AM – 5PM<br/><strong>Wednesday: </strong>10AM – 5PM<br/><strong>Thursday:</strong> 10AM – 5PM<br/><strong>Friday:</strong> 10AM – 5PM<br/><strong>Saturday:</strong> 10AM – 4PM<br/><strong>Sunday:</strong> 10AM – 3PM</p>"
-          }
-        },
-        "brand": {
-          "type": "brand_information",
-          "settings": {
-            "show_social": false
+            "subtext": "<p><strong>Monday: </strong>10AM – 5PM<br/><strong>Tuesday</strong>: 10AM – 5PM<br/><strong>Wednesday: </strong>10AM – 5PM<br/><strong>Thursday:</strong> 10AM – 5PM<br/><strong>Friday:</strong> 10AM – 5PM<br/><strong>Saturday:</strong> 10AM – 4PM<br/><strong>Sunday:</strong> 11AM – 3PM</p>"
           }
         }
       },
@@ -50,17 +50,17 @@
       ],
       "settings": {
         "color_scheme": "scheme-3",
-        "newsletter_enable": true,
-        "newsletter_heading": "Join our mailing list",
-        "enable_follow_on_shop": false,
+        "newsletter_enable": false,
+        "newsletter_heading": "",
+        "enable_follow_on_shop": true,
         "show_social": true,
         "enable_country_selector": false,
         "enable_language_selector": false,
         "payment_enable": true,
         "show_policy": true,
-        "margin_top": 0,
-        "padding_top": 48,
-        "padding_bottom": 36
+        "margin_top": 36,
+        "padding_top": 40,
+        "padding_bottom": 0
       }
     }
   },

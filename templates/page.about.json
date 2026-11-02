@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
@@ -11,65 +20,39 @@
         "button_link": "shopify://collections/new-arrivals",
         "color_scheme": "scheme-1",
         "padding_top": 48,
-        "padding_bottom": 36,
-        "image": "shopify://shop_images/beyoutiful-blue-tops-and-accessories-store-display.webp"
+        "padding_bottom": 36
       }
     },
-    "story": {
-      "type": "image-with-text",
+    "1793334881273e2254": {
+      "type": "_blocks",
       "blocks": {
-        "caption": {
-          "type": "caption",
+        "ai_gen_block_de2e383_QrqbaF": {
+          "type": "ai_gen_block_de2e383",
           "settings": {
-            "caption": "Our story",
-            "text_style": "caption-with-letter-spacing",
-            "text_size": "small"
-          }
-        },
-        "heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "Love and kindness, always",
-            "heading_size": "h1"
-          }
-        },
-        "text": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Be-YOU-tiful Boutique by Michele was created on a girls' trip to South Carolina, visiting my daughter in the Air Force during the COVID shutdown. Five great friends, stuck in a house for five days.</p><p>I was lost. I felt like I had no purpose. I opened up to my friends about how I was feeling on that trip, and something amazing happened: they all came together and designed the store's logo, its name and the idea for the boutique.</p><p>This boutique's purpose is to uplift women of all sizes and to create a safe and loving atmosphere. Over the last 7 years the store has changed in size and location, but one thing remains: love and kindness.</p><p>I'm always looking for amazing outfits that make every customer feel special, in quality clothing that lasts. You'll find basics and standout pieces in sizes XXS to 2X, designed to make YOU feel Be-YOU-tiful!</p><p><em>— Michele</em></p>",
-            "text_style": "body"
-          }
-        },
-        "button": {
-          "type": "button",
-          "settings": {
-            "button_label": "Visit Us",
-            "button_link": "shopify://pages/visit-us",
-            "button_style_secondary": true
-          }
+            "desktop_width_percent": 100,
+            "eyebrow": "Our story",
+            "title": "Love and kindness, always",
+            "dek": "A little about the heart behind Be-YOU-tiful Boutique.",
+            "story_body": "<p>Be-YOU-tiful Boutique by Michele was created on a girls' trip to South Carolina, visiting my daughter in the Air Force during the COVID shutdown. Five great friends, stuck in a house for five days.</p><p>I was lost. I felt like I had no purpose. I opened up to my friends about how I was feeling on that trip, and something amazing happened: they all came together and designed the store's logo, its name and the idea for the boutique.</p><p>This boutique's purpose is to uplift women of all sizes and to create a safe and loving atmosphere. Over the last 7 years the store has changed in size and location, but one thing remains: love and kindness.</p><p>I'm always looking for amazing outfits that make every customer feel special, in quality clothing that lasts. You'll find basics and standout pieces in sizes XXS to 2X, designed to make YOU feel Be-YOU-tiful!</p>",
+            "hero_image": "shopify://shop_images/3D5C5D2A-2450-4AD1-A71A-608423E103B4.jpg",
+            "hero_caption": "",
+            "secondary_image": "shopify://shop_images/be-you-tiful-mascot.jpg",
+            "secondary_caption": "The Boutique's Mascot",
+            "pull_quote": "Love and kindness, always.",
+            "quote_attribution": "~ Michele",
+            "heading_font": "playfair_display_n4",
+            "title_size": 60,
+            "background_color": "#FFFFFF",
+            "text_color": "#2B2B2B",
+            "accent_color": "#3A4543"
+          },
+          "blocks": {}
         }
       },
       "block_order": [
-        "caption",
-        "heading",
-        "text",
-        "button"
+        "ai_gen_block_de2e383_QrqbaF"
       ],
-      "settings": {
-        "height": "adapt",
-        "desktop_image_width": "medium",
-        "layout": "image_first",
-        "desktop_content_position": "middle",
-        "desktop_content_alignment": "left",
-        "content_layout": "no-overlap",
-        "section_color_scheme": "scheme-1",
-        "color_scheme": "scheme-2",
-        "image_behavior": "none",
-        "mobile_content_alignment": "left",
-        "padding_top": 24,
-        "padding_bottom": 36,
-        "image": "shopify://shop_images/beyoutiful-blue-tops-and-accessories-store-display.webp"
-      }
+      "settings": {}
     },
     "promise": {
       "type": "brand-strip",
@@ -111,6 +94,8 @@
       ],
       "settings": {
         "show_ribbon": false,
+        "ribbon_items": "Swimwear to formal wear | Sizes XXS – 2X | Affordable prices | Downtown Punta Gorda | In-store pickup",
+        "ribbon_scroll": true,
         "eyebrow": "Our promise",
         "statement": "Every body. Every occasion. <em>Be-YOU-tiful.</em>",
         "accent": "Accept yourself as you were designed by God",
@@ -158,26 +143,19 @@
         "heading": "What our customers say",
         "rating_line": "100% recommend · 16 reviews on Facebook",
         "rating_link": "https://www.facebook.com/MicheleMonksEnsmingerMansfield/reviews",
+        "show_stars": false,
         "color_scheme": "scheme-2",
         "padding_top": 48,
-        "padding_bottom": 48,
-        "show_stars": false
+        "padding_bottom": 48
       }
     },
     "visit": {
       "type": "visit-our-store",
       "blocks": {
-        "h1": {
-          "type": "hours",
-          "settings": {
-            "days": "Monday",
-            "hours": "11AM – 4PM"
-          }
-        },
         "h2": {
           "type": "hours",
           "settings": {
-            "days": "Tuesday – Friday",
+            "days": "Monday – Friday",
             "hours": "10AM – 5PM"
           }
         },
@@ -192,17 +170,17 @@
           "type": "hours",
           "settings": {
             "days": "Sunday",
-            "hours": "10AM – 3PM"
+            "hours": "11AM – 3PM"
           }
         }
       },
       "block_order": [
-        "h1",
         "h2",
         "h3",
         "h4"
       ],
       "settings": {
+        "image": "shopify://shop_images/be-you-tiful-boutique-puntaGorda_1.png",
         "image_position": "right",
         "heading": "Come say hi",
         "address_line_1": "264 W Marion Ave",
@@ -210,19 +188,50 @@
         "phone": "(941) 369-1628",
         "show_directions": true,
         "directions_label": "Get Directions",
+        "directions_link": "",
+        "google_label": "Reviews on Google",
+        "google_link": "",
         "note": "Visit us in downtown Punta Gorda",
         "color_scheme": "scheme-1",
         "padding_top": 48,
-        "padding_bottom": 48,
-        "image": "shopify://shop_images/beyoutiful-blue-tops-and-accessories-store-display.webp"
+        "padding_bottom": 48
       }
+    },
+    "17933396489e71d206": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_f9eedc1_cUEJMd": {
+          "type": "ai_gen_block_f9eedc1",
+          "settings": {
+            "desktop_width_percent": 100,
+            "eyebrow": "A note from our customers",
+            "heading": "Kind words",
+            "google_link_label": "Reviews on Google",
+            "interval_seconds": 6,
+            "background_color": "#FFFFFF",
+            "text_color": "#2B2B2B",
+            "review_1_quote": "You won't find a shopping experience like this at a department store or online. What a warm and welcoming environment and a JUDGMENT FREE ZONE. I walked in to Be-YOU-Tiful for the first time with my hair all crazy and in my lazy clothes not knowing what to expect and I found SO many cute things, including this colorful pink top that matched perfectly with some pants I had been waiting to wear! I will definitely be back- I can't wait to see what else comes in!",
+            "review_1_author": "Google Reviewer",
+            "review_2_quote": "What a gem in downtown Punta Gorda! The inventory is diverse from cute skorts to long dresses and the customer service is unmatched. GO soon....you won't be sorry.",
+            "review_2_author": "Tammy Kilgore",
+            "review_3_quote": "This boutique is amazing. I have an entire new wardrobe, clothes coming at least once a week. You will not see everyone walking around wearing the same thing. Everything is unique. The staff is amazing and kind the owner Michele is a gem not pushing at all stop in and browse you won't be sorry.",
+            "review_3_author": "Linda Powers"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_f9eedc1_cUEJMd"
+      ],
+      "settings": {}
     }
   },
   "order": [
     "hero",
-    "story",
+    "1793334881273e2254",
     "promise",
     "reviews",
-    "visit"
+    "visit",
+    "17933396489e71d206"
   ]
 }

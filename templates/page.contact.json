@@ -9,6 +9,21 @@
  */
 {
   "sections": {
+    "hero": {
+      "type": "page-hero",
+      "settings": {
+        "eyebrow": "Get in touch",
+        "heading": "Contact",
+        "accent": "Ask us anything — sizing, holds, gift ideas, what's new",
+        "text": "<p><a href=\"tel:+19413691628\" target=\"_blank\" title=\"tel:+19413691628\">Call</a> during store hours, <a href=\"mailto:beyoutifulboutiquebymichele@gmail.com\" target=\"_blank\" title=\"mailto:beyoutifulboutiquebymichele@gmail.com\">email</a>, message us on <a href=\"https://www.facebook.com/MicheleMonksEnsmingerMansfield\" target=\"_blank\">Facebook</a>, or use the form below.</p>",
+        "button_label": "",
+        "button_link": "",
+        "image": "shopify://shop_images/be-you-tiful-boutique-beach-blue.jpg",
+        "color_scheme": "scheme-1",
+        "padding_top": 44,
+        "padding_bottom": 20
+      }
+    },
     "form": {
       "type": "contact-form",
       "settings": {
@@ -19,35 +34,13 @@
         "padding_bottom": 36
       }
     },
-    "hero": {
-      "type": "page-hero",
-      "settings": {
-        "eyebrow": "Get in touch",
-        "heading": "Contact",
-        "accent": "Ask us anything — sizing, holds, gift ideas, what's new",
-        "text": "<p><a href=\"tel:(941) 369-1628\" target=\"_blank\" title=\"tel:(941) 369-1628\">Call</a> during store hours, <a href=\"mailto:beyoutifulboutiquebymichele@gmail.com\" target=\"_blank\" title=\"mailto:beyoutifulboutiquebymichele@gmail.com\">email</a>, message us on <a href=\"https://www.facebook.com/MicheleMonksEnsmingerMansfield\" target=\"_blank\">Facebook</a>, or use the form below.</p>",
-        "button_label": "",
-        "button_link": "",
-        "image": "shopify://shop_images/be-you-tiful-boutique-beach-blue.jpg",
-        "color_scheme": "scheme-1",
-        "padding_top": 44,
-        "padding_bottom": 20
-      }
-    },
     "store": {
       "type": "visit-our-store",
       "blocks": {
-        "h1": {
-          "type": "hours",
-          "settings": {
-            "days": "Monday",
-            "hours": "11AM – 4PM"
-          }
-        },
         "h2": {
           "type": "hours",
           "settings": {
-            "days": "Tuesday – Friday",
+            "days": "Monday – Friday",
             "hours": "10AM – 5PM"
           }
         },
@@ -62,12 +55,11 @@
           "type": "hours",
           "settings": {
             "days": "Sunday",
-            "hours": "10AM – 3PM"
+            "hours": "11AM – 3PM"
           }
         }
       },
       "block_order": [
-        "h1",
         "h2",
         "h3",
         "h4"
@@ -82,6 +74,8 @@
         "show_directions": true,
         "directions_label": "Get Directions",
         "directions_link": "",
+        "google_label": "Reviews on Google",
+        "google_link": "",
         "note": "Visit us in downtown Punta Gorda",
         "color_scheme": "scheme-3",
         "padding_top": 24,

@@ -1,10 +1,23 @@
+## November 2 owner editor and local theme reconciliation
+
+- Michele's published theme is `be-you-tiful-boutique-theme` (ID `157452402844`) on `xapm2f-fr`; her domain is `shopbeyoutifulboutique.com`. The pasted About editor template has a story block and a separate Kind words block. The repo template and required block files are the local counterpart of that owner editor; a local commit alone does not publish theme changes.
+- Amber confirmed the current hours: **Mon–Fri 10–5 · Sat 10–4 · Sun 11–3**. Address: **264 W Marion Ave**, Punta Gorda, FL 33950; phone **(941) 369-1628**; email **beyoutifulboutiquebymichele@gmail.com**. These supersede the older hours below. The active theme files were aligned and read back; separate pickup settings still need checking against this schedule.
+- Michele's October 29 Shipping & Returns page and the November 2 About editor showed the current hours. On November 2, her published Shipping policy was corrected in Shopify admin to Mon–Fri 10–5 · Sat 10–4 · Sun 11–3 and saved; Contact information and Refund policy were also checked and current. Google Business Profile still needs a fresh read.
+- The active owner-theme files were saved and read back on November 2 against the local theme; the two new Liquid blocks differ only by trailing newlines. Visit Us and Questions page bodies and the Shipping policy were updated and read back. No Shopify **Publish** action was taken. The older “Restore last session” notice and unsaved editor session were left untouched.
+
+## Meeting and owner guides prepared October 29
+
+- [Amber meeting guide PDF](meeting/2026-10-29_Meeting_Guide.pdf) · [editable Word](meeting/2026-10-29_Meeting_Guide.docx): five pages covering the agenda, decisions, pilot evidence and launch gate.
+- [Michele website handbook PDF](Michele_Website_Handbook.pdf) · [editable Word](Michele_Website_Handbook.docx): ten pages covering daily operations and a separate setup status sheet. Update the setup sheet after verified launch and whenever operating rules change.
+- These guides describe current blockers explicitly. They do not certify EPOS or Love Loyalty integration as operational. Older September custom-rewards/import guides are historical.
+
 ## October 29 live catalog/discount update
 
 - Added 80 internal boutique SKUs, resolved eight repeated-SKU variants, and filled 71 missing shipping weights with approved estimates. All 266 draft variants now have unique SKUs and nonzero weights. Estimated weights are tagged `weight-estimate-review` and must be weighed before launch.
 - [Full current SKU/weight export](store/launch-catalog-2026-10-29.csv), [repair audit](store/catalog-repairs-2026-10-29.csv), [remaining weight checks](store/launch-catalog-issues-2026-10-29.csv).
 - Live welcome discount now targets the 155-product regular-price eligibility collection. 20%, $100 minimum, email subscribers, one use/customer and combination settings verified unchanged.
 - Eligibility is a maintained snapshot. Remove products before markdowns; refresh via the app's `sync:newsletter --apply` script before selling changed/new products. Any product with a discounted variant is excluded in full. Automatic refresh and checkout acceptance tests are NOT complete.
-- EPOS V4 continues to return 401 despite matching configured credentials. Outbound inventory/order/customer handlers and a documented Love Loyalty external-POS bridge remain unimplemented. See the app repo `docs/EPOSNOW_SYNC.md` for the exact access blocker and unsent vendor question draft.
+- EPOS V4 continues to return 401 despite matching configured credentials. Outbound inventory/order/customer handlers and a documented Love Loyalty external-POS bridge remain unimplemented. See the app repo `docs/EPOSNOW_SYNC.md` for the exact access blocker and vendor support request sent October 29 from ambermingione@gmail.com.
 - These catalog and discount changes are LIVE. Local app/theme source has not been pushed or deployed by this follow-up. No products were activated and the storefront password remains a launch gate.
 
 # Launch readiness update — October 29, 2026
@@ -33,9 +46,11 @@ The owner screenshot confirms be-you-tiful, Love Loyalty, and Faire installed. O
 
 ---
 
-# Client handoff checklist — Be-YOU-tiful Boutique by Michele
+# Historical setup and handoff notes — Be-YOU-tiful Boutique by Michele
 
-## Current owner workflow — September 21, 2026
+The setup status below records work from September–October 2026. Use the dated November 2 update above for current theme, hours and page status.
+
+## Owner workflow documented September 21, 2026
 
 **Scope confirmed by Amber:** Michele owns products, prices, variants, photos and inventory. Our work is the reusable boutique templates, app configuration, navigation and collection structure. Catalog entry is not a prerequisite for completing that setup. On September 21, Amber explicitly authorized a separate fictional catalog for testing; the details below do not replace Michele’s responsibility for real merchandise.
 
@@ -45,7 +60,7 @@ The owner screenshot confirms be-you-tiful, Love Loyalty, and Faire installed. O
 
 1. Enter title, description, photos, price and inventory. Use the **Default product** template.
 2. Use option names **Size** and **Color** consistently. Set the real variants and stock for each item.
-3. Set **Product type** to one of the exact category names in [collections.md](collections.md). Collections populate automatically. Add tag `new` for New Arrivals. **Markdowns are Clearance automatically:** set a compare-at price above the price and the product shows a **Clearance** badge and joins the Clearance collection, no tag needed. **"Sale" is only for sale events:** add tag `sale` to the event's products and they show a **Sale** badge and move from Clearance to the Sale collection; remove the tag when the event ends. Tags never change prices; Michele controls the actual price and compare-at price.
+3. Set **Product type** to match the current owner-store collection rule in Shopify; [collections.md](collections.md) records the older test-store categories. Collections populate automatically. Add tag `new` for New Arrivals. **Markdowns are Clearance automatically:** set a compare-at price above the price and the product shows a **Clearance** badge and joins the Clearance collection, no tag needed. **"Sale" is only for sale events:** add tag `sale` to the event's products and they show a **Sale** badge and move from Clearance to the Sale collection; remove the tag when the event ends. Tags never change prices; Michele controls the actual price and compare-at price.
 4. Complete the pinned **Fit notes** and **Materials care** fields near the bottom of the product editor. Both are rich text, displayed by the boutique product template and hidden when blank. Never infer fabric composition or care instructions from photos.
 5. Optionally choose a published brand-specific **Size guide** page. This replaces the general guide link for that product; otherwise the template uses `/pages/size-guide`.
 6. Choose **Complementary products** (pinned by Search & Discovery) to populate **Complete the look**. These must be eligible, available products before Shopify returns recommendations.
@@ -60,7 +75,7 @@ Open **Content → Metaobjects → Look**, choose an outfit, and select **every 
 
 Imported **18 test products / 55 variants / 18 images** into `v0m0hb-x3` using [client-test-products.csv](store/client-test-products.csv). Source photos came from the local boutique assets and remain untouched. Titles begin `TEST —`, handles begin `test-`, SKUs begin `BB-TEST-`, and all products have `test-product`, `sample`, and `new` tags. Descriptions explicitly identify fictional prices, sizes and copy. Prices range from $16 to $78; three products have compare-at prices and the `sale` tag.
 
-Eleven clothing products have S/M/L/XL variants; sandals have test sizes 6–10; the handbag and jewelry use One Size. Six supporting products were added after Amber clarified that a look must break down the complete outfit. Their isolated photos are AI-generated test illustrations based on visible pieces in the local outfit photos, not verified retail photography. Local assets are `docs/images/placeholders/test-*.png`; details and mapping are in [looks.md](looks.md). Inventory is untracked for cart testing. Products are Active and published to Online Store only. This is store-level catalog data, shared across themes; the store remains password protected and the boutique theme remains a draft.
+Eleven clothing products have S/M/L/XL variants; sandals have test sizes 6–10; the handbag and jewelry use One Size. Six supporting products were added after Amber clarified that a look must break down the complete outfit. Their isolated photos are AI-generated test illustrations based on visible pieces in the local outfit photos, not verified retail photography. Local assets are `docs/images/placeholders/test-*.png`; details and mapping are in [looks.md](looks.md). Inventory was untracked for cart testing. At the September test, these products were Active on the password-protected test store and the boutique theme was a draft; all 18 were archived October 18.
 
 All four Look entries now reference matching test products under Pieces, plus complementary test products under Goes with. Before launch, replace those references with Michele’s real merchandise, then filter Products by tag `test-product` and archive the eighteen samples. Keep the original photos in Files because the theme and Look entries also use them. The older `store/sample-products.json` belongs to the previous development store, not this import.
 
@@ -72,17 +87,17 @@ Verified in the boutique draft: Shop All shows twelve products, New Arrivals and
 - **Shopify Messaging** was already installed. No campaigns or customer messages were sent.
 - The theme includes size/color selectors, swatches, quick-add, cart, sale badges, related products, contact form, newsletter signup and app-block support. No paid plugin was added. Reviews, wishlist, back-in-stock alerts and chat are optional additions to decide from actual operating needs.
 
-### Completed setup
+### Test-store setup at the time
 
-- Nine automated collections created in the new store; exact rules are in [collections.md](collections.md).
+- Nine automated collections were created in Amber's test store; its historical rules are in [collections.md](collections.md).
 - Created visible **Size Guide**, **Visit Us**, **About**, and **Questions** pages with useful editable body content. Existing Contact and Your Privacy Choices pages preserved. Shop the Look, Make it Yours is now visible at `/pages/shop-the-look`, with four outfit pages at `/pages/looks/<handle>` in the boutique draft.
 - Main menu now includes Home, Shop All, Contact, New Arrivals, Shop by Category, Sale, Visit Us. Footer includes Search, Your Privacy Choices, Size Guide, Questions, Visit Us, About, Contact. Header uses `main-menu`; footer uses `footer`.
 - Product template now has Boutique product details and Complete the look blocks. Policy links read the store’s saved shipping/refund policies. Removed unconfirmed delivery times and return promises. Removed invented numeric chart presets from the size-guide section.
 - Four changed theme files uploaded successfully to the draft only: `sections/main-product.liquid`, `templates/product.json`, `sections/size-guide.liquid`, `sections/footer-group.json`. Homepage, hero, colors and outfit work were not overwritten.
 
-### Final launch work
+### Pre-October 19 launch work (historical)
 
-- Shopify currently lists only the live Horizon theme’s page templates in page administration. When the boutique theme is published, assign About → `about`, Visit Us → `visit-us`, Questions → `faq`, Size Guide → `size-guide`, Contact → `contact`, Shop the Look → `shop-the-look`. The first four pages currently use Default page and already have real body content. Custom size-guide preview was verified in the draft.
+- At the time, Shopify listed only the live Horizon theme’s page templates in page administration. The boutique theme has since been published on Michele's store and About, Visit Us, Questions, Size Guide, Contact and Shop the Look have their matching custom template assignments. Custom size-guide preview was verified in the draft.
 - Preserve and reconcile the theme editor’s existing unsaved design session before publishing. Look metaobject/hero work is tracked separately in [looks.md](looks.md); do not broad-push unrelated local files.
 - Michele must confirm shipping, pickup and returns terms in Shopify settings. Do not copy unapproved sample policy wording into the live store.
 - Activate Size/Color filters now that sample options exist, then repeat variant/cart/checkout checks with actual merchandise before launch. Archive the explicitly authorized test catalog first.
@@ -99,7 +114,7 @@ Verified in the boutique draft: Shop All shows twelve products, New Arrivals and
 Store facts (from Google Business Profile + Facebook, verified 2026-09-02):
 
 - 264 W Marion Ave, Punta Gorda, FL 33950 · (941) 369-1628 · beyoutifulboutiquebymichele@gmail.com
-- Hours (open 7 days since 2026-09-25): Mon 11–4 · Tue–Fri 10–5 · Sat 10–4 · Sun 10–3 · In-store pickup offered
+- Hours at the October 18 check (historical): Mon 11–4 · Tue–Fri 10–5 · Sat 10–4 · Sun 10–3 · In-store pickup offered. See the November 2 hours above for current copy.
 - Tagline: "Unique Boutique with affordable prices…from swimwear to formal wear. Size XXS to 2X. (Updated 2026-09-29: was "swimsuits to gowns … 3X".)"
 - Faith line: "Accept yourself as you were designed by God"
 - Facebook: facebook.com/MicheleMonksEnsmingerMansfield (2.1K followers, 16 reviews, 100% recommend)
@@ -137,7 +152,7 @@ Still Michele's/Amber's to do: finish Shopify Payments setup (Shop Pay, pay-in-4
 - [x] *(done 2026-10-19: zip uploaded to xapm2f-fr and published; the app is not installed there)* `npm run push:client` (after setting the store handle in `shopify.theme.toml`) **or** `npm run package` → upload zip in Online Store → Themes **or** the no-login API path in `docs/store/README.md` (zip → Files → `themeCreate`). After any zip import, diff the theme's file list against the zip — Shopify drops files that fail validation without telling you.
 - [ ] Theme settings → Logo: upload transparent PNG (≥ 600px wide); Favicon: the circle logo
 - [ ] Theme settings → Social: Facebook URL; add Instagram when she has one
-- [x] *(menus and the missing New Arrivals, Dresses, Sale, Clearance, Jumpsuits collections done in xapm2f-fr 2026-10-19)* Create collections + menus exactly as `docs/collections.md` (already scripted once on the dev store — see `docs/store/README.md`; current new-store menus use `main-menu` / `footer`)
+- [x] Owner-store menus and the missing New Arrivals, Dresses, Sale, Clearance, Jumpsuits collections were created October 19. The `docs/collections.md` table and `docs/store/README.md` are historical test/development-store records; read the owner-store configuration before changing live menus or collection rules.
 - [x] Upload the image set to Files first (`docs/images/`), same filenames — templates already point at `shopify://shop_images/beyoutiful-*` *(done in xapm2f-fr 2026-10-19)*
 - [x] Pages: about, visit-us, questions, size-guide, shop-the-look, contact with the matching template suffixes *(done in xapm2f-fr 2026-10-19)*
 - [x] Policies from `docs/policies/` (Settings → Policies) *(done in xapm2f-fr 2026-10-19)*
@@ -149,7 +164,7 @@ Still Michele's/Amber's to do: finish Shopify Payments setup (Shop Pay, pay-in-4
 
 - [ ] Products: title, price, compare-at (for the Clearance badge; tag `sale` only for sale events), **Product type** (drives category collections), sizes as variants XXS–2X, 2+ photos each
 - [x] About page copy (her story, faith line): Michele's story is in `templates/page.about.json` → Our story (2026-10-18; see `docs/pages/about.md`)
-- [ ] Contact page live (`page.contact` template)
+- [x] Contact page uses the `page.contact` template on Michele's published theme (assigned October 19). A new form submission was not part of the November 2 content check.
 - [ ] Mailing list: the footer form collects subscribers; review current Shopify Messaging pricing before sending campaigns
 
 ## 4. Launch

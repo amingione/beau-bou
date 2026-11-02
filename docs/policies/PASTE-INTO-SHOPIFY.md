@@ -1,10 +1,10 @@
 # Paste these into Shopify — Settings → Policies
 
-> **2026-10-18:** Amber confirmed the address is **264 W Marion Ave** (no "-A") and Sunday hours are **10–3**. The live Refund and Shipping policies still say "264-A"; paste the versions below into Settings → Policies.
+> **2026-11-02:** Amber confirmed the current hours are **Mon–Fri 10–5 · Sat 10–4 · Sun 11–3**. The address remains **264 W Marion Ave** (no "-A"). Michele's published Shipping policy was corrected to these hours and saved in Shopify admin; Contact information and Refund policy were checked and current. The October 18 Sunday 10–3 note is historical.
 
-The Shopify API connection can't write policies (`write_legal_policies` scope missing), so these are pasted by hand.
-Admin → **Settings → Policies** → open each policy → select all existing text → paste → **Save**.
-All four match Michele's signed Website Decisions (2026-09-21) and the confirmed address/hours (2026-09-28).
+At the October 18 check, the API connection lacked `write_legal_policies`; use Michele's Shopify admin for policy edits.
+In **Settings → Policies**, compare the current saved text with the relevant block below, update the changed policy, save, and read it back. Do not overwrite newer approved terms just to refresh the hours.
+The return and shipping terms follow Michele's signed Website Decisions (2026-09-21); the address and hours reflect the later corrections above.
 
 ---
 
@@ -37,14 +37,14 @@ If your order arrives damaged or isn't what you ordered, contact us within 7 day
 Questions
 Call (941) 369-1628 or email beyoutifulboutiquebymichele@gmail.com.
 ```
-Note: the version currently live also makes swimwear + jewelry final sale and gives store credit only. Michele's contract answer doesn't say either — keep those lines only if she confirms them.
+Historical note: an older test-store policy made swimwear and jewelry final sale and allowed store credit only. Michele's signed answer did not include those terms; the October 19 owner-store handoff records their removal.
 
 ---
 
 ## 3. Shipping policy
 ```
 In-store pickup
-Choose Pickup at checkout — there's no charge. We'll let you know when your order is ready to pick up at the boutique, 264 W Marion Ave, Punta Gorda, FL 33950. We're open 7 days a week: Monday 11–4, Tuesday–Friday 10–5, Saturday 10–4, Sunday 10–3.
+Choose Pickup at checkout — there's no charge. We'll let you know when your order is ready to pick up at the boutique, 264 W Marion Ave, Punta Gorda, FL 33950. We're open 7 days a week: Monday–Friday 10–5, Saturday 10–4, Sunday 11–3.
 
 Shipping
 We ship within the United States. Shipping rates are shown at checkout, and you'll receive a tracking link by email as soon as your order ships.
@@ -59,7 +59,7 @@ Call (941) 369-1628 or email beyoutifulboutiquebymichele@gmail.com.
 
 ---
 
-## 4. Terms of service (new — currently missing)
+## 4. Terms of service
 ```
 By placing an order with Be-YOU-tiful Boutique by Michele you agree to these terms.
 
@@ -81,4 +81,4 @@ Contact. (941) 369-1628 · beyoutifulboutiquebymichele@gmail.com
 ---
 
 ## Privacy policy
-Update the address to 264 W Marion Ave (no "-A"); phone and email are already correct.
+Verify the published contact block uses 264 W Marion Ave (no "-A"), the boutique phone and the boutique email.

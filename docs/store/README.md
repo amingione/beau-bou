@@ -1,6 +1,8 @@
 # Dev store build — kw59hc-k1 (Amber's store, not Michele's)
 
-State as of 2026-09-12. Everything below was created through the Shopify Admin GraphQL API (Shopify MCP) — no CLI login needed. Repeat the same steps on Michele's store when it exists; nothing here is store-specific except IDs.
+> Historical September 12 development-store record. Michele's owner store `xapm2f-fr` exists and runs the published boutique theme; do not repeat this setup there. See [handoff.md](../handoff.md) for current owner-store status.
+
+State as of 2026-09-12. Everything below was created through the Shopify Admin GraphQL API (Shopify MCP) — no CLI login needed. Store IDs and setup steps below are historical.
 
 ## Theme
 | | |

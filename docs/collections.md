@@ -1,6 +1,6 @@
 # Boutique collections and navigation
 
-Created in `v0m0hb-x3` on September 20, 2026. Michele enters products and prices; these collections automatically organize her catalog.
+This records the **September 20 test-store setup** in `v0m0hb-x3`. Michele's owner store is `xapm2f-fr`; its boutique theme was published October 19, and its page templates are assigned. The owner-store menu and collection state is summarized in [handoff.md](handoff.md), and should be read in Shopify before changing live navigation. The table below is historical test-store configuration, not an instruction to recreate it on Michele's store.
 
 | Collection | Handle | Membership rule |
 | --- | --- | --- |
@@ -20,7 +20,7 @@ Use those exact Product type names. A product can appear in its category, New Ar
 
 The existing empty Home page collection was preserved. The category listing `/collections` is linked from the main menu. The theme’s category tiles refer to Dresses, Gowns, Tops, Bottoms, Jewelry + Accessories and Handbags; featured sections use New Arrivals and Clearance (switch the homepage row's collection to Sale during an event).
 
-## Main menu (`main-menu`)
+## Test-store main menu (`main-menu`, historical)
 
 - Home → `/`
 - Shop All → `/collections/all`
@@ -30,11 +30,11 @@ The existing empty Home page collection was preserved. The category listing `/co
 - Clearance → `/collections/clearance` (was Sale → `/collections/sale` until 2026-09-25; add a Sale link back during events)
 - Visit Us → `/pages/visit-us`
 
-## Footer menu (`footer`)
+## Test-store footer menu (`footer`, historical)
 
 Search, Your Privacy Choices, Size Guide, Questions, Visit Us, About, Contact. Shopify policy links are displayed separately by the footer when those policies are saved.
 
-## Pages and template assignment
+## Initial test-store pages and template assignment (historical)
 
 | Page handle | Custom template | Current state |
 | --- | --- | --- |
@@ -45,4 +45,4 @@ Search, Your Privacy Choices, Size Guide, Questions, Visit Us, About, Contact. S
 | `contact` | `contact` | Existing page; preserve |
 | `shop-the-look` | `shop-the-look` | Visible; four-look gallery renders in the draft through Default page until theme launch |
 
-Only the live theme’s templates appear in Shopify’s page assignment menu. Assign the boutique templates after publishing the boutique theme. Until then, the four created pages have editable body content, and custom templates can be inspected through the draft theme editor. See [handoff.md](handoff.md) for product-field and app instructions.
+Michele's owner store now runs the published boutique theme, with About, Visit Us, Questions, Size Guide, Shop the Look and Contact assigned to their matching custom templates as recorded on October 19. See [handoff.md](handoff.md) for current owner-store status and product-field and app instructions.
