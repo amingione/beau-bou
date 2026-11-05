@@ -9,10 +9,51 @@
     assign bb_fname = bb_store_logo | remove: 'shopify://shop_images/'
     assign bb_store_logo = images[bb_fname]
   endif
+  assign bb_store_image = settings.bb_share_image
+  if bb_store_image != blank and bb_store_image.src == blank
+    assign bb_fname = bb_store_image | remove: 'shopify://shop_images/'
+    assign bb_store_image = images[bb_fname]
+  endif
   assign bb_geo = settings.bb_store_geo | split: ','
+  assign bb_latitude = bb_geo[0] | strip | plus: 0
+  assign bb_longitude = bb_geo[1] | strip | plus: 0
   assign bb_hours = settings.bb_store_hours | newline_to_br | split: '<br />'
   assign bb_areas = settings.bb_store_area | split: ','
 -%}
+{%- assign bb_day_codes = 'Mo,Tu,We,Th,Fr,Sa,Su' | split: ',' -%}
+{%- assign bb_day_names = 'Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday' | split: ',' -%}
+{%- capture bb_opening_specs -%}
+  {%- assign bb_first_spec = true -%}
+  {%- for line in bb_hours -%}
+    {%- assign bb_parts = line | strip | split: ' ' -%}
+    {%- assign bb_range = bb_parts[0] | split: '-' -%}
+    {%- assign bb_times = bb_parts[1] | split: '-' -%}
+    {%- assign bb_start_day = -1 -%}
+    {%- assign bb_end_day = -1 -%}
+    {%- for day_code in bb_day_codes -%}
+      {%- if day_code == bb_range[0] -%}{%- assign bb_start_day = forloop.index0 -%}{%- endif -%}
+      {%- if day_code == bb_range[1] -%}{%- assign bb_end_day = forloop.index0 -%}{%- endif -%}
+    {%- endfor -%}
+    {%- if bb_range.size == 1 -%}{%- assign bb_end_day = bb_start_day -%}{%- endif -%}
+    {%- if bb_start_day >= 0 and bb_end_day >= bb_start_day and bb_times[0] != blank and bb_times[1] != blank -%}
+      {%- unless bb_first_spec -%},{%- endunless -%}
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          {%- assign bb_first_day = true -%}
+          {%- for day_name in bb_day_names -%}
+            {%- if forloop.index0 >= bb_start_day and forloop.index0 <= bb_end_day -%}
+              {%- unless bb_first_day -%},{%- endunless -%}{{ day_name | json }}{%- assign bb_first_day = false -%}
+            {%- endif -%}
+          {%- endfor -%}
+        ],
+        "opens": {{ bb_times[0] | strip | json }},
+        "closes": {{ bb_times[1] | strip | json }}
+      }
+      {%- assign bb_first_spec = false -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endcapture -%}
 <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -22,10 +63,13 @@
     "url": {{ request.origin | json }},
     {%- if bb_store_logo != blank %}
     "logo": {{ bb_store_logo | image_url: width: 600 | prepend: 'https:' | json }},
+    {%- endif %}
+    {%- if bb_store_image != blank %}
+    "image": {{ bb_store_image | image_url: width: 1200 | prepend: 'https:' | json }},
+    {%- elsif bb_store_logo != blank %}
     "image": {{ bb_store_logo | image_url: width: 1200 | prepend: 'https:' | json }},
     {%- endif %}
     "telephone": {{ settings.bb_store_phone | json }},
-    "priceRange": "$$",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": {{ settings.bb_store_street | json }},
@@ -34,8 +78,8 @@
       "postalCode": {{ settings.bb_store_zip | json }},
       "addressCountry": "US"
     },
-    {%- if bb_geo.size == 2 %}
-    "geo": { "@type": "GeoCoordinates", "latitude": {{ bb_geo[0] | strip | json }}, "longitude": {{ bb_geo[1] | strip | json }} },
+    {%- if bb_geo.size == 2 and bb_latitude != 0 and bb_longitude != 0 %}
+    "geo": { "@type": "GeoCoordinates", "latitude": {{ bb_latitude | json }}, "longitude": {{ bb_longitude | json }} },
     {%- endif %}
     "openingHours": [
       {%- assign bb_first = true -%}
@@ -44,6 +88,9 @@
         {%- if l != blank -%}{% unless bb_first %},{% endunless %}{{ l | json }}{%- assign bb_first = false -%}{%- endif -%}
       {%- endfor -%}
     ],
+    {%- if bb_opening_specs != blank %}
+    "openingHoursSpecification": [{{ bb_opening_specs }}],
+    {%- endif %}
     "areaServed": [
       {%- assign bb_first = true -%}
       {%- for a in bb_areas -%}

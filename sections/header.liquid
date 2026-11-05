@@ -478,24 +478,38 @@
 
 <script type="application/ld+json">
   {
-    "@context": "http://schema.org",
+    "@context": "https://schema.org",
     "@type": "Organization",
-    "name": {{ shop.name | json }},
+    "@id": {{ request.origin | append: '/#store' | json }},
+    "name": {{ settings.bb_store_name | default: shop.name | json }},
     {% if bb_logo %}
       "logo": {{ bb_logo | image_url: width: 500 | prepend: "https:" | json }},
     {% endif %}
     "sameAs": [
-      {{ settings.social_twitter_link | json }},
-      {{ settings.social_facebook_link | json }},
-      {{ settings.social_pinterest_link | json }},
-      {{ settings.social_instagram_link | json }},
-      {{ settings.social_tiktok_link | json }},
-      {{ settings.social_tumblr_link | json }},
-      {{ settings.social_snapchat_link | json }},
-      {{ settings.social_youtube_link | json }},
-      {{ settings.social_vimeo_link | json }}
+      {%- assign bb_first_social = true -%}
+      {%- for link in (1..10) -%}
+        {%- case forloop.index -%}
+          {%- when 1 -%}{%- assign bb_social = settings.social_twitter_link -%}
+          {%- when 2 -%}{%- assign bb_social = settings.social_facebook_link -%}
+          {%- when 3 -%}{%- assign bb_social = settings.social_pinterest_link -%}
+          {%- when 4 -%}{%- assign bb_social = settings.social_instagram_link -%}
+          {%- when 5 -%}{%- assign bb_social = settings.social_tiktok_link -%}
+          {%- when 6 -%}{%- assign bb_social = settings.social_tumblr_link -%}
+          {%- when 7 -%}{%- assign bb_social = settings.social_snapchat_link -%}
+          {%- when 8 -%}{%- assign bb_social = settings.social_youtube_link -%}
+          {%- when 9 -%}{%- assign bb_social = settings.social_vimeo_link -%}
+          {%- when 10 -%}{%- assign bb_social = settings.bb_google_profile -%}
+        {%- endcase -%}
+        {%- if bb_social != blank -%}{% unless bb_first_social %},{% endunless %}{{ bb_social | json }}{%- assign bb_first_social = false -%}{%- endif -%}
+      {%- endfor -%}
     ],
-    "url": {{ request.origin | append: page.url | json }}
+    "url": {{ request.origin | json }}
+    {%- if request.page_type == 'index' and shop.refund_policy.url != blank -%},
+    "hasMerchantReturnPolicy": {
+      "@type": "MerchantReturnPolicy",
+      "merchantReturnLink": {{ request.origin | append: shop.refund_policy.url | json }}
+    }
+    {%- endif %}
   }
 </script>
 
@@ -503,15 +517,17 @@
   {% assign potential_action_target = request.origin | append: routes.search_url | append: '?q={search_term_string}' %}
   <script type="application/ld+json">
     {
-      "@context": "http://schema.org",
+      "@context": "https://schema.org",
       "@type": "WebSite",
+      "@id": {{ request.origin | append: routes.root_url | append: '#website' | json }},
       "name": {{ shop.name | json }},
+      "publisher": { "@id": {{ request.origin | append: '/#store' | json }} },
       "potentialAction": {
         "@type": "SearchAction",
         "target": {{ potential_action_target | json }},
         "query-input": "required name=search_term_string"
       },
-      "url": {{ request.origin | append: page.url | json }}
+      "url": {{ request.origin | append: routes.root_url | json }}
     }
   </script>
 {%- endif -%}

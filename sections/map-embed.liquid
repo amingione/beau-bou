@@ -9,25 +9,36 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
-  .map-embed__frame { position: relative; aspect-ratio: {{ section.settings.ratio }}; overflow: hidden; }
+  .map-embed__frame { position: relative; overflow: hidden; }
+  .map-embed__frame--map { aspect-ratio: {{ section.settings.ratio }}; }
   .map-embed__frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; filter: grayscale(1) contrast(1.05); }
   .map-embed__frame:hover iframe { filter: none; }
+  .map-embed__directions { display: grid; justify-items: center; gap: 1.2rem; padding: clamp(2.4rem, 5vw, 5.6rem) 2rem; text-align: center; background: rgba(var(--color-foreground), 0.035); }
+  .map-embed__directions p { max-width: 46rem; margin: 0; font-size: 1.5rem; line-height: 1.5; }
+  .map-embed__directions a { color: inherit; font-size: 1.3rem; letter-spacing: 0.08em; text-transform: uppercase; text-underline-offset: 0.3rem; }
   .map-embed__caption { text-align: center; margin: 1.6rem 0 0; font-size: 1.3rem; letter-spacing: 0.08em; text-transform: uppercase; }
   .map-embed__caption a { color: inherit; text-underline-offset: 0.3rem; }
 {%- endstyle -%}
 
 {%- liquid
   assign q = section.settings.query | default: '264 W Marion Ave, Punta Gorda, FL 33950' | url_encode
-  assign src = 'https://www.google.com/maps?q=' | append: q | append: '&z=' | append: section.settings.zoom | append: '&output=embed'
+  assign map_url = 'https://www.google.com/maps/search/?api=1&query=' | append: q
 -%}
 
 <div class="map-embed color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding{% unless section.settings.full_width %} page-width{% endunless %}">
-  <div class="map-embed__frame{% if section.settings.frame %} bb-frame{% endif %}">
-    <iframe src="{{ src }}" title="{{ section.settings.title | default: 'Map to our store' | escape }}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+  <div class="map-embed__frame{% if section.settings.embed_url != blank %} map-embed__frame--map{% endif %}{% if section.settings.frame %} bb-frame{% endif %}">
+    {%- if section.settings.embed_url != blank -%}
+      <iframe src="{{ section.settings.embed_url | escape }}" title="{{ section.settings.title | default: 'Map to our store' | escape }}" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    {%- else -%}
+      <div class="map-embed__directions">
+        <p>{{ section.settings.query | default: '264 W Marion Ave, Punta Gorda, FL 33950' | escape }}</p>
+        <a href="{{ map_url }}" target="_blank" rel="noopener">{{ section.settings.caption | default: 'Open in Google Maps' | escape }}</a>
+      </div>
+    {%- endif -%}
   </div>
-  {%- if section.settings.caption != blank -%}
+  {%- if section.settings.caption != blank and section.settings.embed_url != blank -%}
     <p class="map-embed__caption">
-      <a href="https://www.google.com/maps/search/?api=1&query={{ q }}" target="_blank" rel="noopener">{{ section.settings.caption | escape }}</a>
+      <a href="{{ map_url }}" target="_blank" rel="noopener">{{ section.settings.caption | escape }}</a>
     </p>
   {%- endif -%}
 </div>
@@ -39,10 +50,11 @@
   "class": "section",
   "disabled_on": { "groups": ["header", "footer"] },
   "settings": [
-    { "type": "text", "id": "query", "default": "Be-YOU-tiful Boutique by Michele, 264 W Marion Ave, Punta Gorda, FL 33950", "label": "Place / address", "info": "No API key needed — uses the free Google Maps embed." },
+    { "type": "text", "id": "query", "default": "Be-YOU-tiful Boutique by Michele, 264 W Marion Ave, Punta Gorda, FL 33950", "label": "Place / address", "info": "Shown in the directions panel and used for the Google Maps link." },
+    { "type": "url", "id": "embed_url", "label": "Optional map embed URL", "info": "Use the URL from Google Maps > Share > Embed a map. Leave blank for a compact directions panel." },
     { "type": "range", "id": "zoom", "min": 12, "max": 19, "step": 1, "default": 16, "label": "Zoom" },
     { "type": "select", "id": "ratio", "default": "21 / 9", "label": "Shape", "options": [ { "value": "21 / 9", "label": "Wide" }, { "value": "16 / 9", "label": "16:9" }, { "value": "4 / 3", "label": "4:3" } ] },
-    { "type": "text", "id": "caption", "default": "Open in Google Maps · Free street parking on Marion Ave", "label": "Caption link" },
+    { "type": "text", "id": "caption", "default": "Open in Google Maps", "label": "Caption link" },
     { "type": "text", "id": "title", "default": "Map to Be-YOU-tiful Boutique", "label": "Accessible title" },
     { "type": "checkbox", "id": "frame", "default": true, "label": "Hairline frame" },
     { "type": "checkbox", "id": "full_width", "default": false, "label": "Full width" },
