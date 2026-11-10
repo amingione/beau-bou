@@ -20,13 +20,16 @@ November 5 schema corrections below have not been applied to the active Shopify 
 | Canonical URL, sitemap, robots.txt | Shopify | Automatic (`/sitemap.xml`, `/robots.txt`). |
 
 Hours confirmed by Amber on 2026-11-02. Enter one line per range in Theme settings → Store details for Google:
-`Mo-Fr 10:00-17:00`, `Sa 10:00-16:00`, `Su 11:00-15:00`.
+`Mo 11:00-16:00`, `Tu-Fr 10:00-17:00`, `Sa 10:00-16:00`, `Su 10:00-15:00`.
 
 ## In the store (not in this repo)
 
 - **Search listing titles + descriptions** exist on the main pages (About, Visit Us, Contact, Shipping & Returns,
-  Shop the Look, Size Guide, Questions). The Visit Us listing was corrected on November 5 to Monday–Friday 10–5,
-  Saturday 10–4 and Sunday 11–3. Twelve populated collections received assortment-specific descriptions and
+  Shop the Look, Size Guide, Questions). The Visit Us listing's meta description had carried the wrong hours
+  since at least November 5 (Monday grouped into the Tue–Fri block, Sunday opening shown as 11 instead of 10) —
+  these live in a Shopify page metafield (`global.description_tag`), not a theme file, so no repo push ever
+  touches them; fixed directly via the Admin API on November 9 to Mon 11–4, Tue–Fri 10–5, Sat 10–4, Sun 10–3.
+  Twelve populated collections received assortment-specific descriptions and
   search listings on November 5: Dresses, Tops, Jewelry & Accessories, Handbags, Baby & Toddler, Toys,
   Formal Wear, Drinkware, Bottoms, Kids, Girls and Samuel Dong. Other collections still need review.
 - **Shipping & Returns page** (`/pages/shipping-returns`), linked in the footer and from Questions.
