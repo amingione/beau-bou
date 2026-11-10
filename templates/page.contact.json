@@ -37,17 +37,10 @@
     "store": {
       "type": "visit-our-store",
       "blocks": {
-        "hours_mon": {
-          "type": "hours",
-          "settings": {
-            "days": "Monday",
-            "hours": "11AM – 4PM"
-          }
-        },
         "h2": {
           "type": "hours",
           "settings": {
-            "days": "Tuesday – Friday",
+            "days": "Monday – Friday",
             "hours": "10AM – 5PM"
           }
         },
@@ -62,12 +55,11 @@
           "type": "hours",
           "settings": {
             "days": "Sunday",
-            "hours": "10AM – 3PM"
+            "hours": "11AM – 3PM"
           }
         }
       },
       "block_order": [
-        "hours_mon",
         "h2",
         "h3",
         "h4"

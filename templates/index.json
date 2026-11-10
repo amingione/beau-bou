@@ -400,17 +400,10 @@
     "visit": {
       "type": "visit-our-store",
       "blocks": {
-        "hours_mon": {
-          "type": "hours",
-          "settings": {
-            "days": "Monday",
-            "hours": "11AM – 4PM"
-          }
-        },
         "hours_3BkLJc": {
           "type": "hours",
           "settings": {
-            "days": "Tuesday – Friday",
+            "days": "Monday – Friday",
             "hours": "10AM – 5PM"
           }
         },
@@ -425,12 +418,11 @@
           "type": "hours",
           "settings": {
             "days": "Sunday",
-            "hours": "10AM – 3PM"
+            "hours": "11AM – 3PM"
           }
         }
       },
       "block_order": [
-        "hours_mon",
         "hours_3BkLJc",
         "h2",
         "h3"
