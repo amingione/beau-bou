@@ -249,3 +249,20 @@ The homepage **Shop Styles** section now runs as an auto-scrolling carousel (Lay
 - Tiles fill in this order: published looks → **Extra photo** blocks (theme editor → Shop Styles → Add block) → bundled samples.
 - Settings: *Tiles in carousel* (4–20, default 10), *Seconds per loop* (20–120, default 50).
 - The Shop the Look page uses the same section with Layout → Grid (filters + full pop-ups).
+
+## Products linked to Looks on Michele's store (xapm2f-fr, 2026-11-09)
+Matched by comparing each look photo with every active women's product photo. **Pieces** = worn in the photo (only confirmed matches). **Goes with** = in-stock items that style with the outfit. Kids items are not used in Looks.
+
+| Look | Status | Pieces | Goes with |
+| --- | --- | --- | --- |
+| Heart tee & studded jeans | Active | Rivir Stud Jeans | Heart Petal Earrings (Candy Hearts), Denim Flower Jacket, Liquid Leather Jacket, Apple Watch Stone Straps, Sm Jen Earrings (Pink Ribbon) |
+| Professional & Comfortable | Active | Cork Sling Bag, Med Jen Earrings (Wood Oblong & Black), Emery Black Dress Pant | Black Bow Clip, 18K Gold Plated Bracelet, Cork RFID Threefold Wallet, Elegant V-Neck Tank, Georgie Straight Leg Pant (Khaki) |
+| Embroidered kimono & black pants | Active | Emery Black Dress Pant (same pants as Professional & Comfortable) | Sparkling Sequin Button-Up, Elegant V-Neck Tank, Med Jen Earrings (Wood Oblong & Black), Double 18K Necklace, Black Bow Clip |
+| Blue & white floral palazzo pants duo | Active | Blue/White Plazzo Pant | Blue/White Daisy Top, Cotton Ruffle Top, Triple 18k Necklace, Med Jen Knot Earrings (Navy), Sm Jen Earrings (Navy Weaved), Dolce a Woven Tote |
+| Colorful pants duo | Active | none in catalog | Emery Trousers, Cream Eyelet Top, Floral Top Sheer, Denim Flower Jacket, Large Jen Earrings (Spring Blossoms), Cork Crossbody OMZ-116 |
+| Pink top & floral tulle skirt | Active | none in catalog | Large Jen Earrings (Gentle Summer/Blush/Navy), Charm 18k Necklace, 18K Gold Plated Bracelet, Mood Rings, Cork Lipstick Case |
+| Jellyfish print dress | Draft | none in catalog | Med Jen Earrings (Chameleon Glitter), Small Teardrop Earrings (Periwinkle), Beach Charm Necklace, Slim Cork Pocket Mirror, Soft Sunglasses Pouch, Cork Bucket Bag |
+| Turquoise & coral puff-sleeve mini | Draft | none in catalog | Large Jen Earrings (Spring Blossoms), Jen Medium Leather Teardrop Earrings, Cork Phone Wallet Crossbody, Beach Charm Necklace, Banana Boat BB853 Dress |
+| Cutwork embellished jeans | Draft | none in catalog | Blue/White Daisy Top, Dragonfly Long Sleeve Top, Floral V Neck Summer T, Samuel Dong Side Ruffle Top, Cross 18K Necklace |
+
+A look with no Pieces still shows the theme's empty-state box ("We Sold Out!" on Michele's store) above Goes with. When the real item is added as a product, link it under Pieces and the box goes away.
