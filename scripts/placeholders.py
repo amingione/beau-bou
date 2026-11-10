@@ -168,7 +168,7 @@ def main() -> None:
     # Collection banners 2400 x 800
     for slug, label, sub in [
         ("new-arrivals", "What's New", "Fresh this week"),
-        ("swimsuits", "Swimsuits", "XS – 3X · mix and match"),
+        ("swimsuits", "Swimsuits", "XXS – 2X · mix and match"),
         ("dresses", "Dresses", "Casual to cocktail"),
         ("gowns", "Gowns", "Special occasion, no special-occasion price"),
         ("tops", "Tops", "Blouses, tees, tanks"),
