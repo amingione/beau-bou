@@ -1,7 +1,7 @@
 # SEO (mobile + desktop)
 
 Amber asked for all the on-page SEO possible on 2026-10-18. This table describes the local theme repository; the
-November 5 schema corrections below have not been applied to the active Shopify theme.
+November 5 schema corrections below have not been applied to the active Shopify theme as of the November 10 check.
 
 ## In the theme
 
@@ -15,7 +15,7 @@ November 5 schema corrections below have not been applied to the active Shopify 
 | Breadcrumbs | `layout/theme.liquid` | Two-step `BreadcrumbList` for products, collections and standard pages; three steps for Shop the Look detail pages through the parent gallery. |
 | Product data | `sections/main-product.liquid` and `sections/featured-product.liquid` | Shopify's native `product | structured_data` supplies product and offer details. An unconfigured Featured product placeholder emits no Product JSON-LD. |
 | Google profile link | `sections/visit-our-store.liquid` | "Reviews on Google" button; link from Store details for Google (or a per-section override). |
-| Visit Us directions | `sections/map-embed.liquid` | The former Google `q=...&output=embed` URL returned 404 and left a blank panel. A compact address and directions link is the local fallback; a valid owner-supplied share/embed URL can be configured later. |
+| Visit Us directions | `sections/map-embed.liquid` | The local file has a compact address and directions fallback. The active theme still uses Google's `q=...&output=embed` URL; its map rendered in the November 10 preview. Keep the active map unless a fresh preview shows a failure. |
 | Alt text | `sections/page-hero.liquid` + file alt text | Hero falls back to the heading; images used on the site have alt text in Content → Files. |
 | Canonical URL, sitemap, robots.txt | Shopify | Automatic (`/sitemap.xml`, `/robots.txt`). |
 
@@ -30,6 +30,34 @@ Hours confirmed by Amber on 2026-11-02. Enter one line per range in Theme settin
   search listings on November 5: Dresses, Tops, Jewelry & Accessories, Handbags, Baby & Toddler, Toys,
   Formal Wear, Drinkware, Bottoms, Kids, Girls and Samuel Dong. Other collections still need review.
 - **Shipping & Returns page** (`/pages/shipping-returns`), linked in the footer and from Questions.
+
+## Verified theme status (November 10, 2026)
+
+- The active theme is `157452402844` (`be-you-tiful-boutique-theme`). Its store-detail settings and displayed
+  About, Contact, Visit Us, homepage, and footer hours agree with Amber's confirmed Monday–Friday 10–5,
+  Saturday 10–4, Sunday 11–3 schedule. The active Visit Us map rendered in the preview.
+- The November 5 schema corrections in `layout/theme.liquid`, `sections/header.liquid`,
+  `snippets/bb-local-business-schema.liquid`, and `sections/featured-product.liquid` remain local only. The
+  Shopify CLI's current login cannot read this store, and the connected Shopify tool blocks writes to a live
+  theme. Re-read the four live files before any future upload. The active About template also has different
+  image and caption settings from this repository; do not upload that template wholesale.
+- The November 5 store and launch findings below are a dated snapshot. Recheck product publication, payments,
+  taxes, Search Console, and editor drafts before treating those findings as current.
+
+## Verified launch controls (November 10, 2026)
+
+- Shopify Preferences briefly showed Private mode off despite the theme preview bar saying password protected.
+  Private mode was restored and saved without changing the existing password. A fresh anonymous request to
+  `/pages/about` redirected to `/password`.
+- The curated store has 149 Active products, all assigned to Online Store. Shopify Payments still requests
+  setup. The US tax page says not collecting, and Florida shows action required. US shipping services and
+  store pickup are configured; the six published policies are present.
+- Google & YouTube is installed but still asks to connect a Google account. The Work Google account did not
+  show a Boutique Search Console property or Business Profile owner controls. The Maps listing still shows
+  `264-A W Marion Ave` and no website, although its regular hours match the store.
+- The embedded EPOS pilot screen loads in Michele's Shopify admin. It shows outbound inventory sync paused,
+  zero approved variant mappings, and zero approved location mappings. API connectivity and a successful poll
+  do not establish stock synchronization; a physically verified item and real counter sale/refund are required.
 
 ## Launch and search visibility status (November 5, 2026)
 
@@ -62,8 +90,9 @@ Hours confirmed by Amber on 2026-11-02. Enter one line per range in Theme settin
   products, and its feed diagnostics could not be verified because its admin panel was blank.
 - Local schema corrections in `sections/header.liquid`, `layout/theme.liquid`, and
   `snippets/bb-local-business-schema.liquid` are in the repository only. The Visit Us directions fallback is
-  also local only; the active theme still shows the broken blank map panel.
-  The active theme has a separate unsaved New Arrivals editor draft; do not overwrite or save it during SEO work.
+  also local only; at the November 5 review, the active theme showed a blank map panel. The November 10 preview
+  showed the map working. The active theme had a separate unsaved New Arrivals editor draft at this review;
+  do not overwrite or save unrelated editor work during SEO work.
 
 ## Still to do by hand
 
