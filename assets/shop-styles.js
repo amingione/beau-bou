@@ -100,7 +100,7 @@ if (!customElements.get('shop-styles')) {
     async add(rows, button) {
       const items = rows
         .map((row) => row && row.querySelector('[data-ss-variant]'))
-        .filter((input) => input && input.value && isAvailable(input))
+        .filter((input) => input && !input.disabled && input.value && isAvailable(input))
         .map((input) => ({ id: Number(input.value), quantity: 1 }));
       if (!items.length) return;
 

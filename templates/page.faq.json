@@ -19,14 +19,14 @@
           "type": "collapsible_row",
           "settings": {
             "heading": "How can I check if an item is available?",
-            "row_content": "<p>Contact the boutique with the style, color, and size you have in mind. Availability changes as items sell.</p>"
+            "row_content": "<p>Product pages show the styles and sizes available online. If an option says Sold out, it cannot be ordered.</p>"
           }
         },
         "q2": {
           "type": "collapsible_row",
           "settings": {
             "heading": "Can I arrange in-store pickup?",
-            "row_content": "<p>Call the boutique to confirm item availability and pickup arrangements before visiting.</p>"
+            "row_content": "<p>Choose in-store pickup at checkout when it is offered for your order. Your checkout will show the pickup details.</p>"
           }
         },
         "q3": {
@@ -39,8 +39,8 @@
         "q4": {
           "type": "collapsible_row",
           "settings": {
-            "heading": "Can I put something on hold?",
-            "row_content": "<p>Call or message the boutique to ask whether the item can be held for you.</p>"
+            "heading": "What if I find a piece I love?",
+            "row_content": "<p>Buy it while it is available. Michele's finds change often, and sold-out pieces are replaced with new styles.</p>"
           }
         }
       },
@@ -124,14 +124,14 @@
           "type": "collapsible_row",
           "settings": {
             "heading": "How do I choose a size?",
-            "row_content": "<p>Fit varies by brand and style. See our <a href=\"/pages/size-guide\">sizing help</a> and contact us about the particular item before ordering.</p>"
+            "row_content": "<p>Fit varies by brand and style. See our <a href=\"/pages/size-guide\">sizing help</a> and choose from the sizes shown on the product page.</p>"
           }
         },
         "q3": {
           "type": "collapsible_row",
           "settings": {
             "heading": "Do you restock sold-out items?",
-            "row_content": "<p>Contact us about a specific style to ask whether more are expected.</p>"
+            "row_content": "<p>No. When a style sells out, Michele replaces it with a new find. If you love an available piece, buy it while it is here.</p>"
           }
         },
         "q4": {

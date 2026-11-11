@@ -239,15 +239,15 @@
         "max_looks": 14,
         "columns": 4,
         "show_samples": false,
-        "empty_text": "Call or stop in to ask about availability and sizing.",
-        "empty_label": "Ask about this look",
-        "empty_link": "",
-        "intro": "<p>Outfits styled right here in the boutique. Tap a look to explore the pieces and ask us about availability.</p>",
+        "empty_text": "Michele's picks change as pieces sell through. Explore the styles available now.",
+        "empty_label": "Shop available styles",
+        "empty_link": "/collections/all",
+        "intro": "<p>Michele styles each look in the boutique. Shop the pieces you love while they're here—once they're gone, a new style takes their place.</p>",
         "badge_label": "Shop the look",
         "badge_color": "#e60023",
-        "button_label": "Explore the looks",
+        "button_label": "Find Your Look >",
         "button_link": "/pages/shop-the-look",
-        "color_scheme": "scheme-2",
+        "color_scheme": "scheme-5",
         "padding_top": 60,
         "padding_bottom": 60
       }
@@ -460,8 +460,8 @@
             "show_signup": true,
             "signup_button": "Join the list",
             "signup_success": "You're on the list. Thank you!",
-            "link_label": "Shop new arrivals",
-            "link": "/collections/new-arrivals"
+            "link_label": "Shop available styles",
+            "link": "/collections/all"
           }
         }
       },

@@ -139,9 +139,9 @@
         </ul>
       {%- else -%}
         <div class="look-page__empty bb-frame">
-          <h2 class="bb-display h3">{{ section.settings.empty_heading | default: 'Love this look?' | escape }}</h2>
-          <p>{{ section.settings.empty_text | default: 'Contact the boutique about availability and sizing.' | escape }}</p>
-          <a class="button button--secondary" href="{{ section.settings.empty_link | default: '/pages/contact' }}">{{ section.settings.empty_button | default: 'Ask about this look' | escape }}</a>
+          <h2 class="bb-display h3">{{ section.settings.empty_heading | default: 'A look to remember' | escape }}</h2>
+          <p>{{ section.settings.empty_text | default: "Michele's picks change as pieces sell through. Explore the styles available now." | escape }}</p>
+          <a class="button button--secondary" href="{{ section.settings.empty_link | default: routes.all_products_collection_url }}">{{ section.settings.empty_button | default: 'Shop available styles' | escape }}</a>
         </div>
       {%- endif -%}
 
@@ -168,8 +168,10 @@
         </ul>
       {%- endif -%}
 
-      {%- if section.settings.collection != blank -%}
+      {%- if section.settings.collection != blank and section.settings.collection.products_count > 0 -%}
         <a class="button button--secondary look-page__all" href="{{ section.settings.collection.url }}">{{ section.settings.collection_label | default: 'Shop all new arrivals' | escape }}</a>
+      {%- else -%}
+        <a class="button button--secondary look-page__all" href="{{ routes.all_products_collection_url }}">Shop available styles</a>
       {%- endif -%}
     </aside>
   </div>
@@ -254,9 +256,9 @@
     { "type": "text", "id": "collection_label", "default": "Shop all new arrivals", "label": "Collection button label" },
 
     { "type": "header", "content": "When a look has no pieces linked yet" },
-    { "type": "text", "id": "empty_heading", "default": "Love this look?", "label": "Heading" },
-    { "type": "text", "id": "empty_text", "default": "Message us and we’ll pull the pieces in your size.", "label": "Text" },
-    { "type": "text", "id": "empty_button", "default": "Ask about this look", "label": "Button label" },
+    { "type": "text", "id": "empty_heading", "default": "A look to remember", "label": "Heading" },
+    { "type": "text", "id": "empty_text", "default": "Michele's picks change as pieces sell through. Explore the styles available now.", "label": "Text" },
+    { "type": "text", "id": "empty_button", "default": "Shop available styles", "label": "Button label" },
     { "type": "url", "id": "empty_link", "label": "Button link" },
 
     { "type": "header", "content": "Navigation" },

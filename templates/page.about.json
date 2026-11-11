@@ -16,8 +16,8 @@
         "heading": "Be-YOU-tiful, by Michele",
         "accent": "Accept yourself as you were designed by God",
         "text": "<p>Swimwear to formal wear, everyday favorites to something for a special occasion. Discover Be-YOU-tiful Boutique by Michele in downtown Punta Gorda, with women's styles in sizes XXS to 2X, pieces for kids, babies and toddlers, and affordable prices.</p>",
-        "button_label": "Shop What's New",
-        "button_link": "shopify://collections/new-arrivals",
+        "button_label": "Shop available styles",
+        "button_link": "/collections/all",
         "color_scheme": "scheme-1",
         "padding_top": 48,
         "padding_bottom": 36,
@@ -37,15 +37,15 @@
             "story_body": "<p>Be-YOU-tiful Boutique by Michele was created on a girls' trip to South Carolina, visiting my daughter in the Air Force during the COVID shutdown. Five great friends, stuck in a house for five days.</p><p>I was lost. I felt like I had no purpose. I opened up to my friends about how I was feeling on that trip, and something amazing happened: they all came together and designed the store's logo, its name and the idea for the boutique.</p><p>This boutique's purpose is to uplift women of all sizes and to create a safe and loving atmosphere. Over the last 7 years the store has changed in size and location, but one thing remains: love and kindness.</p><p>I'm always looking for amazing outfits that make every customer feel special, in quality clothing that lasts. You'll find basics and standout pieces in sizes XXS to 2X, designed to make YOU feel Be-YOU-tiful!</p>",
             "hero_image": "shopify://shop_images/3D5C5D2A-2450-4AD1-A71A-608423E103B4.jpg",
             "hero_caption": "",
-            "secondary_image": "shopify://shop_images/be-you-tiful-mascot.jpg",
-            "secondary_caption": "The Boutique's Mascot",
+            "secondary_image": "shopify://shop_images/beyoutiful-about-people-2164.jpg",
+            "secondary_caption": "",
             "pull_quote": "Love and kindness, always.",
             "quote_attribution": "~ Michele",
             "heading_font": "playfair_display_n4",
             "title_size": 60,
-            "background_color": "#FFFFFF",
-            "text_color": "#2B2B2B",
-            "accent_color": "#3A4543"
+            "background_color": "#ffffff",
+            "text_color": "#2b2b2b",
+            "accent_color": "#3a4543"
           },
           "blocks": {}
         }
@@ -62,56 +62,72 @@
           "type": "photo",
           "settings": {
             "image": "shopify://shop_images/beyoutiful-about-people-9776.jpg",
-            "alt": "Two women embracing indoors"
+            "alt": "Two women embracing indoors",
+            "caption": "",
+            "note": ""
           }
         },
         "baby": {
           "type": "photo",
           "settings": {
             "image": "shopify://shop_images/beyoutiful-about-people-12722.jpg",
-            "alt": "Woman cuddling a sleeping baby"
+            "alt": "Woman cuddling a sleeping baby",
+            "caption": "",
+            "note": ""
           }
         },
         "seaside": {
           "type": "photo",
           "settings": {
             "image": "shopify://shop_images/beyoutiful-about-people-2164.jpg",
-            "alt": "Two women smiling together by the sea"
+            "alt": "Two women smiling together by the sea",
+            "caption": "",
+            "note": ""
           }
         },
         "outdoors": {
           "type": "photo",
           "settings": {
             "image": "shopify://shop_images/beyoutiful-about-people-2330.jpg",
-            "alt": "Two women smiling together outdoors"
+            "alt": "Two women smiling together outdoors",
+            "caption": "",
+            "note": ""
           }
         },
         "city": {
           "type": "photo",
           "settings": {
             "image": "shopify://shop_images/beyoutiful-about-people-2707.jpg",
-            "alt": "Four people smiling together on a city street"
+            "alt": "Four people smiling together on a city street",
+            "caption": "",
+            "note": ""
           }
         },
         "holiday": {
           "type": "photo",
           "settings": {
             "image": "shopify://shop_images/beyoutiful-about-people-9750.jpg",
-            "alt": "Two women smiling together near holiday decorations"
+            "alt": "Two women smiling together near holiday decorations",
+            "caption": "",
+            "note": ""
           }
         },
         "fireside": {
           "type": "photo",
           "settings": {
             "image": "shopify://shop_images/beyoutiful-about-people-9692.jpg",
-            "alt": "Two people posing together near a brick fireplace"
+            "alt": "Two people posing together near a brick fireplace",
+            "caption": "",
+            "note": ""
           }
         },
         "evening": {
           "type": "photo",
           "settings": {
             "image": "shopify://shop_images/beyoutiful-about-people-8215.jpg",
-            "alt": "Two people dressed for an evening out"
+            "alt": "Two people dressed for an evening out",
+            "caption": "",
+            "note": ""
           }
         }
       },
@@ -131,6 +147,7 @@
         "heading": "Made with love, kept close",
         "intro": "<p>Moments away from the racks remind us what matters here: connection, care, and room to be yourself.</p>",
         "closing_note": "To everyone who has walked in, brought a friend, shared a story, or trusted us with a special occasion: thank you. You make this boutique feel like home.",
+        "step_start": 1,
         "color_scheme": "scheme-1"
       }
     },
@@ -237,6 +254,7 @@
         "eyebrow": "Take a look around",
         "heading": "Come on in",
         "intro": "<p>From the windows on Marion Avenue to the first rack inside, this is the place Michele has filled with the things she loves.</p>",
+        "closing_note": "",
         "step_start": 1,
         "color_scheme": "scheme-2"
       }
@@ -335,6 +353,7 @@
         "eyebrow": "Inside the boutique",
         "heading": "The details make it ours",
         "intro": "<p>Clothes, accessories, scents, and small finds share the same space. Michele looks for pieces she is excited to show you and takes time to help you find what feels right.</p>",
+        "closing_note": "",
         "step_start": 5,
         "color_scheme": "scheme-1"
       }
@@ -398,8 +417,8 @@
             "heading": "Kind words",
             "google_link_label": "Reviews on Google",
             "interval_seconds": 6,
-            "background_color": "#FFFFFF",
-            "text_color": "#2B2B2B",
+            "background_color": "#ffffff",
+            "text_color": "#2b2b2b",
             "review_1_quote": "You won't find a shopping experience like this at a department store or online. What a warm and welcoming environment and a JUDGMENT FREE ZONE. I walked in to Be-YOU-Tiful for the first time with my hair all crazy and in my lazy clothes not knowing what to expect and I found SO many cute things, including this colorful pink top that matched perfectly with some pants I had been waiting to wear! I will definitely be back- I can't wait to see what else comes in!",
             "review_1_author": "Google Reviewer",
             "review_2_quote": "What a gem in downtown Punta Gorda! The inventory is diverse from cute skorts to long dresses and the customer service is unmatched. GO soon....you won't be sorry.",
