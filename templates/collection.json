@@ -8,6 +8,78 @@
         "color_scheme": "scheme-1"
       }
     },
+    "shop_by_brand": {
+      "type": "brand-logos",
+      "blocks": {
+        "avani": {
+          "type": "brand",
+          "settings": {
+            "name": "Avani",
+            "collection": "avani",
+            "link": ""
+          }
+        },
+        "coco_carmen": {
+          "type": "brand",
+          "settings": {
+            "name": "Coco + Carmen",
+            "logo": "shopify://shop_images/coco_carmen.png",
+            "collection": "coco-carmen",
+            "link": ""
+          }
+        },
+        "samuel_dong": {
+          "type": "brand",
+          "settings": {
+            "name": "Samuel Dong",
+            "logo": "shopify://shop_images/beyoutiful-brand-samuel-dong.png",
+            "collection": "samual-dong",
+            "link": ""
+          }
+        },
+        "patti_biggs": {
+          "type": "brand",
+          "settings": {
+            "name": "Patti Biggs",
+            "collection": "patti-biggs",
+            "link": ""
+          }
+        },
+        "ruby_rd": {
+          "type": "brand",
+          "settings": {
+            "name": "Ruby Rd.",
+            "collection": "ruby-rd",
+            "link": ""
+          }
+        },
+        "dolcezza": {
+          "type": "brand",
+          "settings": {
+            "name": "Dolcezza",
+            "logo": "shopify://shop_images/beyoutiful-brand-dolcezza.png",
+            "collection": "dolcezza",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "avani",
+        "coco_carmen",
+        "samuel_dong",
+        "patti_biggs",
+        "ruby_rd",
+        "dolcezza"
+      ],
+      "settings": {
+        "heading": "Shop by brand",
+        "only_shop_all": true,
+        "black_logos": true,
+        "color_scheme": "scheme-1",
+        "padding_top": 24,
+        "padding_bottom": 24
+      }
+    },
     "product-grid": {
       "type": "main-collection-product-grid",
       "settings": {
@@ -31,6 +103,7 @@
   },
   "order": [
     "banner",
+    "shop_by_brand",
     "product-grid"
   ]
 }
