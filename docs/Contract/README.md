@@ -38,3 +38,7 @@ $1,000 flat ($500 deposit · $500 at launch). Launch target **October 15, 2026**
 3. **Settings → Payments**: turn on Shop Pay Installments (pay-in-4) — **intentionally on hold** until the store transfers to Michele's own Shopify account.
 4. ~~**Settings → Shipping and delivery**: set the flat U.S. rate~~ — not applicable; Amber set carrier-calculated (dynamic) rates instead, USPS/UPS by weight and distance.
 5. **Products → Collections → Gowns**: unpublish (or delete) — it's empty (the API mutation is blocked by a safety policy; needs a manual click in admin).
+
+## Moved out of the repo (2026-11-16)
+
+The 11 contract photos (`.heic`) and three large client PDFs (Website Booklet, Homepage Preview, Homepage Preview Mobile) were removed from this repo to keep the branch under Shopify's 50 MB GitHub-sync limit. They live in the work folder: `~/LocalStorm/Work/Be-YOU-tiful Boutique/Contract/` and `.../repo-archive/client-portal/`. Do not add large binaries back under `docs/`.
