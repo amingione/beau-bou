@@ -134,7 +134,7 @@
 
       {%- if navigation_count > 1 -%}
         <div class="about-journal__controls" role="group" aria-label="{{ section.settings.heading | default: 'Photo album' | escape }} navigation">
-          <span class="about-journal__control-label">Browse the lookbook</span>
+          <span class="about-journal__control-label"></span>
           <span class="about-journal__position" data-journal-position-for="AboutJournalPhotos-{{ section.id }}" aria-live="polite">01 / {{ navigation_count_label }}</span>
           <button type="button" class="about-journal__control" data-journal-direction="previous" aria-controls="AboutJournalPhotos-{{ section.id }}" aria-label="Previous {{ navigation_item }}">
             <span aria-hidden="true">←</span>
